@@ -78,6 +78,22 @@ public class PlayerInputManager : MonoBehaviour
         SceneManager.activeSceneChanged -= OnSceneChange;
     }
 
+    //APPLICATION MINIMIZED VS OPEN
+    // private void OnApplicationFocus(bool focus)
+    // {
+    //     if(enabled)
+    //     {
+    //         if(focus)
+    //         {
+    //             playerControls.Enable();
+    //         }
+    //         else
+    //         {
+    //             PlayerControls.Disable();
+    //         }
+    //     }
+    // }
+
     private void Update()
     {
         HandleMovementInput();
