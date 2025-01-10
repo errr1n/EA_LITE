@@ -21,5 +21,13 @@ public class PlayerManager : CharacterManager
         // HANDLE ALL MOVEMENT 
         playerLocomotionManager.HandleAllMovement();
     }
+
+    protected override void LateUpdate()
+    {
+        base.LateUpdate();
+
+        PlayerCamera.instance.HandleAllCameraActions();
+        // Debug.Log("HandleAllCameraActions()");
+    }
     
 }

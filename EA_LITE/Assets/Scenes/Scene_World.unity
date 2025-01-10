@@ -6866,6 +6866,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2086332888577944047, guid: c6eb0161d363f784eaa3e09c4e305108,
+        type: 3}
+      propertyPath: characterController
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5089555979206195723, guid: c6eb0161d363f784eaa3e09c4e305108,
         type: 3}
       propertyPath: m_Name
@@ -7939,6 +7944,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716760346}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1785003593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -2086332888577944047, guid: c6eb0161d363f784eaa3e09c4e305108,
+    type: 3}
+  m_PrefabInstance: {fileID: 1524294162}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8f505a7d44c564a8ed3a9fff284dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1789458130
 GameObject:
   m_ObjectHideFlags: 0
@@ -8901,6 +8918,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2711238058462509012, guid: 438406aec55afee4bbcc0128ef74c316,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1785003593}
+    - target: {fileID: 1345181181369581778, guid: 438406aec55afee4bbcc0128ef74c316,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2621237699449417301, guid: 438406aec55afee4bbcc0128ef74c316,
         type: 3}
       propertyPath: m_Name
