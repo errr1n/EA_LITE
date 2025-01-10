@@ -132,6 +132,7 @@ public class PlayerInputManager : MonoBehaviour
 
     private void HandleCameraMovementInput()
     {
+        // CAN ADJUST SENSITIVITY HERE - PREFERABLY DONE IN PLAYER CAMERA SCRIPT
         cameraVerticalInput = cameraInput.y;
         cameraHorizontalInput = cameraInput.x;
     }

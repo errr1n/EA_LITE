@@ -5,6 +5,9 @@ using UnityEngine;
 public class CharacterManager : MonoBehaviour
 {
     public CharacterController characterController;
+    
+    // ADD ANIMATOR EVENTUALLY
+
     protected virtual void Awake()
     {
         // DontDestroyOnLoad(this);
