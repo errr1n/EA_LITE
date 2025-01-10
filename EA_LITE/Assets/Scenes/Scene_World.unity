@@ -8288,12 +8288,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848162528}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1872489540 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4164791814338864546, guid: 438406aec55afee4bbcc0128ef74c316,
-    type: 3}
-  m_PrefabInstance: {fileID: 3271539866873839069}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1909753473
 GameObject:
   m_ObjectHideFlags: 0
@@ -8929,15 +8923,15 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1785003593}
-    - target: {fileID: -2711238058462509012, guid: 438406aec55afee4bbcc0128ef74c316,
-        type: 3}
-      propertyPath: cameraPivotTransform
-      value: 
-      objectReference: {fileID: 1872489540}
     - target: {fileID: 2621237699449417301, guid: 438406aec55afee4bbcc0128ef74c316,
         type: 3}
       propertyPath: m_Name
       value: Player Camera (Left & Right)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164791814338864546, guid: 438406aec55afee4bbcc0128ef74c316,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8872050104755319363, guid: 438406aec55afee4bbcc0128ef74c316,
         type: 3}
