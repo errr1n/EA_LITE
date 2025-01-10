@@ -166,7 +166,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""2D Vector"",
+                    ""name"": ""Right Stick"",
                     ""id"": ""57a5924a-5f92-4da0-b84e-cf4afce42f53"",
                     ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
