@@ -8,7 +8,7 @@ public class CharacterAnimatorManager : MonoBehaviour
 
     protected virtual void Awake()
     {
-
+        character = GetComponent<CharacterManager>();
     }
 
     public void UpdateAnimatorMovementParameters(float horizontalValue, float verticalValue)
