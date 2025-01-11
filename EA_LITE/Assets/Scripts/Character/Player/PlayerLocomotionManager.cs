@@ -24,6 +24,10 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         player = GetComponent<PlayerManager>();
     }
 
+    // protected override void Update()
+    // {
+    //     base.Update();
+    // }
 
 
     public void HandleAllMovement()
@@ -37,17 +41,19 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         // FALLING
     }
 
-    private void GetVerticalAndHorizontalInputs()
+    // was GetVerticalAndHorizontalInputs()
+    private void GetMovementValues()
     {
         verticalMovement = PlayerInputManager.instance.verticalInput;
         horizontalMovement = PlayerInputManager.instance.horizontalInput;
+        moveAmount = PlayerInputManager.instance.moveAmount;
 
         // CLAMP THE MOVEMENTS (ANIMATIONS)
     }
 
     private void HandleGroundedMovement()
     {
-        GetVerticalAndHorizontalInputs();
+        GetMovementValues();
 
         // OUR MOVEMENT DIRECTION IS BASED ON OUR CAMERAS FACING PERSPECTIVE AND OUR INPUTS
         moveDirection = PlayerCamera.instance.transform.forward * verticalMovement;

@@ -11,11 +11,11 @@ public class CharacterAnimatorManager : MonoBehaviour
         character = GetComponent<CharacterManager>();
     }
 
-    public void UpdateAnimatorMovementParameters(float horizontalValue, float verticalValue)
+    public void UpdateAnimatorMovementParameters(float horizontalMovement, float verticalMovement)
     {
         // ACCESSING HUMANOID ANIMATOR PARAMETERS "HORIZONTAL" AND "VERTICAL"
-        character.animator.SetFloat("Horizontal", horizontalValue);
-        character.animator.SetFloat("Vertical", verticalValue);
+        character.animator.SetFloat("Horizontal", horizontalMovement, 0.1f, Time.deltaTime);
+        character.animator.SetFloat("Vertical", verticalMovement, 0.1f, Time.deltaTime);
 
         // IF ANIMATIONS DON'T LOOK SMOOTH, MAY NEED TO CLAMP HERE
     }

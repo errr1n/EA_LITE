@@ -134,6 +134,11 @@ public class PlayerInputManager : MonoBehaviour
         // WE PASS 0 ON HORIZONTAL BECAUSE NOT LOCKED ON (NON-STRAFING MOVEMENT)
         // HORIZONTAL WILL BE FOR STRAFING OR LOCKED ON
 
+        if(player == null)
+        {
+            return;
+        }
+
         // IF WE ARE NOT LOCKED ON, ONLY USE MOVE AMOUNT
         player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount);
 
