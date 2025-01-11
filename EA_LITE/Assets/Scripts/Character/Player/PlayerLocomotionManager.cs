@@ -7,15 +7,19 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     PlayerManager player;
 
     // TAKEN FROM INPUT MANAGER
-    public float verticalMovement;
-    public float horizontalMovement;
-    public float moveAmount;
+    [HideInInspector] public float verticalMovement;
+    [HideInInspector] public float horizontalMovement;
+    [HideInInspector] public float moveAmount;
 
+    [Header("MOVEMENT SETTINGS")]
     private Vector3 moveDirection;
     private Vector3 targetRotationDirection;
     [SerializeField] float walkingSpeed = 2;
     [SerializeField] float runningSpeed = 5;
     [SerializeField] float rotationSpeed = 15;
+
+    [Header("DODGE")]
+    private Vector3 rollDirection;
 
     protected override void Awake()
     {
@@ -90,5 +94,32 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         Quaternion newRotation = Quaternion.LookRotation(targetRotationDirection);
         Quaternion targetRotation = Quaternion.Slerp(transform.rotation, newRotation, rotationSpeed * Time.deltaTime);
         transform.rotation = targetRotation;
+    }
+
+    public void AttemptToPerformDodge()
+    {
+        // if(player.isPerformingAction)
+        // {
+        //     return;
+        // }
+        // CAN ONLY ROLL WHEN ALREADY MOVING 
+        if(PlayerInputManager.instance.moveAmount > 0)
+        {
+            rollDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.verticalInput;
+            rollDirection += PlayerCamera.instance.cameraObject.transform.right * PlayerInputManager.instance.horizontalInput;
+            rollDirection.y = 0;
+            rollDirection.Normalize();
+
+            Quaternion playerRotation = Quaternion.LookRotation(rollDirection);
+            player.transform.rotation = playerRotation;
+
+            // PERFORM ROLL ANIMATION
+            // MAY NEED TO CHANGE NAME <-------------------
+            player.playerAnimatorManager.PlayTargetActionAnimation("Roll_Forward", true, true);
+        }
+        else
+        {
+            // DO WE WANT A STATIONARY DODGE? AKA BACKSTEP
+        }
     }
 }

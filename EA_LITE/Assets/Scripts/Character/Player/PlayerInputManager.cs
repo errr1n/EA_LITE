@@ -15,16 +15,20 @@ public class PlayerInputManager : MonoBehaviour
 
     PlayerControls playerControls;
 
+    [Header("CAMERA ROTATION INPUT")]
+    [SerializeField] Vector2 cameraInput;
+    public float cameraVerticalInput;
+    public float cameraHorizontalInput;
+
     [Header("PLAYER MOVEMENT INPUT")]
     [SerializeField] Vector2 movementInput;
     public float verticalInput;
     public float horizontalInput;
     public float moveAmount;
 
-    [Header("CAMERA ROTATION INPUT")]
-    [SerializeField] Vector2 cameraInput;
-    public float cameraVerticalInput;
-    public float cameraHorizontalInput;
+    [Header("PLAYER ACTION INPUT")]
+    [SerializeField] bool dodgeInput = false;
+    
 
     private void Awake()
     {
@@ -72,12 +76,12 @@ public class PlayerInputManager : MonoBehaviour
         {
             playerControls = new PlayerControls();
 
-            // new player input system
+            // player controls from new input system
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
-            // new camera input system
+            // camera controls from player controls input system
             playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
-
-            // Debug.Log("READ PLAYER CONTROLS");
+            // player actions from player controls input system
+            playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
         }
 
         playerControls.Enable();
@@ -107,8 +111,14 @@ public class PlayerInputManager : MonoBehaviour
 
     private void Update()
     {
-        HandlePlayerMovementInput();
+        HandleAllInput();
+    }
+
+    private void HandleAllInput()
+    {
         HandleCameraMovementInput();
+        HandlePlayerMovementInput();
+        HandleDodgeInput();
     }
 
     private void HandlePlayerMovementInput()
@@ -150,5 +160,15 @@ public class PlayerInputManager : MonoBehaviour
         // CAN ADJUST SENSITIVITY HERE - PREFERABLY DONE IN PLAYER CAMERA SCRIPT
         cameraVerticalInput = cameraInput.y;
         cameraHorizontalInput = cameraInput.x;
+    }
+
+    private void HandleDodgeInput()
+    {
+        if(dodgeInput)
+        {
+            dodgeInput = false;
+            // PERFORM A DODGE
+            player.playerLocomotionManager.AttemptToPerformDodge();
+        }
     }
 }
