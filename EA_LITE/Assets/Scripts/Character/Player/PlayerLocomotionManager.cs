@@ -115,7 +115,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
             // PERFORM ROLL ANIMATION
             // MAY NEED TO CHANGE NAME <-------------------
-            player.playerAnimatorManager.PlayTargetActionAnimation("Roll_Forward", true, true);
+            player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, true);
         }
         else
         {
