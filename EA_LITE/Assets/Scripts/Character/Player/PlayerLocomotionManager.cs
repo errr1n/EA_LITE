@@ -36,6 +36,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     public void HandleAllMovement()
     {
+        
+
         //GROUNDED MOVEMENT
         HandleGroundedMovement();
         HandleRotation();
@@ -57,17 +59,22 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void HandleGroundedMovement()
     {
-        GetMovementValues();
+        if(!player.canMove)
+        {
+            return;
+        }
 
+        GetMovementValues();
+        
         // OUR MOVEMENT DIRECTION IS BASED ON OUR CAMERAS FACING PERSPECTIVE AND OUR INPUTS
         moveDirection = PlayerCamera.instance.transform.forward * verticalMovement;
         moveDirection = moveDirection + PlayerCamera.instance.transform.right * horizontalMovement;
         moveDirection.Normalize();
         moveDirection.y = 0;
 
+        // RUN VS WALK
         if(PlayerInputManager.instance.moveAmount > 0.5f)
         {
-            // Debug.Log("HERE");
             // MOVE AT RUNNING SPEED
             player.characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
         }
@@ -80,6 +87,10 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void HandleRotation()
     {
+        if(!player.canRotate)
+        {
+            return;
+        }
         Vector3 targetRotationDirection = Vector3.zero;
         targetRotationDirection = PlayerCamera.instance.cameraObject.transform.forward * verticalMovement;
         targetRotationDirection = targetRotationDirection + PlayerCamera.instance.cameraObject.transform.right * horizontalMovement;
@@ -98,10 +109,11 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     public void AttemptToPerformDodge()
     {
-        // if(player.isPerformingAction)
-        // {
-        //     return;
-        // }
+        if(player.isPerformingAction)
+        {
+            return;
+        }
+
         // CAN ONLY ROLL WHEN ALREADY MOVING 
         if(PlayerInputManager.instance.moveAmount > 0)
         {
@@ -115,7 +127,9 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
             // PERFORM ROLL ANIMATION
             // MAY NEED TO CHANGE NAME <-------------------
-            player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, true);
+            // ADJUSTED, MAY WANT TO DISABLE "CAN MOVE" FLAG (ResetActionFlag Script in animator) ---------> player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, true); <-------------
+            player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, true, false, true);
+            // player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, false);
         }
         else
         {

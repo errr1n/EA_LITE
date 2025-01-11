@@ -20,12 +20,18 @@ public class CharacterAnimatorManager : MonoBehaviour
         // IF ANIMATIONS DON'T LOOK SMOOTH, MAY NEED TO CLAMP HERE
     }
 
-    public virtual void PlayTargetActionAnimation(string targetAnimation, bool isPerformingAction, bool applyRootMotion = true)
+    public virtual void PlayTargetActionAnimation(string targetAnimation, 
+        bool isPerformingAction, 
+        bool applyRootMotion = true, 
+        bool canRotate = false, 
+        bool canMove = false)
     {
         character.animator.applyRootMotion = applyRootMotion;
         character.animator.CrossFade(targetAnimation, 0.2f);
         // CAN BE USED TO STOP CHARACTER FROM ATTEMPTING NEW ACTION
         // EX. DAMAGE STUN LOCK
         character.isPerformingAction = isPerformingAction;
+        character.canRotate = canRotate;
+        character.canMove = canMove;
     }
 }
