@@ -143,6 +143,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         else
         {
             // DO WE WANT A STATIONARY DODGE? AKA BACKSTEP
+            player.playerAnimatorManager.PlayTargetActionAnimation("BackStep", true, true);
         }
     }
 }
