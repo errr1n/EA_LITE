@@ -28,6 +28,8 @@ public class PlayerInputManager : MonoBehaviour
 
     [Header("PLAYER ACTION INPUT")]
     [SerializeField] bool dodgeInput = false;
+    [SerializeField] bool sprintInput = false;
+    // public bool isSprinting = false;
     
 
     private void Awake()
@@ -80,8 +82,14 @@ public class PlayerInputManager : MonoBehaviour
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             // camera controls from player controls input system
             playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
-            // player actions from player controls input system
+            // player actions dodge from player controls input system
             playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
+
+            // player actions sprint from player controls input system
+            // HOLDING THE INPUT, SETS BOOL TO TRUE
+            playerControls.PlayerActions.Sprint.performed += i => sprintInput = true;
+            // RELEASING THE INPUT, SETS BOOL TO FALSE
+            playerControls.PlayerActions.Sprint.canceled += i => sprintInput = false;
         }
 
         playerControls.Enable();
@@ -119,6 +127,7 @@ public class PlayerInputManager : MonoBehaviour
         HandleCameraMovementInput();
         HandlePlayerMovementInput();
         HandleDodgeInput();
+        HandleSprinting();
     }
 
     private void HandlePlayerMovementInput()
@@ -169,6 +178,20 @@ public class PlayerInputManager : MonoBehaviour
             dodgeInput = false;
             // PERFORM A DODGE
             player.playerLocomotionManager.AttemptToPerformDodge();
+        }
+    }
+
+    private void HandleSprinting()
+    {
+        if(sprintInput)
+        {
+            // HANDLE SPRINTING
+            player.playerLocomotionManager.SprintOn();
+            // Debug.Log("HERE");
+        }
+        else
+        {
+            player.playerLocomotionManager.SprintOff();
         }
     }
 }

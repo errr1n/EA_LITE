@@ -16,7 +16,10 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     private Vector3 targetRotationDirection;
     [SerializeField] float walkingSpeed = 2;
     [SerializeField] float runningSpeed = 5;
+    [SerializeField] float sprintingSpeed = 7;
     [SerializeField] float rotationSpeed = 15;
+
+    [SerializeField] public bool isSprinting = false;
 
     [Header("DODGE")]
     private Vector3 rollDirection;
@@ -75,17 +78,41 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         // no up and down movement
         moveDirection.y = 0;
 
-        // RUN VS WALK
-        if(PlayerInputManager.instance.moveAmount > 0.5f)
+        // SPRINT
+        if(isSprinting)
         {
-            // MOVE AT RUNNING SPEED
-            player.characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
+            // SPRINT SPEED
+            player.characterController.Move(moveDirection * sprintingSpeed * Time.deltaTime);
+            // Debug.Log("SPRINT");
         }
-        else if(PlayerInputManager.instance.moveAmount <= 0.5f)
+        else
         {
-            // MOVE AT WALKING SPEED
-            player.characterController.Move(moveDirection * walkingSpeed * Time.deltaTime);
+            // isSprinting = false;
+            // RUN VS WALK
+            if(PlayerInputManager.instance.moveAmount > 0.5f)
+            {
+                // MOVE AT RUNNING SPEED
+                player.characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
+                // Debug.Log("RUN");
+            }
+            else if(PlayerInputManager.instance.moveAmount <= 0.5f)
+            {
+                // MOVE AT WALKING SPEED
+                player.characterController.Move(moveDirection * walkingSpeed * Time.deltaTime);
+            }
         }
+
+        // // RUN VS WALK
+        // if(PlayerInputManager.instance.moveAmount > 0.5f)
+        // {
+        //     // MOVE AT RUNNING SPEED
+        //     player.characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
+        // }
+        // else if(PlayerInputManager.instance.moveAmount <= 0.5f)
+        // {
+        //     // MOVE AT WALKING SPEED
+        //     player.characterController.Move(moveDirection * walkingSpeed * Time.deltaTime);
+        // }
     }
 
     private void HandleRotation()
@@ -109,6 +136,63 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         Quaternion newRotation = Quaternion.LookRotation(targetRotationDirection);
         Quaternion targetRotation = Quaternion.Slerp(transform.rotation, newRotation, rotationSpeed * Time.deltaTime);
         transform.rotation = targetRotation;
+    }
+
+    // // only called when sprint button is down
+    // public void HandleSprinting()
+    // {
+    //     isSprinting = false;
+
+    //     if(player.isPerformingAction)
+    //     {
+    //         // SET SPRINTING TO FALSE
+    //         isSprinting = false;
+    //         // Debug.Log(isSprinting);
+    //     }
+
+    //     // STAMINA?
+
+    //     // IF WE ARE MOVING, SET SPRINTING TO TRUE
+    //     if(moveAmount >= 0.5)
+    //     {
+    //         //SPRINTING
+    //         isSprinting = true;
+    //         // Debug.Log("SPRINT IS TRUE");
+    //         // Debug.Log(moveAmount);
+    //     }
+    //     else
+    //     {
+    //         // IF STATIONARY, SET SPRINTING TO FALSE
+    //         isSprinting = false;
+    //         // Debug.Log("OFF");
+    //     }
+    //     // isSprinting = false;
+    // }
+
+    public void SprintOn()
+    {
+        if(player.isPerformingAction)
+        {
+            // SET SPRINTING TO FALSE
+            isSprinting = false;
+            // Debug.Log(isSprinting);
+        }
+
+        // STAMINA?
+
+        // IF WE ARE MOVING, SET SPRINTING TO TRUE
+        if(moveAmount >= 0.5)
+        {
+            //SPRINTING
+            isSprinting = true;
+            // Debug.Log("SPRINT IS TRUE");
+            // Debug.Log(moveAmount);
+        }
+    }
+
+    public void SprintOff()
+    {
+        isSprinting = false;
     }
 
     public void AttemptToPerformDodge()
