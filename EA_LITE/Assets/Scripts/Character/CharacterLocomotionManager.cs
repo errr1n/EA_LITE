@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CharacterLocomotionManager : MonoBehaviour
 {
+
+    // [SerializeField] public bool isSprinting = false;
+
     protected virtual void Awake()
     {
         
