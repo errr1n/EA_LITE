@@ -67,9 +67,12 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         GetMovementValues();
         
         // OUR MOVEMENT DIRECTION IS BASED ON OUR CAMERAS FACING PERSPECTIVE AND OUR INPUTS
+        // camera direction * movement = forward and back
         moveDirection = PlayerCamera.instance.transform.forward * verticalMovement;
+        // left and right
         moveDirection = moveDirection + PlayerCamera.instance.transform.right * horizontalMovement;
         moveDirection.Normalize();
+        // no up and down movement
         moveDirection.y = 0;
 
         // RUN VS WALK
@@ -91,6 +94,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         {
             return;
         }
+
         Vector3 targetRotationDirection = Vector3.zero;
         targetRotationDirection = PlayerCamera.instance.cameraObject.transform.forward * verticalMovement;
         targetRotationDirection = targetRotationDirection + PlayerCamera.instance.cameraObject.transform.right * horizontalMovement;
@@ -109,17 +113,19 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     public void AttemptToPerformDodge()
     {
+        // CAN'T SPAM DODGE (CAN'T INTERUPT ANIMATION)
+        // AKA IF ALREADY ROLLING, DON'T ROLL AGAIN
         if(player.isPerformingAction)
         {
             return;
         }
 
-        // CAN ONLY ROLL WHEN ALREADY MOVING 
+        // CAN ONLY ROLL WHEN ALREADY MOVING, NOT WHEN STATIONARY
         if(PlayerInputManager.instance.moveAmount > 0)
         {
             rollDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.verticalInput;
             rollDirection += PlayerCamera.instance.cameraObject.transform.right * PlayerInputManager.instance.horizontalInput;
-            rollDirection.y = 0;
+            rollDirection.y = 0; // DON'T ROLL ON VERTICAL AXIS
             rollDirection.Normalize();
 
             Quaternion playerRotation = Quaternion.LookRotation(rollDirection);
@@ -128,8 +134,24 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             // PERFORM ROLL ANIMATION
             // MAY NEED TO CHANGE NAME <-------------------
             // ADJUSTED, MAY WANT TO DISABLE "CAN MOVE" FLAG (ResetActionFlag Script in animator) ---------> player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, true); <-------------
-            player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, true, false, true);
+            // player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, true, false, true);
+            // player.characterController.Move(rollDirection * runningSpeed * Time.deltaTime);
             // player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, false);
+            // Debug.Log(rollDirection * (runningSpeed * 5) * Time.deltaTime);
+            // player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, true);
+
+            GetMovementValues();
+        
+            // OUR MOVEMENT DIRECTION IS BASED ON OUR CAMERAS FACING PERSPECTIVE AND OUR INPUTS
+            // camera direction * movement = forward and back
+            moveDirection = PlayerCamera.instance.transform.forward * verticalMovement;
+            // left and right
+            moveDirection = moveDirection + PlayerCamera.instance.transform.right * horizontalMovement;
+            moveDirection.Normalize();
+            // no up and down movement
+            moveDirection.y = 0;
+            
+            player.characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
         }
         else
         {
