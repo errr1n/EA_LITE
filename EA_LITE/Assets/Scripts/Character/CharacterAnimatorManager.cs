@@ -7,27 +7,31 @@ public class CharacterAnimatorManager : MonoBehaviour
     CharacterManager character;
     PlayerLocomotionManager playerLoco;
 
+    int vertical;
+    int horizontal;
+
     protected virtual void Awake()
     {
         character = GetComponent<CharacterManager>();
         playerLoco = GetComponent<PlayerLocomotionManager>();
 
-        // vertical = Animator
+        vertical = Animator.StringToHash("Vertical");
+        horizontal = Animator.StringToHash("Horizontal");
     }
 
     public void UpdateAnimatorMovementParameters(float horizontalMovement, float verticalMovement)
     {
-        float horizontal = horizontalMovement;
-        float vertical = verticalMovement;
+        float horizontalAmount = horizontalMovement;
+        float verticalAmount = verticalMovement;
 
         if(playerLoco.isSprinting)
         {
-            vertical = 2;
+            verticalAmount = 2;
         }
 
         // ACCESSING HUMANOID ANIMATOR PARAMETERS "HORIZONTAL" AND "VERTICAL" (WALK AND RUN ANIMATIONS)
-        character.animator.SetFloat("Horizontal", horizontal, 0.1f, Time.deltaTime);
-        character.animator.SetFloat("Vertical", vertical, 0.1f, Time.deltaTime);
+        character.animator.SetFloat(horizontal, horizontalAmount, 0.1f, Time.deltaTime);
+        character.animator.SetFloat(vertical, verticalAmount, 0.1f, Time.deltaTime);
 
         // IF ANIMATIONS DON'T LOOK SMOOTH, MAY NEED TO CLAMP HERE
     }
