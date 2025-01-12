@@ -138,20 +138,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             // player.characterController.Move(rollDirection * runningSpeed * Time.deltaTime);
             // player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, false);
             // Debug.Log(rollDirection * (runningSpeed * 5) * Time.deltaTime);
-            // player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, true);
-
-            GetMovementValues();
-        
-            // OUR MOVEMENT DIRECTION IS BASED ON OUR CAMERAS FACING PERSPECTIVE AND OUR INPUTS
-            // camera direction * movement = forward and back
-            moveDirection = PlayerCamera.instance.transform.forward * verticalMovement;
-            // left and right
-            moveDirection = moveDirection + PlayerCamera.instance.transform.right * horizontalMovement;
-            moveDirection.Normalize();
-            // no up and down movement
-            moveDirection.y = 0;
-            
-            player.characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
+            player.playerAnimatorManager.PlayTargetActionAnimation("RollForward_2", true, true);
         }
         else
         {
