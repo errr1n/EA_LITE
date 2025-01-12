@@ -9,6 +9,7 @@ public class CharacterManager : MonoBehaviour
 
     [Header("FLAGS")]
     public bool isPerformingAction = false;
+    public bool applyRootMotion = false;
     public bool canRotate = true;
     public bool canMove = true;
 
