@@ -6866,10 +6866,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1785003597, guid: c6eb0161d363f784eaa3e09c4e305108, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5089555979206195723, guid: c6eb0161d363f784eaa3e09c4e305108,
         type: 3}
       propertyPath: m_Name
@@ -6878,7 +6874,7 @@ PrefabInstance:
     - target: {fileID: 5614419311729615025, guid: c6eb0161d363f784eaa3e09c4e305108,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5614419311729615025, guid: c6eb0161d363f784eaa3e09c4e305108,
         type: 3}
@@ -8910,6 +8906,80 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119894867}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &2003484842201802037
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3248795063639094438, guid: 08891cf23ac414a4da7e64b0cd85a674,
+        type: 3}
+      propertyPath: m_Name
+      value: World Sound FX Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380327436489746604, guid: 08891cf23ac414a4da7e64b0cd85a674,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380327436489746604, guid: 08891cf23ac414a4da7e64b0cd85a674,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380327436489746604, guid: 08891cf23ac414a4da7e64b0cd85a674,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380327436489746604, guid: 08891cf23ac414a4da7e64b0cd85a674,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380327436489746604, guid: 08891cf23ac414a4da7e64b0cd85a674,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380327436489746604, guid: 08891cf23ac414a4da7e64b0cd85a674,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380327436489746604, guid: 08891cf23ac414a4da7e64b0cd85a674,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380327436489746604, guid: 08891cf23ac414a4da7e64b0cd85a674,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380327436489746604, guid: 08891cf23ac414a4da7e64b0cd85a674,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380327436489746604, guid: 08891cf23ac414a4da7e64b0cd85a674,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7380327436489746604, guid: 08891cf23ac414a4da7e64b0cd85a674,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596840803621335650, guid: 08891cf23ac414a4da7e64b0cd85a674,
+        type: 3}
+      propertyPath: rollSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 1d9662b782662d244aabd9124b987851, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 08891cf23ac414a4da7e64b0cd85a674, type: 3}
 --- !u!1001 &3271539866873839069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8935,7 +9005,7 @@ PrefabInstance:
     - target: {fileID: 8872050104755319363, guid: 438406aec55afee4bbcc0128ef74c316,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8872050104755319363, guid: 438406aec55afee4bbcc0128ef74c316,
         type: 3}
