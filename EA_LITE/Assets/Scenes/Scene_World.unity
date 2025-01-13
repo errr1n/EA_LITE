@@ -9002,11 +9002,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Camera (Left & Right)
       objectReference: {fileID: 0}
-    - target: {fileID: 4164791814338864546, guid: 438406aec55afee4bbcc0128ef74c316,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8872050104755319363, guid: 438406aec55afee4bbcc0128ef74c316,
         type: 3}
       propertyPath: m_RootOrder

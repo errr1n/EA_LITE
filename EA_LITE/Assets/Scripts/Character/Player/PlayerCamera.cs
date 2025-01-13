@@ -13,8 +13,8 @@ public class PlayerCamera : MonoBehaviour
     // CHANGE THESE TO TWEAK CAMERA PERFORMANCE IN WORLD
     [Header("Camera Settings")]
     private float cameraSmoothSpeed = 1; // THE BIGGER THIS NUMBER, THE LONGER IT TKAES CAMERA TO REACH ITS POSITION DURING MOVEMENT
-    [SerializeField] float leftAndRightRotationSpeed = 220;
-    [SerializeField] float upAndDownRotationSpeed = 220;
+    [SerializeField] float leftAndRightRotationSpeed = 120; // 220
+    [SerializeField] float upAndDownRotationSpeed = 120; //220
     [SerializeField] float minimumPivot = -30; // THE LOWEST ANGLE WE CAN LOOK DOWN
     [SerializeField] float maximumPivot = 60; // THE HIGHEST ANGLE WE CAN LOOK UP
     [SerializeField] float cameraCollisionRadius = 0.2f; // HOW CLOSE THE CAMERA CAN GET BEFORE COLLIDING WITH OBJECT
