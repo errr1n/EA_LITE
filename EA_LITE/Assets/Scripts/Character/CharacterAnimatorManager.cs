@@ -5,7 +5,8 @@ using UnityEngine;
 public class CharacterAnimatorManager : MonoBehaviour
 {
     CharacterManager character;
-    PlayerLocomotionManager playerLoco;
+    // PlayerLocomotionManager playerLoco;
+    PlayerManager player;
 
     int vertical;
     int horizontal;
@@ -13,7 +14,7 @@ public class CharacterAnimatorManager : MonoBehaviour
     protected virtual void Awake()
     {
         character = GetComponent<CharacterManager>();
-        playerLoco = GetComponent<PlayerLocomotionManager>();
+        player = GetComponent<PlayerManager>();
 
         vertical = Animator.StringToHash("Vertical");
         horizontal = Animator.StringToHash("Horizontal");
@@ -24,7 +25,7 @@ public class CharacterAnimatorManager : MonoBehaviour
         float horizontalAmount = horizontalMovement;
         float verticalAmount = verticalMovement;
 
-        if(playerLoco.isSprinting)
+        if(player.isSprinting)
         {
             verticalAmount = 2;
         }

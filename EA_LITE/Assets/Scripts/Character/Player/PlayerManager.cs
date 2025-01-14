@@ -7,6 +7,12 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
     [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
 
+    [Header("FLAGS")]
+    [SerializeField] public bool isSprinting = false;
+
+    [Header("STATS")]
+    public int endurance = 1;
+
     protected override void Awake()
     {
         base.Awake();

@@ -19,7 +19,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     [SerializeField] float sprintingSpeed = 7;
     [SerializeField] float rotationSpeed = 15;
 
-    [SerializeField] public bool isSprinting = false;
+    // [SerializeField] public bool isSprinting = false;
 
     [Header("DODGE")]
     private Vector3 rollDirection;
@@ -79,7 +79,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         moveDirection.y = 0;
 
         // SPRINT
-        if(isSprinting)
+        if(player.isSprinting)
         {
             // SPRINT SPEED
             player.characterController.Move(moveDirection * sprintingSpeed * Time.deltaTime);
@@ -174,7 +174,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         if(player.isPerformingAction)
         {
             // SET SPRINTING TO FALSE
-            isSprinting = false;
+            player.isSprinting = false;
             // Debug.Log(isSprinting);
         }
 
@@ -184,7 +184,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         if(moveAmount >= 0.5)
         {
             //SPRINTING
-            isSprinting = true;
+            player.isSprinting = true;
             // Debug.Log("SPRINT IS TRUE");
             // Debug.Log(moveAmount);
         }
@@ -192,7 +192,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     public void SprintOff()
     {
-        isSprinting = false;
+        player.isSprinting = false;
     }
 
     public void AttemptToPerformDodge()

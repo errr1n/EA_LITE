@@ -1133,6 +1133,7 @@ GameObject:
   - component: {fileID: 5614419311729615025}
   - component: {fileID: 1785003597}
   - component: {fileID: -2086332888577944047}
+  - component: {fileID: -1127844123622078842}
   - component: {fileID: -2587354512006405087}
   - component: {fileID: -3440656882890443927}
   - component: {fileID: -2042582355953384460}
@@ -1204,6 +1205,18 @@ MonoBehaviour:
   canMove: 1
   playerAnimatorManager: {fileID: 0}
   playerLocomotionManager: {fileID: 0}
+--- !u!114 &-1127844123622078842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089555979206195723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f20ca0cd10e734fbf681ee168016c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-2587354512006405087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1221,7 +1234,9 @@ MonoBehaviour:
   moveAmount: 0
   walkingSpeed: 2
   runningSpeed: 5
+  sprintingSpeed: 7
   rotationSpeed: 15
+  isSprinting: 0
 --- !u!114 &-3440656882890443927
 MonoBehaviour:
   m_ObjectHideFlags: 0
