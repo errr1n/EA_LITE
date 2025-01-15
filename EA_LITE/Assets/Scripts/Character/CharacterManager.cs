@@ -13,6 +13,14 @@ public class CharacterManager : MonoBehaviour
     public bool canRotate = true;
     public bool canMove = true;
 
+    // [Header("MORE FLAGS")]
+    // [SerializeField] public bool isSprinting = false;
+
+    [Header("STATS")]
+    public int endurance = 1;
+    public int currentStamina = 0;
+    public int maxStamina = 1;
+
     protected virtual void Awake()
     {
         // DontDestroyOnLoad(this);

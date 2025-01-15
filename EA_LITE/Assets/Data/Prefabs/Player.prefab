@@ -1203,8 +1203,13 @@ MonoBehaviour:
   applyRootMotion: 0
   canRotate: 1
   canMove: 1
+  endurance: 10
+  currentStamina: 0
+  maxStamina: 1
   playerAnimatorManager: {fileID: 0}
   playerLocomotionManager: {fileID: 0}
+  characterStatsManager: {fileID: 0}
+  isSprinting: 0
 --- !u!114 &-1127844123622078842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1217,6 +1222,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f20ca0cd10e734fbf681ee168016c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endurance: 1
+  maxStamina: 0
+  staminaRegenerationDelay: 2
+  staminaRegenerationAmount: 2
 --- !u!114 &-2587354512006405087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,7 +1245,6 @@ MonoBehaviour:
   runningSpeed: 5
   sprintingSpeed: 7
   rotationSpeed: 15
-  isSprinting: 0
 --- !u!114 &-3440656882890443927
 MonoBehaviour:
   m_ObjectHideFlags: 0

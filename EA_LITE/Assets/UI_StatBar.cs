@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// BASE CLASS FOR ALL STAT BAR SCRIPTS
+
 public class UI_StatBar : MonoBehaviour
 {
     private Slider slider;
@@ -13,13 +15,16 @@ public class UI_StatBar : MonoBehaviour
         slider = GetComponent<Slider>();
     }
 
-    public virtual void SetStat()
+    // was int
+    public virtual void SetStat(float newValue)
     {
-
+        slider.value = newValue;
     }
 
-    public virtual void SetMaxStat()
+    // was int
+    public virtual void SetMaxStat(float maxValue)
     {
-        
+        slider.maxValue = maxValue;
+        slider.value = maxValue;
     }
 }

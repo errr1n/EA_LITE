@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerLocomotionManager : CharacterLocomotionManager
 {
     PlayerManager player;
+    CharacterStatsManager characterStatsManager;
 
     // TAKEN FROM INPUT MANAGER
     [HideInInspector] public float verticalMovement;
@@ -18,6 +19,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     [SerializeField] float runningSpeed = 5;
     [SerializeField] float sprintingSpeed = 7;
     [SerializeField] float rotationSpeed = 15;
+    [SerializeField] float sprintingStaminaCost = 2;
 
     // [SerializeField] public bool isSprinting = false;
 
@@ -29,6 +31,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         base.Awake();
 
         player = GetComponent<PlayerManager>();
+        characterStatsManager = GetComponent<CharacterStatsManager>();
     }
 
     // protected override void Update()
@@ -179,6 +182,12 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         }
 
         // STAMINA?
+        if(characterStatsManager.CurrentStamina <= 0)
+        {
+            // SET SPRINTING TO FALSE
+            player.isSprinting = false;
+            return;
+        }
 
         // IF WE ARE MOVING, SET SPRINTING TO TRUE
         if(moveAmount >= 0.5)
@@ -187,6 +196,12 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             player.isSprinting = true;
             // Debug.Log("SPRINT IS TRUE");
             // Debug.Log(moveAmount);
+        }
+
+        if(player.isSprinting)
+        {
+            characterStatsManager.CurrentStamina -= sprintingStaminaCost * Time.deltaTime;
+            // Debug.Log(characterStatsManager.CurrentStamina);
         }
     }
 

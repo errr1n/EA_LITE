@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.254539, b: 0.254539, a: 1}
+  m_Color: {r: 0.2514682, g: 0.5943396, b: 0.16540584, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -189,6 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3652292173797407176}
+  - component: {fileID: 8848472478122907975}
   m_Layer: 0
   m_Name: HUD Manager
   m_TagString: Untagged
@@ -217,6 +218,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8848472478122907975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257195688845012366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9de88b820b61c4043aeb5d0594278eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staminaBar: {fileID: 1383411657224090830}
 --- !u!1 &3803534244839450774
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,6 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bc7a6c19f24a74daec55be6e236df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerUIHudManager: {fileID: 0}
 --- !u!223 &8662956818270661529
 Canvas:
   m_ObjectHideFlags: 0
