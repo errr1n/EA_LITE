@@ -16,10 +16,10 @@ public class CharacterManager : MonoBehaviour
     [Header("MORE FLAGS")]
     [SerializeField] public bool isSprinting = false;
 
-    [Header("STATS")]
-    public int endurance = 1;
-    public int currentStamina = 0;
-    public int maxStamina = 1;
+    // [Header("STATS")]
+    // public int endurance = 1;
+    // public int currentStamina = 0;
+    // public int maxStamina = 1;
 
     protected virtual void Awake()
     {

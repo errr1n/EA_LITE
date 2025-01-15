@@ -23,19 +23,11 @@ public class PlayerManager : CharacterManager
         playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
 
         characterStatsManager = GetComponent<CharacterStatsManager>();
-        // playerStatsManager = GetComponent<PlayerStatsManager>();
-
-        // Debug.Log(characterStatsManager.CurrentStamina);
-        // //+= 
-        // Debug.Log(PlayerUIManager.instance.playerUIHudManager.SetNewStaminaValue);
 
         // THIS WILL BE MOVED WHEN SAVING AND LOADING IS ADDED
         characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.endurance);
         characterStatsManager.CurrentStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.endurance);
         PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(characterStatsManager.maxStamina);
-        // Debug.Log(characterStatsManager.CurrentStamina);
-
-
     }
 
     protected override void Update()
@@ -44,6 +36,9 @@ public class PlayerManager : CharacterManager
 
         // HANDLE ALL MOVEMENT 
         playerLocomotionManager.HandleAllMovement();
+
+        // REGENERATE STAMINA
+        characterStatsManager.RegenerateStamina();
     }
 
     protected override void LateUpdate()

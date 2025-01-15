@@ -4,20 +4,13 @@ using UnityEngine;
 
 public class CharacterStatsManager : MonoBehaviour
 {
-    // public void CalculateStaminaBasedOnEnduranceLevel(int endurance)
-    // {
-    //     float stamina = 0;
-
-    //     // CREATE AN EQUATION FOR HOW YOU WANT YOUR STAMINA TO BE CALCULATED
-    //     stamina = endurance * 10;
-    // }
-
     CharacterManager character;
-    // PlayerManager player;
 
     public int endurance = 1;
 
     public int maxStamina = 0;
+
+    [Header("STAMINA REGENERATION")]
     private float staminaRegenerationTimer = 0;
     private float staminaTickTimer = 0;
     [SerializeField] float staminaRegenerationDelay = 2;
@@ -35,7 +28,6 @@ public class CharacterStatsManager : MonoBehaviour
 
     protected virtual void Awake(){
         character = GetComponent<CharacterManager>();
-        // player = GetComponent<PlayerManager>();
     }
 
     //was int
@@ -48,6 +40,8 @@ public class CharacterStatsManager : MonoBehaviour
     }
 
      public virtual void RegenerateStamina(){
+
+        // WE DO NOT WANT TO REGENERATE STAMINA IF WE ARE SPRINTING OR PERFORMING ACTION
         if(character.isSprinting || character.isPerformingAction)
             return;
 
@@ -65,8 +59,11 @@ public class CharacterStatsManager : MonoBehaviour
         }
     }
 
-    public virtual void ResetStaminaRegenTimer(float oldValue, float newValue){
-        if(newValue < oldValue){
+    public virtual void ResetStaminaRegenTimer(float previousStaminaAmount, float currentStaminaAmount){
+        // WE ONLY WANT TO RESET THE REGENERATION IF THE ACTION USED STAMINA
+        // WE DON'T WANT TO RESET THE REGENERATION IF WE ARE ALREADY REGENERATING STAMINA
+        if(currentStaminaAmount < previousStaminaAmount)
+        {
             staminaRegenerationTimer = 0;
         }
     }

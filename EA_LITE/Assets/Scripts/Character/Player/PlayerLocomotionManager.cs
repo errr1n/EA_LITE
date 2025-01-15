@@ -25,6 +25,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     [Header("DODGE")]
     private Vector3 rollDirection;
+    [SerializeField] float dodgeStaminaCost = 25;
 
     protected override void Awake()
     {
@@ -219,6 +220,11 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             return;
         }
 
+        if(characterStatsManager.CurrentStamina <= 0)
+        {
+            return;
+        }
+
         // CAN ONLY ROLL WHEN ALREADY MOVING, NOT WHEN STATIONARY
         if(PlayerInputManager.instance.moveAmount > 0)
         {
@@ -244,5 +250,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             // DO WE WANT A STATIONARY DODGE? AKA BACKSTEP
             player.playerAnimatorManager.PlayTargetActionAnimation("BackStep", true, true);
         }
+
+        characterStatsManager.CurrentStamina -= dodgeStaminaCost;
     }
 }
