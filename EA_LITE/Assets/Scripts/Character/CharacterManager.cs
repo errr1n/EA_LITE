@@ -13,8 +13,8 @@ public class CharacterManager : MonoBehaviour
     public bool canRotate = true;
     public bool canMove = true;
 
-    // [Header("MORE FLAGS")]
-    // [SerializeField] public bool isSprinting = false;
+    [Header("MORE FLAGS")]
+    [SerializeField] public bool isSprinting = false;
 
     [Header("STATS")]
     public int endurance = 1;
@@ -36,6 +36,6 @@ public class CharacterManager : MonoBehaviour
 
     protected virtual void LateUpdate()
     {
-        
+        //
     }
 }

@@ -6,7 +6,7 @@ public class CharacterAnimatorManager : MonoBehaviour
 {
     CharacterManager character;
     // PlayerLocomotionManager playerLoco;
-    PlayerManager player;
+    // PlayerManager player;
 
     int vertical;
     int horizontal;
@@ -14,7 +14,7 @@ public class CharacterAnimatorManager : MonoBehaviour
     protected virtual void Awake()
     {
         character = GetComponent<CharacterManager>();
-        player = GetComponent<PlayerManager>();
+        // player = GetComponent<PlayerManager>();
 
         vertical = Animator.StringToHash("Vertical");
         horizontal = Animator.StringToHash("Horizontal");
@@ -25,7 +25,7 @@ public class CharacterAnimatorManager : MonoBehaviour
         float horizontalAmount = horizontalMovement;
         float verticalAmount = verticalMovement;
 
-        if(player.isSprinting)
+        if(character.isSprinting)
         {
             verticalAmount = 2;
         }

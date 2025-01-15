@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class PlayerAnimatorManager : CharacterAnimatorManager
 {
-    PlayerManager player;
+    CharacterManager character;
 
     protected override void Awake()
     {
         base.Awake();
 
-        player = GetComponent<PlayerManager>();
+        character = GetComponent<CharacterManager>();
     }
 
     private void OnAnimatorMove()
     {
-        if(player.applyRootMotion)
+        if(character.applyRootMotion)
         {
             // TAKE POSTION AND ROTATION FROM ANIMATION AND APPLY TO CHARACTER
-            Vector3 velocity = player.animator.deltaPosition;
-            player.characterController.Move(velocity);
-            player.transform.rotation *= player.animator.deltaRotation;
+            Vector3 velocity = character.animator.deltaPosition;
+            character.characterController.Move(velocity);
+            character.transform.rotation *= character.animator.deltaRotation;
         }
     }
 }

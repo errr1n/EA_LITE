@@ -13,7 +13,7 @@ public class CharacterStatsManager : MonoBehaviour
     // }
 
     CharacterManager character;
-    PlayerManager player;
+    // PlayerManager player;
 
     public int endurance = 1;
 
@@ -35,7 +35,7 @@ public class CharacterStatsManager : MonoBehaviour
 
     protected virtual void Awake(){
         character = GetComponent<CharacterManager>();
-        player = GetComponent<PlayerManager>();
+        // player = GetComponent<PlayerManager>();
     }
 
     //was int
@@ -48,7 +48,7 @@ public class CharacterStatsManager : MonoBehaviour
     }
 
      public virtual void RegenerateStamina(){
-        if(player.isSprinting || character.isPerformingAction)
+        if(character.isSprinting || character.isPerformingAction)
             return;
 
         staminaRegenerationTimer += Time.deltaTime;

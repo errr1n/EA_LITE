@@ -9,8 +9,8 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public CharacterStatsManager characterStatsManager;
     // [HideInInspector] public PlayerStatsManager playerStatsManager;
 
-    [Header("FLAGS")]
-    [SerializeField] public bool isSprinting = false;
+    // [Header("FLAGS")]
+    // [SerializeField] public bool isSprinting = false;
 
     // [Header("STATS")]
     // public int endurance = 1;
