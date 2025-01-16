@@ -4,9 +4,38 @@ using UnityEngine;
 
 public class PlayerStatsManager : CharacterStatsManager
 {
-    // [Header("STATS")]
-    // public int endurance = 1;
-    // public int health = 10;
+    // PlayerManager player;
 
-    
+    protected override void Awake()
+    {
+        base.Awake();
+
+        // player = GetComponent<PlayerManager>();
+
+        // CalculateHealthBasedOnVitalityLevel();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        // WHY CALCULATE THESE VALUES HERE?
+        // IF WE MAKE A CHARACTER CREATION MENU AND SET STATS THERE, THIS WILL BE CALCULATED THERE
+        CalculateHealthBasedOnVitalityLevel(vitality);
+        CalculateStaminaBasedOnEnduranceLevel(endurance);
+    }
+
+    public void SetNewMaxHealthValue(int oldVitality, int newVitality)
+    {
+        maxHealth = CalculateHealthBasedOnVitalityLevel(newVitality);
+        PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(maxHealth);
+        CurrentHealth = maxHealth;
+    }
+
+    public void SetNewMaxStaminaValue(int oldEndurance, int newEndurance)
+    {
+        maxStamina = CalculateStaminaBasedOnEnduranceLevel(newEndurance);
+        PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina);
+        CurrentStamina = maxStamina;
+    }
 }

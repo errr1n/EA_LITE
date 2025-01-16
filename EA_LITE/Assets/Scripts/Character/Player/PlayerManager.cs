@@ -25,6 +25,12 @@ public class PlayerManager : CharacterManager
         characterStatsManager = GetComponent<CharacterStatsManager>();
 
         // THIS WILL BE MOVED WHEN SAVING AND LOADING IS ADDED
+        // HEALTH
+        characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.vitality);
+        characterStatsManager.CurrentHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.vitality);
+        PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(characterStatsManager.maxHealth);
+        
+        // STAMINA
         characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.endurance);
         characterStatsManager.CurrentStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.endurance);
         PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(characterStatsManager.maxStamina);

@@ -1219,10 +1219,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f20ca0cd10e734fbf681ee168016c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endurance: 10
-  maxStamina: 0
   staminaRegenerationDelay: 2
   staminaRegenerationAmount: 2
+  endurance: 10
+  maxStamina: 0
+  vitality: 10
+  maxHealth: 0
 --- !u!114 &-2587354512006405087
 MonoBehaviour:
   m_ObjectHideFlags: 0

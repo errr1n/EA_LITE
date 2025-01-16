@@ -252,5 +252,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         }
 
         characterStatsManager.CurrentStamina -= dodgeStaminaCost;
+        // characterStatsManager.CurrentHealth -= 1;
     }
 }
