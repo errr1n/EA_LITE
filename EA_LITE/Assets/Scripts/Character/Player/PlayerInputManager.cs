@@ -29,6 +29,7 @@ public class PlayerInputManager : MonoBehaviour
     [Header("PLAYER ACTION INPUT")]
     [SerializeField] bool dodgeInput = false;
     [SerializeField] bool sprintInput = false;
+    [SerializeField] bool jumpInput = false;
     // public bool isSprinting = false;
     
 
@@ -127,7 +128,7 @@ public class PlayerInputManager : MonoBehaviour
         HandleCameraMovementInput();
         HandlePlayerMovementInput();
         HandleDodgeInput();
-        HandleSprinting();
+        HandleSprintInput();
     }
 
     private void HandlePlayerMovementInput()
@@ -176,12 +177,12 @@ public class PlayerInputManager : MonoBehaviour
         if(dodgeInput)
         {
             dodgeInput = false;
-            // PERFORM A DODGE
+            // ATTEMPT TO PERFORM A DODGE
             player.playerLocomotionManager.AttemptToPerformDodge();
         }
     }
 
-    private void HandleSprinting()
+    private void HandleSprintInput()
     {
         if(sprintInput)
         {
@@ -192,6 +193,16 @@ public class PlayerInputManager : MonoBehaviour
         else
         {
             player.playerLocomotionManager.SprintOff();
+        }
+    }
+
+    private void HandleJumpInput()
+    {
+        if(jumpInput)
+        {
+            jumpInput = false;
+            // ATTEMPT TO PERFORM A JUMP
+            player.playerLocomotionManager.AttemptToPerformJump();
         }
     }
 }
