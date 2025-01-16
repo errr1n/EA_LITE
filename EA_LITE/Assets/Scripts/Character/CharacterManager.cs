@@ -38,7 +38,7 @@ public class CharacterManager : MonoBehaviour
 
     protected virtual void Update()
     {
-
+        // boolean for isGrounded in animator
     }
 
     protected virtual void LateUpdate()

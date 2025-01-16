@@ -1239,10 +1239,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b63d61df7dccd647b38d64467a6936a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheckSphereRadius: 1
+  groundCheckSphereRadius: 0.3
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
+  gravityForce: -40
   yVelocity: {x: 0, y: 0, z: 0}
   groundedYVelocity: -20
   fallStartYVelocity: -5

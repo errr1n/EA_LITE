@@ -15,7 +15,7 @@ public class CharacterLocomotionManager : MonoBehaviour
     [SerializeField] protected float groundedYVelocity = -20; // THE FORCE AT WHICH THE CHARACTER IS STICKING TO THE GROUND WHILE THEY ARE GROUNDED
     [SerializeField] protected float fallStartYVelocity = -5; // THE FORCE AT WHICH THE CHARACTER BEGINS TO FALL WHEN THEY BECOME UNGROUNDED (RISES AS THEY FALL LONGER)
     protected bool fallingVelocityHasBeenSet = false;
-    protected float inAirTimer = 0;
+    protected float inAirTimer = 0; // FOR ANIMATIONS
 
     protected virtual void Awake()
     {
@@ -46,11 +46,14 @@ public class CharacterLocomotionManager : MonoBehaviour
             }
 
             inAirTimer += Time.deltaTime;
+            // ANIMATION 
 
             yVelocity.y += gravityForce * Time.deltaTime;
-
-            character.characterController.Move(yVelocity * Time.deltaTime);
+            // character.characterController.Move(yVelocity * Time.deltaTime);
         }
+
+        // THERE SHOULD ALWAYS BE A DOWNWARD FORCE APPLIED (GRAVITY)
+        character.characterController.Move(yVelocity * Time.deltaTime);
     }
 
     protected virtual void HandleGroundCheck()
