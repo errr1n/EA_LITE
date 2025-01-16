@@ -19,13 +19,11 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     [SerializeField] float runningSpeed = 5;
     [SerializeField] float sprintingSpeed = 7;
     [SerializeField] float rotationSpeed = 15;
-    [SerializeField] float sprintingStaminaCost = 2;
-
-    // [SerializeField] public bool isSprinting = false;
+    // [SerializeField] float sprintingStaminaCost = 2;
 
     [Header("DODGE")]
     private Vector3 rollDirection;
-    [SerializeField] float dodgeStaminaCost = 25;
+    // [SerializeField] float dodgeStaminaCost = 25;
 
     protected override void Awake()
     {
@@ -182,14 +180,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             // Debug.Log(isSprinting);
         }
 
-        // STAMINA?
-        if(characterStatsManager.CurrentStamina <= 0)
-        {
-            // SET SPRINTING TO FALSE
-            player.isSprinting = false;
-            return;
-        }
-
         // IF WE ARE MOVING, SET SPRINTING TO TRUE
         if(moveAmount >= 0.5)
         {
@@ -199,11 +189,19 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             // Debug.Log(moveAmount);
         }
 
-        if(player.isSprinting)
-        {
-            characterStatsManager.CurrentStamina -= sprintingStaminaCost * Time.deltaTime;
-            // Debug.Log(characterStatsManager.CurrentStamina);
-        }
+        // STAMINA
+
+        // if(characterStatsManager.CurrentStamina <= 0)
+        // {
+        //     // SET SPRINTING TO FALSE
+        //     player.isSprinting = false;
+        //     return;
+        // }
+
+        // if(player.isSprinting)
+        // {
+        //     characterStatsManager.CurrentStamina -= sprintingStaminaCost * Time.deltaTime;
+        // }
     }
 
     public void SprintOff()
@@ -220,10 +218,10 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             return;
         }
 
-        if(characterStatsManager.CurrentStamina <= 0)
-        {
-            return;
-        }
+        // if(characterStatsManager.CurrentStamina <= 0)
+        // {
+        //     return;
+        // }
 
         // CAN ONLY ROLL WHEN ALREADY MOVING, NOT WHEN STATIONARY
         if(PlayerInputManager.instance.moveAmount > 0)
@@ -251,7 +249,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             player.playerAnimatorManager.PlayTargetActionAnimation("BackStep", true, true);
         }
 
-        characterStatsManager.CurrentStamina -= dodgeStaminaCost;
+        // characterStatsManager.CurrentStamina -= dodgeStaminaCost;
         // characterStatsManager.CurrentHealth -= 1;
     }
 }
