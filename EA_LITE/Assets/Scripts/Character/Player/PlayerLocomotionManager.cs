@@ -24,7 +24,13 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     [Header("DODGE")]
     private Vector3 rollDirection;
     // [SerializeField] float dodgeStaminaCost = 25;
+
+    [Header("JUMP")]
     // [SerializeField] float jumpStaminaCost = 25;
+    // [SerializeField] float jumpHeight = 2;
+    [SerializeField] float jumpForwardSpeed = 5;
+    [SerializeField] float freeFallSpeed = 2;
+    private Vector3 jumpDirection;
 
     protected override void Awake()
     {
@@ -48,9 +54,11 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         HandleGroundedMovement();
         HandleRotation();
         // AERIAL MOVEMENT
+        HandleJumpingMovement();
         // JUMPING MOVEMENT
         // ROTATION
         // FALLING
+        HandleFreeFallMovement();
     }
 
     // was GetVerticalAndHorizontalInputs()
@@ -118,6 +126,28 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         // }
     }
 
+    private void HandleJumpingMovement()
+    {
+        if(player.isJumping)
+        {
+            player.characterController.Move(jumpDirection * jumpForwardSpeed * Time.deltaTime);
+        }
+    }
+
+    private void HandleFreeFallMovement()
+    {
+        if(!player.isGrounded)
+        {
+            Vector3 freeFallDirection;
+
+            freeFallDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.verticalInput;
+            freeFallDirection += PlayerCamera.instance.cameraObject.transform.right * PlayerInputManager.instance.horizontalInput;
+            freeFallDirection.y = 0;
+
+            player.characterController.Move(freeFallDirection * freeFallSpeed * Time.deltaTime);
+        }
+    }
+
     private void HandleRotation()
     {
         if(!player.canRotate)
@@ -141,44 +171,12 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         transform.rotation = targetRotation;
     }
 
-    // // only called when sprint button is down
-    // public void HandleSprinting()
-    // {
-    //     isSprinting = false;
-
-    //     if(player.isPerformingAction)
-    //     {
-    //         // SET SPRINTING TO FALSE
-    //         isSprinting = false;
-    //         // Debug.Log(isSprinting);
-    //     }
-
-    //     // STAMINA?
-
-    //     // IF WE ARE MOVING, SET SPRINTING TO TRUE
-    //     if(moveAmount >= 0.5)
-    //     {
-    //         //SPRINTING
-    //         isSprinting = true;
-    //         // Debug.Log("SPRINT IS TRUE");
-    //         // Debug.Log(moveAmount);
-    //     }
-    //     else
-    //     {
-    //         // IF STATIONARY, SET SPRINTING TO FALSE
-    //         isSprinting = false;
-    //         // Debug.Log("OFF");
-    //     }
-    //     // isSprinting = false;
-    // }
-
     public void SprintOn()
     {
         if(player.isPerformingAction)
         {
             // SET SPRINTING TO FALSE
             player.isSprinting = false;
-            // Debug.Log(isSprinting);
         }
 
         // IF WE ARE MOVING, SET SPRINTING TO TRUE
@@ -186,12 +184,9 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         {
             //SPRINTING
             player.isSprinting = true;
-            // Debug.Log("SPRINT IS TRUE");
-            // Debug.Log(moveAmount);
         }
 
         // STAMINA
-
         // if(characterStatsManager.CurrentStamina <= 0)
         // {
         //     // SET SPRINTING TO FALSE
@@ -275,7 +270,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         }
 
         // IF WE ARE NOT GROUNDED, WE DO NOT WANT TO ALLOW A JUMP
-        if(player.isGrounded)
+        if(!player.isGrounded)
         {
             return;
         }
@@ -285,6 +280,28 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         player.isJumping = true;
 
         // characterStatsManager.CurrentStamina -= jumpStaminaCost;
+
+        // get the direction based on the camera
+        jumpDirection = PlayerCamera.instance.cameraObject.transform.forward * verticalMovement;
+        jumpDirection = jumpDirection + PlayerCamera.instance.transform.right * horizontalMovement;
+        jumpDirection.y = 0;
+
+        if(jumpDirection != Vector3.zero)
+        {
+            // VARIABLE JUMP DISTANCE DEPENDING ON HOW FAST PLAYER IS MOVING
+            if(player.isSprinting)
+            {
+                jumpDirection = jumpDirection * 1;
+            }
+            else if(moveAmount >= 0.5)
+            {
+                jumpDirection = jumpDirection * 0.5f;
+            }
+            else if(moveAmount <= 0.5)
+            {
+                jumpDirection = jumpDirection * 0.25f;
+            }
+        }
     }
 
     public void ApplyJumpingVelocity()
