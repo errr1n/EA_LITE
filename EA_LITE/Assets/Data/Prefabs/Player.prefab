@@ -1137,6 +1137,7 @@ GameObject:
   - component: {fileID: -2587354512006405087}
   - component: {fileID: -3440656882890443927}
   - component: {fileID: -2042582355953384460}
+  - component: {fileID: -5222805389497027767}
   - component: {fileID: -6499119823066241517}
   - component: {fileID: 7930261621639003001}
   m_Layer: 6
@@ -1254,6 +1255,8 @@ MonoBehaviour:
   runningSpeed: 5
   sprintingSpeed: 7
   rotationSpeed: 15
+  jumpForwardSpeed: 5
+  freeFallSpeed: 2
 --- !u!114 &-3440656882890443927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,6 +1281,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c11559944e2414eaf17cf844681ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5222805389497027767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089555979206195723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80df4a5ae7d7b9b438f51b8136f2f99e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectToTest: {fileID: 11400000, guid: 22b9b6b0c77aafb4fad2d158c84bf87e, type: 2}
+  processEffect: 0
 --- !u!143 &-6499119823066241517
 CharacterController:
   m_ObjectHideFlags: 0
