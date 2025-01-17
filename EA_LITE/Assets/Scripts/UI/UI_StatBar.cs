@@ -42,7 +42,7 @@ public class UI_StatBar : MonoBehaviour
             rectTransform.sizeDelta = new Vector2(maxValue * widthScaleMultiplier, rectTransform.sizeDelta.y);
 
             // RESETS THE POSITION OF THE BARS BASED ON THEIR LAYOUT GROUP SETTINGS
-            // PlayerUIManager.instance.playerUIHudManager.RefreshHUD();
+            PlayerUIManager.instance.playerUIHudManager.RefreshHUD();
         }
     }
 }

@@ -5,18 +5,25 @@ using UnityEngine;
 
 public class PlayerUIHudManager : MonoBehaviour
 {
+    CharacterStatsManager characterStatsManager;
+
     [SerializeField] UI_StatBar healthBar;
     [SerializeField] UI_StatBar staminaBar;
 
-    // MAY NOT BE NECESSARY
-    // public void RefreshHUD()
-    // {
-    //     healthBar.gameObject.SetActive(false);
-    //     healthBar.gameObject.SetActive(true);
+    private void Awake()
+    {
+        characterStatsManager = GetComponent<CharacterStatsManager>();
+    }
 
-    //     staminaBar.gameObject.SetActive(false);
-    //     staminaBar.gameObject.SetActive(true);
-    // }
+    // MAY NOT BE NECESSARY
+    public void RefreshHUD()
+    {
+        healthBar.gameObject.SetActive(false);
+        healthBar.gameObject.SetActive(true);
+
+        staminaBar.gameObject.SetActive(false);
+        staminaBar.gameObject.SetActive(true);
+    }
 
     public void SetNewHealthValue(float oldValue, float newValue)
     {
@@ -40,17 +47,17 @@ public class PlayerUIHudManager : MonoBehaviour
 
 
 
-    // public void SetNewMaxHealthValue(int oldVitality, int newVitality)
-    // {
-    //     maxHealth = CalculateHealthBasedOnVitalityLevel(newVitality);
-    //     PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(maxHealth);
-    //     CurrentHealth = maxHealth;
-    // }
+    public void SetNewMaxHealthValue(int oldVitality, int newVitality)
+    {
+        characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(newVitality);
+        // PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(maxHealth);
+        characterStatsManager.CurrentHealth = characterStatsManager.maxHealth;
+    }
 
-    // public void SetNewMaxStaminaValue(int oldEndurance, int newEndurance)
-    // {
-    //     maxStamina = CalculateStaminaBasedOnEnduranceLevel(newEndurance);
-    //     PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina);
-    //     CurrentStamina = maxStamina;
-    // }
+    public void SetNewMaxStaminaValue(int oldEndurance, int newEndurance)
+    {
+        characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(newEndurance);
+        // PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina);
+        characterStatsManager.CurrentStamina = characterStatsManager.maxStamina;
+    }
 }

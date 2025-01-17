@@ -21,9 +21,10 @@ public class CharacterStatsManager : MonoBehaviour
         get{return _currentStamina;}
         set{
             // MOVED FROM PLAYER MANAGER
-            // ResetStaminaRegenTimer(_currentStamina, value);
+            ResetStaminaRegenTimer(_currentStamina, value);
             // UPDATES THE TOTAL AMOUNT OF HEALTH OR STAMINA WHEN MAX STAT AMOUNT CHANGES
             // SetNewMaxStaminaValue(maxStamina, value);
+            // endurance += SetNewMaxStaminaValue(maxStamina, value);
 
             // UPDATES STAMINA UI BAR WHEN STAMINA CHANGES 
             PlayerUIManager.instance.playerUIHudManager.SetNewStaminaValue(_currentStamina, value);
@@ -41,6 +42,8 @@ public class CharacterStatsManager : MonoBehaviour
         set{
             // UPDATES THE TOTAL AMOUNT OF HEALTH OR STAMINA WHEN MAX STAT AMOUNT CHANGES
             // SetNewMaxHealthValue(maxHealth, value);
+            // vitality += SetNewMaxHealthValue(maxHealth, value);
+            // vitality += PlayerUIManager.instance.playerUIHudManager.SetNewMaxHealthValue(maxHealth, value);
 
             // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
             PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(_currentHealth, value);
@@ -49,6 +52,8 @@ public class CharacterStatsManager : MonoBehaviour
             // CalculateHealthBasedOnVitalityLevel();
         }
     }
+
+
 
     protected virtual void Awake(){
         character = GetComponent<CharacterManager>();
@@ -103,4 +108,18 @@ public class CharacterStatsManager : MonoBehaviour
             staminaRegenerationTimer = 0;
         }
     }
+
+    // public void SetNewMaxHealthValue(int oldVitality, int newVitality)
+    // {
+    //     maxHealth = CalculateHealthBasedOnVitalityLevel(newVitality);
+    //     PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(maxHealth);
+    //     CurrentHealth = maxHealth;
+    // }
+
+    // public void SetNewMaxStaminaValue(int oldEndurance, int newEndurance)
+    // {
+    //     maxStamina = CalculateStaminaBasedOnEnduranceLevel(newEndurance);
+    //     PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina);
+    //     CurrentStamina = maxStamina;
+    // }
 }

@@ -7,6 +7,7 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
     [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
     [HideInInspector] public CharacterStatsManager characterStatsManager;
+    [HideInInspector] public PlayerUIHudManager playerUIHudManager;
     // [HideInInspector] public PlayerStatsManager playerStatsManager;
 
     // [Header("FLAGS")]
@@ -23,8 +24,11 @@ public class PlayerManager : CharacterManager
         playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
 
         characterStatsManager = GetComponent<CharacterStatsManager>();
+        playerUIHudManager = GetComponent<PlayerUIHudManager>();
 
         // THIS WILL BE MOVED WHEN SAVING AND LOADING IS ADDED
+        // characterStatsManager.vitality += playerUIHudManager.SetNewMaxHealthValue(characterStatsManager.maxHealth, playerUIHudManager.value);
+
         // HEALTH
         characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.vitality);
         characterStatsManager.CurrentHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.vitality);

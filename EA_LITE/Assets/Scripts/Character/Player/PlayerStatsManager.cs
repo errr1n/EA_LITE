@@ -25,17 +25,17 @@ public class PlayerStatsManager : CharacterStatsManager
         CalculateStaminaBasedOnEnduranceLevel(endurance);
     }
 
-    public void SetNewMaxHealthValue(int oldVitality, int newVitality)
-    {
-        maxHealth = CalculateHealthBasedOnVitalityLevel(newVitality);
-        PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(maxHealth);
-        CurrentHealth = maxHealth;
-    }
+    // public void SetNewMaxHealthValue(int oldVitality, int newVitality)
+    // {
+    //     maxHealth = CalculateHealthBasedOnVitalityLevel(newVitality);
+    //     PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(maxHealth);
+    //     CurrentHealth = maxHealth;
+    // }
 
-    public void SetNewMaxStaminaValue(int oldEndurance, int newEndurance)
-    {
-        maxStamina = CalculateStaminaBasedOnEnduranceLevel(newEndurance);
-        PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina);
-        CurrentStamina = maxStamina;
-    }
+    // public void SetNewMaxStaminaValue(int oldEndurance, int newEndurance)
+    // {
+    //     maxStamina = CalculateStaminaBasedOnEnduranceLevel(newEndurance);
+    //     PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina);
+    //     CurrentStamina = maxStamina;
+    // }
 }
