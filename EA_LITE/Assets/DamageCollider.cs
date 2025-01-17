@@ -34,13 +34,12 @@ public class DamageCollider : MonoBehaviour
     {
         // WE DO NOT WANT TO DAMAGE THE SAME TARGET MORE THAN ONCE IN A SINGLE ATTACK (MULTIPLE LIMBS -> MULTIPLE COLLIDERS)
         // SO WE ADD TO A LIST THAT CHECKS BEFORE APPLYING DAMAGE
-
         if(charactersDamaged.Contains(damageTarget))
         {
-            return;
+            return; // CAN ONLY BE HIT ONCE
         }
 
-        charactersDamaged.Add(damageTarget);
+        charactersDamaged.Add(damageTarget); 
 
         TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
         damageEffect.physicalDamage = physicalDamage;

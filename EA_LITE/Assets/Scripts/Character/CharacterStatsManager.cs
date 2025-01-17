@@ -5,7 +5,6 @@ using UnityEngine;
 public class CharacterStatsManager : MonoBehaviour
 {
     CharacterManager character;
-    // CharacterEffectsManager characterEffectsManager;
 
     [Header("STATUS")]
     public bool isDead = false;
@@ -25,12 +24,8 @@ public class CharacterStatsManager : MonoBehaviour
     public float CurrentStamina{
         get{return _currentStamina;}
         set{
-            // MOVED FROM PLAYER MANAGER
             ResetStaminaRegenTimer(_currentStamina, value);
-            // UPDATES THE TOTAL AMOUNT OF HEALTH OR STAMINA WHEN MAX STAT AMOUNT CHANGES
-            // SetNewMaxStaminaValue(maxStamina, value);
-            // endurance += SetNewMaxStaminaValue(maxStamina, value);
-
+            // MOVED FROM PLAYER MANAGER
             // UPDATES STAMINA UI BAR WHEN STAMINA CHANGES 
             PlayerUIManager.instance.playerUIHudManager.SetNewStaminaValue(_currentStamina, value);
             _currentStamina = value;
@@ -46,16 +41,10 @@ public class CharacterStatsManager : MonoBehaviour
     public float CurrentHealth{
         get{return _currentHealth;}
         set{
-            // UPDATES THE TOTAL AMOUNT OF HEALTH OR STAMINA WHEN MAX STAT AMOUNT CHANGES
-            // SetNewMaxHealthValue(maxHealth, value);
-            // vitality += SetNewMaxHealthValue(maxHealth, value);
-            // vitality += PlayerUIManager.instance.playerUIHudManager.SetNewMaxHealthValue(maxHealth, value);
-
             // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
             PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(_currentHealth, value);
             _currentHealth = value;
             Debug.Log("CURRENT HEALTH: " + _currentHealth);
-            // CalculateHealthBasedOnVitalityLevel();
         }
     }
 
@@ -63,7 +52,6 @@ public class CharacterStatsManager : MonoBehaviour
 
     protected virtual void Awake(){
         character = GetComponent<CharacterManager>();
-        // characterEffectsManager = GetComponent<CharacterEffectsManager>();
     }
 
     protected virtual void Start()
@@ -115,18 +103,4 @@ public class CharacterStatsManager : MonoBehaviour
             staminaRegenerationTimer = 0;
         }
     }
-
-    // public void SetNewMaxHealthValue(int oldVitality, int newVitality)
-    // {
-    //     maxHealth = CalculateHealthBasedOnVitalityLevel(newVitality);
-    //     PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(maxHealth);
-    //     CurrentHealth = maxHealth;
-    // }
-
-    // public void SetNewMaxStaminaValue(int oldEndurance, int newEndurance)
-    // {
-    //     maxStamina = CalculateStaminaBasedOnEnduranceLevel(newEndurance);
-    //     PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina);
-    //     CurrentStamina = maxStamina;
-    // }
 }
