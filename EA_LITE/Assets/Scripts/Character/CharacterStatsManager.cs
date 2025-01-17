@@ -5,6 +5,10 @@ using UnityEngine;
 public class CharacterStatsManager : MonoBehaviour
 {
     CharacterManager character;
+    // CharacterEffectsManager characterEffectsManager;
+
+    [Header("STATUS")]
+    public bool isDead = false;
 
     [Header("STAMINA REGENERATION")]
     private float staminaRegenerationTimer = 0;
@@ -50,7 +54,7 @@ public class CharacterStatsManager : MonoBehaviour
             // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
             PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(_currentHealth, value);
             _currentHealth = value;
-            // Debug.Log(_currentHealth);
+            Debug.Log("CURRENT HEALTH: " + _currentHealth);
             // CalculateHealthBasedOnVitalityLevel();
         }
     }
@@ -59,6 +63,7 @@ public class CharacterStatsManager : MonoBehaviour
 
     protected virtual void Awake(){
         character = GetComponent<CharacterManager>();
+        // characterEffectsManager = GetComponent<CharacterEffectsManager>();
     }
 
     protected virtual void Start()

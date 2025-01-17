@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
+    // [Header("STATUS")]
+
+
     [HideInInspector] public CharacterController characterController;
     [HideInInspector] public Animator animator;
+    [HideInInspector] public CharacterEffectsManager characterEffectsManager;
 
     [Header("FLAGS")]
     public bool isPerformingAction = false;
@@ -29,6 +33,8 @@ public class CharacterManager : MonoBehaviour
 
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+
+        characterEffectsManager = GetComponent<CharacterEffectsManager>();
     }
 
     // protected virtual void Start()
