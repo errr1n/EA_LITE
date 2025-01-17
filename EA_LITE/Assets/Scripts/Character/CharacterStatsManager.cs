@@ -21,7 +21,7 @@ public class CharacterStatsManager : MonoBehaviour
         get{return _currentStamina;}
         set{
             // MOVED FROM PLAYER MANAGER
-            // ResetStaminaRegenTimer(_currentStamina, value);
+            ResetStaminaRegenTimer(_currentStamina, value);
             // UPDATES THE TOTAL AMOUNT OF HEALTH OR STAMINA WHEN MAX STAT AMOUNT CHANGES
             // SetNewMaxStaminaValue(maxStamina, value);
 
