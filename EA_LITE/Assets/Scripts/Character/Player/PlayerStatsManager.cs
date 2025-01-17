@@ -21,8 +21,8 @@ public class PlayerStatsManager : CharacterStatsManager
 
         // WHY CALCULATE THESE VALUES HERE?
         // IF WE MAKE A CHARACTER CREATION MENU AND SET STATS THERE, THIS WILL BE CALCULATED THERE
-        CalculateHealthBasedOnVitalityLevel(vitality);
-        CalculateStaminaBasedOnEnduranceLevel(endurance);
+        CalculateHealthBasedOnVitalityLevel(currentVitality);
+        CalculateStaminaBasedOnEnduranceLevel(currentVitality);
     }
 
     // public void SetNewMaxHealthValue(int oldVitality, int newVitality)

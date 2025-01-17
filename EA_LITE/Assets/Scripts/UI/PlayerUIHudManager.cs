@@ -50,14 +50,14 @@ public class PlayerUIHudManager : MonoBehaviour
     public void SetNewMaxHealthValue(int oldVitality, int newVitality)
     {
         characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(newVitality);
-        // PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(maxHealth);
+        PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(characterStatsManager.maxHealth);
         characterStatsManager.CurrentHealth = characterStatsManager.maxHealth;
     }
 
     public void SetNewMaxStaminaValue(int oldEndurance, int newEndurance)
     {
         characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(newEndurance);
-        // PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(maxStamina);
+        PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(characterStatsManager.maxStamina);
         characterStatsManager.CurrentStamina = characterStatsManager.maxStamina;
     }
 }

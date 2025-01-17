@@ -30,13 +30,13 @@ public class PlayerManager : CharacterManager
         // characterStatsManager.vitality += playerUIHudManager.SetNewMaxHealthValue(characterStatsManager.maxHealth, playerUIHudManager.value);
 
         // HEALTH
-        characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.vitality);
-        characterStatsManager.CurrentHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.vitality);
+        characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.currentVitality);
+        characterStatsManager.CurrentHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.currentVitality);
         PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(characterStatsManager.maxHealth);
         
         // STAMINA
-        characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.endurance);
-        characterStatsManager.CurrentStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.endurance);
+        characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
+        characterStatsManager.CurrentStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
         PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(characterStatsManager.maxStamina);
     }
 
@@ -49,6 +49,21 @@ public class PlayerManager : CharacterManager
 
         // REGENERATE STAMINA
         characterStatsManager.RegenerateStamina();
+
+        // // HEALTH
+        // // UPDATES MAX HEALTH BASED ON VITALTY
+        // characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.vitality);
+        // // SETS HEALTH TO FULL WHEN UPDATING MAX HEALTH 
+        // characterStatsManager.CurrentHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.vitality);
+        // // DISPLAYS UPDATE ON HUD STAT BARS
+        // PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(characterStatsManager.maxHealth);
+        
+        // // STAMINA
+        // characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.endurance);
+        // characterStatsManager.CurrentStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.endurance);
+        // PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(characterStatsManager.maxStamina);
+
+        HandleStatUpdates();
     }
 
     protected override void LateUpdate()
@@ -57,6 +72,44 @@ public class PlayerManager : CharacterManager
 
         PlayerCamera.instance.HandleAllCameraActions();
         // Debug.Log("HandleAllCameraActions()");
+    }
+
+    private void HandleStatUpdates()
+    {
+        // HEALTH
+        if(characterStatsManager.currentVitality != characterStatsManager.newVitality)
+        {
+            // HEALTH
+            characterStatsManager.currentVitality = characterStatsManager.newVitality;
+            // UPDATES MAX HEALTH BASED ON VITALTY
+            characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.currentVitality);
+            // SETS HEALTH TO FULL WHEN UPDATING MAX HEALTH 
+            characterStatsManager.CurrentHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.currentVitality);
+            // DISPLAYS UPDATE ON HUD STAT BARS
+            PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(characterStatsManager.maxHealth);
+        }
+
+        // STAMINA
+        if(characterStatsManager.currentEndurance != characterStatsManager.newEndurance)
+        {
+            // STAMINA
+            characterStatsManager.currentEndurance = characterStatsManager.newEndurance;
+            characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
+            characterStatsManager.CurrentStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
+            PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(characterStatsManager.maxStamina);
+        }
+        // // HEALTH
+        // // UPDATES MAX HEALTH BASED ON VITALTY
+        // characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.vitality);
+        // // SETS HEALTH TO FULL WHEN UPDATING MAX HEALTH 
+        // characterStatsManager.CurrentHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.vitality);
+        // // DISPLAYS UPDATE ON HUD STAT BARS
+        // PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(characterStatsManager.maxHealth);
+        
+        // // STAMINA
+        // characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.endurance);
+        // characterStatsManager.CurrentStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.endurance);
+        // PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(characterStatsManager.maxStamina);
     }
     
 }

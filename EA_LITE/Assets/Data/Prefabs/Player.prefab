@@ -1210,6 +1210,7 @@ MonoBehaviour:
   playerAnimatorManager: {fileID: 0}
   playerLocomotionManager: {fileID: 0}
   characterStatsManager: {fileID: 0}
+  playerUIHudManager: {fileID: 0}
 --- !u!114 &-1127844123622078842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1224,9 +1225,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staminaRegenerationDelay: 2
   staminaRegenerationAmount: 2
-  endurance: 10
+  currentEndurance: 10
+  newEndurance: 10
   maxStamina: 0
-  vitality: 10
+  currentVitality: 10
+  newVitality: 10
   maxHealth: 0
 --- !u!114 &-2587354512006405087
 MonoBehaviour:

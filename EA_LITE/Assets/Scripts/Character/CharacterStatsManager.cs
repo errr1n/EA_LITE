@@ -13,7 +13,8 @@ public class CharacterStatsManager : MonoBehaviour
     [SerializeField] float staminaRegenerationAmount = 2;
 
     [Header("CHARACTER STAMINA STATS")]
-    public int endurance = 1;
+    public int currentEndurance = 1;
+    public int newEndurance = 1;
     public int maxStamina = 0;
 
     private float _currentStamina = 0;
@@ -33,7 +34,8 @@ public class CharacterStatsManager : MonoBehaviour
     }
 
     [Header("CHARACTER HEALTH STATS")]
-    public int vitality = 1;
+    public int currentVitality = 1;
+    public int newVitality = 1;
     public int maxHealth = 0;
 
     private float _currentHealth = 0;
