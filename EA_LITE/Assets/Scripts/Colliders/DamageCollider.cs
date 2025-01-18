@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DamageCollider : MonoBehaviour
 {
+    [Header("Collider")]
+    protected Collider damageCollider;
+
     [Header("Damage")]
     public float physicalDamage = 0;
 
@@ -47,5 +50,16 @@ public class DamageCollider : MonoBehaviour
         damageEffect.contactPoint = contactPoint;
 
         damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);
+    }
+
+    public virtual void EnableDamageCollider()
+    {
+        damageCollider.enabled = true;
+    }
+
+    public virtual void DisableDamageCollider()
+    {
+        damageCollider.enabled = false;
+        charactersDamaged.Clear(); // WE RESET THE CHARCTERS THAT HAVE BEEN HIT WHEN WE RESET THE COLLIDER, SO THEY MAY BE HIT AGAIN
     }
 }

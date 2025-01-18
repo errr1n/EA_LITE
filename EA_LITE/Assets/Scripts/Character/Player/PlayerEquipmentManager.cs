@@ -9,6 +9,8 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
 
     public WeaponModelInstantiationSlot rightHandSlot;
 
+    [SerializeField] WeaponManager rightWeaponManager;
+
     public GameObject rightHandWeaponModel;
 
     protected override void Awake()
@@ -53,6 +55,9 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
         {
             rightHandWeaponModel = Instantiate(player.playerInventoryManager.currentRightHandWeapon.weaponModel);
             rightHandSlot.LoadWeapon(rightHandWeaponModel);
+            rightWeaponManager = rightHandWeaponModel.GetComponent<WeaponManager>();
+            rightWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentRightHandWeapon);
+            // ASSIGN WEAPONS DAMAGE, TO ITS COLLIDER
         }
     }
 
