@@ -6,7 +6,7 @@ public class PlayerManager : CharacterManager
 {
     [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
     [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
-    [HideInInspector] public CharacterStatsManager characterStatsManager;
+    // [HideInInspector] public CharacterStatsManager characterStatsManager;
     [HideInInspector] public PlayerUIHudManager playerUIHudManager;
 
     protected override void Awake()
@@ -16,7 +16,7 @@ public class PlayerManager : CharacterManager
         playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
         playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
 
-        characterStatsManager = GetComponent<CharacterStatsManager>();
+        // characterStatsManager = GetComponent<CharacterStatsManager>();
         playerUIHudManager = GetComponent<PlayerUIHudManager>();
 
         // THIS WILL BE MOVED WHEN SAVING AND LOADING IS ADDED
@@ -43,6 +43,8 @@ public class PlayerManager : CharacterManager
         characterStatsManager.RegenerateStamina();
 
         HandleStatUpdates();
+
+        characterStatsManager.CheckHP();
     }
 
     protected override void LateUpdate()

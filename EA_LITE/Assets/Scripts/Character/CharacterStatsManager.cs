@@ -20,7 +20,7 @@ public class CharacterStatsManager : MonoBehaviour
     public int newEndurance = 1;
     public int maxStamina = 0;
 
-    private float _currentStamina = 0;
+    [SerializeField] float _currentStamina = 0;
     public float CurrentStamina{
         get{return _currentStamina;}
         set{
@@ -37,7 +37,7 @@ public class CharacterStatsManager : MonoBehaviour
     public int newVitality = 1;
     public int maxHealth = 0;
 
-    private float _currentHealth = 0;
+    [SerializeField] float _currentHealth = 0;
     public float CurrentHealth{
         get{return _currentHealth;}
         set{
@@ -102,5 +102,28 @@ public class CharacterStatsManager : MonoBehaviour
         {
             staminaRegenerationTimer = 0;
         }
+    }
+
+    public void CheckHP()
+    {
+        if(!isDead)
+        {
+            if(_currentHealth <= 0)
+            {
+                // Debug.Log("HERE, DEAD");
+                StartCoroutine(character.ProcessDeathEvent());
+            }
+        }
+        // if(_currentHealth <= 0)
+        // {
+        //     // Debug.Log("HERE, DEAD");
+        //     StartCoroutine(character.ProcessDeathEvent());
+        // }
+
+        // // PREVENTS US FROM OVER HEALING
+        // if(_currentHealth >= maxHealth)
+        // {
+        //     _currentHealth = maxHealth;
+        // }
     }
 }

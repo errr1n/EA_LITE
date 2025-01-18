@@ -9,7 +9,9 @@ public class CharacterManager : MonoBehaviour
 
     [HideInInspector] public CharacterController characterController;
     [HideInInspector] public Animator animator;
+    [HideInInspector] public CharacterAnimatorManager characterAnimatorManager;
     [HideInInspector] public CharacterEffectsManager characterEffectsManager;
+    [HideInInspector] public CharacterStatsManager characterStatsManager;
 
     [Header("FLAGS")]
     public bool isPerformingAction = false;
@@ -35,6 +37,8 @@ public class CharacterManager : MonoBehaviour
         animator = GetComponent<Animator>();
 
         characterEffectsManager = GetComponent<CharacterEffectsManager>();
+        characterStatsManager = GetComponent<CharacterStatsManager>();
+        characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
     }
 
     // protected virtual void Start()
@@ -50,5 +54,28 @@ public class CharacterManager : MonoBehaviour
     protected virtual void LateUpdate()
     {
         //
+    }
+
+    public virtual IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
+    {
+        characterStatsManager.CurrentHealth = 0;
+        characterStatsManager.isDead = true;
+        Debug.Log("HERE, DEFINETLY DEAD");
+
+        // RESET ANY FLAGS THAT NEED TO BE RESET
+
+        // IF WE ARE NOT GROUNDED, PLAY AERIAL DEATH ANIMATION
+
+        if(!manuallySelectDeathAnimation)
+        {
+            // ANIMATION
+            // characterAnimatorManager.PlayTargetActionAnimation("Dead_01", true);
+        }
+
+        // PLAY SOME DEATH SFX
+
+        yield return new WaitForSeconds(5);
+
+        // DISABLE CHARACTER
     }
 }
