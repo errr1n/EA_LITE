@@ -10,9 +10,17 @@ public class PlayerUIHudManager : MonoBehaviour
     [SerializeField] UI_StatBar healthBar;
     [SerializeField] UI_StatBar staminaBar;
 
+    [SerializeField] private bool staminaBarUI = false;
+
     private void Awake()
     {
         characterStatsManager = GetComponent<CharacterStatsManager>();
+    }
+
+    private void Update()
+    {
+        // TURNS OFF STAMINA BAR ON HUD
+        staminaBar.gameObject.SetActive(staminaBarUI);
     }
 
     // MAY NOT BE NECESSARY
@@ -21,8 +29,8 @@ public class PlayerUIHudManager : MonoBehaviour
         healthBar.gameObject.SetActive(false);
         healthBar.gameObject.SetActive(true);
 
-        staminaBar.gameObject.SetActive(false);
-        staminaBar.gameObject.SetActive(true);
+        // staminaBar.gameObject.SetActive(false);
+        // staminaBar.gameObject.SetActive(true);
     }
 
     public void SetNewHealthValue(float oldValue, float newValue)
