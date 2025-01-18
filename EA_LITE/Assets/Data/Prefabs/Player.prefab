@@ -268,6 +268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6103917630436885811}
+  - component: {fileID: 433674534564506421}
   m_Layer: 6
   m_Name: Hand_R
   m_TagString: Untagged
@@ -294,6 +295,20 @@ Transform:
   m_Father: {fileID: 5565483871399233358}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &433674534564506421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358060895433034741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b5778ba2b8e6e42ad3de2224490b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSlot: 0
+  currentWeaponModel: {fileID: 0}
 --- !u!1 &1384334857142073451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,6 +1150,8 @@ GameObject:
   - component: {fileID: -2086332888577944047}
   - component: {fileID: -1127844123622078842}
   - component: {fileID: -2587354512006405087}
+  - component: {fileID: -1751162612850857200}
+  - component: {fileID: -9053360611909725202}
   - component: {fileID: -3440656882890443927}
   - component: {fileID: -2042582355953384460}
   - component: {fileID: -5222805389497027767}
@@ -1200,6 +1217,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 0}
   animator: {fileID: 0}
+  characterAnimatorManager: {fileID: 0}
+  characterEffectsManager: {fileID: 0}
+  characterStatsManager: {fileID: 0}
   isPerformingAction: 0
   isJumping: 0
   isGrounded: 1
@@ -1207,10 +1227,12 @@ MonoBehaviour:
   canRotate: 1
   canMove: 1
   isSprinting: 0
+  respawnCharacter: 0
   playerAnimatorManager: {fileID: 0}
   playerLocomotionManager: {fileID: 0}
-  characterStatsManager: {fileID: 0}
   playerUIHudManager: {fileID: 0}
+  playerUIPopUpManager: {fileID: 0}
+  playerInventoryManager: {fileID: 0}
 --- !u!114 &-1127844123622078842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1223,14 +1245,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40f20ca0cd10e734fbf681ee168016c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
   staminaRegenerationDelay: 2
   staminaRegenerationAmount: 2
-  currentEndurance: 10
+  currentEndurance: 0
   newEndurance: 10
   maxStamina: 0
-  currentVitality: 10
+  _currentStamina: 0
+  currentVitality: 0
   newVitality: 10
   maxHealth: 0
+  _currentHealth: 0
 --- !u!114 &-2587354512006405087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,6 +1287,33 @@ MonoBehaviour:
   dodgeStaminaCost: 25
   jumpForwardSpeed: 5
   freeFallSpeed: 2
+--- !u!114 &-1751162612850857200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089555979206195723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32031f99e5f3f934eb13408c2d1811a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentRightHandWeapon: {fileID: 11400000, guid: f84344387f9baf74086acb38e98f52ec,
+    type: 2}
+--- !u!114 &-9053360611909725202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089555979206195723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42cc5c7a0c488f45934334adf34006e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHandSlot: {fileID: 0}
 --- !u!114 &-3440656882890443927
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class PlayerManager : CharacterManager
     // [HideInInspector] public CharacterStatsManager characterStatsManager;
     [HideInInspector] public PlayerUIHudManager playerUIHudManager;
     [HideInInspector] public PlayerUIPopUpManager playerUIPopUpManager;
+    [HideInInspector] public PlayerInventoryManager playerInventoryManager;
 
     protected override void Awake()
     {
@@ -23,6 +24,7 @@ public class PlayerManager : CharacterManager
         // characterStatsManager = GetComponent<CharacterStatsManager>();
         playerUIHudManager = GetComponent<PlayerUIHudManager>();
         playerUIPopUpManager = GetComponent<PlayerUIPopUpManager>();
+        playerInventoryManager = GetComponent<PlayerInventoryManager>();
 
         // THIS WILL BE MOVED WHEN SAVING AND LOADING IS ADDED
 
