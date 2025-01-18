@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PlayerManager : CharacterManager
 {
+    [Header("DEBUG MENU")]
+    [SerializeField] bool respawnCharacter = false;
+
     [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
     [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
     // [HideInInspector] public CharacterStatsManager characterStatsManager;
     [HideInInspector] public PlayerUIHudManager playerUIHudManager;
+    [HideInInspector] public PlayerUIPopUpManager playerUIPopUpManager;
 
     protected override void Awake()
     {
@@ -18,6 +22,7 @@ public class PlayerManager : CharacterManager
 
         // characterStatsManager = GetComponent<CharacterStatsManager>();
         playerUIHudManager = GetComponent<PlayerUIHudManager>();
+        playerUIPopUpManager = GetComponent<PlayerUIPopUpManager>();
 
         // THIS WILL BE MOVED WHEN SAVING AND LOADING IS ADDED
 
@@ -45,6 +50,8 @@ public class PlayerManager : CharacterManager
         HandleStatUpdates();
 
         characterStatsManager.CheckHP();
+
+        DebugMenu();
     }
 
     protected override void LateUpdate()
@@ -53,6 +60,25 @@ public class PlayerManager : CharacterManager
 
         PlayerCamera.instance.HandleAllCameraActions();
         // Debug.Log("HandleAllCameraActions()");
+    }
+
+    public override IEnumerator ProcessDeathEvent(bool manuallySelectDamageAnimation = false)
+    {
+        PlayerUIManager.instance.playerUIPopUpManager.SendYouDiedPopUp();
+
+        return base.ProcessDeathEvent(manuallySelectDamageAnimation);
+
+        // RESPAWN PLAYER?
+    }
+
+    public override void ReviveCharacter()
+    {
+        base.ReviveCharacter();
+
+        characterStatsManager.CurrentHealth = characterStatsManager.maxHealth;
+        characterStatsManager.CurrentStamina = characterStatsManager.maxStamina;
+
+        // PLAY REBIRTH ANIMATION
     }
 
     private void HandleStatUpdates()
@@ -77,6 +103,18 @@ public class PlayerManager : CharacterManager
             characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
             characterStatsManager.CurrentStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
             PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(characterStatsManager.maxStamina);
+        }
+    }
+
+    // DELETE LATER
+    private void DebugMenu()
+    {
+        if(respawnCharacter)
+        {
+            respawnCharacter = false;
+
+            ReviveCharacter();
+            Debug.Log("REVIVE");
         }
     }
     

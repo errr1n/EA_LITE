@@ -78,4 +78,9 @@ public class CharacterManager : MonoBehaviour
 
         // DISABLE CHARACTER
     }
+
+    public virtual void ReviveCharacter()
+    {
+        //
+    }
 }

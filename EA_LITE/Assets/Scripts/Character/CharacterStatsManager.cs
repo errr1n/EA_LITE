@@ -44,7 +44,7 @@ public class CharacterStatsManager : MonoBehaviour
             // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
             PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(_currentHealth, value);
             _currentHealth = value;
-            Debug.Log("CURRENT HEALTH: " + _currentHealth);
+            // Debug.Log("CURRENT HEALTH: " + _currentHealth);
         }
     }
 
