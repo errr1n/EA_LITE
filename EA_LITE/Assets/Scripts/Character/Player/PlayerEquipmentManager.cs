@@ -15,17 +15,17 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
     public GameObject rightHandWeaponModel;
 
     //maybe
-    // public int _currentWeaponBeingUsed = 0;
-    // public int CurrentWeaponBeingUsed{
-    //     get{return _currentWeaponBeingUsed;}
-    //     set{
-    //         // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
-    //         OnCurrentWeapongBeingUsedIDChange(_currentWeaponBeingUsed, value);
-    //         // Debug.Log("---VALUE---: " + value);
-    //         _currentWeaponBeingUsed = value;
-    //         // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
-    //     }
-    // }
+    public int _currentWeaponBeingUsed = 0;
+    public int CurrentWeaponBeingUsed{
+        get{return _currentWeaponBeingUsed;}
+        set{
+            // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
+            OnCurrentWeapongBeingUsedIDChange(_currentWeaponBeingUsed, value);
+            // Debug.Log("---VALUE---: " + value);
+            _currentWeaponBeingUsed = value;
+            // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
+        }
+    }
 
     public int _currentRightHandWeaponID = 0;
     public int CurrentRightHandWeaponID{

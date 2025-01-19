@@ -17,17 +17,17 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerEquipmentManager playerEquipmentManager;
     [HideInInspector] public PlayerCombatManager playerCombatManager;
 
-    public int _currentWeaponBeingUsed = 0;
-    public int CurrentWeaponBeingUsed{
-        get{return _currentWeaponBeingUsed;}
-        set{
-            // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
-            playerEquipmentManager.OnCurrentWeapongBeingUsedIDChange(_currentWeaponBeingUsed, value);
-            // Debug.Log("---VALUE---: " + value);
-            _currentWeaponBeingUsed = value;
-            // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
-        }
-    }
+    // public int _currentWeaponBeingUsed = 0;
+    // public int CurrentWeaponBeingUsed{
+    //     get{return _currentWeaponBeingUsed;}
+    //     set{
+    //         // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
+    //         playerEquipmentManager.OnCurrentWeapongBeingUsedIDChange(_currentWeaponBeingUsed, value);
+    //         // Debug.Log("---VALUE---: " + value);
+    //         _currentWeaponBeingUsed = value;
+    //         // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
+    //     }
+    // }
 
     protected override void Awake()
     {

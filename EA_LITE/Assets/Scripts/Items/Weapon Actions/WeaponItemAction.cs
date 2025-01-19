@@ -8,7 +8,7 @@ public class WeaponItemAction : ScriptableObject
 {
     public int actionID;
 
-    public virtual void AttemptToPerformAction(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
+    public virtual void AttemptToPerformAction(PlayerEquipmentManager playerPerformingAction, WeaponItem weaponPerformingAction)
     {
         // playerPerformingAction.playerCombatManager.currentWeaponBeingUsed = weaponPerformingAction;
         playerPerformingAction.CurrentWeaponBeingUsed = weaponPerformingAction.itemID;

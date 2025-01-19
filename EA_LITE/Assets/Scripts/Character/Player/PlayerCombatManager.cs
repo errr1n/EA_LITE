@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class PlayerCombatManager : CharacterCombatManager
 {
-    PlayerManager playerManager;
+    PlayerEquipmentManager playerEquipmentManager;
     public WeaponItem currentWeaponBeingUsed;
 
     protected override void Awake()
     {
         base.Awake();
 
-        playerManager = GetComponent<PlayerManager>();
+        playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
     }
 
     // may need to call player manager
     public void PerformWeaponBasedAction(WeaponItemAction weaponAction, WeaponItem weaponPerformingAction)
     {
         // perform the action
-        weaponAction.AttemptToPerformAction(playerManager, weaponPerformingAction);
+        weaponAction.AttemptToPerformAction(playerEquipmentManager, weaponPerformingAction);
     }
 }
