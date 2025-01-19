@@ -52,6 +52,7 @@ public class CharacterAnimatorManager : MonoBehaviour
         character.canMove = canMove;
     }
 
+    // ADD ATTACK TYPE?
     public virtual void PlayTargetAttackActionAnimation(string targetAnimation, 
         bool isPerformingAction, 
         bool applyRootMotion = true, 

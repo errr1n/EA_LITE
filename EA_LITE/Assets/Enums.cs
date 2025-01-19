@@ -11,3 +11,8 @@ public enum WeaponModelSlot
 {
     RightHand,
 }
+
+public enum AttackType
+{
+    LightAttack,
+}

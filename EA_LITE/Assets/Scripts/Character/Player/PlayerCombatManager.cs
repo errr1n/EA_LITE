@@ -22,4 +22,6 @@ public class PlayerCombatManager : CharacterCombatManager
 
         // weaponAction.AttemptToPerformAction(weaponAction.actionID, weaponPerformingAction.itemID);
     }
+
+    // drain stamina?
 }
