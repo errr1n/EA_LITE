@@ -31,7 +31,7 @@ public class DamageCollider : MonoBehaviour
 
             //DAMAGE
             DamageTarget(damageTarget);
-            // Debug.Log(other);
+            Debug.Log(other);
         }
     }
 
