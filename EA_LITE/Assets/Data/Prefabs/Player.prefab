@@ -1228,11 +1228,13 @@ MonoBehaviour:
   canMove: 1
   isSprinting: 0
   respawnCharacter: 0
+  SwitchRightWeapon: 0
   playerAnimatorManager: {fileID: 0}
   playerLocomotionManager: {fileID: 0}
   playerUIHudManager: {fileID: 0}
   playerUIPopUpManager: {fileID: 0}
   playerInventoryManager: {fileID: 0}
+  playerEquipmentManager: {fileID: 0}
 --- !u!114 &-1127844123622078842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,8 +1285,6 @@ MonoBehaviour:
   runningSpeed: 5
   sprintingSpeed: 7
   rotationSpeed: 15
-  sprintingStaminaCost: 2
-  dodgeStaminaCost: 25
   jumpForwardSpeed: 5
   freeFallSpeed: 2
 --- !u!114 &-1751162612850857200
@@ -1301,6 +1301,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRightHandWeapon: {fileID: 11400000, guid: f84344387f9baf74086acb38e98f52ec,
     type: 2}
+  weaponsInRightHandSlot:
+  - {fileID: 11400000, guid: f84344387f9baf74086acb38e98f52ec, type: 2}
+  - {fileID: 11400000, guid: 1c1942af69a5adc44ae4346d5ef2c167, type: 2}
+  rightHandWeaponIndex: 0
 --- !u!114 &-9053360611909725202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1314,6 +1318,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rightHandSlot: {fileID: 0}
+  rightWeaponManager: {fileID: 0}
+  rightHandWeaponModel: {fileID: 0}
+  _currentRightHandWeaponID: 0
 --- !u!114 &-3440656882890443927
 MonoBehaviour:
   m_ObjectHideFlags: 0

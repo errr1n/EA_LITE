@@ -6,6 +6,7 @@ public class PlayerManager : CharacterManager
 {
     [Header("DEBUG MENU")]
     [SerializeField] bool respawnCharacter = false;
+    [SerializeField] bool SwitchRightWeapon = false;
 
     [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
     [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
@@ -13,6 +14,7 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerUIHudManager playerUIHudManager;
     [HideInInspector] public PlayerUIPopUpManager playerUIPopUpManager;
     [HideInInspector] public PlayerInventoryManager playerInventoryManager;
+    [HideInInspector] public PlayerEquipmentManager playerEquipmentManager;
 
     protected override void Awake()
     {
@@ -24,7 +26,9 @@ public class PlayerManager : CharacterManager
         // characterStatsManager = GetComponent<CharacterStatsManager>();
         playerUIHudManager = GetComponent<PlayerUIHudManager>();
         playerUIPopUpManager = GetComponent<PlayerUIPopUpManager>();
+
         playerInventoryManager = GetComponent<PlayerInventoryManager>();
+        playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
 
         // THIS WILL BE MOVED WHEN SAVING AND LOADING IS ADDED
 
@@ -52,6 +56,8 @@ public class PlayerManager : CharacterManager
         HandleStatUpdates();
 
         characterStatsManager.CheckHP();
+        // playerEquipmentManager.OnCurrentRightHandWeaponIDChange(playerEquipmentManager._currentRightHandWeaponID);
+        // playerEquipmentManager.CurrentRightHandWeaponID = playerEquipmentManager._currentRightHandWeaponID;
 
         DebugMenu();
     }
@@ -117,6 +123,14 @@ public class PlayerManager : CharacterManager
 
             ReviveCharacter();
             Debug.Log("REVIVE");
+        }
+
+        if(SwitchRightWeapon)
+        {
+            SwitchRightWeapon = false;
+
+            playerEquipmentManager.SwitchRightWeapon();
+            // Debug.Log("SWITCH WEAPON");
         }
     }
     

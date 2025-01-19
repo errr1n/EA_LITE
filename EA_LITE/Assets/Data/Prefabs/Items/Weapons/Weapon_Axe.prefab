@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 0.15, z: 0.09}
-  m_Center: {x: 0, y: 0.32, z: 0}
+  m_Size: {x: 0.27, y: 0.15, z: 0.09}
+  m_Center: {x: 0.07, y: 0.32, z: 0}
 --- !u!114 &9178986102531186727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 3731418548294896367}
   - component: {fileID: 1266902120412421851}
   m_Layer: 0
-  m_Name: Weapon_Pickaxe
+  m_Name: Weapon_Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4907554708672519534}
-  m_Mesh: {fileID: 1616382711435183797, guid: 4a526cd2fe2edd34686f212b875cdd51, type: 3}
+  m_Mesh: {fileID: -8176984191909879101, guid: 2f0cf964a4bca044aa992d12d0a51174, type: 3}
 --- !u!23 &6853316937092906171
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9f4ee585e1073cc4c8f07547f936c27e, type: 2}
+  - {fileID: 2100000, guid: 4569edc8db2652a45acaeb4baca7f751, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
