@@ -18,11 +18,13 @@ public class DamageCollider : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        CharacterManager damageTarget = other.GetComponent<CharacterManager>();
+        CharacterManager damageTarget = other.GetComponentInParent<CharacterManager>();
+
 
         if(damageTarget != null)
         {
             contactPoint = other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+            // Debug.Log(contactPoint);
 
             // CHECK IF WE CAN DAMAGE THIS TARGET (BLOCKING)
 
@@ -30,6 +32,7 @@ public class DamageCollider : MonoBehaviour
 
             //DAMAGE
             DamageTarget(damageTarget);
+            // Debug.Log(damageTarget);
         }
     }
 
@@ -48,6 +51,7 @@ public class DamageCollider : MonoBehaviour
         damageEffect.physicalDamage = physicalDamage;
 
         damageEffect.contactPoint = contactPoint;
+        // Debug.Log(contactPoint);
 
         damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);
     }

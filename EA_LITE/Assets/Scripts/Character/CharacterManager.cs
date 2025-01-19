@@ -41,10 +41,10 @@ public class CharacterManager : MonoBehaviour
         characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
     }
 
-    // protected virtual void Start()
-    // {
-    //     //
-    // }
+    protected virtual void Start()
+    {
+        IgnoreMyOwnColiders();
+    }
 
     protected virtual void Update()
     {
@@ -82,5 +82,30 @@ public class CharacterManager : MonoBehaviour
     public virtual void ReviveCharacter()
     {
         //
+    }
+
+    protected virtual void IgnoreMyOwnColiders()
+    {
+        Collider characterControllerCollider = GetComponent<Collider>();
+        Collider[] damageableCharacterColliders = GetComponentsInChildren<Collider>();
+        List<Collider> ignoreColiders = new List<Collider>();
+
+        // ADD ALL OF OUR DAMAGEABLE CHARACTER COLLIDERS, TO THE LIST THAT WILL BE USED TO IGNORE COLISIONS
+        foreach(var collider in damageableCharacterColliders)
+        {
+            ignoreColiders.Add(collider);
+        }
+
+        // ADDS OUR CHARACTER CONTROLLER TO THE LIST THE WILL BE USED TO IGNORE COLLISIONS
+        ignoreColiders.Add(GetComponent<Collider>());
+
+        // GOES THROUGH EVERY COLLIDER ON THE LIST, AND IGNORES COLLISIONS WITH EACH OTHER
+        foreach(var collider in ignoreColiders)
+        {
+            foreach(var otherCollider in ignoreColiders)
+            {
+                Physics.IgnoreCollision(collider, otherCollider, true);
+            }
+        }
     }
 }
