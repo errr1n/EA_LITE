@@ -51,4 +51,24 @@ public class CharacterAnimatorManager : MonoBehaviour
         character.canRotate = canRotate;
         character.canMove = canMove;
     }
+
+    public virtual void PlayTargetAttackActionAnimation(string targetAnimation, 
+        bool isPerformingAction, 
+        bool applyRootMotion = true, 
+        bool canRotate = false, 
+        bool canMove = false)
+    {
+        // keep track of last attack performed for combos
+        // keep track of current attack type (light, heavy)
+        // update animation set to current weapon animations
+        character.applyRootMotion = applyRootMotion;
+        character.animator.CrossFade(targetAnimation, 0.2f);
+        // CAN BE USED TO STOP CHARACTER FROM ATTEMPTING NEW ACTION
+        // EX. DAMAGE STUN LOCK
+        character.isPerformingAction = isPerformingAction;
+        character.canRotate = canRotate;
+        character.canMove = canMove;
+    }
+
+
 }

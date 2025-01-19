@@ -19,5 +19,7 @@ public class PlayerCombatManager : CharacterCombatManager
     {
         // perform the action
         weaponAction.AttemptToPerformAction(playerEquipmentManager, weaponPerformingAction);
+
+        // weaponAction.AttemptToPerformAction(weaponAction.actionID, weaponPerformingAction.itemID);
     }
 }

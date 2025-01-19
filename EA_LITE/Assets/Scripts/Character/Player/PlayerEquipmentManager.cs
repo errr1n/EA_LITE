@@ -7,6 +7,7 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
     // public WeaponItem currentWeapon;
     PlayerManager player;
     [HideInInspector] public PlayerCombatManager playerCombatManager;
+    [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
 
     public WeaponModelInstantiationSlot rightHandSlot;
 
@@ -47,6 +48,7 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
 
         player = GetComponent<PlayerManager>();
         playerCombatManager = GetComponent<PlayerCombatManager>();
+        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
 
         //GET OUR SLOTS
         InitializeWeaponSlots();
