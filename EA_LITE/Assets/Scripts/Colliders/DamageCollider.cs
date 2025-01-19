@@ -24,7 +24,6 @@ public class DamageCollider : MonoBehaviour
         if(damageTarget != null)
         {
             contactPoint = other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
-            // Debug.Log(contactPoint);
 
             // CHECK IF WE CAN DAMAGE THIS TARGET (BLOCKING)
 
@@ -32,7 +31,7 @@ public class DamageCollider : MonoBehaviour
 
             //DAMAGE
             DamageTarget(damageTarget);
-            // Debug.Log(damageTarget);
+            // Debug.Log(other);
         }
     }
 
@@ -51,7 +50,6 @@ public class DamageCollider : MonoBehaviour
         damageEffect.physicalDamage = physicalDamage;
 
         damageEffect.contactPoint = contactPoint;
-        // Debug.Log(contactPoint);
 
         damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);
     }
