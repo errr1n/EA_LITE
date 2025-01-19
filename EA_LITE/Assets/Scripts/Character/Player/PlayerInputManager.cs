@@ -56,6 +56,11 @@ public class PlayerInputManager : MonoBehaviour
         SceneManager.activeSceneChanged += OnSceneChange;
 
         // instance.enabled = false;
+
+        // if(playerControls != null)
+        // {
+        //     playerControls.Disable();
+        // }
     }
 
     private void OnSceneChange(Scene oldScene, Scene newScene)
@@ -64,12 +69,22 @@ public class PlayerInputManager : MonoBehaviour
         if(newScene.buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex())
         {
             instance.enabled = true;
+
+            // if(playerControls != null)
+            // {
+            //     playerControls.Enable();
+            // }
         }
         // OTHERWISE DISSABLE IN MENU
         // CANT CONTROL CHARACTER IN OTHER SCREENS  
         else
         {
             instance.enabled = false;
+
+            // if(playerControls != null)
+            // {
+            //     playerControls.Disable();
+            // }
         }
     }
 
