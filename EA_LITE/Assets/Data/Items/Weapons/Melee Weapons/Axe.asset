@@ -17,3 +17,4 @@ MonoBehaviour:
   weaponModel: {fileID: 4072232400017133653, guid: a5aa13ac958c023498fc52911faf90a2,
     type: 3}
   physicalDamage: 160
+  leftClick_Action: {fileID: 0}
