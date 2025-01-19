@@ -185,6 +185,10 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             //SPRINTING
             player.isSprinting = true;
         }
+        else
+        {
+            SprintOff();
+        }
 
         // STAMINA
         // if(characterStatsManager.CurrentStamina <= 0)
@@ -222,6 +226,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         // CAN ONLY ROLL WHEN ALREADY MOVING, NOT WHEN STATIONARY
         if(PlayerInputManager.instance.moveAmount > 0)
         {
+            // player.isPerformingAction = true;
+
             rollDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.verticalInput;
             rollDirection += PlayerCamera.instance.cameraObject.transform.right * PlayerInputManager.instance.horizontalInput;
             rollDirection.y = 0; // DON'T ROLL ON VERTICAL AXIS
@@ -241,6 +247,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         }
         else
         {
+            // player.isPerformingAction = true;
             // DO WE WANT A STATIONARY DODGE? AKA BACKSTEP
             player.playerAnimatorManager.PlayTargetActionAnimation("BackStep", true, true);
         }

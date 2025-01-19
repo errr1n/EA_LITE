@@ -15,8 +15,12 @@ public class LightAttackWeaponItemAction : WeaponItemAction
         // check for stops 
         // stamina
         //if jumping
-
-        PerformLightAttack(playerPerformingAction, weaponPerformingAction);
+        //if dodging
+        if(!playerPerformingAction.player.isPerformingAction)
+        {
+            PerformLightAttack(playerPerformingAction, weaponPerformingAction);
+        }
+        // PerformLightAttack(playerPerformingAction, weaponPerformingAction);
     }
 
     private void PerformLightAttack(PlayerEquipmentManager playerPerformingAction, WeaponItem weaponPerformingAction)

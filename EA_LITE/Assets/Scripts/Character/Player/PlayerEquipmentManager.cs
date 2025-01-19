@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerEquipmentManager : CharacterEquipmentManager
 {
     // public WeaponItem currentWeapon;
-    PlayerManager player;
+    [HideInInspector] public PlayerManager player;
     [HideInInspector] public PlayerCombatManager playerCombatManager;
     [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
 
