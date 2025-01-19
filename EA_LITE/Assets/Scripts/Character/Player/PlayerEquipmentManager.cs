@@ -53,11 +53,14 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
     {
         if(player.playerInventoryManager.currentRightHandWeapon != null)
         {
+            // spawns the weapon model from gameobject  
             rightHandWeaponModel = Instantiate(player.playerInventoryManager.currentRightHandWeapon.weaponModel);
+            // load the corresponding weapon model to the right hand slot
             rightHandSlot.LoadWeapon(rightHandWeaponModel);
-            rightWeaponManager = rightHandWeaponModel.GetComponent<WeaponManager>();
-            rightWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentRightHandWeapon);
+            // variable to access weapon manager component
+            rightWeaponManager = rightHandWeaponModel.GetComponent<WeaponManager>();            
             // ASSIGN WEAPONS DAMAGE, TO ITS COLLIDER
+            rightWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentRightHandWeapon);
         }
     }
 
