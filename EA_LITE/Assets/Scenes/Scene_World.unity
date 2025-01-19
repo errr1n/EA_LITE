@@ -3308,7 +3308,7 @@ PrefabInstance:
     - target: {fileID: 6265637323267390615, guid: 30d237845a4c3ab44bd74a2e2750c8d4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7654649089855579823, guid: 30d237845a4c3ab44bd74a2e2750c8d4,
         type: 3}
@@ -7038,7 +7038,7 @@ PrefabInstance:
     - target: {fileID: 5614419311729615025, guid: c6eb0161d363f784eaa3e09c4e305108,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5614419311729615025, guid: c6eb0161d363f784eaa3e09c4e305108,
         type: 3}
@@ -8641,51 +8641,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010142560}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2022194814
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2022194816}
-  - component: {fileID: 2022194815}
-  m_Layer: 0
-  m_Name: World Action Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2022194815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022194814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e1d5b853ae8dd34bbd9dccc21b16be8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponItemActions: []
---- !u!4 &2022194816
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022194814}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2048802593
 GameObject:
   m_ObjectHideFlags: 0
@@ -9127,7 +9082,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2119894867
 GameObject:
@@ -9241,7 +9196,7 @@ PrefabInstance:
     - target: {fileID: 7374183691569059546, guid: 8820421a0c288c540b1ed400271cb8e7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7374183691569059546, guid: 8820421a0c288c540b1ed400271cb8e7,
         type: 3}
@@ -9310,7 +9265,7 @@ PrefabInstance:
     - target: {fileID: 7380327436489746604, guid: 08891cf23ac414a4da7e64b0cd85a674,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7380327436489746604, guid: 08891cf23ac414a4da7e64b0cd85a674,
         type: 3}
@@ -9394,7 +9349,7 @@ PrefabInstance:
     - target: {fileID: 8872050104755319363, guid: 438406aec55afee4bbcc0128ef74c316,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8872050104755319363, guid: 438406aec55afee4bbcc0128ef74c316,
         type: 3}
@@ -9468,7 +9423,7 @@ PrefabInstance:
     - target: {fileID: 6186991526059452127, guid: 127098010867bc841ac86ae092886a94,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6186991526059452127, guid: 127098010867bc841ac86ae092886a94,
         type: 3}
@@ -9537,7 +9492,7 @@ PrefabInstance:
     - target: {fileID: 7646358341133384914, guid: 501bbc688632aa04aab2f6568e1d9d45,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7646358341133384914, guid: 501bbc688632aa04aab2f6568e1d9d45,
         type: 3}

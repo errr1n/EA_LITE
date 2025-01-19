@@ -148,8 +148,4 @@ public class PlayerManager : CharacterManager
         }
     }
     
-    // private void PerformWeaponBasedAction()
-    // {
-    //     //
-    // }
 }
