@@ -1283,6 +1283,7 @@ GameObject:
   - component: {fileID: 5614419311729615025}
   - component: {fileID: 1785003597}
   - component: {fileID: -2086332888577944047}
+  - component: {fileID: 7966535531607252331}
   - component: {fileID: -1127844123622078842}
   - component: {fileID: -2587354512006405087}
   - component: {fileID: -1751162612850857200}
@@ -1371,6 +1372,19 @@ MonoBehaviour:
   playerUIPopUpManager: {fileID: 0}
   playerInventoryManager: {fileID: 0}
   playerEquipmentManager: {fileID: 0}
+--- !u!114 &7966535531607252331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089555979206195723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e34db608aa91444af524e144631715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeaponBeingUsed: {fileID: 0}
 --- !u!114 &-1127844123622078842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1453,10 +1467,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42cc5c7a0c488f45934334adf34006e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCombatManager: {fileID: 0}
   rightHandSlot: {fileID: 0}
   rightWeaponManager: {fileID: 0}
   rightHandWeaponModel: {fileID: 0}
+  _currentWeaponBeingUsed: 0
   _currentRightHandWeaponID: 0
+  isUsingRightHand: 0
 --- !u!114 &-3440656882890443927
 MonoBehaviour:
   m_ObjectHideFlags: 0

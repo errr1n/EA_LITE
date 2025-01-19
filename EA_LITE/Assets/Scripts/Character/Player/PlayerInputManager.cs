@@ -31,6 +31,7 @@ public class PlayerInputManager : MonoBehaviour
     [SerializeField] bool sprintInput = false;
     [SerializeField] bool jumpInput = false;
     // public bool isSprinting = false;
+    [SerializeField] bool leftClickInput = false;
     
 
     private void Awake()
@@ -101,6 +102,8 @@ public class PlayerInputManager : MonoBehaviour
             // player actions dodge from player controls input system
             playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
 
+            playerControls.PlayerActions.LeftClick.performed += i => leftClickInput = true;
+
             // player actions sprint from player controls input system
             // HOLDING THE INPUT, SETS BOOL TO TRUE
             playerControls.PlayerActions.Sprint.performed += i => sprintInput = true;
@@ -144,6 +147,7 @@ public class PlayerInputManager : MonoBehaviour
         HandlePlayerMovementInput();
         HandleDodgeInput();
         HandleSprintInput();
+        HandleLeftClickInput();
     }
 
     private void HandlePlayerMovementInput()
@@ -218,6 +222,19 @@ public class PlayerInputManager : MonoBehaviour
             jumpInput = false;
             // ATTEMPT TO PERFORM A JUMP
             player.playerLocomotionManager.AttemptToPerformJump();
+        }
+    }
+
+    private void HandleLeftClickInput()
+    {
+        if(leftClickInput)
+        {
+            leftClickInput = false;
+
+            player.playerEquipmentManager.SetCharacterActionHand(true);
+
+            player.playerCombatManager.PerformWeaponBasedAction(player.playerInventoryManager.currentRightHandWeapon.leftClick_Action, player.playerInventoryManager.currentRightHandWeapon);
+
         }
     }
 }

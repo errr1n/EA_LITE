@@ -234,6 +234,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "LeftClick",
+                    "type": "Button",
+                    "id": "ac601fcd-246f-4c8f-9ec4-a6be54d48da5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Sprint",
                     "type": "PassThrough",
                     "id": "6bc5f050-878d-4979-815f-64e9e7ab6973",
@@ -307,6 +316,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a6891dc-ddbc-4014-a61f-04d1b68cf10d",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "945efbcc-a5d7-4f86-a452-61eed799d8b2",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

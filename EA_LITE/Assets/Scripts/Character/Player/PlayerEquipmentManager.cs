@@ -6,6 +6,7 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
 {
     // public WeaponItem currentWeapon;
     PlayerManager player;
+    [HideInInspector] public PlayerCombatManager playerCombatManager;
 
     public WeaponModelInstantiationSlot rightHandSlot;
 
@@ -13,7 +14,18 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
 
     public GameObject rightHandWeaponModel;
 
-    // public int currentRghtHandWeaponID = 0;
+    //maybe
+    // public int _currentWeaponBeingUsed = 0;
+    // public int CurrentWeaponBeingUsed{
+    //     get{return _currentWeaponBeingUsed;}
+    //     set{
+    //         // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
+    //         OnCurrentWeapongBeingUsedIDChange(_currentWeaponBeingUsed, value);
+    //         // Debug.Log("---VALUE---: " + value);
+    //         _currentWeaponBeingUsed = value;
+    //         // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
+    //     }
+    // }
 
     public int _currentRightHandWeaponID = 0;
     public int CurrentRightHandWeaponID{
@@ -27,11 +39,14 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
         }
     }
 
+    public bool isUsingRightHand = false;
+
     protected override void Awake()
     {
         base.Awake();
 
         player = GetComponent<PlayerManager>();
+        playerCombatManager = GetComponent<PlayerCombatManager>();
 
         //GET OUR SLOTS
         InitializeWeaponSlots();
@@ -204,5 +219,21 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
         WeaponItem newWeapon = Instantiate(WorldItemDatabase.instance.GetWeaponByID(newID));
         player.playerInventoryManager.currentRightHandWeapon = newWeapon;
         player.playerEquipmentManager.LoadRightWeapon();
+    }
+
+    public void OnCurrentWeapongBeingUsedIDChange(int oldID, int newID)
+    {
+        // Debug.Log(oldID);
+        // Debug.Log(newID);
+        WeaponItem newWeapon = Instantiate(WorldItemDatabase.instance.GetWeaponByID(newID));
+        playerCombatManager.currentWeaponBeingUsed = newWeapon;
+    }
+
+    public void SetCharacterActionHand(bool rightHandedAction)
+    {
+        if(rightHandedAction)
+        {
+            isUsingRightHand = true;
+        }
     }
 }

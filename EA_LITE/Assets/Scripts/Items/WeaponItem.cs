@@ -16,6 +16,9 @@ public class WeaponItem : Item
 
     // HEAVY VS LIGHT ATTACKS?
 
+    [Header("Actions")]
+    public WeaponItemAction leftClick_Action;
+
     // [Header("Stamina Costs")]
     // public int baseStaminaCost = 20;
 }

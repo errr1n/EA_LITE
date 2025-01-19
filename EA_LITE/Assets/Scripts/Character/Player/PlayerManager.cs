@@ -15,6 +15,19 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerUIPopUpManager playerUIPopUpManager;
     [HideInInspector] public PlayerInventoryManager playerInventoryManager;
     [HideInInspector] public PlayerEquipmentManager playerEquipmentManager;
+    [HideInInspector] public PlayerCombatManager playerCombatManager;
+
+    public int _currentWeaponBeingUsed = 0;
+    public int CurrentWeaponBeingUsed{
+        get{return _currentWeaponBeingUsed;}
+        set{
+            // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
+            playerEquipmentManager.OnCurrentWeapongBeingUsedIDChange(_currentWeaponBeingUsed, value);
+            // Debug.Log("---VALUE---: " + value);
+            _currentWeaponBeingUsed = value;
+            // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
+        }
+    }
 
     protected override void Awake()
     {
@@ -29,6 +42,7 @@ public class PlayerManager : CharacterManager
 
         playerInventoryManager = GetComponent<PlayerInventoryManager>();
         playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
+        playerCombatManager = GetComponent<PlayerCombatManager>();
 
         // THIS WILL BE MOVED WHEN SAVING AND LOADING IS ADDED
 
