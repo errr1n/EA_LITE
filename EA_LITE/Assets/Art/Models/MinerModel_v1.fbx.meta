@@ -1,0 +1,396 @@
+fileFormatVersion: 2
+guid: 75c179ae3bd8d3d479322d5121cdab5b
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Coat_Mat
+    second: {fileID: 2100000, guid: db8aefe038858d94fbbe36cc6599bf6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gauntlet_Mat
+    second: {fileID: 2100000, guid: 4502ba79ace39d44b9bdab56b15f801d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glove-Boot_Mat
+    second: {fileID: 2100000, guid: 43abb32599b99894096b11ca2d9fe359, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Goggle-Glass_Mat
+    second: {fileID: 2100000, guid: b521e630488366c409ed21bda6080307, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Goggle_Mat
+    second: {fileID: 2100000, guid: 52247ed479d494f44b74583f9b393142, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HairMat
+    second: {fileID: 2100000, guid: 7e2dff5df3e010a4fbeaedc6eaf315c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hat_Mat
+    second: {fileID: 2100000, guid: 0663814d9e2bd264da9af25569abbb7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HeadLamp-Body_Mat
+    second: {fileID: 2100000, guid: 8c38f25bd1a8dd94887d11f4f535e006, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HeadLamp-Light_Mat
+    second: {fileID: 2100000, guid: 6cdaf5e06e0fb5f4bb4f15d3c8de3c35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KneePad_Mat
+    second: {fileID: 2100000, guid: 771c019dad5c5c846bea3056f348db5e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pants_Mat
+    second: {fileID: 2100000, guid: bc9d21bf656652542bc9e891b40ad493, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Scarf_Mat
+    second: {fileID: 2100000, guid: 2758180e27c4a74488f313dd11064a68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_Mat
+    second: {fileID: 2100000, guid: 82b57807e9522be45b75689b725e7838, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Strap_Mat
+    second: {fileID: 2100000, guid: 4d2c44b48135a694287503b938873c78, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Coat_Mat_BaseColor
+    second: {fileID: 2800000, guid: 8a4103e28748e6f49aed2ea83d3f6075, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Coat_Mat_Metallic
+    second: {fileID: 2800000, guid: 9457f2e6a7f34f94eba9cc0b9c359db7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Coat_Mat_Normal
+    second: {fileID: 2800000, guid: ee17c529ba9ac844b889a60438461ddb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Coat_Mat_Roughness
+    second: {fileID: 2800000, guid: 390a47cecb757584989c4befe8e69133, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Gauntlet_Mat_BaseColor
+    second: {fileID: 2800000, guid: 8024c79b785cdb149b7f10ba97ed17a7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Gauntlet_Mat_Metallic
+    second: {fileID: 2800000, guid: b9085be22ec5f0048abca8fc48630a0a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Gauntlet_Mat_Roughness
+    second: {fileID: 2800000, guid: 80438c2400d205743a15e48a9ce8c20a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Glove-Boot_Mat_BaseColor
+    second: {fileID: 2800000, guid: 948b7d6bd5298ea46980ca41a1ffb00e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Glove-Boot_Mat_Normal
+    second: {fileID: 2800000, guid: 4b5f7bb71a854e84d94e1bc69754ce3d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Glove-Boot_Mat_Roughness
+    second: {fileID: 2800000, guid: d99b77b195d90bc4d8dfe01c7f716edc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Goggle-Glass_Mat_BaseColor
+    second: {fileID: 2800000, guid: d0e8633c7ce10f141a0fd2563cbc7d2c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Goggle-Glass_Mat_Roughness
+    second: {fileID: 2800000, guid: 46f5a9435002fcc4da0be1b7d639e48b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Goggle_Mat_BaseColor
+    second: {fileID: 2800000, guid: 93d16429926058944a262b829c0653c4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Goggle_Mat_Metallic
+    second: {fileID: 2800000, guid: 78b195d3733fcc4458e2e1cc7c60bd6e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Goggle_Mat_Normal
+    second: {fileID: 2800000, guid: 8cd21ebe74220a84abb0508f4016427f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Goggle_Mat_Roughness
+    second: {fileID: 2800000, guid: bc79dd35250dd5a4a8b63840b08a0fd5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: HairMat_BaseColor
+    second: {fileID: 2800000, guid: d730341e9d8b73d46a28624007a3b5cd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: HairMat_Normal
+    second: {fileID: 2800000, guid: ae7136b4e0ecc4047b3fab99ef64e702, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: HairMat_Roughness
+    second: {fileID: 2800000, guid: 97787a8bb79688f449ebb570e4f2021f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Hat_Mat_BaseColor
+    second: {fileID: 2800000, guid: 265be3b7396ea5041bb00d793b8decaf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Hat_Mat_Normal
+    second: {fileID: 2800000, guid: b260c14d37e4865478e7ab38d775f1ab, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Hat_Mat_Roughness
+    second: {fileID: 2800000, guid: a49fa21020b10ab43974dba29496d273, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: HeadLamp-Body_Mat_BaseColor
+    second: {fileID: 2800000, guid: 14bc53a609383f74f90c72d5d1a0421e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: HeadLamp-Body_Mat_Metallic
+    second: {fileID: 2800000, guid: c878eab5281489545a7ff2e776dd47a8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: HeadLamp-Body_Mat_Normal
+    second: {fileID: 2800000, guid: 8cd9524dd7a527f4eb7ef1449a56a98b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: HeadLamp-Body_Mat_Roughness
+    second: {fileID: 2800000, guid: 15f09ed7af47c5644ab9c73e19be461a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: HeadLamp-Light_Mat_BaseColor
+    second: {fileID: 2800000, guid: 7ac47cb1ca6a210449c1462a3ea222e9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: HeadLamp-Light_Mat_Emission
+    second: {fileID: 2800000, guid: 251333b368a3a7949bd9d1f3232db100, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: HeadLamp-Light_Mat_Roughness
+    second: {fileID: 2800000, guid: 0c702257370abba4f901be277d2906fa, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: KneePad_Mat_BaseColor
+    second: {fileID: 2800000, guid: 8525347c5a2b0c64485d480ed01ec309, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: KneePad_Mat_Metallic
+    second: {fileID: 2800000, guid: 7a20524ed0d70234d8061e59fcea9106, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: KneePad_Mat_Normal
+    second: {fileID: 2800000, guid: 258fe88192609a444814f6f172f47e62, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: KneePad_Mat_Roughness
+    second: {fileID: 2800000, guid: 27dce24ffae82fe4f99e5deaff70c6d8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pants_Mat_BaseColor
+    second: {fileID: 2800000, guid: 2b725439e672ede43ae0d70c11c44456, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pants_Mat_Normal
+    second: {fileID: 2800000, guid: f562afa0ef50d124c8212e8f1285cf89, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Scarf_Mat_BaseColor
+    second: {fileID: 2800000, guid: c2b81212104eb9046ac9cca9ebcc1940, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Scarf_Mat_Normal
+    second: {fileID: 2800000, guid: 3e0f50e4234e1004eac70cbddd38d6d3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Scarf_Mat_Roughness
+    second: {fileID: 2800000, guid: 9d98485cdde63254bb33564a10a46352, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Skin_Mat_BaseColor
+    second: {fileID: 2800000, guid: e3eec9f592085234488ac924f912e574, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Skin_Mat_Roughness
+    second: {fileID: 2800000, guid: 1fc20116a11b1a346978952c0152f609, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Strap_Mat_BaseColor
+    second: {fileID: 2800000, guid: f9cd4277d605f724c88dc8e360b3e05a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Strap_Mat_Metallic
+    second: {fileID: 2800000, guid: 65f1a0770b7179c4680563443cc6a253, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Strap_Mat_Normal
+    second: {fileID: 2800000, guid: 9919b9a0b8997654f908d1df5cf5eb6c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Strap_Mat_Roughness
+    second: {fileID: 2800000, guid: fdc3257d8cef8d642b5a0c8c6d67760d, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
