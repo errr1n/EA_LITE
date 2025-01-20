@@ -12,6 +12,7 @@ public class CharacterManager : MonoBehaviour
     [HideInInspector] public CharacterAnimatorManager characterAnimatorManager;
     [HideInInspector] public CharacterEffectsManager characterEffectsManager;
     [HideInInspector] public CharacterStatsManager characterStatsManager;
+    [HideInInspector] public CharacterCombatManager characterCombatManager;
 
     [Header("FLAGS")]
     public bool isPerformingAction = false;
@@ -39,6 +40,7 @@ public class CharacterManager : MonoBehaviour
         characterEffectsManager = GetComponent<CharacterEffectsManager>();
         characterStatsManager = GetComponent<CharacterStatsManager>();
         characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
+        characterCombatManager = GetComponent<CharacterCombatManager>();
     }
 
     protected virtual void Start()

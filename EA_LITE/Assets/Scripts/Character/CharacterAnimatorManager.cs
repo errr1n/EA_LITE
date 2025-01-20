@@ -53,7 +53,8 @@ public class CharacterAnimatorManager : MonoBehaviour
     }
 
     // ADD ATTACK TYPE?
-    public virtual void PlayTargetAttackActionAnimation(string targetAnimation, 
+    public virtual void PlayTargetAttackActionAnimation(AttackType attackType, 
+        string targetAnimation, 
         bool isPerformingAction, 
         bool applyRootMotion = true, 
         bool canRotate = false, 
@@ -61,6 +62,7 @@ public class CharacterAnimatorManager : MonoBehaviour
     {
         // keep track of last attack performed for combos
         // keep track of current attack type (light, heavy)
+        character.characterCombatManager.currentAttackType = attackType;
         // update animation set to current weapon animations
         character.applyRootMotion = applyRootMotion;
         character.animator.CrossFade(targetAnimation, 0.2f);
