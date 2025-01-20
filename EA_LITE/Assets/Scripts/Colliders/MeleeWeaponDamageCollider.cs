@@ -62,6 +62,14 @@ public class MeleeWeaponDamageCollider : DamageCollider
 
         //MIGHT NEED
         // damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);
+
+        damageTarget.ProcessCharacterDamage(
+            damageTarget, 
+            damageEffect.physicalDamage,
+            damageEffect.angleHitFrom,
+            damageEffect.contactPoint.x,
+            damageEffect.contactPoint.y,
+            damageEffect.contactPoint.z);
     }
 
     // apply damage modifiers

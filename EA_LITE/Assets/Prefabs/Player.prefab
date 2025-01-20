@@ -1357,6 +1357,7 @@ MonoBehaviour:
   characterAnimatorManager: {fileID: 0}
   characterEffectsManager: {fileID: 0}
   characterStatsManager: {fileID: 0}
+  characterCombatManager: {fileID: 0}
   isPerformingAction: 0
   isJumping: 0
   isGrounded: 1
@@ -1372,6 +1373,7 @@ MonoBehaviour:
   playerUIPopUpManager: {fileID: 0}
   playerInventoryManager: {fileID: 0}
   playerEquipmentManager: {fileID: 0}
+  playerCombatManager: {fileID: 0}
 --- !u!114 &7966535531607252331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1384,6 +1386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e34db608aa91444af524e144631715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentAttackType: 0
   currentWeaponBeingUsed: {fileID: 0}
 --- !u!114 &-1127844123622078842
 MonoBehaviour:
@@ -1435,7 +1438,6 @@ MonoBehaviour:
   runningSpeed: 5
   sprintingSpeed: 7
   rotationSpeed: 15
-  jumpForwardSpeed: 5
   freeFallSpeed: 2
 --- !u!114 &-1751162612850857200
 MonoBehaviour:
@@ -1467,13 +1469,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42cc5c7a0c488f45934334adf34006e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   playerCombatManager: {fileID: 0}
+  playerAnimatorManager: {fileID: 0}
   rightHandSlot: {fileID: 0}
   rightWeaponManager: {fileID: 0}
   rightHandWeaponModel: {fileID: 0}
+  isUsingRightHand: 0
   _currentWeaponBeingUsed: 0
   _currentRightHandWeaponID: 0
-  isUsingRightHand: 0
 --- !u!114 &-3440656882890443927
 MonoBehaviour:
   m_ObjectHideFlags: 0

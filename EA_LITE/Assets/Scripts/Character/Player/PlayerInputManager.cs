@@ -29,7 +29,7 @@ public class PlayerInputManager : MonoBehaviour
     [Header("PLAYER ACTION INPUT")]
     [SerializeField] bool dodgeInput = false;
     [SerializeField] bool sprintInput = false;
-    [SerializeField] bool jumpInput = false;
+    // [SerializeField] bool jumpInput = false;
     // public bool isSprinting = false;
     [SerializeField] bool leftClickInput = false;
     
@@ -215,15 +215,15 @@ public class PlayerInputManager : MonoBehaviour
         }
     }
 
-    private void HandleJumpInput()
-    {
-        if(jumpInput)
-        {
-            jumpInput = false;
-            // ATTEMPT TO PERFORM A JUMP
-            player.playerLocomotionManager.AttemptToPerformJump();
-        }
-    }
+    // private void HandleJumpInput()
+    // {
+    //     if(jumpInput)
+    //     {
+    //         jumpInput = false;
+    //         // ATTEMPT TO PERFORM A JUMP
+    //         player.playerLocomotionManager.AttemptToPerformJump();
+    //     }
+    // }
 
     private void HandleLeftClickInput()
     {

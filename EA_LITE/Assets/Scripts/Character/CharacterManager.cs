@@ -51,6 +51,7 @@ public class CharacterManager : MonoBehaviour
     protected virtual void Update()
     {
         // boolean for isGrounded in animator
+        // ProcessCharacterDamage();
     }
 
     protected virtual void LateUpdate()
@@ -109,5 +110,26 @@ public class CharacterManager : MonoBehaviour
                 Physics.IgnoreCollision(collider, otherCollider, true);
             }
         }
+    }
+
+    public void ProcessCharacterDamage(
+        CharacterManager damagedCharacter,  
+        float physicalDamage,
+        float angleHitFrom,
+        float contactPointX,
+        float contactPointY,
+        float contactPointZ)
+    {
+        // damagedCharacter = damagedCharacter;
+
+        TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
+        damageEffect.physicalDamage = physicalDamage;
+        damageEffect.angleHitFrom = angleHitFrom;
+        damageEffect.contactPoint = new Vector3(contactPointX, contactPointY, contactPointZ);
+        // damageEffect.characterCausingDamage = characterCausingDamage;
+
+        damagedCharacter.characterEffectsManager.ProcessInstantEffect(damageEffect);
+        Debug.Log("SOMEHOW WORKING?");
+
     }
 }
