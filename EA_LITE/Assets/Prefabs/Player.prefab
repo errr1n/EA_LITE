@@ -178,6 +178,7 @@ Transform:
   m_Father: {fileID: 7187903612568067772}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &813357133088050623
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +406,8 @@ Transform:
   m_Father: {fileID: 4296824889060095353}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> Erin-DamageWithWeapon
 --- !u!1 &1287581183976208475
 GameObject:
   m_ObjectHideFlags: 0
@@ -2792,6 +2795,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6112013905796092140}
   m_RootOrder: 1
+<<<<<<< HEAD
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4698020786403457065
 GameObject:
@@ -2824,6 +2828,8 @@ Transform:
   - {fileID: 8114955570034021174}
   m_Father: {fileID: 6911169959472917130}
   m_RootOrder: 0
+=======
+>>>>>>> Erin-DamageWithWeapon
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4832549515621863521
 GameObject:
@@ -3227,6 +3233,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e34db608aa91444af524e144631715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
+=======
+  currentTarget: {fileID: 0}
+  currentAttackType: 0
+  lockOnTransform: {fileID: 0}
+>>>>>>> Erin-DamageWithWeapon
   currentWeaponBeingUsed: {fileID: 0}
 --- !u!114 &-1127844123622078842
 MonoBehaviour:
