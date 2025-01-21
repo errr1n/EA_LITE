@@ -11,6 +11,8 @@ public class CharacterManager : MonoBehaviour
     [HideInInspector] public Animator animator;
     [HideInInspector] public CharacterAnimatorManager characterAnimatorManager;
     [HideInInspector] public CharacterEffectsManager characterEffectsManager;
+    [HideInInspector] public CharacterSoundFXManager characterSoundFXManager;
+    [HideInInspector] public CharacterCombatManager characterCombatManager;
     [HideInInspector] public CharacterStatsManager characterStatsManager;
 
     [Header("FLAGS")]
@@ -20,6 +22,11 @@ public class CharacterManager : MonoBehaviour
     public bool applyRootMotion = false;
     public bool canRotate = true;
     public bool canMove = true;
+
+    public bool isLockedOn = false;
+
+    [Header("STATUS")]
+    public bool isDead = false;
 
     [Header("MORE FLAGS")]
     [SerializeField] public bool isSprinting = false;
@@ -37,8 +44,10 @@ public class CharacterManager : MonoBehaviour
         animator = GetComponent<Animator>();
 
         characterEffectsManager = GetComponent<CharacterEffectsManager>();
+        characterSoundFXManager = GetComponent<CharacterSoundFXManager>();
         characterStatsManager = GetComponent<CharacterStatsManager>();
         characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
+        characterCombatManager = GetComponent<CharacterCombatManager>();
     }
 
     protected virtual void Start()
@@ -49,6 +58,12 @@ public class CharacterManager : MonoBehaviour
     protected virtual void Update()
     {
         // boolean for isGrounded in animator
+        // ProcessCharacterDamage();
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        //
     }
 
     protected virtual void LateUpdate()
@@ -59,7 +74,7 @@ public class CharacterManager : MonoBehaviour
     public virtual IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
     {
         characterStatsManager.CurrentHealth = 0;
-        characterStatsManager.isDead = true;
+        isDead = true;
         // Debug.Log("HERE, DEFINETLY DEAD");
 
         // RESET ANY FLAGS THAT NEED TO BE RESET
@@ -107,5 +122,26 @@ public class CharacterManager : MonoBehaviour
                 Physics.IgnoreCollision(collider, otherCollider, true);
             }
         }
+    }
+
+    public void ProcessCharacterDamage(
+        CharacterManager damagedCharacter,  
+        float physicalDamage,
+        float angleHitFrom,
+        float contactPointX,
+        float contactPointY,
+        float contactPointZ)
+    {
+        // damagedCharacter = damagedCharacter;
+
+        TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
+        damageEffect.physicalDamage = physicalDamage;
+        damageEffect.angleHitFrom = angleHitFrom;
+        damageEffect.contactPoint = new Vector3(contactPointX, contactPointY, contactPointZ);
+        // damageEffect.characterCausingDamage = characterCausingDamage;
+
+        damagedCharacter.characterEffectsManager.ProcessInstantEffect(damageEffect);
+        Debug.Log("SOMEHOW WORKING?");
+
     }
 }

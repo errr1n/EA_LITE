@@ -15,6 +15,8 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
 
     public GameObject rightHandWeaponModel;
 
+    public bool isUsingRightHand = false;
+
     //maybe
     public int _currentWeaponBeingUsed = 0;
     public int CurrentWeaponBeingUsed{
@@ -40,7 +42,7 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
         }
     }
 
-    public bool isUsingRightHand = false;
+    // public bool isUsingRightHand = false;
 
     protected override void Awake()
     {
@@ -237,5 +239,33 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
         {
             isUsingRightHand = true;
         }
+    }
+
+    // DAMAGE COLLIDERS
+
+    // CALLED ON ANIMATION
+    public void OpenDamageCollider()
+    {
+        // OPEN RIGHT HAND WEAPON DAMAGE COLLIDER
+        if(isUsingRightHand)
+        {
+            rightWeaponManager.meleeDamageCollider.EnableDamageCollider();
+            // Debug.Log("OpenDamageCollider");
+        }
+        //left hand
+
+        // PLAY WHOOSH SOUND
+    }
+    
+    // CALLED ON ANIMATION
+    public void CloseDamageCollider()
+    {
+        // OPEN RIGHT HAND WEAPON DAMAGE COLLIDER
+        if(isUsingRightHand)
+        {
+            rightWeaponManager.meleeDamageCollider.DisableDamageCollider();
+            // Debug.Log("CloseDamageCollider");
+        }
+        //left hand
     }
 }
