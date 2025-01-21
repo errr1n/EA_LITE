@@ -54,6 +54,11 @@ public class CharacterManager : MonoBehaviour
         // ProcessCharacterDamage();
     }
 
+    protected virtual void FixedUpdate()
+    {
+        //
+    }
+
     protected virtual void LateUpdate()
     {
         //
