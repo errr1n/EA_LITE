@@ -15,8 +15,6 @@ public class WeaponItem : Item
     public int physicalDamage = 0;
 
     // HEAVY VS LIGHT ATTACKS?
-    // [Header("Attack Modifiers")]
-    // public float light_Attack_Modifier = 1.1f;
 
     [Header("Actions")]
     public WeaponItemAction leftClick_Action;

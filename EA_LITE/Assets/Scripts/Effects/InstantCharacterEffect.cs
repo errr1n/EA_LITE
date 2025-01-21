@@ -12,7 +12,7 @@ public class InstantCharacterEffect : ScriptableObject
         // characterStatsManager = GetComponent<CharacterStatsManager>();
     }
 
-    public virtual void ProcessEffect(CharacterManager characterManager)
+    public virtual void ProcessEffect(CharacterStatsManager characterStatsManager)
     {
         //
     }

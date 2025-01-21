@@ -6,8 +6,8 @@ public class CharacterStatsManager : MonoBehaviour
 {
     CharacterManager character;
 
-    // [Header("STATUS")]
-    // public bool isDead = false;
+    [Header("STATUS")]
+    public bool isDead = false;
 
     [Header("STAMINA REGENERATION")]
     private float staminaRegenerationTimer = 0;
@@ -106,7 +106,7 @@ public class CharacterStatsManager : MonoBehaviour
 
     public void CheckHP()
     {
-        if(!character.isDead)
+        if(!isDead)
         {
             if(_currentHealth <= 0)
             {

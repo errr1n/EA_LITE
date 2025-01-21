@@ -29,12 +29,12 @@ public class TakeDamageEffect : InstantCharacterEffect
     public float angleHitFrom; // USED TO DETERMINE WHAT DAMAGE ANIMATION TO PLAY
     public Vector3 contactPoint; // POINT ON COLLIDER WHERE DAMAGE IS TAKEN 
 
-    public override void ProcessEffect(CharacterManager characterCausingDamage)
+    public override void ProcessEffect(CharacterStatsManager characterStatsManager)
     {
-        base.ProcessEffect(characterCausingDamage);
+        base.ProcessEffect(characterStatsManager);
 
         // IF CHARACTER IS DEAD DO NOT PROCESS EFFECTS
-        if(characterCausingDamage.isDead)
+        if(characterStatsManager.isDead)
         {
             return;
         }
@@ -42,7 +42,7 @@ public class TakeDamageEffect : InstantCharacterEffect
             // CHECK FOR INVULNERABILITY (DODGING)
 
             // CALCULATE DAMAGE
-            CalculateDamage(characterCausingDamage);
+            CalculateDamage(characterStatsManager);
             // CHECK WHICH DIRECTION THE DAMAGE CAME FROM
             //PLAY A DAMAGE ANIMATION
             // CHECK BUILD UPS?
@@ -50,7 +50,7 @@ public class TakeDamageEffect : InstantCharacterEffect
             // PLAY DAMAGE VFX? (BLOOD)
     }
 
-    private void CalculateDamage(CharacterManager characterManager)
+    private void CalculateDamage(CharacterStatsManager characterStatsManager)
     {
         // if()
         // {
@@ -71,40 +71,8 @@ public class TakeDamageEffect : InstantCharacterEffect
             finalDamageDealt = 1;
         }
 
-        characterManager.characterStatsManager.CurrentHealth -= finalDamageDealt;
+        characterStatsManager.CurrentHealth -= finalDamageDealt;
     }
 
-    //play damage vfx
 
-    //player damage sfx
-
-    // NOT USED
-    private void PlayDirectionalBasedDamageAnimation(CharacterManager character)
-    {
-        if(angleHitFrom >= 145 && angleHitFrom <= 180)
-        {
-            //front animation
-            character.characterAnimatorManager.PlayTargetActionAnimation(character.characterAnimatorManager.hit_Forward_Medium, true);
-        }
-        else if(angleHitFrom <= -145 && angleHitFrom >= -180)
-        {
-            //front animation
-            character.characterAnimatorManager.PlayTargetActionAnimation(character.characterAnimatorManager.hit_Forward_Medium, true);
-        }
-        else if(angleHitFrom >= -45 && angleHitFrom <= 45)
-        {
-            //play back
-            character.characterAnimatorManager.PlayTargetActionAnimation(character.characterAnimatorManager.hit_Backward_Medium, true);
-        }
-        else if(angleHitFrom >= -144 && angleHitFrom <= -45)
-        {
-            //play left
-            character.characterAnimatorManager.PlayTargetActionAnimation(character.characterAnimatorManager.hit_Left_Medium, true);
-        }
-        else if(angleHitFrom >= 45 && angleHitFrom <= 144)
-        {
-            //play right
-            character.characterAnimatorManager.PlayTargetActionAnimation(character.characterAnimatorManager.hit_Right_Medium, true);
-        }
-    }
 }

@@ -5,9 +5,7 @@ using UnityEngine;
 public class PlayerCombatManager : CharacterCombatManager
 {
     PlayerEquipmentManager playerEquipmentManager;
-
     public WeaponItem currentWeaponBeingUsed;
-    // public AttackType currentAttackType;
 
     protected override void Awake()
     {
@@ -24,7 +22,4 @@ public class PlayerCombatManager : CharacterCombatManager
 
         // weaponAction.AttemptToPerformAction(weaponAction.actionID, weaponPerformingAction.itemID);
     }
-
-    // drain stamina?
-    // switch statement for attack type stamina drain
 }

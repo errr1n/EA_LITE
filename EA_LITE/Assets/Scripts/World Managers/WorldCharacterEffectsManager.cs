@@ -6,9 +6,6 @@ public class WorldCharacterEffectsManager : MonoBehaviour
 {
     public static WorldCharacterEffectsManager instance;
 
-    // [Header("VFX")]
-    //can do bloodsplatter or rocks of whatever particles
-
     [Header("Damage")]
     public TakeDamageEffect takeDamageEffect;
 
