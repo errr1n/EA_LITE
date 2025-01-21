@@ -10,21 +10,21 @@ public class TakeStaminaDamageEffect : InstantCharacterEffect
     public float staminaDamage;
 
     // MIGHT NEED TO CHANGE TO CharacterStatsManager characterStatsManager
-    public override void ProcessEffect(CharacterStatsManager characterStatsManager)
+    public override void ProcessEffect(CharacterManager characterManager)
     {
         // WHY DO WE DO THIS
         // base.ProcessEffect(character);
 
-        CalculateStaminaDamage(characterStatsManager);
+        CalculateStaminaDamage(characterManager);
     }
 
-    private void CalculateStaminaDamage(CharacterStatsManager characterStatsManager)
+    private void CalculateStaminaDamage(CharacterManager characterManager)
     {
         // COMPARE THE BASE STAMINA DAMAGE AGAISNT OTHER PLAYER EFFECTS/MODIFIERS
         // CHANGE THE VALUE BEFORE SUBTRACTING/ADDING IT
         // PLAY SOUND FX OR VFX DURING THE EFFECT
 
         // Debug.Log("CHARACTER IS TAKING: " + staminaDamage + " STAMINE DAMAGE");
-        characterStatsManager.CurrentStamina -= staminaDamage; 
+        characterManager.characterStatsManager.CurrentStamina -= staminaDamage; 
     }
 }

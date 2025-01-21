@@ -23,6 +23,11 @@ public class CharacterManager : MonoBehaviour
     public bool canRotate = true;
     public bool canMove = true;
 
+    public bool isLockedOn = false;
+
+    [Header("STATUS")]
+    public bool isDead = false;
+
     [Header("MORE FLAGS")]
     [SerializeField] public bool isSprinting = false;
 
@@ -69,7 +74,7 @@ public class CharacterManager : MonoBehaviour
     public virtual IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
     {
         characterStatsManager.CurrentHealth = 0;
-        characterStatsManager.isDead = true;
+        isDead = true;
         // Debug.Log("HERE, DEFINETLY DEAD");
 
         // RESET ANY FLAGS THAT NEED TO BE RESET

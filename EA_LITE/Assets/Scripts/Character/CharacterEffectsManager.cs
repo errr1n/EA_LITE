@@ -11,21 +11,21 @@ public class CharacterEffectsManager : MonoBehaviour
     // PROCESS STATIC EFFECTS (ADDING/ REMOVING BUFFS)
 
     // CharacterManager character;
-    CharacterStatsManager characterStatsManager;
+    CharacterManager characterManager;
 
     // [Header("VFX")]
     //can do bloodsplatter or rocks of whatever particles
 
     protected virtual void Awake()
     {
-        characterStatsManager = GetComponent<CharacterStatsManager>();
+        characterManager = GetComponent<CharacterManager>();
     }
 
     public virtual void ProcessInstantEffect(InstantCharacterEffect effect)
     {
         // TAKE IN EFFECT
         // PROCESS IT
-        effect.ProcessEffect(characterStatsManager);
+        effect.ProcessEffect(characterManager);
     }
 
     // play blood splatter or other particles

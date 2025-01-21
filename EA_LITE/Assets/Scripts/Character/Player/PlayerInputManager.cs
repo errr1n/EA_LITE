@@ -20,6 +20,9 @@ public class PlayerInputManager : MonoBehaviour
     public float cameraVerticalInput;
     public float cameraHorizontalInput;
 
+    [Header("LOCK ON INPUT")]
+    [SerializeField] bool lockOnInput;
+
     [Header("PLAYER MOVEMENT INPUT")]
     [SerializeField] Vector2 movementInput;
     public float verticalInput;
@@ -104,6 +107,8 @@ public class PlayerInputManager : MonoBehaviour
 
             playerControls.PlayerActions.LeftClick.performed += i => leftClickInput = true;
 
+            playerControls.PlayerActions.LockOn.performed += i => lockOnInput = true;
+
             // player actions sprint from player controls input system
             // HOLDING THE INPUT, SETS BOOL TO TRUE
             playerControls.PlayerActions.Sprint.performed += i => sprintInput = true;
@@ -143,11 +148,54 @@ public class PlayerInputManager : MonoBehaviour
 
     private void HandleAllInput()
     {
+        HandleLockOnInput();
         HandleCameraMovementInput();
         HandlePlayerMovementInput();
         HandleDodgeInput();
         HandleSprintInput();
         HandleLeftClickInput();
+    }
+
+    private void HandleLockOnInput()
+    {
+        // check for dead target
+        if(player.isLockedOn)
+        {
+            if(player.playerCombatManager.currentTarget != null)
+            {
+                return;
+            }
+
+            // IS OUR CURRENT TARGET DEAD? (UNLOCK)
+            if(player.playerCombatManager.currentTarget.isDead)
+            {
+                player.isLockedOn = false;
+            }
+
+            //attempt to find new target
+        }
+
+        if(lockOnInput && player.isLockedOn)
+        {
+            lockOnInput = false;
+
+            //ARE WE ALREADY LOCKED ON? (UNLOCK)
+
+            //ATTEMPT TO LOCK ON
+
+            //DISABLE LOCK ON
+            return;
+        }
+
+        if(lockOnInput && !player.isLockedOn)
+        {
+            lockOnInput = false;
+
+            //IF WE ARE USING A RANGED WEAPON NO LOCK ON
+
+            //ATTEMPT TO LOCK ON
+            PlayerCamera.instance.HandleLocatingLockOnTargets();
+        }
     }
 
     private void HandlePlayerMovementInput()

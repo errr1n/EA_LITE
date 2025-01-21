@@ -29,12 +29,12 @@ public class TakeDamageEffect : InstantCharacterEffect
     public float angleHitFrom; // USED TO DETERMINE WHAT DAMAGE ANIMATION TO PLAY
     public Vector3 contactPoint; // POINT ON COLLIDER WHERE DAMAGE IS TAKEN 
 
-    public override void ProcessEffect(CharacterStatsManager characterStatsManager)
+    public override void ProcessEffect(CharacterManager characterCausingDamage)
     {
-        base.ProcessEffect(characterStatsManager);
+        base.ProcessEffect(characterCausingDamage);
 
         // IF CHARACTER IS DEAD DO NOT PROCESS EFFECTS
-        if(characterStatsManager.isDead)
+        if(characterCausingDamage.isDead)
         {
             return;
         }
@@ -42,7 +42,7 @@ public class TakeDamageEffect : InstantCharacterEffect
             // CHECK FOR INVULNERABILITY (DODGING)
 
             // CALCULATE DAMAGE
-            CalculateDamage(characterStatsManager);
+            CalculateDamage(characterCausingDamage);
             // CHECK WHICH DIRECTION THE DAMAGE CAME FROM
             //PLAY A DAMAGE ANIMATION
             // CHECK BUILD UPS?
@@ -50,7 +50,7 @@ public class TakeDamageEffect : InstantCharacterEffect
             // PLAY DAMAGE VFX? (BLOOD)
     }
 
-    private void CalculateDamage(CharacterStatsManager characterStatsManager)
+    private void CalculateDamage(CharacterManager characterManager)
     {
         // if()
         // {
@@ -71,7 +71,7 @@ public class TakeDamageEffect : InstantCharacterEffect
             finalDamageDealt = 1;
         }
 
-        characterStatsManager.CurrentHealth -= finalDamageDealt;
+        characterManager.characterStatsManager.CurrentHealth -= finalDamageDealt;
     }
 
     //play damage vfx
