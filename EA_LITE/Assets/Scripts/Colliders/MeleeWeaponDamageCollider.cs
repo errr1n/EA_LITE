@@ -59,6 +59,7 @@ public class MeleeWeaponDamageCollider : DamageCollider
         damageEffect.physicalDamage = physicalDamage;
 
         damageEffect.contactPoint = contactPoint;
+        damageEffect.angleHitFrom = Vector3.SignedAngle(characterCausingDamage.transform.forward, damageTarget.transform.forward, Vector3.up);
 
         //MIGHT NEED
         // damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);

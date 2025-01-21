@@ -13,6 +13,9 @@ public class CharacterEffectsManager : MonoBehaviour
     // CharacterManager character;
     CharacterStatsManager characterStatsManager;
 
+    // [Header("VFX")]
+    //can do bloodsplatter or rocks of whatever particles
+
     protected virtual void Awake()
     {
         characterStatsManager = GetComponent<CharacterStatsManager>();
@@ -24,4 +27,6 @@ public class CharacterEffectsManager : MonoBehaviour
         // PROCESS IT
         effect.ProcessEffect(characterStatsManager);
     }
+
+    // play blood splatter or other particles
 }

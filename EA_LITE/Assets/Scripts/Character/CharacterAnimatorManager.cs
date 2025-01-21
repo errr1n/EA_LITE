@@ -11,6 +11,14 @@ public class CharacterAnimatorManager : MonoBehaviour
     int vertical;
     int horizontal;
 
+    [Header("Damage Animations")]
+    public string hit_Forward_Medium = "hit_Forward_Medium";
+    public string hit_Backward_Medium = "hit_Backward_Medium";
+    public string hit_Left_Medium = "hit_Left_Medium";
+    public string hit_Right_Medium = "hit_Right_Medium";
+
+    // list to randomize animations
+
     protected virtual void Awake()
     {
         character = GetComponent<CharacterManager>();
@@ -19,6 +27,8 @@ public class CharacterAnimatorManager : MonoBehaviour
         vertical = Animator.StringToHash("Vertical");
         horizontal = Animator.StringToHash("Horizontal");
     }
+
+    //get random animations
 
     public void UpdateAnimatorMovementParameters(float horizontalMovement, float verticalMovement)
     {

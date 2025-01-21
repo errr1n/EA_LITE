@@ -153,4 +153,24 @@ public class WorldAIManager : MonoBehaviour
     // {
 
     // }
+
+
+    // private void DespawnAllCharacters2()
+    // {
+    //     // spawnedInCharacters.Remove()
+    //     for(int i = spawnedInCharacters.Count - 1; i > -1; i--)
+    //     {
+    //         Debug.Log("REMOVE");
+    //         // spawnedInCharacters.RemoveAt(i);
+    //         GameObject.Destroy(spawnedInCharacters[i]); 
+    //         spawnedInCharacters.RemoveAt(i);
+
+    //         if(spawnedInCharacters[i] == null)
+    //         {
+    //             // spawnedInCharacters.RemoveAt(i);
+    //             GameObject.Destroy(spawnedInCharacters[i]); 
+    //             spawnedInCharacters.RemoveAt(i);
+    //         }
+    //     }
+    // }
 }

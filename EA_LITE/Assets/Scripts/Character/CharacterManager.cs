@@ -11,8 +11,9 @@ public class CharacterManager : MonoBehaviour
     [HideInInspector] public Animator animator;
     [HideInInspector] public CharacterAnimatorManager characterAnimatorManager;
     [HideInInspector] public CharacterEffectsManager characterEffectsManager;
-    [HideInInspector] public CharacterStatsManager characterStatsManager;
+    [HideInInspector] public CharacterSoundFXManager characterSoundFXManager;
     [HideInInspector] public CharacterCombatManager characterCombatManager;
+    [HideInInspector] public CharacterStatsManager characterStatsManager;
 
     [Header("FLAGS")]
     public bool isPerformingAction = false;
@@ -38,6 +39,7 @@ public class CharacterManager : MonoBehaviour
         animator = GetComponent<Animator>();
 
         characterEffectsManager = GetComponent<CharacterEffectsManager>();
+        characterSoundFXManager = GetComponent<CharacterSoundFXManager>();
         characterStatsManager = GetComponent<CharacterStatsManager>();
         characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
         characterCombatManager = GetComponent<CharacterCombatManager>();
