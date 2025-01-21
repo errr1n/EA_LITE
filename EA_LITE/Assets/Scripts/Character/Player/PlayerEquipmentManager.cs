@@ -250,7 +250,7 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
         if(isUsingRightHand)
         {
             rightWeaponManager.meleeDamageCollider.EnableDamageCollider();
-            Debug.Log("OpenDamageCollider");
+            // Debug.Log("OpenDamageCollider");
         }
         //left hand
 
@@ -264,7 +264,7 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
         if(isUsingRightHand)
         {
             rightWeaponManager.meleeDamageCollider.DisableDamageCollider();
-            Debug.Log("CloseDamageCollider");
+            // Debug.Log("CloseDamageCollider");
         }
         //left hand
     }
