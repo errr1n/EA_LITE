@@ -81,6 +81,11 @@ public class TakeDamageEffect : InstantCharacterEffect
     // NOT USED
     private void PlayDirectionalBasedDamageAnimation(CharacterManager character)
     {
+        if(character.isDead)
+        {
+            return;
+        }
+        
         if(angleHitFrom >= 145 && angleHitFrom <= 180)
         {
             //front animation
