@@ -205,7 +205,7 @@ public class PlayerInputManager : MonoBehaviour
                 // SET THE TARGET AS OUR CURRENT TARGET
                 player.playerCombatManager.SetTarget(PlayerCamera.instance.nearestLockOnTarget);
                 player.IsLockedOn = true;
-                Debug.Log("is locked on: " + player.IsLockedOn);
+                // Debug.Log("is locked on: " + player.IsLockedOn);
             }
         }
 

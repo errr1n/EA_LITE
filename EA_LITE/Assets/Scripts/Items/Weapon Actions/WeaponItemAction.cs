@@ -12,6 +12,6 @@ public class WeaponItemAction : ScriptableObject
     {
         // playerPerformingAction.playerCombatManager.currentWeaponBeingUsed = weaponPerformingAction;
         playerPerformingAction.CurrentWeaponBeingUsed = weaponPerformingAction.itemID;
-        Debug.Log("TEST ACTION FIRED. Weapon ID: " + weaponPerformingAction.itemID);
+        // Debug.Log("TEST ACTION FIRED. Weapon ID: " + weaponPerformingAction.itemID);
     }
 }
