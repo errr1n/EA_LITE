@@ -7,6 +7,12 @@ public class Enums : MonoBehaviour
     // 
 }
 
+public enum CharacterGroup
+{
+    Friendly,
+    Enemy,
+}
+
 public enum WeaponModelSlot
 {
     RightHand,

@@ -736,6 +736,7 @@ MonoBehaviour:
   characterSoundFXManager: {fileID: 0}
   characterCombatManager: {fileID: 0}
   characterStatsManager: {fileID: 0}
+  characterGroup: 1
   isPerformingAction: 0
   isJumping: 0
   isGrounded: 1
@@ -745,6 +746,7 @@ MonoBehaviour:
   isLockedOn: 0
   isDead: 0
   isSprinting: 0
+  aiCharacterCombatManager: {fileID: 0}
   currentState: {fileID: 11400000, guid: 5d1517913256ca440828028e2452f262, type: 2}
 --- !u!114 &-3885768404262673660
 MonoBehaviour:
@@ -761,6 +763,9 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   currentAttackType: 0
   lockOnTransform: {fileID: 2649747854461642546}
+  detectionRadius: 15
+  minimumDetectionAngle: -35
+  maximumDetectionAngle: 35
 --- !u!114 &5634957200736973394
 MonoBehaviour:
   m_ObjectHideFlags: 0
