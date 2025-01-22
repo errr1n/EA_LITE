@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterCombatManager : MonoBehaviour
 {
     //may not need
-    CharacterManager character;
+    protected CharacterManager character;
 
     [Header("Attack Target")]
     public CharacterManager currentTarget;

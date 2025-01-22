@@ -15,6 +15,9 @@ public class CharacterManager : MonoBehaviour
     [HideInInspector] public CharacterCombatManager characterCombatManager;
     [HideInInspector] public CharacterStatsManager characterStatsManager;
 
+    [Header("Character Group")]
+    public CharacterGroup characterGroup;
+
     [Header("FLAGS")]
     public bool isPerformingAction = false;
     public bool isJumping = false;

@@ -31,4 +31,34 @@ public class WorldUtilityManager : MonoBehaviour
     {
         return enviroLayers;
     }
+
+    public bool CanIDamageThsTarget(CharacterGroup attackingCharacter, CharacterGroup targetCharacter)
+    {
+        if(attackingCharacter == CharacterGroup.Friendly)
+        {
+            switch(targetCharacter)
+            {
+                case CharacterGroup.Friendly: 
+                    return false;
+                case CharacterGroup.Enemy: 
+                    return true;
+                default:
+                    break;
+            }
+        }
+        else if(attackingCharacter == CharacterGroup.Enemy)
+        {
+            switch(targetCharacter)
+            {
+                case CharacterGroup.Friendly: 
+                    return true;
+                case CharacterGroup.Enemy: 
+                    return false;
+                default:
+                    break;
+            }
+        }
+
+        return false;
+    }
 }
