@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 3477023689653640151}
   - component: {fileID: 3208838979969061302}
   - component: {fileID: -4885677556943362705}
-  - component: {fileID: 4011380997912226344}
+  - component: {fileID: -6983697397537882309}
   - component: {fileID: 5634957200736973394}
   - component: {fileID: 8033373412023234403}
   - component: {fileID: 7948260766930337015}
@@ -746,7 +746,7 @@ MonoBehaviour:
   isDead: 0
   isSprinting: 0
   currentState: {fileID: 11400000, guid: 5d1517913256ca440828028e2452f262, type: 2}
---- !u!114 &4011380997912226344
+--- !u!114 &-6983697397537882309
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -755,7 +755,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1795968958412888741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24d4d27e53bca65458f350ef2e4bc374, type: 3}
+  m_Script: {fileID: 11500000, guid: df23cfb11daf5674da3c269e0c9d9ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentTarget: {fileID: 0}
