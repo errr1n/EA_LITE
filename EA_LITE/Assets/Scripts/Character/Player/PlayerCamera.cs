@@ -36,6 +36,7 @@ public class PlayerCamera : MonoBehaviour
     // [SerializeField] float maximumLockOnDistance = 20;
     private List<CharacterManager> availableTargets = new List<CharacterManager>();
     public CharacterManager nearestLockOnTarget;
+    [SerializeField] float lockOnTargetFollowSpeed = 0.2f;
 
     private void Awake()
     {
@@ -79,29 +80,52 @@ public class PlayerCamera : MonoBehaviour
     private void HandleRotations()
     {
         // IF LOCKED ON, FORCE ROTATION TOWARDS TARGET
+        if(player.isLockedOn)
+        {
+            // THIS ROTATES THIS GAMEOBJECT (left and right)
+            Vector3 rotationDirection = player.playerCombatManager.currentTarget.characterCombatManager.lockOnTransform.position - transform.position;
+            rotationDirection.Normalize();
+            rotationDirection.y = 0;
+            Quaternion targetRotation = Quaternion.LookRotation(rotationDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, lockOnTargetFollowSpeed);
+
+            //THIS ROTATES THE PIVOT OBJECT (up and down)
+            //gets lock on from characerCombatManager on the target
+            rotationDirection = player.playerCombatManager.currentTarget.characterCombatManager.lockOnTransform.position - cameraPivotTransform.position;
+            rotationDirection.Normalize();
+
+            targetRotation = Quaternion.LookRotation(rotationDirection);
+            cameraPivotTransform.transform.rotation = Quaternion.Slerp(cameraPivotTransform.rotation, targetRotation, lockOnTargetFollowSpeed);
+
+            // SAVE OUR ROTATION VALUES TO OUT LOOK ANGLES SO WHEN WE UNLOCK IT DOESNT SNAP TOO FAR AWAY
+            leftAndRightLookAngle = transform.eulerAngles.y;
+            upAndDownLookAngle = transform.eulerAngles.x;
+        }
         // ELSE ROTATE REGULARLY
+        else
+        {
+            // NORMAL ROTATIONS 
+            // ROTATE LEFT AND RIGHT BASED ON HORIZONTAL MOVEMENT OF RIGHT JOYSTICK
+            leftAndRightLookAngle += (PlayerInputManager.instance.cameraHorizontalInput * leftAndRightRotationSpeed) * Time.deltaTime;
+            // ROTATE UP AND DOWN BASED ON VERTICAL MOVEMENT OF RIGHT JOYSTICK
+            upAndDownLookAngle -= (PlayerInputManager.instance.cameraVerticalInput * upAndDownRotationSpeed) * Time.deltaTime;
+            // CLAMP UP AND DOWN LOOK ANGLE BETWEEN MIN AND MAX VALUES
+            upAndDownLookAngle = Mathf.Clamp(upAndDownLookAngle, minimumPivot, maximumPivot);
 
-        // NORMAL ROTATIONS 
-        // ROTATE LEFT AND RIGHT BASED ON HORIZONTAL MOVEMENT OF RIGHT JOYSTICK
-        leftAndRightLookAngle += (PlayerInputManager.instance.cameraHorizontalInput * leftAndRightRotationSpeed) * Time.deltaTime;
-        // ROTATE UP AND DOWN BASED ON VERTICAL MOVEMENT OF RIGHT JOYSTICK
-        upAndDownLookAngle -= (PlayerInputManager.instance.cameraVerticalInput * upAndDownRotationSpeed) * Time.deltaTime;
-        // CLAMP UP AND DOWN LOOK ANGLE BETWEEN MIN AND MAX VALUES
-        upAndDownLookAngle = Mathf.Clamp(upAndDownLookAngle, minimumPivot, maximumPivot);
+            Vector3 cameraRotation = Vector3.zero;
+            Quaternion targetRotation;
 
-        Vector3 cameraRotation = Vector3.zero;
-        Quaternion targetRotation;
+            // ROTATE THIS GAMEOBJECT LEFT AND RIGHT
+            cameraRotation.y = leftAndRightLookAngle; // IN TERMS OF ROTATION, Y IS LEFT AND RIGHT
+            targetRotation = Quaternion.Euler(cameraRotation);
+            transform.rotation = targetRotation;
 
-        // ROTATE THIS GAMEOBJECT LEFT AND RIGHT
-        cameraRotation.y = leftAndRightLookAngle; // IN TERMS OF ROTATION, Y IS LEFT AND RIGHT
-        targetRotation = Quaternion.Euler(cameraRotation);
-        transform.rotation = targetRotation;
-
-        // ROTATE THE PIVOT GAMEOBJECT UP AND DOWN
-        cameraRotation = Vector3.zero;
-        cameraRotation.x = upAndDownLookAngle;
-        targetRotation = Quaternion.Euler(cameraRotation);
-        cameraPivotTransform.localRotation = targetRotation;
+            // ROTATE THE PIVOT GAMEOBJECT UP AND DOWN
+            cameraRotation = Vector3.zero;
+            cameraRotation.x = upAndDownLookAngle;
+            targetRotation = Quaternion.Euler(cameraRotation);
+            cameraPivotTransform.localRotation = targetRotation;
+        }
     }
 
     private void HandleCollisions()
