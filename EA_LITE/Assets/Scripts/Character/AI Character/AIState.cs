@@ -6,7 +6,7 @@ public class AIState : ScriptableObject
 {
     public virtual AIState Tick(AICharacterManager aiCharacter)
     {
-        // Debug.Log("WE ARE RUNNING THIS STATE");
+        Debug.Log("WE ARE RUNNING THIS STATE");
         //DO SOME LOGIC TO FIND THE PLAYER
 
         //IF WE HAVE FOUN THE PLAYER, RETURN THE PURSUE STATE
