@@ -159,26 +159,30 @@ public class PlayerInputManager : MonoBehaviour
     private void HandleLockOnInput()
     {
         // check for dead target
-        if(player.isLockedOn)
+        if(player.IsLockedOn)
         {
-            if(player.playerCombatManager.currentTarget != null)
+            if(player.playerCombatManager.currentTarget == null)
             {
+                // lockOnInput = false;
                 return;
             }
 
             // IS OUR CURRENT TARGET DEAD? (UNLOCK)
             if(player.playerCombatManager.currentTarget.isDead)
             {
-                player.isLockedOn = false;
+                player.IsLockedOn = false;
             }
 
             //attempt to find new target
+            // lockOnInput = false;
         }
 
-        if(lockOnInput && player.isLockedOn)
+        if(lockOnInput && player.IsLockedOn)
         {
             lockOnInput = false;
-
+            PlayerCamera.instance.ClearLockOnTarget();
+            // Debug.Log("CLEAR LOCK ON");
+            player.IsLockedOn = false;
             //ARE WE ALREADY LOCKED ON? (UNLOCK)
 
             //ATTEMPT TO LOCK ON
@@ -187,7 +191,7 @@ public class PlayerInputManager : MonoBehaviour
             return;
         }
 
-        if(lockOnInput && !player.isLockedOn)
+        if(lockOnInput && !player.IsLockedOn)
         {
             lockOnInput = false;
 
@@ -195,7 +199,26 @@ public class PlayerInputManager : MonoBehaviour
 
             //ATTEMPT TO LOCK ON
             PlayerCamera.instance.HandleLocatingLockOnTargets();
+
+            if(PlayerCamera.instance.nearestLockOnTarget != null)
+            {
+                // SET THE TARGET AS OUR CURRENT TARGET
+                player.playerCombatManager.SetTarget(PlayerCamera.instance.nearestLockOnTarget);
+                player.IsLockedOn = true;
+                Debug.Log("is locked on: " + player.IsLockedOn);
+            }
         }
+
+        // if(player.playerCombatManager.currentTarget != null)
+        // {
+        //     // lockOnInput = false;
+        //     return;
+        // }
+
+        // if(!lockOnInput && player.isLockedOn)
+        // {
+        //     lockOnInput = false;
+        // }
     }
 
     private void HandlePlayerMovementInput()

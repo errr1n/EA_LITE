@@ -33,7 +33,9 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] float lockOnRadius = 20;
     [SerializeField] float minimumViewableAngle = -50;
     [SerializeField] float maximumViewableAngle = 50;
-    [SerializeField] float maximumLockOnDistance = 20;
+    // [SerializeField] float maximumLockOnDistance = 20;
+    private List<CharacterManager> availableTargets = new List<CharacterManager>();
+    public CharacterManager nearestLockOnTarget;
 
     private void Awake()
     {
@@ -145,10 +147,11 @@ public class PlayerCamera : MonoBehaviour
 
             if(lockOnTarget != null)
             {
+                // Debug.Log("NOT NULL");
                 //  check if they are within our field of view
                 Vector3 lockOnTargetsDirection = lockOnTarget.transform.position - player.transform.position;
                 float distanceFromTarget = Vector3.Distance(player.transform.position, lockOnTarget.transform.position);
-                float viewAbleAngle = Vector3.Angle(lockOnTargetsDirection, cameraObject.transform.forward);
+                float viewableAngle = Vector3.Angle(lockOnTargetsDirection, cameraObject.transform.forward);
 
                 // IF TARGET IS DEAD, CHECK THE NEXT POTENTIAL TARGET
                 if(lockOnTarget.isDead)
@@ -165,12 +168,13 @@ public class PlayerCamera : MonoBehaviour
                 }
 
                 //IF THE TARGET IS TOO FAR AWAY, CHECK THE NEXT POTENTIAL TARGET
-                if(distanceFromTarget > maximumLockOnDistance)
-                {
-                    continue;
-                }
+                // if(distanceFromTarget > maximumLockOnDistance)
+                // {
+                //     continue;
+                // }
 
-                if(viewAbleAngle > minimumViewableAngle && viewAbleAngle < maximumViewableAngle)
+                // LASTLY, IF THE TARGET IS OUTSIDE OF THE FIELD OF VIEW OR BLOCK BY ENVIRONEMENT, CHECK NEXT POTENTIAL TARGET
+                if(viewableAngle > minimumViewableAngle && viewableAngle < maximumViewableAngle)
                 {
                     RaycastHit hit;
 
@@ -183,11 +187,42 @@ public class PlayerCamera : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("WE MADE IT");
+                        // OTHERWISE ADD THIS TARGET TO POTENTIAL TARGET LIST
+                        availableTargets.Add(lockOnTarget);
+                        // Debug.Log("ADD AVAILABLE TARGET: " + availableTargets);
                     }
                 }
             }
 
         }
+
+        // WE NOW SORT THROUGH POTENTIAL TARGETS, SEE WHICH ONE IS THE CLOSEST TO LOCK ONTO FIRST
+        for(int k = 0; k < availableTargets.Count; k++)
+        {
+            if(availableTargets[k] != null)
+            {
+                float distanceFromTarget = Vector3.Distance(player.transform.position, availableTargets[k].transform.position);
+                // Vector3 lockTargetDirection = availableTargets[k].transform.position - player.transform.position;
+
+                if(distanceFromTarget < shortDistance)
+                {
+                    shortDistance = distanceFromTarget;
+                    nearestLockOnTarget = availableTargets[k];
+                    // Debug.Log("nearestLockOnTarget: " + nearestLockOnTarget);
+                }
+            }
+            else
+            {
+                ClearLockOnTarget();
+                player.IsLockedOn = false;
+            }
+        }
+    }
+
+    public void ClearLockOnTarget()
+    {
+        nearestLockOnTarget = null;
+        availableTargets.Clear();
+        // Debug.Log("cleared");
     }
 }

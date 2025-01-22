@@ -73,6 +73,8 @@ public class PlayerManager : CharacterManager
         // playerEquipmentManager.OnCurrentRightHandWeaponIDChange(playerEquipmentManager._currentRightHandWeaponID);
         // playerEquipmentManager.CurrentRightHandWeaponID = playerEquipmentManager._currentRightHandWeaponID;
 
+        // OnIsLockedOnChanged();
+
         DebugMenu();
     }
 
@@ -97,6 +99,7 @@ public class PlayerManager : CharacterManager
     {
         base.ReviveCharacter();
 
+        isDead = false;
         characterStatsManager.CurrentHealth = characterStatsManager.maxHealth;
         characterStatsManager.CurrentStamina = characterStatsManager.maxStamina;
 

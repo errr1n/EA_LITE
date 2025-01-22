@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CharacterCombatManager : MonoBehaviour
 {
+    //may not need
+    CharacterManager character;
+
     [Header("Attack Target")]
     public CharacterManager currentTarget;
 
@@ -15,6 +18,23 @@ public class CharacterCombatManager : MonoBehaviour
     
     protected virtual void Awake()
     {
-        //
+        character = GetComponent<CharacterManager>();
+    }
+
+    public virtual void SetTarget(CharacterManager newTarget)
+    {
+        // if(character)
+
+        if(newTarget != null)
+        {
+            currentTarget = newTarget;
+            Debug.Log("currentTarget: " + currentTarget);
+            //IDS?
+            // character.CurrentLockOnTargetID = newTarget.GetComponent<
+        }
+        else
+        {
+            currentTarget = null;
+        }
     }
 }

@@ -23,7 +23,17 @@ public class CharacterManager : MonoBehaviour
     public bool canRotate = true;
     public bool canMove = true;
 
-    public bool isLockedOn = false;
+    [SerializeField] public bool isLockedOn = false;
+    public bool IsLockedOn{
+        get{return isLockedOn;}
+        set{
+            // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
+            OnIsLockedOnChanged(isLockedOn, value);
+            // Debug.Log("---VALUE---: " + value);
+            isLockedOn = value;
+            // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
+        }
+    }
 
     [Header("STATUS")]
     public bool isDead = false;
@@ -35,6 +45,18 @@ public class CharacterManager : MonoBehaviour
     // public int endurance = 1;
     // public int currentStamina = 0;
     // public int maxStamina = 1;
+
+    // public ulong _currentLockOnTargetID = 0;
+    // public ulong CurrentLockOnTargetID{
+    //     get{return _currentLockOnTargetID;}
+    //     set{
+    //         // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
+    //         OnLockOnTargetIDChange(_currentLockOnTargetID, value);
+    //         // Debug.Log("---VALUE---: " + value);
+    //         _currentLockOnTargetID = value;
+    //         // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
+    //     }
+    // }
 
     protected virtual void Awake()
     {
@@ -143,5 +165,18 @@ public class CharacterManager : MonoBehaviour
         damagedCharacter.characterEffectsManager.ProcessInstantEffect(damageEffect);
         Debug.Log("SOMEHOW WORKING?");
 
+    }
+
+    public void OnLockOnTargetIDChange(ulong oldID, ulong newID)
+    {
+        // character.characterCombatManager.currentTarget = 
+    }
+
+    public void OnIsLockedOnChanged(bool oldValue, bool IsLockedOn)
+    {
+        if(!IsLockedOn)
+        {
+            characterCombatManager.currentTarget = null;
+        }
     }
 }

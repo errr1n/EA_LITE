@@ -83,6 +83,7 @@ public class TakeDamageEffect : InstantCharacterEffect
     {
         if(character.isDead)
         {
+            // Debug.Log("DEAD");
             return;
         }
         
