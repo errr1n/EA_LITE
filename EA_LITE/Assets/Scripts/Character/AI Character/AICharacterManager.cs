@@ -21,8 +21,6 @@ public class AICharacterManager : CharacterManager
         ProcessStateMachine();
     }
 
-
-    //OPTION 1
     private void ProcessStateMachine()
     {
         AIState nextState = null;
@@ -37,15 +35,4 @@ public class AICharacterManager : CharacterManager
             currentState = nextState;
         }
     }
-
-    //OPTION 2
-    // private void ProcessStateMachine2()
-    // {
-    //     AIState nextState = currentState?.Tick(this);
-
-    //     if(nextState != null)
-    //     {
-    //         currentState = nextState;
-    //     }
-    // }
 }
