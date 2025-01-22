@@ -10,15 +10,22 @@ public class IdleState : AIState
     {
         // return base.Tick(aiCharacter);
 
+        // Debug.Log(aiCharacter.characterCombatManager.currentTarget);
+
         if(aiCharacter.characterCombatManager.currentTarget != null)
         {
             // return the pursue target state
             Debug.Log("WE HAVE A TARGET");
+
+            // return this;
         }
         else
         {
             //return this state, to continually search for a target
-            Debug.Log("WE HAVE NO TARGET");
+            // aiCharacter.aiCharacterCombatManager.FindATargetViaLineOfSight(aiCharacter);
+            Debug.Log("SEARCHING FOR TARGET");
+
+            // return this;
         }
 
         return this;
