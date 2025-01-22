@@ -148,7 +148,7 @@ public class PlayerInputManager : MonoBehaviour
 
     private void HandleAllInput()
     {
-        HandleLockOnInput();
+        // HandleLockOnInput();
         HandleCameraMovementInput();
         HandlePlayerMovementInput();
         HandleDodgeInput();

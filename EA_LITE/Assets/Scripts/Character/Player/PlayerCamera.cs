@@ -159,8 +159,8 @@ public class PlayerCamera : MonoBehaviour
     public void HandleLocatingLockOnTargets()
     {
         float shortDistance = Mathf.Infinity;                   // WILL BE USED TO DETERMINE THE TARGET CLOSEST TO THE PLAYER
-        float shortDistanceOfRightTarget = Mathf.Infinity;      // WILL BE USED TO DETERMINE THE SHORTEST DISTANCE ON ONE AXIS TO THE RIGHT OF CURRENT TARGET (+) (move to right in inspector = positive)
-        float shortDistanceOfLefttTarget = -Mathf.Infinity;     // WILL BE USED TO DETERMINE SHORTEST DISTANCE ON ONE AXIS TO THE LEFT OF THE CURRENT TARGET (-) (move to left in inspector = negative)
+        // float shortDistanceOfRightTarget = Mathf.Infinity;      // WILL BE USED TO DETERMINE THE SHORTEST DISTANCE ON ONE AXIS TO THE RIGHT OF CURRENT TARGET (+) (move to right in inspector = positive)
+        // float shortDistanceOfLefttTarget = -Mathf.Infinity;     // WILL BE USED TO DETERMINE SHORTEST DISTANCE ON ONE AXIS TO THE LEFT OF THE CURRENT TARGET (-) (move to left in inspector = negative)
 
         // ADD LAYER MASK
         Collider[] colliders = Physics.OverlapSphere(player.transform.position, lockOnRadius, WorldUtilityManager.instance.GetCharacterLayers());
