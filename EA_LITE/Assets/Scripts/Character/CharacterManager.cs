@@ -30,11 +30,8 @@ public class CharacterManager : MonoBehaviour
     public bool IsLockedOn{
         get{return isLockedOn;}
         set{
-            // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
             OnIsLockedOnChanged(isLockedOn, value);
-            // Debug.Log("---VALUE---: " + value);
             isLockedOn = value;
-            // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
         }
     }
 
@@ -42,11 +39,9 @@ public class CharacterManager : MonoBehaviour
     public bool IsMoving{
         get{return isMoving;}
         set{
-            // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
             OnIsMovingChanged(isMoving, value);
-            // Debug.Log("---VALUE---: " + value);
             isMoving = value;
-            // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
+            // Debug.Log("isMoving: " + isMoving);
         }
     }
 
@@ -197,9 +192,7 @@ public class CharacterManager : MonoBehaviour
 
     public void OnIsMovingChanged(bool oldStatus, bool newStatus)
     {
-        if(!IsMoving)
-        {
-            animator.SetBool("isMoving", isMoving);
-        }
+        animator.SetBool("isMoving", IsMoving);
+        Debug.Log("OnIsMovingChanged: " + IsMoving);
     }
 }
