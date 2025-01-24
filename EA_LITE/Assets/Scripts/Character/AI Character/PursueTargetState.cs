@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [CreateAssetMenu(menuName = "A.I/States/Pursue Target")]
+
 public class PursueTargetState : AIState
 {
     public override AIState Tick(AICharacterManager aiCharacter)
