@@ -28,7 +28,7 @@ public class CharacterCombatManager : MonoBehaviour
         if(newTarget != null)
         {
             currentTarget = newTarget;
-            Debug.Log("currentTarget: " + currentTarget);
+            // Debug.Log("currentTarget: " + currentTarget);
             //IDS?
             // character.CurrentLockOnTargetID = newTarget.GetComponent<
         }

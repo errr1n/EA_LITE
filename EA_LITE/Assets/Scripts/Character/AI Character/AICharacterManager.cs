@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class AICharacterManager : CharacterManager
 {
     [HideInInspector] public AICharacterCombatManager aiCharacterCombatManager;
+    // characterStatsManager characterStatsManager;
 
     [Header("Navmesh Agent")]
     public NavMeshAgent navMeshAgent;
@@ -24,6 +25,7 @@ public class AICharacterManager : CharacterManager
         base.Awake();
 
         aiCharacterCombatManager = GetComponent<AICharacterCombatManager>();
+        // characterStatsManager = GetComponent<characterStatsManager>();
 
         navMeshAgent = GetComponentInChildren<NavMeshAgent>();
 
@@ -62,16 +64,16 @@ public class AICharacterManager : CharacterManager
 
             if(remainingDistance > navMeshAgent.stoppingDistance)
             {
-                isMoving = true;
+                IsMoving = true;
             }
             else
             {
-                isMoving = false;
+                IsMoving = false;
             }
         }
         else
         {
-            isMoving = false;
+            IsMoving = false;
         }
     }
 }

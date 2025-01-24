@@ -190,9 +190,10 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
+    // MOVED TO CHARACTER STATS MANAGER
     public void OnIsMovingChanged(bool oldStatus, bool newStatus)
     {
         animator.SetBool("isMoving", IsMoving);
-        Debug.Log("OnIsMovingChanged: " + IsMoving);
+        // Debug.Log("OnIsMovingChanged: " + IsMoving);
     }
 }
