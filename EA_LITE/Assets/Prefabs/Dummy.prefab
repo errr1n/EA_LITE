@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: -4885677556943362705}
   - component: {fileID: -3885768404262673660}
   - component: {fileID: 5634957200736973394}
-  - component: {fileID: 8033373412023234403}
+  - component: {fileID: 7318790913633547046}
   - component: {fileID: 7948260766930337015}
   - component: {fileID: 5065154501561727475}
   - component: {fileID: 5758503762326680679}
@@ -749,6 +749,7 @@ MonoBehaviour:
   isDead: 0
   isSprinting: 0
   aiCharacterCombatManager: {fileID: 0}
+  aiCharacterLocomotionManager: {fileID: 0}
   navMeshAgent: {fileID: 0}
   currentState: {fileID: 11400000, guid: 5d1517913256ca440828028e2452f262, type: 2}
   idle: {fileID: 11400000, guid: 5d1517913256ca440828028e2452f262, type: 2}
@@ -793,7 +794,7 @@ MonoBehaviour:
   newVitality: 1
   maxHealth: 0
   _currentHealth: 0
---- !u!114 &8033373412023234403
+--- !u!114 &7318790913633547046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -802,13 +803,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1795968958412888741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a43f13a56e808f4e9a396c6103b5e2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 828f4ff8b99cf8d419267629fc612aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheckSphereRadius: 1
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   gravityForce: -5.55
   yVelocity: {x: 0, y: 0, z: 0}
   groundedYVelocity: -20

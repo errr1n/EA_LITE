@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class AICharacterManager : CharacterManager
 {
     [HideInInspector] public AICharacterCombatManager aiCharacterCombatManager;
+    [HideInInspector] public AICharacterLocomotionManager aiCharacterLocomotionManager;
     // characterStatsManager characterStatsManager;
 
     [Header("Navmesh Agent")]
@@ -25,6 +26,8 @@ public class AICharacterManager : CharacterManager
         base.Awake();
 
         aiCharacterCombatManager = GetComponent<AICharacterCombatManager>();
+        aiCharacterLocomotionManager = GetComponent<AICharacterLocomotionManager>();
+        
         // characterStatsManager = GetComponent<characterStatsManager>();
 
         navMeshAgent = GetComponentInChildren<NavMeshAgent>();
@@ -56,6 +59,10 @@ public class AICharacterManager : CharacterManager
         {
             currentState = nextState;
         }
+
+        // reset enemy navMesh agent transform and rotation, done after state machine processes each tick
+        navMeshAgent.transform.localPosition = Vector3.zero;
+        navMeshAgent.transform.localRotation = Quaternion.identity;
 
         if(navMeshAgent.enabled)
         {

@@ -30,6 +30,8 @@ public class PursueTargetState : AIState
             aiCharacter.navMeshAgent.enabled = true;
         }
 
+        aiCharacter.aiCharacterLocomotionManager.RotateTowardsAgent(aiCharacter);
+
         // IF WITHIN COMBAT RANGE, SWITCH TO COMBAT STATE
 
         // IF THE TARGET IS NOT REACHABLE AND FAR AWAY, RETURN HOME
