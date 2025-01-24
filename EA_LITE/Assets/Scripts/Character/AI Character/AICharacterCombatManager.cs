@@ -85,25 +85,21 @@ public class AICharacterCombatManager : CharacterCombatManager
         if(viewableAngle >= 20 && viewableAngle <= 60)
         {
             aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_45", true);
-            Debug.Log("Turn_Right_45");
         }
 
         else if(viewableAngle <= -20 && viewableAngle >= -60)
         {
             aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_45", true);
-            Debug.Log("Turn_Left_45");
         }
 
         if(viewableAngle >= 61 && viewableAngle <= 110)
         {
             aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_90", true);
-            Debug.Log("Turn_Right_90");
         }
 
         else if(viewableAngle <= -61 && viewableAngle >= -110)
         {
             aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_90", true);
-            Debug.Log("Turn_Left_90");
         }
 
         if(viewableAngle >= 111 && viewableAngle <= 145)
@@ -120,7 +116,6 @@ public class AICharacterCombatManager : CharacterCombatManager
         if(viewableAngle >= 146 && viewableAngle <= 180)
         {
             aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_180", true);
-            Debug.Log("Turn_Right_180");
         }
 
         else if(viewableAngle <= -146 && viewableAngle >= -180)

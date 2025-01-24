@@ -538,7 +538,7 @@ GameObject:
   - component: {fileID: 7318790913633547046}
   - component: {fileID: 7948260766930337015}
   - component: {fileID: 5065154501561727475}
-  - component: {fileID: 5758503762326680679}
+  - component: {fileID: 1177850090308718555}
   - component: {fileID: 7581550306778807841}
   - component: {fileID: 5710445414407953941}
   m_Layer: 6
@@ -772,8 +772,8 @@ MonoBehaviour:
   viewableAngle: 0
   targetsDirection: {x: 0, y: 0, z: 0}
   detectionRadius: 15
-  minimumDetectionAngle: -35
-  maximumDetectionAngle: 35
+  minimumFOV: -35
+  MaximumFOV: 35
 --- !u!114 &5634957200736973394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,7 +840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a427a7b856039c47b620df6098d4a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5758503762326680679
+--- !u!114 &1177850090308718555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -849,7 +849,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1795968958412888741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d93e538c595bccf46b25efee66b7cbff, type: 3}
+  m_Script: {fileID: 11500000, guid: c996769107bdf5b458df23ec8297ed99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hit_Forward_Medium: hit_Forward_Medium
