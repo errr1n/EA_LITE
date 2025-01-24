@@ -748,7 +748,10 @@ MonoBehaviour:
   isDead: 0
   isSprinting: 0
   aiCharacterCombatManager: {fileID: 0}
+  navMeshAgent: {fileID: 0}
   currentState: {fileID: 11400000, guid: 5d1517913256ca440828028e2452f262, type: 2}
+  idle: {fileID: 11400000, guid: 5d1517913256ca440828028e2452f262, type: 2}
+  pursueTarget: {fileID: 11400000, guid: b0b247c41dc58704c9009284d0ee1419, type: 2}
 --- !u!114 &-3885768404262673660
 MonoBehaviour:
   m_ObjectHideFlags: 0
