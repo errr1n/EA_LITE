@@ -17,6 +17,8 @@ public class AICharacterManager : CharacterManager
     [SerializeField] public IdleState idle;
     [SerializeField] public PursueTargetState pursueTarget;
 
+    // [SerializeField] public bool isMoving = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -51,6 +53,25 @@ public class AICharacterManager : CharacterManager
         if(nextState != null)
         {
             currentState = nextState;
+        }
+
+        if(navMeshAgent.enabled)
+        {
+            Vector3 agentDestination = navMeshAgent.destination;
+            float remainingDistance = Vector3.Distance(agentDestination, transform.position);
+
+            if(remainingDistance > navMeshAgent.stoppingDistance)
+            {
+                isMoving = true;
+            }
+            else
+            {
+                isMoving = false;
+            }
+        }
+        else
+        {
+            isMoving = false;
         }
     }
 }

@@ -38,6 +38,18 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
+    [SerializeField] public bool isMoving = false;
+    public bool IsMoving{
+        get{return isMoving;}
+        set{
+            // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
+            OnIsMovingChanged(isMoving, value);
+            // Debug.Log("---VALUE---: " + value);
+            isMoving = value;
+            // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
+        }
+    }
+
     [Header("STATUS")]
     public bool isDead = false;
 
@@ -180,6 +192,14 @@ public class CharacterManager : MonoBehaviour
         if(!IsLockedOn)
         {
             characterCombatManager.currentTarget = null;
+        }
+    }
+
+    public void OnIsMovingChanged(bool oldStatus, bool newStatus)
+    {
+        if(!IsMoving)
+        {
+            animator.SetBool("isMoving", isMoving);
         }
     }
 }
