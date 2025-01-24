@@ -30,11 +30,18 @@ public class CharacterManager : MonoBehaviour
     public bool IsLockedOn{
         get{return isLockedOn;}
         set{
-            // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
             OnIsLockedOnChanged(isLockedOn, value);
-            // Debug.Log("---VALUE---: " + value);
             isLockedOn = value;
-            // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
+        }
+    }
+
+    [SerializeField] public bool isMoving = false;
+    public bool IsMoving{
+        get{return isMoving;}
+        set{
+            OnIsMovingChanged(isMoving, value);
+            isMoving = value;
+            // Debug.Log("isMoving: " + isMoving);
         }
     }
 
@@ -181,5 +188,11 @@ public class CharacterManager : MonoBehaviour
         {
             characterCombatManager.currentTarget = null;
         }
+    }
+
+    public void OnIsMovingChanged(bool oldStatus, bool newStatus)
+    {
+        animator.SetBool("isMoving", IsMoving);
+        Debug.Log("OnIsMovingChanged: " + IsMoving);
     }
 }

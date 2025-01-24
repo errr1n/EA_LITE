@@ -16,15 +16,13 @@ public class IdleState : AIState
         {
             // return the pursue target state
             Debug.Log("WE HAVE A TARGET");
-
-            return this;
+            return SwitchState(aiCharacter, aiCharacter.pursueTarget);
         }
         else
         {
             //return this state, to continually search for a target
             aiCharacter.aiCharacterCombatManager.FindATargetViaLineOfSight(aiCharacter);
             Debug.Log("SEARCHING FOR TARGET");
-
             return this;
         }
 

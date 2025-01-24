@@ -246,6 +246,17 @@ public class PlayerInputManager : MonoBehaviour
             return;
         }
 
+        //idk if needed yet
+        if(moveAmount != 0)
+        {
+            player.IsMoving = true;
+            // Debug.Log(player.IsMoving);
+        }
+        else
+        {
+            player.IsMoving = false;
+        }
+
         // WE PASS 0 ON HORIZONTAL BECAUSE NOT LOCKED ON (NON-STRAFING MOVEMENT)
         // HORIZONTAL WILL BE FOR STRAFING OR LOCKED ON
 

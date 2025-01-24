@@ -1,19 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AICharacterManager : CharacterManager
 {
-    public AICharacterCombatManager aiCharacterCombatManager;
+    [HideInInspector] public AICharacterCombatManager aiCharacterCombatManager;
+
+    [Header("Navmesh Agent")]
+    public NavMeshAgent navMeshAgent;
 
     [Header("Current State")]
     [SerializeField] AIState currentState;
+
+    [Header("States")]
+    [SerializeField] public IdleState idle;
+    [SerializeField] public PursueTargetState pursueTarget;
+
+    // [SerializeField] public bool isMoving = false;
 
     protected override void Awake()
     {
         base.Awake();
 
         aiCharacterCombatManager = GetComponent<AICharacterCombatManager>();
+
+        navMeshAgent = GetComponentInChildren<NavMeshAgent>();
+
+        // use a copy of the scriptable object. so the originals are not modified
+        idle = Instantiate(idle);
+        pursueTarget = Instantiate(pursueTarget);
+
+        currentState = idle;
     }
 
     protected override void FixedUpdate()
@@ -35,6 +53,25 @@ public class AICharacterManager : CharacterManager
         if(nextState != null)
         {
             currentState = nextState;
+        }
+
+        if(navMeshAgent.enabled)
+        {
+            Vector3 agentDestination = navMeshAgent.destination;
+            float remainingDistance = Vector3.Distance(agentDestination, transform.position);
+
+            if(remainingDistance > navMeshAgent.stoppingDistance)
+            {
+                isMoving = true;
+            }
+            else
+            {
+                isMoving = false;
+            }
+        }
+        else
+        {
+            isMoving = false;
         }
     }
 }
