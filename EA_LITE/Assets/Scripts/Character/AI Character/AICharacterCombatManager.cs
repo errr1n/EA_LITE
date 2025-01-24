@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class AICharacterCombatManager : CharacterCombatManager
 {
+    [Header("Target Information")]
+    [SerializeField] public float viewableAngle;
+    public Vector3 targetsDirection;
+
     [Header("Detection")]
     [SerializeField] float detectionRadius = 15;
     [SerializeField] float minimumDetectionAngle = -35;
@@ -42,9 +46,9 @@ public class AICharacterCombatManager : CharacterCombatManager
             {
                 // IF A POTENTIAL TARGET IS FOUND, IT HAS TO BE IN FRONT OF US
                 Vector3 targetDirection = targetCharacter.transform.position - aiCharacter.transform.position;
-                float viewableAngle = Vector3.Angle(targetDirection, aiCharacter.transform.forward);
+                float angleOfPotentialTarget = Vector3.Angle(targetDirection, aiCharacter.transform.forward);
 
-                if(viewableAngle > minimumDetectionAngle && viewableAngle < maximumDetectionAngle)
+                if(angleOfPotentialTarget > minimumDetectionAngle && angleOfPotentialTarget < maximumDetectionAngle)
                 {
                     // lastly, check for environmental blockage
                     if(Physics.Linecast(aiCharacter.characterCombatManager.lockOnTransform.position, 
@@ -52,14 +56,78 @@ public class AICharacterCombatManager : CharacterCombatManager
                     WorldUtilityManager.instance.GetEnviroLayers()))
                     {
                         Debug.DrawLine(aiCharacter.characterCombatManager.lockOnTransform.position, targetCharacter.characterCombatManager.lockOnTransform.position);
-                        Debug.Log("BLOCKED");
+                        // Debug.Log("BLOCKED");
                     }
                     else
                     {
+                        // target direction is current target position - the position of the chasing character
+                        targetsDirection = targetCharacter.transform.position - transform.position;
+                        viewableAngle = WorldUtilityManager.instance.GetAngleOfTarget(transform, targetsDirection);
+                        // Debug.Log(viewableAngle);
+                        
                         aiCharacter.characterCombatManager.SetTarget(targetCharacter);
+                        PivotTowardsTarget(aiCharacter);
+                        Debug.Log("pivot");
                     }
                 }
             }
         }
+    }
+
+    public void PivotTowardsTarget(AICharacterManager aiCharacter)
+    {
+        // PLAY A PIVOT ANIMATION DEPENDING ON VIEWABLE ANGLE OF CURRENT TARGET
+        if(aiCharacter.isPerformingAction)
+        {
+            return;
+        }
+
+        if(viewableAngle >= 20 && viewableAngle <= 60)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_45", true);
+            Debug.Log("Turn_Right_45");
+        }
+
+        else if(viewableAngle <= -20 && viewableAngle >= -60)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_45", true);
+            Debug.Log("Turn_Left_45");
+        }
+
+        if(viewableAngle >= 61 && viewableAngle <= 110)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_90", true);
+            Debug.Log("Turn_Right_90");
+        }
+
+        else if(viewableAngle <= -61 && viewableAngle >= -110)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_90", true);
+            Debug.Log("Turn_Left_90");
+        }
+
+        if(viewableAngle >= 111 && viewableAngle <= 145)
+        {
+            //should be 135
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_180", true);
+        }
+
+        else if(viewableAngle <= -111 && viewableAngle >= -145)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_180", true);
+        }
+
+        if(viewableAngle >= 146 && viewableAngle <= 180)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_180", true);
+            Debug.Log("Turn_Right_180");
+        }
+
+        else if(viewableAngle <= -146 && viewableAngle >= -180)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_180", true);
+        }
+
+        // Debug.Log(viewableAngle);
     }
 }

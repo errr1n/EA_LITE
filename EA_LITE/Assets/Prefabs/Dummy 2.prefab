@@ -577,7 +577,7 @@ Animator:
   m_GameObject: {fileID: 1795968958412888741}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c85471e37e9b0dc4db737f14e4031edc, type: 3}
-  m_Controller: {fileID: 9100000, guid: 6933729a3f404d64d9f05c9093c064fd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 261bbda9a8ed06e43a84182c7793e87e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -769,6 +769,8 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   currentAttackType: 0
   lockOnTransform: {fileID: 2649747854461642546}
+  viewableAngle: 0
+  targetsDirection: {x: 0, y: 0, z: 0}
   detectionRadius: 15
   minimumDetectionAngle: -35
   maximumDetectionAngle: 35

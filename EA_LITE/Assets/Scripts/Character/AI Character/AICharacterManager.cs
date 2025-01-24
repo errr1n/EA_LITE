@@ -64,6 +64,13 @@ public class AICharacterManager : CharacterManager
         navMeshAgent.transform.localPosition = Vector3.zero;
         navMeshAgent.transform.localRotation = Quaternion.identity;
 
+        if(aiCharacterCombatManager.currentTarget != null)
+        {
+            // target direction is current target position - the position of the chasing character
+            aiCharacterCombatManager.targetsDirection = aiCharacterCombatManager.currentTarget.transform.position - transform.position;
+            aiCharacterCombatManager.viewableAngle = WorldUtilityManager.instance.GetAngleOfTarget(transform, aiCharacterCombatManager.targetsDirection);
+        }
+
         if(navMeshAgent.enabled)
         {
             Vector3 agentDestination = navMeshAgent.destination;
