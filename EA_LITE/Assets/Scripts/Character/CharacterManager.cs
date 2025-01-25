@@ -149,7 +149,7 @@ public class CharacterManager : MonoBehaviour
     {
         characterStatsManager.CurrentHealth = 0;
         isDead = true;
-        Debug.Log("HERE, DEFINETLY DEAD");
+        Debug.Log("CHARACTER IS DEAD");
 
         // RESET ANY FLAGS THAT NEED TO BE RESET
 
@@ -217,7 +217,7 @@ public class CharacterManager : MonoBehaviour
         // damageEffect.characterCausingDamage = characterCausingDamage;
 
         damagedCharacterID.characterEffectsManager.ProcessInstantEffect(damageEffect);
-        Debug.Log("SOMEHOW WORKING?");
+        // Debug.Log("SOMEHOW WORKING?");
 
     }
 
