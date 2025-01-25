@@ -42,7 +42,7 @@ public class CharacterStatsManager : MonoBehaviour
         get{return _currentHealth;}
         set{
             // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
-            PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(_currentHealth, value);
+            // PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(_currentHealth, value);
             _currentHealth = value;
             // Debug.Log("CURRENT HEALTH: " + _currentHealth);
         }
@@ -119,7 +119,7 @@ public class CharacterStatsManager : MonoBehaviour
     {
         if(!character.isDead)
         {
-            if(_currentHealth <= 0)
+            if(CurrentHealth <= 0)
             {
                 // Debug.Log("HERE, DEAD");
                 StartCoroutine(character.ProcessDeathEvent());

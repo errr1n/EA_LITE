@@ -3667,6 +3667,7 @@ MonoBehaviour:
   characterSoundFXManager: {fileID: 0}
   characterCombatManager: {fileID: 0}
   characterStatsManager: {fileID: 0}
+  characterGroup: 0
   isPerformingAction: 0
   isJumping: 0
   isGrounded: 1
@@ -3674,6 +3675,7 @@ MonoBehaviour:
   canRotate: 1
   canMove: 1
   isLockedOn: 0
+  isMoving: 0
   isDead: 0
   isSprinting: 0
   respawnCharacter: 0
@@ -3685,6 +3687,8 @@ MonoBehaviour:
   playerInventoryManager: {fileID: 0}
   playerEquipmentManager: {fileID: 0}
   playerCombatManager: {fileID: 0}
+  isUsingRightHand: 0
+  _currentWeaponBeingUsed: 0
 --- !u!114 &7966535531607252331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3787,8 +3791,6 @@ MonoBehaviour:
   rightHandSlot: {fileID: 0}
   rightWeaponManager: {fileID: 0}
   rightHandWeaponModel: {fileID: 0}
-  isUsingRightHand: 0
-  _currentWeaponBeingUsed: 0
   _currentRightHandWeaponID: 0
 --- !u!114 &-3440656882890443927
 MonoBehaviour:

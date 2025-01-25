@@ -737,6 +737,7 @@ MonoBehaviour:
   characterSoundFXManager: {fileID: 0}
   characterCombatManager: {fileID: 0}
   characterStatsManager: {fileID: 0}
+  damageCollider: {fileID: 0}
   characterGroup: 1
   isPerformingAction: 0
   isJumping: 0
@@ -793,7 +794,7 @@ MonoBehaviour:
   maxStamina: 0
   _currentStamina: 0
   currentVitality: 1
-  newVitality: 1
+  newVitality: 12
   maxHealth: 0
   _currentHealth: 0
 --- !u!114 &3162185811053005165

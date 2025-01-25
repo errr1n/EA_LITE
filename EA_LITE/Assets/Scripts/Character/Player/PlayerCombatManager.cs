@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCombatManager : CharacterCombatManager
 {
-    PlayerEquipmentManager playerEquipmentManager;
+    PlayerManager player;
 
     public WeaponItem currentWeaponBeingUsed;
     // public AttackType currentAttackType;
@@ -13,14 +13,14 @@ public class PlayerCombatManager : CharacterCombatManager
     {
         base.Awake();
 
-        playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
+        player = GetComponent<PlayerManager>();
     }
 
     // may need to call player manager
     public void PerformWeaponBasedAction(WeaponItemAction weaponAction, WeaponItem weaponPerformingAction)
     {
         // perform the action
-        weaponAction.AttemptToPerformAction(playerEquipmentManager, weaponPerformingAction);
+        weaponAction.AttemptToPerformAction(player, weaponPerformingAction);
 
         // weaponAction.AttemptToPerformAction(weaponAction.actionID, weaponPerformingAction.itemID);
     }

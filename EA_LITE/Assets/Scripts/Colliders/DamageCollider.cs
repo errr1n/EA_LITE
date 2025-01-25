@@ -5,7 +5,7 @@ using UnityEngine;
 public class DamageCollider : MonoBehaviour
 {
     [Header("Collider")]
-    [SerializeField] protected Collider damageCollider;
+    [SerializeField] protected Collider damageCollider; // reference box collider on weapon
 
     [Header("Damage")]
     public float physicalDamage = 0;

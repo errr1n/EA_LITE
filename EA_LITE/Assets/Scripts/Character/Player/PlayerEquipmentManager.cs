@@ -15,20 +15,20 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
 
     public GameObject rightHandWeaponModel;
 
-    public bool isUsingRightHand = false;
+    // public bool isUsingRightHand = false;
 
     //maybe
-    public int _currentWeaponBeingUsed = 0;
-    public int CurrentWeaponBeingUsed{
-        get{return _currentWeaponBeingUsed;}
-        set{
-            // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
-            OnCurrentWeapongBeingUsedIDChange(_currentWeaponBeingUsed, value);
-            // Debug.Log("---VALUE---: " + value);
-            _currentWeaponBeingUsed = value;
-            // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
-        }
-    }
+    // public int _currentWeaponBeingUsed = 0;
+    // public int CurrentWeaponBeingUsed{
+    //     get{return _currentWeaponBeingUsed;}
+    //     set{
+    //         // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
+    //         OnCurrentWeapongBeingUsedIDChange(_currentWeaponBeingUsed, value);
+    //         // Debug.Log("---VALUE---: " + value);
+    //         _currentWeaponBeingUsed = value;
+    //         // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
+    //     }
+    // }
 
     public int _currentRightHandWeaponID = 0;
     public int CurrentRightHandWeaponID{
@@ -230,16 +230,16 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
         // Debug.Log(oldID);
         // Debug.Log(newID);
         WeaponItem newWeapon = Instantiate(WorldItemDatabase.instance.GetWeaponByID(newID));
-        playerCombatManager.currentWeaponBeingUsed = newWeapon;
+        player.playerCombatManager.currentWeaponBeingUsed = newWeapon;
     }
 
-    public void SetCharacterActionHand(bool rightHandedAction)
-    {
-        if(rightHandedAction)
-        {
-            isUsingRightHand = true;
-        }
-    }
+    // public void SetCharacterActionHand(bool rightHandedAction)
+    // {
+    //     if(rightHandedAction)
+    //     {
+    //         player.isUsingRightHand = true;
+    //     }
+    // }
 
     // DAMAGE COLLIDERS
 
@@ -247,7 +247,7 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
     public void OpenDamageCollider()
     {
         // OPEN RIGHT HAND WEAPON DAMAGE COLLIDER
-        if(isUsingRightHand)
+        if(player.isUsingRightHand)
         {
             rightWeaponManager.meleeDamageCollider.EnableDamageCollider();
             // Debug.Log("OpenDamageCollider");
@@ -261,7 +261,7 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
     public void CloseDamageCollider()
     {
         // OPEN RIGHT HAND WEAPON DAMAGE COLLIDER
-        if(isUsingRightHand)
+        if(player.isUsingRightHand)
         {
             rightWeaponManager.meleeDamageCollider.DisableDamageCollider();
             // Debug.Log("CloseDamageCollider");

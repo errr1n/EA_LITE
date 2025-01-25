@@ -9,6 +9,8 @@ public class MeleeWeaponDamageCollider : DamageCollider
 
     // [Header("WEAPON ATTACK MODIFIERS")]
 
+    public CharacterManager setDamageTarget;
+
     protected override void Awake()
     {
         base.Awake();
@@ -23,6 +25,7 @@ public class MeleeWeaponDamageCollider : DamageCollider
     protected override void OnTriggerEnter(Collider other)
     {
         CharacterManager damageTarget = other.GetComponentInParent<CharacterManager>();
+        setDamageTarget = damageTarget;
 
         if(damageTarget != null)
         {
@@ -65,7 +68,8 @@ public class MeleeWeaponDamageCollider : DamageCollider
         // damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);
 
         damageTarget.ProcessCharacterDamage(
-            damageTarget, 
+            damageTarget,
+            characterCausingDamage,
             damageEffect.physicalDamage,
             damageEffect.angleHitFrom,
             damageEffect.contactPoint.x,

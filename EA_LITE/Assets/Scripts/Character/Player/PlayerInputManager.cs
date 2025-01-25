@@ -313,7 +313,7 @@ public class PlayerInputManager : MonoBehaviour
         {
             leftClickInput = false;
 
-            player.playerEquipmentManager.SetCharacterActionHand(true);
+            player.SetCharacterActionHand(true);
 
             player.playerCombatManager.PerformWeaponBasedAction(player.playerInventoryManager.currentRightHandWeapon.leftClick_Action, player.playerInventoryManager.currentRightHandWeapon);
 

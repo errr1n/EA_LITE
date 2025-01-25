@@ -17,17 +17,19 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerEquipmentManager playerEquipmentManager;
     [HideInInspector] public PlayerCombatManager playerCombatManager;
 
-    // public int _currentWeaponBeingUsed = 0;
-    // public int CurrentWeaponBeingUsed{
-    //     get{return _currentWeaponBeingUsed;}
-    //     set{
-    //         // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
-    //         playerEquipmentManager.OnCurrentWeapongBeingUsedIDChange(_currentWeaponBeingUsed, value);
-    //         // Debug.Log("---VALUE---: " + value);
-    //         _currentWeaponBeingUsed = value;
-    //         // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
-    //     }
-    // }
+    public bool isUsingRightHand = false;
+
+    public int _currentWeaponBeingUsed = 0;
+    public int CurrentWeaponBeingUsed{
+        get{return _currentWeaponBeingUsed;}
+        set{
+            // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
+            playerEquipmentManager.OnCurrentWeapongBeingUsedIDChange(_currentWeaponBeingUsed, value);
+            // Debug.Log("---VALUE---: " + value);
+            _currentWeaponBeingUsed = value;
+            // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
+        }
+    }
 
     protected override void Awake()
     {
@@ -67,9 +69,11 @@ public class PlayerManager : CharacterManager
         // REGENERATE STAMINA
         characterStatsManager.RegenerateStamina();
 
-        HandleStatUpdates();
+        PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(characterStatsManager.CurrentHealth);
 
-        characterStatsManager.CheckHP();
+        // HandleStatUpdates();
+
+        // characterStatsManager.CheckHP();
         // playerEquipmentManager.OnCurrentRightHandWeaponIDChange(playerEquipmentManager._currentRightHandWeaponID);
         // playerEquipmentManager.CurrentRightHandWeaponID = playerEquipmentManager._currentRightHandWeaponID;
 
@@ -106,7 +110,7 @@ public class PlayerManager : CharacterManager
         // PLAY REBIRTH ANIMATION
     }
 
-    private void HandleStatUpdates()
+    protected override void HandleStatUpdates()
     {
         // HEALTH
         if(characterStatsManager.currentVitality != characterStatsManager.newVitality)
@@ -148,6 +152,14 @@ public class PlayerManager : CharacterManager
 
             playerEquipmentManager.SwitchRightWeapon();
             // Debug.Log("SWITCH WEAPON");
+        }
+    }
+
+    public void SetCharacterActionHand(bool rightHandedAction)
+    {
+        if(rightHandedAction)
+        {
+            isUsingRightHand = true;
         }
     }
     

@@ -8,7 +8,7 @@ public class LightAttackWeaponItemAction : WeaponItemAction
 {
     [SerializeField] string Light_Attack = "Light_Attack";
 
-    public override void AttemptToPerformAction(PlayerEquipmentManager playerPerformingAction, WeaponItem weaponPerformingAction)
+    public override void AttemptToPerformAction(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
     {
         base.AttemptToPerformAction(playerPerformingAction, weaponPerformingAction);
 
@@ -16,14 +16,14 @@ public class LightAttackWeaponItemAction : WeaponItemAction
         // stamina
         //if jumping
         //if dodging
-        if(!playerPerformingAction.player.isPerformingAction)
+        if(!playerPerformingAction.isPerformingAction)
         {
             PerformLightAttack(playerPerformingAction, weaponPerformingAction);
         }
         // PerformLightAttack(playerPerformingAction, weaponPerformingAction);
     }
 
-    private void PerformLightAttack(PlayerEquipmentManager playerPerformingAction, WeaponItem weaponPerformingAction)
+    private void PerformLightAttack(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
     {
         if(playerPerformingAction.isUsingRightHand)
         {

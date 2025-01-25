@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterCombatManager : MonoBehaviour
 {
+    // public WeaponItem currentWeaponBeingUsed;
+
     //may not need
     protected CharacterManager character;
 

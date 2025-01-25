@@ -33,7 +33,7 @@ public class PlayerUIHudManager : MonoBehaviour
         // staminaBar.gameObject.SetActive(true);
     }
 
-    public void SetNewHealthValue(float oldValue, float newValue)
+    public void SetNewHealthValue(float newValue)
     {
         healthBar.SetStat(newValue);
     }

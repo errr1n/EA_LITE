@@ -15,6 +15,8 @@ public class CharacterManager : MonoBehaviour
     [HideInInspector] public CharacterCombatManager characterCombatManager;
     [HideInInspector] public CharacterStatsManager characterStatsManager;
 
+    [HideInInspector] public MeleeWeaponDamageCollider damageCollider;
+
     [Header("Character Group")]
     public CharacterGroup characterGroup;
 
@@ -80,6 +82,18 @@ public class CharacterManager : MonoBehaviour
         characterStatsManager = GetComponent<CharacterStatsManager>();
         characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
         characterCombatManager = GetComponent<CharacterCombatManager>();
+
+        damageCollider = GetComponent<MeleeWeaponDamageCollider>();
+
+        // // HEALTH
+        // characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.currentVitality);
+        // characterStatsManager.CurrentHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.currentVitality);
+        // PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(characterStatsManager.maxHealth);
+        
+        // // STAMINA
+        // characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
+        // characterStatsManager.CurrentStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
+        // PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(characterStatsManager.maxStamina);
     }
 
     protected virtual void Start()
@@ -91,6 +105,9 @@ public class CharacterManager : MonoBehaviour
     {
         // boolean for isGrounded in animator
         // ProcessCharacterDamage();
+        HandleStatUpdates();
+
+        characterStatsManager.CheckHP();
     }
 
     protected virtual void FixedUpdate()
@@ -103,11 +120,36 @@ public class CharacterManager : MonoBehaviour
         //
     }
 
+    protected virtual void HandleStatUpdates()
+    {
+        // HEALTH
+        if(characterStatsManager.currentVitality != characterStatsManager.newVitality)
+        {
+            // UPDATES CURRENT VITALITY TO NEW VITALTY
+            characterStatsManager.currentVitality = characterStatsManager.newVitality;
+            // UPDATES MAX HEALTH BASED ON VITALTY
+            characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.currentVitality);
+            // SETS HEALTH TO FULL WHEN UPDATING MAX HEALTH 
+            characterStatsManager.CurrentHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.currentVitality);
+            // DISPLAYS UPDATE ON HUD STAT BARS
+            // PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(characterStatsManager.maxHealth);
+        }
+
+        // STAMINA
+        // if(characterStatsManager.currentEndurance != characterStatsManager.newEndurance)
+        // {
+        //     characterStatsManager.currentEndurance = characterStatsManager.newEndurance;
+        //     characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
+        //     characterStatsManager.CurrentStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
+        //     // PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(characterStatsManager.maxStamina);
+        // }
+    }
+
     public virtual IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
     {
         characterStatsManager.CurrentHealth = 0;
         isDead = true;
-        // Debug.Log("HERE, DEFINETLY DEAD");
+        Debug.Log("HERE, DEFINETLY DEAD");
 
         // RESET ANY FLAGS THAT NEED TO BE RESET
 
@@ -157,14 +199,16 @@ public class CharacterManager : MonoBehaviour
     }
 
     public void ProcessCharacterDamage(
-        CharacterManager damagedCharacter,  
+        CharacterManager damagedCharacterID,
+        CharacterManager characterCausingDamageID,  
         float physicalDamage,
         float angleHitFrom,
         float contactPointX,
         float contactPointY,
         float contactPointZ)
     {
-        // damagedCharacter = damagedCharacter;
+        // damagedCharacterID = damageCollider.setDamageTarget;
+        // characterCausingDamageID = damageCollider.characterCausingDamage;
 
         TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
         damageEffect.physicalDamage = physicalDamage;
@@ -172,7 +216,7 @@ public class CharacterManager : MonoBehaviour
         damageEffect.contactPoint = new Vector3(contactPointX, contactPointY, contactPointZ);
         // damageEffect.characterCausingDamage = characterCausingDamage;
 
-        damagedCharacter.characterEffectsManager.ProcessInstantEffect(damageEffect);
+        damagedCharacterID.characterEffectsManager.ProcessInstantEffect(damageEffect);
         Debug.Log("SOMEHOW WORKING?");
 
     }

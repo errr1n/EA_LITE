@@ -6,6 +6,17 @@ public class PlayerStatsManager : CharacterStatsManager
 {
     // PlayerManager player;
 
+    // [SerializeField] float _currentHealth = 0;
+    // public float CurrentHealth{
+    //     get{return _currentHealth;}
+    //     set{
+    //         // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
+    //         PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(_currentHealth, value);
+    //         _currentHealth = value;
+    //         // Debug.Log("CURRENT HEALTH: " + _currentHealth);
+    //     }
+    // }
+
     protected override void Awake()
     {
         base.Awake();
