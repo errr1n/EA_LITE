@@ -158,7 +158,7 @@ public class CharacterManager : MonoBehaviour
         if(!manuallySelectDeathAnimation)
         {
             // ANIMATION
-            // characterAnimatorManager.PlayTargetActionAnimation("Dead_01", true);
+            characterAnimatorManager.PlayTargetActionAnimation("Death", true);
         }
 
         // PLAY SOME DEATH SFX
@@ -211,13 +211,14 @@ public class CharacterManager : MonoBehaviour
         // characterCausingDamageID = damageCollider.characterCausingDamage;
 
         TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
+
         damageEffect.physicalDamage = physicalDamage;
         damageEffect.angleHitFrom = angleHitFrom;
         damageEffect.contactPoint = new Vector3(contactPointX, contactPointY, contactPointZ);
-        // damageEffect.characterCausingDamage = characterCausingDamage;
+        Debug.Log("contact point:   X: " + contactPointX + "  Y: " + contactPointY + "  Z: " + contactPointZ);
 
+        // damageEffect.characterCausingDamage = characterCausingDamage;
         damagedCharacterID.characterEffectsManager.ProcessInstantEffect(damageEffect);
-        // Debug.Log("SOMEHOW WORKING?");
 
     }
 
