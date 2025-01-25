@@ -108,6 +108,7 @@ public class PlayerManager : CharacterManager
         characterStatsManager.CurrentStamina = characterStatsManager.maxStamina;
 
         // PLAY REBIRTH ANIMATION
+        characterAnimatorManager.PlayTargetActionAnimation("Empty", true);
     }
 
     protected override void HandleStatUpdates()
