@@ -120,7 +120,6 @@ public class CharacterManager : MonoBehaviour
     {
         characterStatsManager.CurrentHealth = 0;
         isDead = true;
-        Debug.Log("CHARACTER IS DEAD");
 
         // RESET ANY FLAGS THAT NEED TO BE RESET
 
