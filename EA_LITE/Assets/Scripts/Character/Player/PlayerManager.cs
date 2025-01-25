@@ -10,7 +10,6 @@ public class PlayerManager : CharacterManager
 
     [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
     [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
-    // [HideInInspector] public CharacterStatsManager characterStatsManager;
     [HideInInspector] public PlayerUIHudManager playerUIHudManager;
     [HideInInspector] public PlayerUIPopUpManager playerUIPopUpManager;
     [HideInInspector] public PlayerInventoryManager playerInventoryManager;
@@ -23,11 +22,8 @@ public class PlayerManager : CharacterManager
     public int CurrentWeaponBeingUsed{
         get{return _currentWeaponBeingUsed;}
         set{
-            // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
             playerEquipmentManager.OnCurrentWeapongBeingUsedIDChange(_currentWeaponBeingUsed, value);
-            // Debug.Log("---VALUE---: " + value);
             _currentWeaponBeingUsed = value;
-            // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
         }
     }
 
@@ -37,8 +33,7 @@ public class PlayerManager : CharacterManager
 
         playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
         playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
-
-        // characterStatsManager = GetComponent<CharacterStatsManager>();
+        
         playerUIHudManager = GetComponent<PlayerUIHudManager>();
         playerUIPopUpManager = GetComponent<PlayerUIPopUpManager>();
 
@@ -70,14 +65,8 @@ public class PlayerManager : CharacterManager
         characterStatsManager.RegenerateStamina();
 
         PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(characterStatsManager.CurrentHealth);
-
-        // HandleStatUpdates();
-
-        // characterStatsManager.CheckHP();
         // playerEquipmentManager.OnCurrentRightHandWeaponIDChange(playerEquipmentManager._currentRightHandWeaponID);
         // playerEquipmentManager.CurrentRightHandWeaponID = playerEquipmentManager._currentRightHandWeaponID;
-
-        // OnIsLockedOnChanged();
 
         DebugMenu();
     }
@@ -87,7 +76,6 @@ public class PlayerManager : CharacterManager
         base.LateUpdate();
 
         PlayerCamera.instance.HandleAllCameraActions();
-        // Debug.Log("HandleAllCameraActions()");
     }
 
     public override IEnumerator ProcessDeathEvent(bool manuallySelectDamageAnimation = false)
@@ -152,7 +140,6 @@ public class PlayerManager : CharacterManager
             SwitchRightWeapon = false;
 
             playerEquipmentManager.SwitchRightWeapon();
-            // Debug.Log("SWITCH WEAPON");
         }
     }
 

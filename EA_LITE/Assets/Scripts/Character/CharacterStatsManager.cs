@@ -48,19 +48,6 @@ public class CharacterStatsManager : MonoBehaviour
         }
     }
 
-
-    // [SerializeField] public bool isMoving = false;
-    // public bool IsMoving{
-    //     get{return isMoving;}
-    //     set{
-    //         OnIsMovingChanged(isMoving, value);
-    //         isMoving = value;
-    //         // Debug.Log("isMoving: " + isMoving);
-    //     }
-    // }
-
-
-
     protected virtual void Awake(){
         character = GetComponent<CharacterManager>();
     }
@@ -121,26 +108,14 @@ public class CharacterStatsManager : MonoBehaviour
         {
             if(CurrentHealth <= 0)
             {
-                // Debug.Log("HERE, DEAD");
                 StartCoroutine(character.ProcessDeathEvent());
             }
         }
-        // if(_currentHealth <= 0)
-        // {
-        //     // Debug.Log("HERE, DEAD");
-        //     StartCoroutine(character.ProcessDeathEvent());
-        // }
 
         // // PREVENTS US FROM OVER HEALING
-        // if(_currentHealth >= maxHealth)
-        // {
-        //     _currentHealth = maxHealth;
-        // }
+        if(CurrentHealth >= maxHealth)
+        {
+            CurrentHealth = maxHealth;
+        }
     }
-
-    // public void OnIsMovingChanged(bool oldStatus, bool newStatus)
-    // {
-    //     animator.SetBool("isMoving", IsMoving);
-    //     Debug.Log("OnIsMovingChanged: " + IsMoving);
-    // }
 }

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-    // [Header("STATUS")]
-
-
     [HideInInspector] public CharacterController characterController;
     [HideInInspector] public Animator animator;
     [HideInInspector] public CharacterAnimatorManager characterAnimatorManager;
@@ -43,7 +40,6 @@ public class CharacterManager : MonoBehaviour
         set{
             OnIsMovingChanged(isMoving, value);
             isMoving = value;
-            // Debug.Log("isMoving: " + isMoving);
         }
     }
 
@@ -72,8 +68,6 @@ public class CharacterManager : MonoBehaviour
 
     protected virtual void Awake()
     {
-        // DontDestroyOnLoad(this);
-
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
 
@@ -84,16 +78,6 @@ public class CharacterManager : MonoBehaviour
         characterCombatManager = GetComponent<CharacterCombatManager>();
 
         damageCollider = GetComponent<MeleeWeaponDamageCollider>();
-
-        // // HEALTH
-        // characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.currentVitality);
-        // characterStatsManager.CurrentHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.currentVitality);
-        // PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(characterStatsManager.maxHealth);
-        
-        // // STAMINA
-        // characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
-        // characterStatsManager.CurrentStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
-        // PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(characterStatsManager.maxStamina);
     }
 
     protected virtual void Start()
@@ -103,8 +87,6 @@ public class CharacterManager : MonoBehaviour
 
     protected virtual void Update()
     {
-        // boolean for isGrounded in animator
-        // ProcessCharacterDamage();
         HandleStatUpdates();
 
         characterStatsManager.CheckHP();
@@ -131,18 +113,7 @@ public class CharacterManager : MonoBehaviour
             characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.currentVitality);
             // SETS HEALTH TO FULL WHEN UPDATING MAX HEALTH 
             characterStatsManager.CurrentHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(characterStatsManager.currentVitality);
-            // DISPLAYS UPDATE ON HUD STAT BARS
-            // PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(characterStatsManager.maxHealth);
         }
-
-        // STAMINA
-        // if(characterStatsManager.currentEndurance != characterStatsManager.newEndurance)
-        // {
-        //     characterStatsManager.currentEndurance = characterStatsManager.newEndurance;
-        //     characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
-        //     characterStatsManager.CurrentStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
-        //     // PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(characterStatsManager.maxStamina);
-        // }
     }
 
     public virtual IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
@@ -235,10 +206,8 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    // MOVED TO CHARACTER STATS MANAGER
     public void OnIsMovingChanged(bool oldStatus, bool newStatus)
     {
         animator.SetBool("isMoving", IsMoving);
-        // Debug.Log("OnIsMovingChanged: " + IsMoving);
     }
 }
