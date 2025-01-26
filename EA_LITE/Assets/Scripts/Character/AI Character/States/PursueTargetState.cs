@@ -30,7 +30,7 @@ public class PursueTargetState : AIState
             aiCharacter.navMeshAgent.enabled = true;
         }
 
-        // if our target is outside of fiv, pivot to face them
+        // if our target is outside of fov, pivot to face them
         if(aiCharacter.aiCharacterCombatManager.viewableAngle < aiCharacter.aiCharacterCombatManager.minimumFOV || aiCharacter.aiCharacterCombatManager.viewableAngle > aiCharacter.aiCharacterCombatManager.MaximumFOV)
         {
             aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
@@ -39,6 +39,10 @@ public class PursueTargetState : AIState
         aiCharacter.aiCharacterLocomotionManager.RotateTowardsAgent(aiCharacter);
 
         // IF WITHIN COMBAT RANGE, SWITCH TO COMBAT STATE
+        if(aiCharacter.aiCharacterCombatManager.distanceFromTarget <= aiCharacter.navMeshAgent.stoppingDistance)
+        {
+            return SwitchState(aiCharacter, aiCharacter.combatStance);
+        }
 
         // IF THE TARGET IS NOT REACHABLE AND FAR AWAY, RETURN HOME
 

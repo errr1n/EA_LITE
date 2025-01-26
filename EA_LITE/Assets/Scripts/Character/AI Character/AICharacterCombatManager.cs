@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class AICharacterCombatManager : CharacterCombatManager
 {
+    [Header("Action Recovery")]
+    public float actionRecoveryTimer = 0;     // the time before the character can perform another attack after performing this one
+
     [Header("Target Information")]
-    [SerializeField] public float viewableAngle;
+    public float distanceFromTarget;
+    public float viewableAngle;
     public Vector3 targetsDirection;
 
     [Header("Detection")]
     [SerializeField] float detectionRadius = 15;
     [SerializeField] public float minimumFOV = -35;
     [SerializeField] public float MaximumFOV = 35;
+
+    [Header("Attack Rotation Speed")]
+    public float attackRotationSpeed = 25;
 
     public void FindATargetViaLineOfSight(AICharacterManager aiCharacter)
     {
@@ -124,5 +131,57 @@ public class AICharacterCombatManager : CharacterCombatManager
         }
 
         // Debug.Log(viewableAngle);
+    }
+
+    public void RotateTowardsAgent(AICharacterManager aiCharacter)
+    {
+        if(aiCharacter.isMoving)
+        {
+            aiCharacter.transform.rotation = aiCharacter.navMeshAgent.transform.rotation;
+        }
+    }
+
+    public void RotateTowardsTargetWhileAttacking(AICharacterManager aiCharacter)
+    {
+        if(currentTarget == null)
+        {
+            return;
+        }
+
+        // 1. check if we can rotate
+        if(!aiCharacter.canRotate)
+        {
+            return;
+        }
+
+        if(!aiCharacter.isPerformingAction)
+        {
+            return;
+        }
+
+        // 2. rotate towards the direction of the target at a specified rotation speed during specified frames
+        Vector3 targetDirection = currentTarget.transform.position - aiCharacter.transform.position;
+        targetDirection.y = 0;
+        targetDirection.Normalize();
+
+        if(targetDirection == Vector3.zero)
+        {
+            targetDirection = aiCharacter.transform.forward;
+        }
+
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+
+        aiCharacter.transform.rotation = Quaternion.Slerp(aiCharacter.transform.rotation, targetRotation, attackRotationSpeed * Time.deltaTime);
+    }
+
+    public void HandleActionRecovery(AICharacterManager aiCharacter)
+    {
+        if(actionRecoveryTimer > 0)
+        {
+            if(aiCharacter.isPerformingAction)
+            {
+                actionRecoveryTimer -= Time.deltaTime;
+            }
+        }
     }
 }
