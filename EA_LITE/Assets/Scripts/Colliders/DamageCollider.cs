@@ -36,6 +36,7 @@ public class DamageCollider : MonoBehaviour
 
             //DAMAGE
             DamageTarget(damageTarget);
+            //PRINT WHAT COLLIDER IS HIT
             // Debug.Log(other);
         }
     }
