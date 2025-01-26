@@ -34,14 +34,10 @@ public class CombatStanceState : AIState
             return this;
         }
 
-        // Debug.Log("CombatStanceState 1");
-
         if(!aiCharacter.navMeshAgent.enabled)
         {
             aiCharacter.navMeshAgent.enabled = true;
         }
-
-        // Debug.Log("CombatStanceState 2");
 
         // if we want the ai character to face and turn towards its target when its outside its fov include this
         if(!aiCharacter.isMoving)
@@ -64,12 +60,10 @@ public class CombatStanceState : AIState
         // if we do not have an attack, get one
         if(!hasAttack)
         {
-            // Debug.Log("CombatStanceState 3");
             GetNewAttack(aiCharacter);
         }
         else
         {
-            // Debug.Log("CombatStanceState 4");
             // check recovery timer
             // pass attack to attack state
             aiCharacter.attack.currentAttack = chosenAttack;
@@ -99,15 +93,11 @@ public class CombatStanceState : AIState
         // 2. remove attacks that can't be used in this situation (based on angle and distance)
         foreach(var potentialAttack in aiCharacterAttacks)
         {
-            // Debug.Log("CombatStanceState GetNewAttack 1");
-
             // check if we are too close to perform attack
             if(potentialAttack.minimumAttackDistance > aiCharacter.aiCharacterCombatManager.distanceFromTarget)
             {
                 continue;
             }
-
-            // Debug.Log("CombatStanceState GetNewAttack 2");
 
             // check if we are too far to perform attack
             if(potentialAttack.maximumAttackDistance < aiCharacter.aiCharacterCombatManager.distanceFromTarget)
@@ -115,23 +105,17 @@ public class CombatStanceState : AIState
                 continue;
             }
 
-            // Debug.Log("CombatStanceState GetNewAttack 3");
-
             // check if the target is outside of the minimum field of view
             if(potentialAttack.minimumAttackAngle > aiCharacter.aiCharacterCombatManager.viewableAngle)
             {
                 continue;
             }
-
-            // Debug.Log("CombatStanceState GetNewAttack 4");
             
             // check if the target is outside of the maximum field of view
             if(potentialAttack.maximumAttackAngle < aiCharacter.aiCharacterCombatManager.viewableAngle)
             {
                 continue;
             }
-
-            // Debug.Log("CombatStanceState GetNewAttack 5");
 
             // 3. place remaining attacks into a list
             potentialAttacks.Add(potentialAttack);

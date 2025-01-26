@@ -49,7 +49,7 @@ public class AttackState : AIState
 
         if(!hasPerformedAttack)
         {
-            // if we are still recovering from an action, wait beforeperforming another 
+            // if we are still recovering from an action, wait before performing another 
             if(aiCharacter.aiCharacterCombatManager.actionRecoveryTimer > 0)
             {
                 return this;

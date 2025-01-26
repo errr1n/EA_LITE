@@ -7,7 +7,6 @@ public class AICharacterManager : CharacterManager
 {
     [HideInInspector] public AICharacterCombatManager aiCharacterCombatManager;
     [HideInInspector] public AICharacterLocomotionManager aiCharacterLocomotionManager;
-    // characterStatsManager characterStatsManager;
 
     [Header("Navmesh Agent")]
     public NavMeshAgent navMeshAgent;
@@ -21,17 +20,12 @@ public class AICharacterManager : CharacterManager
     public CombatStanceState combatStance;
     public AttackState attack;
 
-
-    // [SerializeField] public bool isMoving = false;
-
     protected override void Awake()
     {
         base.Awake();
 
         aiCharacterCombatManager = GetComponent<AICharacterCombatManager>();
         aiCharacterLocomotionManager = GetComponent<AICharacterLocomotionManager>();
-        
-        // characterStatsManager = GetComponent<characterStatsManager>();
 
         navMeshAgent = GetComponentInChildren<NavMeshAgent>();
 
@@ -45,8 +39,7 @@ public class AICharacterManager : CharacterManager
     protected override void Update()
     {
         base.Update();
-
-        // this as in aiCharacterManagerScript
+        
         aiCharacterCombatManager.HandleActionRecovery(this);
     }
 

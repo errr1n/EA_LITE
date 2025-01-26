@@ -5,7 +5,7 @@ using UnityEngine;
 public class AICharacterCombatManager : CharacterCombatManager
 {
     [Header("Action Recovery")]
-    public float actionRecoveryTimer = 0;     // the time before the character can perform another attack after performing this one
+    public float actionRecoveryTimer = 1;     // the time before the character can perform another attack after performing this one
 
     [Header("Target Information")]
     public float distanceFromTarget;
@@ -63,18 +63,15 @@ public class AICharacterCombatManager : CharacterCombatManager
                     WorldUtilityManager.instance.GetEnviroLayers()))
                     {
                         Debug.DrawLine(aiCharacter.characterCombatManager.lockOnTransform.position, targetCharacter.characterCombatManager.lockOnTransform.position);
-                        // Debug.Log("BLOCKED");
                     }
                     else
                     {
                         // target direction is current target position - the position of the chasing character
                         targetsDirection = targetCharacter.transform.position - transform.position;
                         viewableAngle = WorldUtilityManager.instance.GetAngleOfTarget(transform, targetsDirection);
-                        // Debug.Log(viewableAngle);
                         
                         aiCharacter.characterCombatManager.SetTarget(targetCharacter);
                         PivotTowardsTarget(aiCharacter);
-                        // Debug.Log("pivot");
                     }
                 }
             }
@@ -129,8 +126,6 @@ public class AICharacterCombatManager : CharacterCombatManager
         {
             aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_180", true);
         }
-
-        // Debug.Log(viewableAngle);
     }
 
     public void RotateTowardsAgent(AICharacterManager aiCharacter)

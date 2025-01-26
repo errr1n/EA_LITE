@@ -49,23 +49,6 @@ public class CharacterManager : MonoBehaviour
     [Header("MORE FLAGS")]
     [SerializeField] public bool isSprinting = false;
 
-    // [Header("STATS")]
-    // public int endurance = 1;
-    // public int currentStamina = 0;
-    // public int maxStamina = 1;
-
-    // public ulong _currentLockOnTargetID = 0;
-    // public ulong CurrentLockOnTargetID{
-    //     get{return _currentLockOnTargetID;}
-    //     set{
-    //         // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
-    //         OnLockOnTargetIDChange(_currentLockOnTargetID, value);
-    //         // Debug.Log("---VALUE---: " + value);
-    //         _currentLockOnTargetID = value;
-    //         // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
-    //     }
-    // }
-
     protected virtual void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -177,9 +160,6 @@ public class CharacterManager : MonoBehaviour
         float contactPointY,
         float contactPointZ)
     {
-        // damagedCharacterID = damageCollider.setDamageTarget;
-        // characterCausingDamageID = damageCollider.characterCausingDamage;
-
         TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
 
         damageEffect.physicalDamage = physicalDamage;
@@ -187,15 +167,14 @@ public class CharacterManager : MonoBehaviour
         damageEffect.contactPoint = new Vector3(contactPointX, contactPointY, contactPointZ);
         Debug.Log("contact point:   X: " + contactPointX + "  Y: " + contactPointY + "  Z: " + contactPointZ);
 
-        // damageEffect.characterCausingDamage = characterCausingDamage;
         damagedCharacterID.characterEffectsManager.ProcessInstantEffect(damageEffect);
 
     }
 
-    public void OnLockOnTargetIDChange(ulong oldID, ulong newID)
-    {
-        // character.characterCombatManager.currentTarget = 
-    }
+    // public void OnLockOnTargetIDChange(ulong oldID, ulong newID)
+    // {
+    //     // character.characterCombatManager.currentTarget = 
+    // }
 
     public void OnIsLockedOnChanged(bool oldValue, bool IsLockedOn)
     {
