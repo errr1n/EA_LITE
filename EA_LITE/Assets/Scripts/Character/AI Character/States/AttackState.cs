@@ -61,11 +61,6 @@ public class AttackState : AIState
                 return this;
             }
 
-            // if(aiCharacter.isPerformingAction)
-            // {
-            //     return this;
-            // }
-
             PerformAttack(aiCharacter);
 
             // return to the top, so if we have a combo we process that when we are able
