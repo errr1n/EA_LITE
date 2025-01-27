@@ -593,75 +593,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97414597}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &106834829
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: c22bcd8eabad4214bab034dbb1306e60,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c22bcd8eabad4214bab034dbb1306e60,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c22bcd8eabad4214bab034dbb1306e60,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c22bcd8eabad4214bab034dbb1306e60,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c22bcd8eabad4214bab034dbb1306e60,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.73727727
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c22bcd8eabad4214bab034dbb1306e60,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c22bcd8eabad4214bab034dbb1306e60,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.6755903
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c22bcd8eabad4214bab034dbb1306e60,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c22bcd8eabad4214bab034dbb1306e60,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c22bcd8eabad4214bab034dbb1306e60,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 275
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c22bcd8eabad4214bab034dbb1306e60,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: c22bcd8eabad4214bab034dbb1306e60,
-        type: 3}
-      propertyPath: m_Name
-      value: RockTitan_Model_Rigged
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c22bcd8eabad4214bab034dbb1306e60, type: 3}
 --- !u!1 &143326042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,7 +1265,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &395464828
 GameObject:
@@ -1926,7 +1857,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &471530054
 GameObject:
@@ -9555,7 +9486,7 @@ PrefabInstance:
     - target: {fileID: 1697518565291149505, guid: b925e224a8b464d49968c0810e9063c4,
         type: 3}
       propertyPath: aiCharacters.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1697518565291149505, guid: b925e224a8b464d49968c0810e9063c4,
         type: 3}
@@ -9568,6 +9499,12 @@ PrefabInstance:
       propertyPath: aiCharacters.Array.data[1]
       value: 
       objectReference: {fileID: 1795968958412888741, guid: 61373fe729032b745a25ddc2b2a974d8,
+        type: 3}
+    - target: {fileID: 1697518565291149505, guid: b925e224a8b464d49968c0810e9063c4,
+        type: 3}
+      propertyPath: aiCharacters.Array.data[2]
+      value: 
+      objectReference: {fileID: 1795968958412888741, guid: 3ca77d21cd2cead4383c868c2eff7d8b,
         type: 3}
     - target: {fileID: 1697518565291149510, guid: b925e224a8b464d49968c0810e9063c4,
         type: 3}
