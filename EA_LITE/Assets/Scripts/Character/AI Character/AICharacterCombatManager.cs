@@ -130,18 +130,11 @@ public class AICharacterCombatManager : CharacterCombatManager
         //     aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_180", true);
         // }
 
-<<<<<<< HEAD
         // else if(viewableAngle <= -146 && viewableAngle >= -180)
         // {
         //     aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_180", true);
         // }
-=======
-        else if(viewableAngle <= -146 && viewableAngle >= -180)
-        {
-            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_180", true);
-        }
     }
->>>>>>> Erin-ImprovingStateMachine
 
     public void RotateTowardsAgent(AICharacterManager aiCharacter)
     {
