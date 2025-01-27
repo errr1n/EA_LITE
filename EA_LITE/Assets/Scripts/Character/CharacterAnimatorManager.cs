@@ -5,8 +5,6 @@ using UnityEngine;
 public class CharacterAnimatorManager : MonoBehaviour
 {
     CharacterManager character;
-    // PlayerLocomotionManager playerLoco;
-    // PlayerManager player;
 
     int vertical;
     int horizontal;
@@ -17,12 +15,14 @@ public class CharacterAnimatorManager : MonoBehaviour
     public string hit_Left_Medium = "hit_Left_Medium";
     public string hit_Right_Medium = "hit_Right_Medium";
 
+    [Header("Flags")]
+    public bool applyRootMotion = false;
+
     // list to randomize animations
 
     protected virtual void Awake()
     {
         character = GetComponent<CharacterManager>();
-        // player = GetComponent<PlayerManager>();
 
         vertical = Animator.StringToHash("Vertical");
         horizontal = Animator.StringToHash("Horizontal");
@@ -53,13 +53,13 @@ public class CharacterAnimatorManager : MonoBehaviour
         bool canRotate = false, 
         bool canMove = false)
     {
-        character.applyRootMotion = applyRootMotion;
+        character.characterAnimatorManager.applyRootMotion = applyRootMotion;
         character.animator.CrossFade(targetAnimation, 0.2f);
         // CAN BE USED TO STOP CHARACTER FROM ATTEMPTING NEW ACTION
         // EX. DAMAGE STUN LOCK
         character.isPerformingAction = isPerformingAction;
-        character.canRotate = canRotate;
-        character.canMove = canMove;
+        character.characterLocomotionManager.canRotate = canRotate;
+        character.characterLocomotionManager.canMove = canMove;
     }
 
     // ADD ATTACK TYPE?
@@ -72,15 +72,15 @@ public class CharacterAnimatorManager : MonoBehaviour
     {
         // keep track of last attack performed for combos
         // keep track of current attack type (light, heavy)
-        character.characterCombatManager.currentAttackType = attackType;
+        character.characterCombatManager.currentAttackType = attackType; // May not need
         // update animation set to current weapon animations
-        character.applyRootMotion = applyRootMotion;
+        this.applyRootMotion = applyRootMotion;
         character.animator.CrossFade(targetAnimation, 0.2f);
         // CAN BE USED TO STOP CHARACTER FROM ATTEMPTING NEW ACTION
         // EX. DAMAGE STUN LOCK
         character.isPerformingAction = isPerformingAction;
-        character.canRotate = canRotate;
-        character.canMove = canMove;
+        character.characterLocomotionManager.canRotate = canRotate;
+        character.characterLocomotionManager.canMove = canMove;
     }
 
 

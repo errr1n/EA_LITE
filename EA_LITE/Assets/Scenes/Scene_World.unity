@@ -9498,7 +9498,7 @@ PrefabInstance:
         type: 3}
       propertyPath: aiCharacters.Array.data[1]
       value: 
-      objectReference: {fileID: 1795968958412888741, guid: 61373fe729032b745a25ddc2b2a974d8,
+      objectReference: {fileID: 1795968958412888741, guid: 89e35b38ad964254f931a73d4acec347,
         type: 3}
     - target: {fileID: 1697518565291149505, guid: b925e224a8b464d49968c0810e9063c4,
         type: 3}

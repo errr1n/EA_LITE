@@ -7,7 +7,6 @@ public class AICharacterManager : CharacterManager
 {
     [HideInInspector] public AICharacterCombatManager aiCharacterCombatManager;
     [HideInInspector] public AICharacterLocomotionManager aiCharacterLocomotionManager;
-    // characterStatsManager characterStatsManager;
 
     [Header("Navmesh Agent")]
     public NavMeshAgent navMeshAgent;
@@ -18,8 +17,8 @@ public class AICharacterManager : CharacterManager
     [Header("States")]
     [SerializeField] public IdleState idle;
     [SerializeField] public PursueTargetState pursueTarget;
-
-    // [SerializeField] public bool isMoving = false;
+    public CombatStanceState combatStance;
+    public AttackState attack;
 
     protected override void Awake()
     {
@@ -27,8 +26,6 @@ public class AICharacterManager : CharacterManager
 
         aiCharacterCombatManager = GetComponent<AICharacterCombatManager>();
         aiCharacterLocomotionManager = GetComponent<AICharacterLocomotionManager>();
-        
-        // characterStatsManager = GetComponent<characterStatsManager>();
 
         navMeshAgent = GetComponentInChildren<NavMeshAgent>();
 
@@ -37,6 +34,13 @@ public class AICharacterManager : CharacterManager
         pursueTarget = Instantiate(pursueTarget);
 
         currentState = idle;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        
+        aiCharacterCombatManager.HandleActionRecovery(this);
     }
 
     protected override void FixedUpdate()
@@ -69,6 +73,8 @@ public class AICharacterManager : CharacterManager
             // target direction is current target position - the position of the chasing character
             aiCharacterCombatManager.targetsDirection = aiCharacterCombatManager.currentTarget.transform.position - transform.position;
             aiCharacterCombatManager.viewableAngle = WorldUtilityManager.instance.GetAngleOfTarget(transform, aiCharacterCombatManager.targetsDirection);
+
+            aiCharacterCombatManager.distanceFromTarget = Vector3.Distance(transform.position, aiCharacterCombatManager.currentTarget.transform.position);
         }
 
         if(navMeshAgent.enabled)

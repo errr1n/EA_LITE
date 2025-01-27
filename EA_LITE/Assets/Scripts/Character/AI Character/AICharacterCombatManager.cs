@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class AICharacterCombatManager : CharacterCombatManager
 {
+    [Header("Action Recovery")]
+    public float actionRecoveryTimer = 0;     // the time before the character can perform another attack after performing this one
+
     [Header("Target Information")]
-    [SerializeField] public float viewableAngle;
+    public float distanceFromTarget;
+    public float viewableAngle;
     public Vector3 targetsDirection;
 
     [Header("Detection")]
     [SerializeField] float detectionRadius = 15;
     [SerializeField] public float minimumFOV = -35;
-    [SerializeField] public float MaximumFOV = 35;
+    [SerializeField] public float maximumFOV = 35;
+
+    [Header("Attack Rotation Speed")]
+    public float attackRotationSpeed = 25;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        // get the transform of the object that this script rests on
+        lockOnTransform = GetComponentInChildren<LockOnTransform>().transform;
+    }
 
     public void FindATargetViaLineOfSight(AICharacterManager aiCharacter)
     {
@@ -48,7 +63,7 @@ public class AICharacterCombatManager : CharacterCombatManager
                 Vector3 targetDirection = targetCharacter.transform.position - aiCharacter.transform.position;
                 float angleOfPotentialTarget = Vector3.Angle(targetDirection, aiCharacter.transform.forward);
 
-                if(angleOfPotentialTarget > minimumFOV && angleOfPotentialTarget < MaximumFOV)
+                if(angleOfPotentialTarget > minimumFOV && angleOfPotentialTarget < maximumFOV)
                 {
                     // lastly, check for environmental blockage
                     if(Physics.Linecast(aiCharacter.characterCombatManager.lockOnTransform.position, 
@@ -56,18 +71,15 @@ public class AICharacterCombatManager : CharacterCombatManager
                     WorldUtilityManager.instance.GetEnviroLayers()))
                     {
                         Debug.DrawLine(aiCharacter.characterCombatManager.lockOnTransform.position, targetCharacter.characterCombatManager.lockOnTransform.position);
-                        // Debug.Log("BLOCKED");
                     }
                     else
                     {
                         // target direction is current target position - the position of the chasing character
                         targetsDirection = targetCharacter.transform.position - transform.position;
                         viewableAngle = WorldUtilityManager.instance.GetAngleOfTarget(transform, targetsDirection);
-                        // Debug.Log(viewableAngle);
                         
                         aiCharacter.characterCombatManager.SetTarget(targetCharacter);
                         PivotTowardsTarget(aiCharacter);
-                        // Debug.Log("pivot");
                     }
                 }
             }
@@ -118,11 +130,68 @@ public class AICharacterCombatManager : CharacterCombatManager
         //     aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_180", true);
         // }
 
+<<<<<<< HEAD
         // else if(viewableAngle <= -146 && viewableAngle >= -180)
         // {
         //     aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_180", true);
         // }
+=======
+        else if(viewableAngle <= -146 && viewableAngle >= -180)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_180", true);
+        }
+    }
+>>>>>>> Erin-ImprovingStateMachine
 
-        // Debug.Log(viewableAngle);
+    public void RotateTowardsAgent(AICharacterManager aiCharacter)
+    {
+        if(aiCharacter.isMoving)
+        {
+            aiCharacter.transform.rotation = aiCharacter.navMeshAgent.transform.rotation;
+        }
+    }
+
+    public void RotateTowardsTargetWhileAttacking(AICharacterManager aiCharacter)
+    {
+        if(currentTarget == null)
+        {
+            return;
+        }
+
+        // 1. check if we can rotate
+        if(!aiCharacter.characterLocomotionManager.canRotate)
+        {
+            return;
+        }
+
+        if(!aiCharacter.isPerformingAction)
+        {
+            return;
+        }
+
+        // 2. rotate towards the direction of the target at a specified rotation speed during specified frames
+        Vector3 targetDirection = currentTarget.transform.position - aiCharacter.transform.position;
+        targetDirection.y = 0;
+        targetDirection.Normalize();
+
+        if(targetDirection == Vector3.zero)
+        {
+            targetDirection = aiCharacter.transform.forward;
+        }
+
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+
+        aiCharacter.transform.rotation = Quaternion.Slerp(aiCharacter.transform.rotation, targetRotation, attackRotationSpeed * Time.deltaTime);
+    }
+
+    public void HandleActionRecovery(AICharacterManager aiCharacter)
+    {
+        if(actionRecoveryTimer > 0)
+        {
+            if(aiCharacter.isPerformingAction)
+            {
+                actionRecoveryTimer -= Time.deltaTime;
+            }
+        }
     }
 }

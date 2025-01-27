@@ -11,6 +11,7 @@ public class CharacterManager : MonoBehaviour
     [HideInInspector] public CharacterSoundFXManager characterSoundFXManager;
     [HideInInspector] public CharacterCombatManager characterCombatManager;
     [HideInInspector] public CharacterStatsManager characterStatsManager;
+    [HideInInspector] public CharacterLocomotionManager characterLocomotionManager;
 
     [HideInInspector] public MeleeWeaponDamageCollider damageCollider;
 
@@ -20,10 +21,11 @@ public class CharacterManager : MonoBehaviour
     [Header("FLAGS")]
     public bool isPerformingAction = false;
     public bool isJumping = false;
-    public bool isGrounded = true;
-    public bool applyRootMotion = false;
-    public bool canRotate = true;
-    public bool canMove = true;
+    // public bool isGrounded = true;
+    // public bool applyRootMotion = false;
+    // public bool isGrounded = true;
+    // public bool canRotate = true;
+    // public bool canMove = true;
 
     [SerializeField] public bool isLockedOn = false;
     public bool IsLockedOn{
@@ -49,23 +51,6 @@ public class CharacterManager : MonoBehaviour
     [Header("MORE FLAGS")]
     [SerializeField] public bool isSprinting = false;
 
-    // [Header("STATS")]
-    // public int endurance = 1;
-    // public int currentStamina = 0;
-    // public int maxStamina = 1;
-
-    // public ulong _currentLockOnTargetID = 0;
-    // public ulong CurrentLockOnTargetID{
-    //     get{return _currentLockOnTargetID;}
-    //     set{
-    //         // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
-    //         OnLockOnTargetIDChange(_currentLockOnTargetID, value);
-    //         // Debug.Log("---VALUE---: " + value);
-    //         _currentLockOnTargetID = value;
-    //         // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
-    //     }
-    // }
-
     protected virtual void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -76,6 +61,7 @@ public class CharacterManager : MonoBehaviour
         characterStatsManager = GetComponent<CharacterStatsManager>();
         characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
         characterCombatManager = GetComponent<CharacterCombatManager>();
+        characterLocomotionManager = GetComponent<CharacterLocomotionManager>();
 
         damageCollider = GetComponent<MeleeWeaponDamageCollider>();
     }
@@ -177,25 +163,22 @@ public class CharacterManager : MonoBehaviour
         float contactPointY,
         float contactPointZ)
     {
-        // damagedCharacterID = damageCollider.setDamageTarget;
-        // characterCausingDamageID = damageCollider.characterCausingDamage;
-
         TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
 
         damageEffect.physicalDamage = physicalDamage;
         damageEffect.angleHitFrom = angleHitFrom;
         damageEffect.contactPoint = new Vector3(contactPointX, contactPointY, contactPointZ);
+        Debug.Log("DAMAGED CHARACTER: " + damagedCharacterID + " ATTACKER: " + characterCausingDamageID);
         Debug.Log("contact point:   X: " + contactPointX + "  Y: " + contactPointY + "  Z: " + contactPointZ);
 
-        // damageEffect.characterCausingDamage = characterCausingDamage;
         damagedCharacterID.characterEffectsManager.ProcessInstantEffect(damageEffect);
 
     }
 
-    public void OnLockOnTargetIDChange(ulong oldID, ulong newID)
-    {
-        // character.characterCombatManager.currentTarget = 
-    }
+    // public void OnLockOnTargetIDChange(ulong oldID, ulong newID)
+    // {
+    //     // character.characterCombatManager.currentTarget = 
+    // }
 
     public void OnIsLockedOnChanged(bool oldValue, bool IsLockedOn)
     {

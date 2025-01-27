@@ -73,7 +73,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void HandleGroundedMovement()
     {
-        if(!player.canMove)
+        if(!player.playerLocomotionManager.canMove)
         {
             return;
         }
@@ -137,7 +137,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void HandleFreeFallMovement()
     {
-        if(!player.isGrounded)
+        if(!isGrounded)
         {
             // Debug.Log("FREE FALL MOVEMENT");
             Vector3 freeFallDirection;
@@ -152,7 +152,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
     private void HandleRotation()
     {
-        if(!player.canRotate)
+        if(!canRotate)
         {
             return;
         }
