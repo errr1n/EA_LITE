@@ -16,7 +16,7 @@ public class PlayerAnimatorManager : CharacterAnimatorManager
 
     private void OnAnimatorMove()
     {
-        if(player.applyRootMotion)
+        if(applyRootMotion)
         {
             // TAKE POSTION AND ROTATION FROM ANIMATION AND APPLY TO CHARACTER
             Vector3 velocity = player.animator.deltaPosition;

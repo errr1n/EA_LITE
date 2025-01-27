@@ -10,6 +10,10 @@ public class CharacterLocomotionManager : MonoBehaviour
     [SerializeField] float groundCheckSphereRadius = 1;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float gravityForce = -5.55f;
+    public bool isGrounded = true;
+    
+    public bool canRotate = true;
+    public bool canMove = true;
 
     [SerializeField] protected Vector3 yVelocity; // THIS IS THE FORCE AT WHICH OUR CHARACTER IS PULLED UP OR DOWN (JUMPING OR FALLING)
     [SerializeField] protected float groundedYVelocity = -20; // THE FORCE AT WHICH THE CHARACTER IS STICKING TO THE GROUND WHILE THEY ARE GROUNDED
@@ -26,7 +30,7 @@ public class CharacterLocomotionManager : MonoBehaviour
     {
         HandleGroundCheck();
 
-        if(character.isGrounded)
+        if(character.characterLocomotionManager.isGrounded)
         {
             // IF WE ARE NOT ATTEMPTING TO JUMP OR MOVE UPWARD
             if(yVelocity.y < 0)
@@ -59,12 +63,22 @@ public class CharacterLocomotionManager : MonoBehaviour
     protected virtual void HandleGroundCheck()
     {
         // CREATE CHECK SPHERE AT PLAYER POSITION WITH A RADIUS OF 1 AND LAYER MASK OF 0 (DEFAULT)
-        character.isGrounded = Physics.CheckSphere(character.transform.position, groundCheckSphereRadius, groundLayer);
+        character.characterLocomotionManager.isGrounded = Physics.CheckSphere(character.transform.position, groundCheckSphereRadius, groundLayer);
     }
 
     // DRAWS OUR GROUND CHECK SPHERE IN SCENE VIEW
     protected void OnDrawGizmosSelected()
     {
         // Gizmos.DrawSphere(character.transform.position, groundCheckSphereRadius);
+    }
+
+    public void EnableCanRotate()
+    {
+        canRotate = true;
+    }
+
+    public void DisableCanRotate()
+    {
+        canRotate = false;
     }
 }

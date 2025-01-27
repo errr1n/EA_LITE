@@ -25,7 +25,8 @@ public class CombatStanceState : AIState
     protected bool hasRolledForCombat = false;                 // if we have already rolled for the chance duriong this state
 
     [Header("Engagement Distance")]
-    [SerializeField] public float maximumEngagementDistance = 5; // the distance we have to be away from the target before we enter the pursue target state
+    // WAS 5
+    [SerializeField] public float maximumEngagementDistance = 3; // the distance we have to be away from the target before we enter the pursue target state
 
     public override AIState Tick(AICharacterManager aiCharacter)
     {

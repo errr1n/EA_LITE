@@ -11,6 +11,7 @@ public class CharacterManager : MonoBehaviour
     [HideInInspector] public CharacterSoundFXManager characterSoundFXManager;
     [HideInInspector] public CharacterCombatManager characterCombatManager;
     [HideInInspector] public CharacterStatsManager characterStatsManager;
+    [HideInInspector] public CharacterLocomotionManager characterLocomotionManager;
 
     [HideInInspector] public MeleeWeaponDamageCollider damageCollider;
 
@@ -20,10 +21,11 @@ public class CharacterManager : MonoBehaviour
     [Header("FLAGS")]
     public bool isPerformingAction = false;
     public bool isJumping = false;
-    public bool isGrounded = true;
-    public bool applyRootMotion = false;
-    public bool canRotate = true;
-    public bool canMove = true;
+    // public bool isGrounded = true;
+    // public bool applyRootMotion = false;
+    // public bool isGrounded = true;
+    // public bool canRotate = true;
+    // public bool canMove = true;
 
     [SerializeField] public bool isLockedOn = false;
     public bool IsLockedOn{
@@ -59,6 +61,7 @@ public class CharacterManager : MonoBehaviour
         characterStatsManager = GetComponent<CharacterStatsManager>();
         characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
         characterCombatManager = GetComponent<CharacterCombatManager>();
+        characterLocomotionManager = GetComponent<CharacterLocomotionManager>();
 
         damageCollider = GetComponent<MeleeWeaponDamageCollider>();
     }
@@ -165,6 +168,7 @@ public class CharacterManager : MonoBehaviour
         damageEffect.physicalDamage = physicalDamage;
         damageEffect.angleHitFrom = angleHitFrom;
         damageEffect.contactPoint = new Vector3(contactPointX, contactPointY, contactPointZ);
+        Debug.Log("DAMAGED CHARACTER: " + damagedCharacterID + " ATTACKER: " + characterCausingDamageID);
         Debug.Log("contact point:   X: " + contactPointX + "  Y: " + contactPointY + "  Z: " + contactPointZ);
 
         damagedCharacterID.characterEffectsManager.ProcessInstantEffect(damageEffect);

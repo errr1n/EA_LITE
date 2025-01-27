@@ -5,7 +5,7 @@ using UnityEngine;
 public class AICharacterCombatManager : CharacterCombatManager
 {
     [Header("Action Recovery")]
-    public float actionRecoveryTimer = 1;     // the time before the character can perform another attack after performing this one
+    public float actionRecoveryTimer = 0;     // the time before the character can perform another attack after performing this one
 
     [Header("Target Information")]
     public float distanceFromTarget;
@@ -19,6 +19,14 @@ public class AICharacterCombatManager : CharacterCombatManager
 
     [Header("Attack Rotation Speed")]
     public float attackRotationSpeed = 25;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        // get the transform of the object that this script rests on
+        lockOnTransform = GetComponentInChildren<LockOnTransform>().transform;
+    }
 
     public void FindATargetViaLineOfSight(AICharacterManager aiCharacter)
     {
@@ -144,7 +152,7 @@ public class AICharacterCombatManager : CharacterCombatManager
         }
 
         // 1. check if we can rotate
-        if(!aiCharacter.canRotate)
+        if(!aiCharacter.characterLocomotionManager.canRotate)
         {
             return;
         }
