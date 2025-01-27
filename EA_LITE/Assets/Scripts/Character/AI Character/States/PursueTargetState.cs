@@ -35,7 +35,7 @@ public class PursueTargetState : AIState
         // Debug.Log("3");
 
         // if our target is outside of fov, pivot to face them
-        if(aiCharacter.aiCharacterCombatManager.viewableAngle < aiCharacter.aiCharacterCombatManager.minimumFOV || aiCharacter.aiCharacterCombatManager.viewableAngle > aiCharacter.aiCharacterCombatManager.MaximumFOV)
+        if(aiCharacter.aiCharacterCombatManager.viewableAngle < aiCharacter.aiCharacterCombatManager.minimumFOV || aiCharacter.aiCharacterCombatManager.viewableAngle > aiCharacter.aiCharacterCombatManager.maximumFOV)
         {
             aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
             // Debug.Log("4");

@@ -15,7 +15,7 @@ public class AICharacterCombatManager : CharacterCombatManager
     [Header("Detection")]
     [SerializeField] float detectionRadius = 15;
     [SerializeField] public float minimumFOV = -35;
-    [SerializeField] public float MaximumFOV = 35;
+    [SerializeField] public float maximumFOV = 35;
 
     [Header("Attack Rotation Speed")]
     public float attackRotationSpeed = 25;
@@ -63,7 +63,7 @@ public class AICharacterCombatManager : CharacterCombatManager
                 Vector3 targetDirection = targetCharacter.transform.position - aiCharacter.transform.position;
                 float angleOfPotentialTarget = Vector3.Angle(targetDirection, aiCharacter.transform.forward);
 
-                if(angleOfPotentialTarget > minimumFOV && angleOfPotentialTarget < MaximumFOV)
+                if(angleOfPotentialTarget > minimumFOV && angleOfPotentialTarget < maximumFOV)
                 {
                     // lastly, check for environmental blockage
                     if(Physics.Linecast(aiCharacter.characterCombatManager.lockOnTransform.position, 
