@@ -3,7 +3,12 @@ guid: c22bcd8eabad4214bab034dbb1306e60
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock Base Material
+    second: {fileID: 2100000, guid: 90da6c01f1ac3c14aa536e249d902b24, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -89,7 +94,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 5
-    rootMotionBoneName: Hips
+    rootMotionBoneName: DEF-char_root
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
