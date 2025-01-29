@@ -181,7 +181,7 @@ public class AICharacterCombatManager : CharacterCombatManager
     {
         if(actionRecoveryTimer > 0)
         {
-            if(aiCharacter.isPerformingAction)
+            if(!aiCharacter.isPerformingAction)
             {
                 actionRecoveryTimer -= Time.deltaTime;
             }

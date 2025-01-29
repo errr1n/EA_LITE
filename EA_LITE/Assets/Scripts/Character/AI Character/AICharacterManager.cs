@@ -40,6 +40,7 @@ public class AICharacterManager : CharacterManager
     {
         base.Update();
         
+        // recovery timer
         aiCharacterCombatManager.HandleActionRecovery(this);
     }
 

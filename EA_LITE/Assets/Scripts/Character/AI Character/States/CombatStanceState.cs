@@ -30,40 +30,40 @@ public class CombatStanceState : AIState
 
     public override AIState Tick(AICharacterManager aiCharacter)
     {
-        Debug.Log("0");
+        // Debug.Log("0");
         if(aiCharacter.isPerformingAction)
         {
             return this;
         }
 
-        Debug.Log("1");
+        // Debug.Log("1");
 
         if(!aiCharacter.navMeshAgent.enabled)
         {
             aiCharacter.navMeshAgent.enabled = true;
         }
 
-        Debug.Log("2");
+        // Debug.Log("2");
 
         // if we want the ai character to face and turn towards its target when its outside its fov include this
         if(!aiCharacter.IsMoving)
         {
-            Debug.Log("viewableAngle: "+ aiCharacter.aiCharacterCombatManager.viewableAngle);
+            // Debug.Log("viewableAngle: "+ aiCharacter.aiCharacterCombatManager.viewableAngle);
             if(aiCharacter.aiCharacterCombatManager.viewableAngle < -30 || aiCharacter.aiCharacterCombatManager.viewableAngle > 30)
             {
                 aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
-                Debug.Log("3");
+                // Debug.Log("3");
             }
         }
 
         // rotate to face our target
         aiCharacter.aiCharacterCombatManager.RotateTowardsAgent(aiCharacter);
-        Debug.Log("4");
+        // Debug.Log("4");
 
         // if our target is no longer present, switch back to idle state
         if(aiCharacter.aiCharacterCombatManager.currentTarget == null)
         {
-            Debug.Log("5");
+            // Debug.Log("5");
             return SwitchState(aiCharacter, aiCharacter.idle);
         }
 
@@ -71,14 +71,14 @@ public class CombatStanceState : AIState
         if(!hasAttack)
         {
             GetNewAttack(aiCharacter);
-            Debug.Log("6");
+            // Debug.Log("6");
         }
         else
         {
             // check recovery timer
             // pass attack to attack state
             aiCharacter.attack.currentAttack = chosenAttack;
-            Debug.Log("7");
+            // Debug.Log("7");
             // roll for a combo chance
             return SwitchState(aiCharacter, aiCharacter.attack);
             // switch state
@@ -89,12 +89,12 @@ public class CombatStanceState : AIState
         {
             return SwitchState(aiCharacter, aiCharacter.pursueTarget);
         }
-        Debug.Log("8");
+        // Debug.Log("8");
 
         NavMeshPath path = new NavMeshPath();
         aiCharacter.navMeshAgent.CalculatePath(aiCharacter.aiCharacterCombatManager.currentTarget.transform.position, path);
         aiCharacter.navMeshAgent.SetPath(path);
-        Debug.Log("9");
+        // Debug.Log("9");
 
         return this;
     }
