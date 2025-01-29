@@ -11,7 +11,7 @@ public class AttackState : AIState
     [HideInInspector] public bool willPerformCombo = false;
 
     [Header("State Flags")]
-    protected bool hasPerformedAttack = false;
+    [SerializeField] protected bool hasPerformedAttack = false;
     protected bool hasPerformedCombo = false;
 
     [Header("Pivot After Attack")]
