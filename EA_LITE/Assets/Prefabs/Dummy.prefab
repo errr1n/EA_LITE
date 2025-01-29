@@ -295,8 +295,8 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616196228950181580}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
+  m_IsTrigger: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.16
   m_Center: {x: 0, y: 0, z: 0}
@@ -767,14 +767,11 @@ MonoBehaviour:
   characterSoundFXManager: {fileID: 0}
   characterCombatManager: {fileID: 0}
   characterStatsManager: {fileID: 0}
+  characterLocomotionManager: {fileID: 0}
   damageCollider: {fileID: 0}
   characterGroup: 1
   isPerformingAction: 0
   isJumping: 0
-  isGrounded: 1
-  applyRootMotion: 0
-  canRotate: 1
-  canMove: 1
   isLockedOn: 0
   isMoving: 0
   isDead: 0
@@ -826,6 +823,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   gravityForce: -5.55
+  isGrounded: 1
+  canRotate: 1
+  canMove: 1
   yVelocity: {x: 0, y: 0, z: 0}
   groundedYVelocity: -20
   fallStartYVelocity: -5
@@ -869,6 +869,7 @@ MonoBehaviour:
   hit_Backward_Medium: hit_Backward_Medium
   hit_Left_Medium: hit_Left_Medium
   hit_Right_Medium: hit_Right_Medium
+  applyRootMotion: 0
 --- !u!114 &7581550306778807841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -914,7 +915,7 @@ MonoBehaviour:
   targetsDirection: {x: 0, y: 0, z: 0}
   detectionRadius: 15
   minimumFOV: -35
-  MaximumFOV: 35
+  maximumFOV: 35
   attackRotationSpeed: 25
   rightHandDamageCollider: {fileID: 5220621284922378637}
   baseDamage: 25
