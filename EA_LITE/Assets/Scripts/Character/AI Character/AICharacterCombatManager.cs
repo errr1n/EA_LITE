@@ -138,7 +138,7 @@ public class AICharacterCombatManager : CharacterCombatManager
 
     public void RotateTowardsAgent(AICharacterManager aiCharacter)
     {
-        if(aiCharacter.isMoving)
+        if(aiCharacter.IsMoving)
         {
             aiCharacter.transform.rotation = aiCharacter.navMeshAgent.transform.rotation;
         }
@@ -181,7 +181,7 @@ public class AICharacterCombatManager : CharacterCombatManager
     {
         if(actionRecoveryTimer > 0)
         {
-            if(aiCharacter.isPerformingAction)
+            if(!aiCharacter.isPerformingAction)
             {
                 actionRecoveryTimer -= Time.deltaTime;
             }

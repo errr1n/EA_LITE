@@ -80,7 +80,7 @@ public class PlayerCamera : MonoBehaviour
     private void HandleRotations()
     {
         // IF LOCKED ON, FORCE ROTATION TOWARDS TARGET
-        if(player.isLockedOn)
+        if(player.IsLockedOn)
         {
             // THIS ROTATES THIS GAMEOBJECT (left and right)
             Vector3 rotationDirection = player.playerCombatManager.currentTarget.characterCombatManager.lockOnTransform.position - transform.position;

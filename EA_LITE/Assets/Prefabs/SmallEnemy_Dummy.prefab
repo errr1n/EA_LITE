@@ -295,7 +295,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616196228950181580}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.16
@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 5710445414407953941}
   - component: {fileID: 351467895645146652}
   m_Layer: 6
-  m_Name: Dummy
+  m_Name: SmallEnemy_Dummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

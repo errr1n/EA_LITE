@@ -11,7 +11,7 @@ public class AttackState : AIState
     [HideInInspector] public bool willPerformCombo = false;
 
     [Header("State Flags")]
-    protected bool hasPerformedAttack = false;
+    [SerializeField] protected bool hasPerformedAttack = false;
     protected bool hasPerformedCombo = false;
 
     [Header("Pivot After Attack")]
@@ -43,20 +43,25 @@ public class AttackState : AIState
             if(currentAttack.comboAction != null)
             {
                 // if can combo
-                //hasPerformedAttack = true;
-                //currentAttack.comboAction.AttemptToPerformAction(aiCharacter);
+                // hasPerformedAttack = true;
+                // currentAttack.comboAction.AttemptToPerformAction(aiCharacter);
             }
         }
 
-        if(aiCharacter.isPerformingAction)
-        {
-            return this;
-        }
+        // if(aiCharacter.isPerformingAction)
+        // {
+        //     return this;
+        // }
 
         if(!hasPerformedAttack)
         {
             // if we are still recovering from an action, wait before performing another 
             if(aiCharacter.aiCharacterCombatManager.actionRecoveryTimer > 0)
+            {
+                return this;
+            }
+
+            if(aiCharacter.isPerformingAction)
             {
                 return this;
             }

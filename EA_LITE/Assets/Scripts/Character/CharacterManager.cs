@@ -27,21 +27,21 @@ public class CharacterManager : MonoBehaviour
     // public bool canRotate = true;
     // public bool canMove = true;
 
-    [SerializeField] public bool isLockedOn = false;
+    [SerializeField] public bool _isLockedOn = false;
     public bool IsLockedOn{
-        get{return isLockedOn;}
+        get{return _isLockedOn;}
         set{
-            OnIsLockedOnChanged(isLockedOn, value);
-            isLockedOn = value;
+            OnIsLockedOnChanged(_isLockedOn, value);
+            _isLockedOn = value;
         }
     }
 
-    [SerializeField] public bool isMoving = false;
+    [SerializeField] public bool _isMoving = false;
     public bool IsMoving{
-        get{return isMoving;}
+        get{return _isMoving;}
         set{
-            OnIsMovingChanged(isMoving, value);
-            isMoving = value;
+            OnIsMovingChanged(_isMoving, value);
+            _isMoving = value;
         }
     }
 
