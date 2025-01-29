@@ -9,6 +9,7 @@ public class PursueTargetState : AIState
 {
     public override AIState Tick(AICharacterManager aiCharacter)
     {
+        // Debug.Log("START");
         // Debug.Log("0");
         // return base.Tick(aiCharacter);
 

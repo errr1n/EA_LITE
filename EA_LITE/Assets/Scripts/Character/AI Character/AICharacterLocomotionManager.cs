@@ -9,6 +9,7 @@ public class AICharacterLocomotionManager : CharacterLocomotionManager
         if(aiCharacter.isMoving)
         {
             aiCharacter.transform.rotation = aiCharacter.navMeshAgent.transform.rotation;
+            // Debug.Log("RotateTowardsAgent");
         }
     }
 }

@@ -114,16 +114,16 @@ public class AICharacterCombatManager : CharacterCombatManager
             aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_90", true);
         }
 
-        if(viewableAngle >= 111 && viewableAngle <= 145)
-        {
-            //should be 135
-            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_180", true);
-        }
+        // if(viewableAngle >= 111 && viewableAngle <= 145)
+        // {
+        //     //should be 135
+        //     aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_180", true);
+        // }
 
-        else if(viewableAngle <= -111 && viewableAngle >= -145)
-        {
-            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_180", true);
-        }
+        // else if(viewableAngle <= -111 && viewableAngle >= -145)
+        // {
+        //     aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_180", true);
+        // }
 
         if(viewableAngle >= 146 && viewableAngle <= 180)
         {
