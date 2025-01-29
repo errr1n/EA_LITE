@@ -22,7 +22,7 @@ public class CombatStanceState : AIState
     [Header("Combo")]
     [SerializeField] protected bool canPerformCombo = false;   // can character can perform combo attack, after the initial attack
     [SerializeField] protected int chanceToPerformCombo = 25;  // the chance (%) of the character to perform a combo on the next attack
-    protected bool hasRolledForCombat = false;                 // if we have already rolled for the chance duriong this state
+    protected bool hasRolledForComboChance = false;                 // if we have already rolled for the chance duriong this state
 
     [Header("Engagement Distance")]
     // WAS 5
@@ -187,7 +187,7 @@ public class CombatStanceState : AIState
         base.ResetStateFlags(aiCharacter);
 
         hasAttack = false;
-        hasRolledForCombat = false;
+        hasRolledForComboChance = false;
     }
 
 }
