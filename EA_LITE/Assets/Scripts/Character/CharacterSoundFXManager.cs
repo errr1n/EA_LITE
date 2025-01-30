@@ -6,6 +6,12 @@ public class CharacterSoundFXManager : MonoBehaviour
 {
     private AudioSource audioSource;
 
+    [Header("Damage Grunts")]
+    [SerializeField] protected AudioClip[] damageGrunts;
+
+    [Header("Attack Grunts")]
+    [SerializeField] protected AudioClip[] attackGrunts;
+
     protected virtual void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -33,5 +39,16 @@ public class CharacterSoundFXManager : MonoBehaviour
     public void PlayBackStepSoundFX()
     {
         audioSource.PlayOneShot(WorldSoundFXManager.instance.backStepSFX);
+    }
+
+    public virtual void PlayDamageGrunt()
+    {
+        PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(damageGrunts));
+    }
+
+    public virtual void PlayAttackGrunt()
+    {
+        // used by enemy
+        // PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(attackGrunts));
     }
 }

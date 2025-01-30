@@ -18,3 +18,5 @@ MonoBehaviour:
     type: 3}
   physicalDamage: 100
   leftClick_Action: {fileID: 11400000, guid: cd2c51ec72f23084a8f2add6e3b9086d, type: 2}
+  whooshes:
+  - {fileID: 8300000, guid: 4e2b2f5996eae5241825bdae44c40be0, type: 3}
