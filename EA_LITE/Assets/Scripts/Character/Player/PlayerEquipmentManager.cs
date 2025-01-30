@@ -15,34 +15,15 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
 
     public GameObject rightHandWeaponModel;
 
-    // public bool isUsingRightHand = false;
-
-    //maybe
-    // public int _currentWeaponBeingUsed = 0;
-    // public int CurrentWeaponBeingUsed{
-    //     get{return _currentWeaponBeingUsed;}
-    //     set{
-    //         // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
-    //         OnCurrentWeapongBeingUsedIDChange(_currentWeaponBeingUsed, value);
-    //         // Debug.Log("---VALUE---: " + value);
-    //         _currentWeaponBeingUsed = value;
-    //         // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
-    //     }
-    // }
-
     public int _currentRightHandWeaponID = 0;
     public int CurrentRightHandWeaponID{
         get{return _currentRightHandWeaponID;}
         set{
             // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
             OnCurrentRightHandWeaponIDChange(_currentRightHandWeaponID, value);
-            // Debug.Log("---VALUE---: " + value);
             _currentRightHandWeaponID = value;
-            // Debug.Log("CURRENT HEALTH: " + _currentRightHandWeaponID);
         }
     }
-
-    // public bool isUsingRightHand = false;
 
     protected override void Awake()
     {
@@ -92,7 +73,6 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
 
         // ad one to our weapon index to switch to weapon
         player.playerInventoryManager.rightHandWeaponIndex += 1;
-        // Debug.Log(player.playerInventoryManager.rightHandWeaponIndex);
 
 
         // Make sure index never goes out of bounds
@@ -103,24 +83,17 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
             // we can check if there is more than one weapon
             float weaponCount = 0;
             WeaponItem firstWeapon = null;
-            // Debug.Log("firstWeapon: " + firstWeapon);
             int firstWeaponPosition = 0;
 
             for(int i = 0; i < player.playerInventoryManager.weaponsInRightHandSlot.Length; i++)
             {
-                // if(player.playerInventoryManager.weaponsInRightHandSlot[i].itemID != WorldItemDatabase.instance.unarmed.itemID)
-                // {
-                    weaponCount += 1;
-                    // Debug.Log("weapon count: " + weaponCount);
+                weaponCount += 1;
 
-                    if(firstWeapon == null)
-                    {
-                        firstWeapon = player.playerInventoryManager.weaponsInRightHandSlot[i];
-                        firstWeaponPosition = i;
-                        // Debug.Log("firstWeapon: " + firstWeapon);
-                        // Debug.Log("firstWeaponPosition: " + firstWeaponPosition);
-                    }
-                // }
+                if(firstWeapon == null)
+                {
+                    firstWeapon = player.playerInventoryManager.weaponsInRightHandSlot[i];
+                    firstWeaponPosition = i;
+                }
             }
 
             if(weaponCount <= 1)
@@ -140,11 +113,8 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
         foreach (WeaponItem weapon in player.playerInventoryManager.weaponsInRightHandSlot)
         {
             // CHECK TO SEE IF THIS IS NOT THE UNARMED WEAPON
-            // if()
             selectedWeapon = player.playerInventoryManager.weaponsInRightHandSlot[player.playerInventoryManager.rightHandWeaponIndex];
-            // Debug.Log("Selected weapon: " + selectedWeapon);
             CurrentRightHandWeaponID = player.playerInventoryManager.weaponsInRightHandSlot[player.playerInventoryManager.rightHandWeaponIndex].itemID;
-            // Debug.Log("current weapon ID: " + CurrentRightHandWeaponID);
             return;
         }
 
@@ -210,16 +180,12 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
             // ASSIGN WEAPONS DAMAGE, TO ITS COLLIDER
             rightWeaponManager.SetWeaponDamage(player, player.playerInventoryManager.currentRightHandWeapon);
         }
-
-        // if()
     }
 
     //can load a left hand weapon
 
     public void OnCurrentRightHandWeaponIDChange(int oldID, int newID)
     {
-        // Debug.Log(oldID);
-        // Debug.Log(newID);
         WeaponItem newWeapon = Instantiate(WorldItemDatabase.instance.GetWeaponByID(newID));
         player.playerInventoryManager.currentRightHandWeapon = newWeapon;
         player.playerEquipmentManager.LoadRightWeapon();
@@ -227,8 +193,6 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
 
     public void OnCurrentWeapongBeingUsedIDChange(int oldID, int newID)
     {
-        // Debug.Log(oldID);
-        // Debug.Log(newID);
         WeaponItem newWeapon = Instantiate(WorldItemDatabase.instance.GetWeaponByID(newID));
         player.playerCombatManager.currentWeaponBeingUsed = newWeapon;
     }
@@ -250,11 +214,10 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
         if(player.isUsingRightHand)
         {
             rightWeaponManager.meleeDamageCollider.EnableDamageCollider();
-            // Debug.Log("OpenDamageCollider");
+            // PLAY WHOOSH SOUND
+            player.characterSoundFXManager.PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(player.playerInventoryManager.currentRightHandWeapon.whooshes));
         }
         //left hand
-
-        // PLAY WHOOSH SOUND
     }
     
     // CALLED ON ANIMATION
@@ -264,7 +227,6 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
         if(player.isUsingRightHand)
         {
             rightWeaponManager.meleeDamageCollider.DisableDamageCollider();
-            // Debug.Log("CloseDamageCollider");
         }
         //left hand
     }
