@@ -29,12 +29,12 @@ public class TakeDamageEffect : InstantCharacterEffect
     public float angleHitFrom; // USED TO DETERMINE WHAT DAMAGE ANIMATION TO PLAY
     public Vector3 contactPoint; // POINT ON COLLIDER WHERE DAMAGE IS TAKEN 
 
-    public override void ProcessEffect(CharacterManager characterCausingDamage)
+    public override void ProcessEffect(CharacterManager character)
     {
-        base.ProcessEffect(characterCausingDamage);
+        base.ProcessEffect(character);
 
         // IF CHARACTER IS DEAD DO NOT PROCESS EFFECTS
-        if(characterCausingDamage.isDead)
+        if(character.isDead)
         {
             return;
         }
@@ -42,15 +42,16 @@ public class TakeDamageEffect : InstantCharacterEffect
             // CHECK FOR INVULNERABILITY (DODGING)
 
             // CALCULATE DAMAGE
-            CalculateDamage(characterCausingDamage);
+            CalculateDamage(character);
             // CHECK WHICH DIRECTION THE DAMAGE CAME FROM
             //PLAY A DAMAGE ANIMATION
             // CHECK BUILD UPS?
             // PLAY DAMAGE SOUND FX
+            PlayDamageSFX(character);
             // PLAY DAMAGE VFX? (BLOOD)
     }
 
-    private void CalculateDamage(CharacterManager characterManager)
+    private void CalculateDamage(CharacterManager character)
     {
         // if()
         // {
@@ -71,12 +72,20 @@ public class TakeDamageEffect : InstantCharacterEffect
             finalDamageDealt = 1;
         }
 
-        characterManager.characterStatsManager.CurrentHealth -= finalDamageDealt;
+        character.characterStatsManager.CurrentHealth -= finalDamageDealt;
     }
 
     //play damage vfx
 
     //player damage sfx
+    private void PlayDamageSFX(CharacterManager character)
+    {
+        // AudioClip physicalDamageSFX = WorldSoundFXManager.instance.ChooseRandomSFXFromArray(WorldSoundFXManager.instance.physicalDamageSFX);
+
+        // character.characterSoundFXManager.PlaySoundFX(physicalDamageSFX);
+
+        character.characterSoundFXManager.PlayDamageGrunt();
+    }
 
     // NOT USED
     private void PlayDirectionalBasedDamageAnimation(CharacterManager character)

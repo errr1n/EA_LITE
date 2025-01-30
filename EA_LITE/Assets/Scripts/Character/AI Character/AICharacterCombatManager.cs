@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AICharacterCombatManager : CharacterCombatManager
 {
+    protected AICharacterManager aiCharacter;
+
     [Header("Action Recovery")]
     public float actionRecoveryTimer = 0;     // the time before the character can perform another attack after performing this one
 
@@ -23,6 +25,8 @@ public class AICharacterCombatManager : CharacterCombatManager
     protected override void Awake()
     {
         base.Awake();
+
+        aiCharacter = GetComponent<AICharacterManager>();
 
         // get the transform of the object that this script rests on
         lockOnTransform = GetComponentInChildren<LockOnTransform>().transform;

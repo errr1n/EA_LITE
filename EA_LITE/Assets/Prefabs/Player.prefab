@@ -3801,16 +3801,13 @@ MonoBehaviour:
   characterSoundFXManager: {fileID: 0}
   characterCombatManager: {fileID: 0}
   characterStatsManager: {fileID: 0}
+  characterLocomotionManager: {fileID: 0}
   damageCollider: {fileID: 0}
   characterGroup: 0
   isPerformingAction: 0
   isJumping: 0
-  isGrounded: 1
-  applyRootMotion: 0
-  canRotate: 1
-  canMove: 1
-  isLockedOn: 0
-  isMoving: 0
+  _isLockedOn: 0
+  _isMoving: 0
   isDead: 0
   isSprinting: 0
   respawnCharacter: 0
@@ -3879,6 +3876,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   gravityForce: -40
+  isGrounded: 1
+  canRotate: 1
+  canMove: 1
   yVelocity: {x: 0, y: 0, z: 0}
   groundedYVelocity: -20
   fallStartYVelocity: -5
@@ -3943,6 +3943,7 @@ MonoBehaviour:
   hit_Backward_Medium: hit_Backward_Medium
   hit_Left_Medium: hit_Left_Medium
   hit_Right_Medium: hit_Right_Medium
+  applyRootMotion: 0
 --- !u!114 &-2042582355953384460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3955,6 +3956,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c11559944e2414eaf17cf844681ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageGrunts:
+  - {fileID: 8300000, guid: 6be650ac213d26a4cb6814c21422b3d7, type: 3}
+  - {fileID: 8300000, guid: d2e36b4491903474c941144214329504, type: 3}
+  - {fileID: 8300000, guid: 7eeba320cd019144aa01e929a42338c9, type: 3}
+  - {fileID: 8300000, guid: e6d00863ac16c79449af403dc76c5ec0, type: 3}
+  - {fileID: 8300000, guid: 34664e92047cf384c92bf68b7b9dd321, type: 3}
 --- !u!114 &-5222805389497027767
 MonoBehaviour:
   m_ObjectHideFlags: 0

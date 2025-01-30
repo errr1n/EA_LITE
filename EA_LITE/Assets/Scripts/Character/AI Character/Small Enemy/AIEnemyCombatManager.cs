@@ -27,6 +27,9 @@ public class AIEnemyCombatManager : AICharacterCombatManager
 
     public void OpenRightHandDamageColider()
     {
+        //play attack sound
+        aiCharacter.characterSoundFXManager.PlayAttackGrunt();
+        //open the right hand colldier
         rightHandDamageCollider.EnableDamageCollider();
     }
 
