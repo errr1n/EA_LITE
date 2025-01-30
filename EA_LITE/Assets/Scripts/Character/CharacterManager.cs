@@ -169,7 +169,7 @@ public class CharacterManager : MonoBehaviour
         damageEffect.angleHitFrom = angleHitFrom;
         damageEffect.contactPoint = new Vector3(contactPointX, contactPointY, contactPointZ);
         Debug.Log("DAMAGED CHARACTER: " + damagedCharacterID + " ATTACKER: " + characterCausingDamageID);
-        Debug.Log("contact point:   X: " + contactPointX + "  Y: " + contactPointY + "  Z: " + contactPointZ);
+        // Debug.Log("contact point:   X: " + contactPointX + "  Y: " + contactPointY + "  Z: " + contactPointZ);
         //
 
         damagedCharacterID.characterEffectsManager.ProcessInstantEffect(damageEffect);
