@@ -53,7 +53,7 @@ public class CharacterAnimatorManager : MonoBehaviour
         bool canRotate = false, 
         bool canMove = false)
     {
-        character.characterAnimatorManager.applyRootMotion = applyRootMotion;
+        this.applyRootMotion = applyRootMotion;
         character.animator.CrossFade(targetAnimation, 0.2f);
         // CAN BE USED TO STOP CHARACTER FROM ATTEMPTING NEW ACTION
         // EX. DAMAGE STUN LOCK

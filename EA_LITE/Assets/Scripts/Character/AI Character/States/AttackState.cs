@@ -48,20 +48,15 @@ public class AttackState : AIState
             }
         }
 
-        // if(aiCharacter.isPerformingAction)
-        // {
-        //     return this;
-        // }
+        if(aiCharacter.isPerformingAction)
+        {
+            return this;
+        }
 
         if(!hasPerformedAttack)
         {
             // if we are still recovering from an action, wait before performing another 
             if(aiCharacter.aiCharacterCombatManager.actionRecoveryTimer > 0)
-            {
-                return this;
-            }
-
-            if(aiCharacter.isPerformingAction)
             {
                 return this;
             }
