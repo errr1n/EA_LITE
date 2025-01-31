@@ -2295,6 +2295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4896715712818942804}
+  - component: {fileID: 1792685743111345800}
   m_Layer: 0
   m_Name: DEF-spine.003
   m_TagString: Untagged
@@ -2320,6 +2321,18 @@ Transform:
   m_Father: {fileID: 6019527722878393800}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1792685743111345800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209252203435871969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9196937d95829dd4ab1f6015481fa424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1246233360876228256
 GameObject:
   m_ObjectHideFlags: 0
@@ -3755,8 +3768,8 @@ MonoBehaviour:
   characterGroup: 1
   isPerformingAction: 0
   isJumping: 0
-  isLockedOn: 0
-  isMoving: 0
+  _isLockedOn: 0
+  _isMoving: 0
   isDead: 0
   isSprinting: 0
   aiCharacterCombatManager: {fileID: 0}
@@ -3888,6 +3901,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df443059cf627448bfd2956c3ec7d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageGrunts: []
+  attackGrunts: []
 --- !u!114 &5710445414407953941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7844,7 +7859,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.5
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
