@@ -86,6 +86,7 @@ public class AICharacterManager : CharacterManager
             if(remainingDistance > navMeshAgent.stoppingDistance)
             {
                 IsMoving = true;
+                // Debug.Log("HERE");
             }
             else
             {
