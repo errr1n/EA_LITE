@@ -7,13 +7,14 @@ public class WorldAIManager : MonoBehaviour
 {
     public static WorldAIManager instance;
 
-    [Header("DEBUG")]
-    [SerializeField] bool despawnCharacters = false;
-    [SerializeField] bool respawnCharacters = false;
+    // [Header("DEBUG")]
+    // [SerializeField] bool despawnCharacters = false;
+    // [SerializeField] bool respawnCharacters = false;
 
     [Header("Characters")]
-    [SerializeField] public GameObject[] aiCharacters;
-    [SerializeField] public List<GameObject> spawnedInCharacters;
+    [SerializeField] List<AICharacterSpawner> aiCharacterSpawners;
+    // [SerializeField] public GameObject[] aiCharacters;
+    [SerializeField] List<GameObject> spawnedInCharacters;
     // [SerializeField] GameObject instantiatedCharacter;
 
     private void Awake()
@@ -28,43 +29,48 @@ public class WorldAIManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        StartCoroutine(WaitForSceneToLoadThenSpawnCharacters());
-    }
+    // private void Start()
+    // {
+    //     // StartCoroutine(WaitForSceneToLoadThenSpawnCharacters());
+    // }
 
-    private void Update()
-    {
-        if(respawnCharacters)
-        {
-            respawnCharacters = false;
-            SpawnAllCharacters();
-        }
-        if(despawnCharacters)
-        {
-            despawnCharacters = false;
-            DespawnAllCharacters();
-        }
-    }
+    // private void Update()
+    // {
+    //     if(respawnCharacters)
+    //     {
+    //         respawnCharacters = false;
+    //         SpawnAllCharacters();
+    //     }
+    //     if(despawnCharacters)
+    //     {
+    //         despawnCharacters = false;
+    //         DespawnAllCharacters();
+    //     }
+    // }
 
-    private IEnumerator WaitForSceneToLoadThenSpawnCharacters()
-    {
-        while(!SceneManager.GetActiveScene().isLoaded)
-        {
-            yield return null;
-        }
+    // private IEnumerator WaitForSceneToLoadThenSpawnCharacters()
+    // {
+    //     while(!SceneManager.GetActiveScene().isLoaded)
+    //     {
+    //         yield return null;
+    //     }
 
-        SpawnAllCharacters();
-    }
+    //     SpawnAllCharacters();
+    // }
 
-    private void SpawnAllCharacters()
+    public void SpawnCharacter(AICharacterSpawner aiCharacterSpawner)
     {
-        foreach(var character in aiCharacters)
-        {
-            GameObject instantiatedCharacter = Instantiate(character);
-            spawnedInCharacters.Add(instantiatedCharacter);
-            // Debug.Log("SPAWN");
-        }
+        // foreach(var character in aiCharacterSpawners)
+        // {
+        //     // GameObject instantiatedCharacter = Instantiate(character);
+        //     // spawnedInCharacters.Add(instantiatedCharacter);
+        //     // Debug.Log("SPAWN");
+
+        //     character.AttemptToSpawnCharacter();
+        // }
+
+        aiCharacterSpawners.Add(aiCharacterSpawner);
+        aiCharacterSpawner.AttemptToSpawnCharacter();
     }
 
     private void DespawnAllCharacters()
