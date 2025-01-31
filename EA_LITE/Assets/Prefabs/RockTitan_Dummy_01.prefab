@@ -8310,13 +8310,13 @@ GameObject:
   - component: {fileID: 4916243601278222080}
   - component: {fileID: -1716675576935179358}
   - component: {fileID: 4916243601278222092}
-  - component: {fileID: 4916243601278222082}
-  - component: {fileID: 4916243601278222083}
-  - component: {fileID: 4916243601278222084}
-  - component: {fileID: 4916243601278222085}
   - component: {fileID: 4916243601278222086}
-  - component: {fileID: 4916243601278222087}
   - component: {fileID: 4916243601278222089}
+  - component: {fileID: 4916243601278222085}
+  - component: {fileID: 4916243601278222083}
+  - component: {fileID: 4916243601278222087}
+  - component: {fileID: 4916243601278222082}
+  - component: {fileID: 4916243601278222084}
   m_Layer: 6
   m_Name: RockTitan_Dummy_01
   m_TagString: Untagged
@@ -8544,56 +8544,6 @@ MonoBehaviour:
   minimumFOV: -35
   maximumFOV: 35
   attackRotationSpeed: 25
---- !u!114 &4916243601278222082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258911699225884701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0df443059cf627448bfd2956c3ec7d32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageGrunts: []
-  attackGrunts: []
---- !u!114 &4916243601278222083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258911699225884701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a427a7b856039c47b620df6098d4a55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4916243601278222084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258911699225884701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48bafc5c55c2ba9468a6c4eed9b87b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4916243601278222085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258911699225884701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca25c3497e1d649499bd4c02290f31ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4916243601278222086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8616,23 +8566,6 @@ MonoBehaviour:
   newVitality: 10
   maxHealth: 0
   _currentHealth: 0
---- !u!114 &4916243601278222087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258911699225884701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c996769107bdf5b458df23ec8297ed99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hit_Forward_Medium: hit_Forward_Medium
-  hit_Backward_Medium: hit_Backward_Medium
-  hit_Left_Medium: hit_Left_Medium
-  hit_Right_Medium: hit_Right_Medium
-  applyRootMotion: 0
 --- !u!114 &4916243601278222089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8656,6 +8589,73 @@ MonoBehaviour:
   yVelocity: {x: 0, y: 0, z: 0}
   groundedYVelocity: -20
   fallStartYVelocity: -5
+--- !u!114 &4916243601278222085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258911699225884701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca25c3497e1d649499bd4c02290f31ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4916243601278222083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258911699225884701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a427a7b856039c47b620df6098d4a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4916243601278222087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258911699225884701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c996769107bdf5b458df23ec8297ed99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit_Forward_Medium: hit_Forward_Medium
+  hit_Backward_Medium: hit_Backward_Medium
+  hit_Left_Medium: hit_Left_Medium
+  hit_Right_Medium: hit_Right_Medium
+  applyRootMotion: 0
+--- !u!114 &4916243601278222082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258911699225884701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df443059cf627448bfd2956c3ec7d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageGrunts: []
+  attackGrunts: []
+--- !u!114 &4916243601278222084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258911699225884701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48bafc5c55c2ba9468a6c4eed9b87b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5293569865696492385
 GameObject:
   m_ObjectHideFlags: 0
