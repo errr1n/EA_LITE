@@ -93,52 +93,52 @@ public class AICharacterCombatManager : CharacterCombatManager
     public void PivotTowardsTarget(AICharacterManager aiCharacter)
     {
         // PLAY A PIVOT ANIMATION DEPENDING ON VIEWABLE ANGLE OF CURRENT TARGET
-        // if(aiCharacter.isPerformingAction)
-        // {
-        //     return;
-        // }
-        // Debug.Log("PIVOT");
+        if(aiCharacter.isPerformingAction)
+        {
+            return;
+        }
+        Debug.Log("PIVOT");
 
-        // if(viewableAngle >= 20 && viewableAngle <= 60)
-        // {
-        //     aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_45", true);
-        // }
+        if(viewableAngle >= 20 && viewableAngle <= 60)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_45", true);
+        }
 
-        // else if(viewableAngle <= -20 && viewableAngle >= -60)
-        // {
-        //     aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_45", true);
-        // }
+        else if(viewableAngle <= -20 && viewableAngle >= -60)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_45", true);
+        }
 
-        // if(viewableAngle >= 61 && viewableAngle <= 110)
-        // {
-        //     aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_90", true);
-        // }
+        if(viewableAngle >= 61 && viewableAngle <= 110)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_90", true);
+        }
 
-        // else if(viewableAngle <= -61 && viewableAngle >= -110)
-        // {
-        //     aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_90", true);
-        // }
+        else if(viewableAngle <= -61 && viewableAngle >= -110)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_90", true);
+        }
 
-        // if(viewableAngle >= 111 && viewableAngle <= 145)
-        // {
-        //     //should be 135
-        //     aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_180", true);
-        // }
+        if(viewableAngle >= 111 && viewableAngle <= 145)
+        {
+            //should be 135
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_135", true);
+        }
 
-        // else if(viewableAngle <= -111 && viewableAngle >= -145)
-        // {
-        //     aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_180", true);
-        // }
+        else if(viewableAngle <= -111 && viewableAngle >= -145)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_135", true);
+        }
 
-        // if(viewableAngle >= 146 && viewableAngle <= 180)
-        // {
-        //     aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_180", true);
-        // }
+        if(viewableAngle >= 146 && viewableAngle <= 180)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_180", true);
+        }
 
-        // else if(viewableAngle <= -146 && viewableAngle >= -180)
-        // {
-        //     aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_180", true);
-        // }
+        else if(viewableAngle <= -146 && viewableAngle >= -180)
+        {
+            aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_180", true);
+        }
     }
 
     public void RotateTowardsAgent(AICharacterManager aiCharacter)
