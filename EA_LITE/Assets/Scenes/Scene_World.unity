@@ -10690,6 +10690,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f44bac1627cea498c9150eab63877c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectSpawners: []
+  spawnedInObjects: []
+  fogWalls: []
 --- !u!4 &926193236
 Transform:
   m_ObjectHideFlags: 0
@@ -25493,6 +25496,81 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076313359}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &2090507520
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2887417051085929410, guid: 0859e9d1aa7b70e40835f3db20822526,
+        type: 3}
+      propertyPath: m_Name
+      value: Object Spawner (fogwall)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887417051085929422, guid: 0859e9d1aa7b70e40835f3db20822526,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887417051085929422, guid: 0859e9d1aa7b70e40835f3db20822526,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887417051085929422, guid: 0859e9d1aa7b70e40835f3db20822526,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887417051085929422, guid: 0859e9d1aa7b70e40835f3db20822526,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887417051085929422, guid: 0859e9d1aa7b70e40835f3db20822526,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887417051085929422, guid: 0859e9d1aa7b70e40835f3db20822526,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887417051085929422, guid: 0859e9d1aa7b70e40835f3db20822526,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887417051085929422, guid: 0859e9d1aa7b70e40835f3db20822526,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887417051085929422, guid: 0859e9d1aa7b70e40835f3db20822526,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887417051085929422, guid: 0859e9d1aa7b70e40835f3db20822526,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887417051085929422, guid: 0859e9d1aa7b70e40835f3db20822526,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9181403489766580375, guid: 0859e9d1aa7b70e40835f3db20822526,
+        type: 3}
+      propertyPath: nGameObject
+      value: 
+      objectReference: {fileID: 8298515232054759623, guid: efb904a15f4236c4ab0135a1d791e896,
+        type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0859e9d1aa7b70e40835f3db20822526, type: 3}
 --- !u!1 &2099666632
 GameObject:
   m_ObjectHideFlags: 0
@@ -26940,6 +27018,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fog Wall Interactable
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298515232054759623, guid: efb904a15f4236c4ab0135a1d791e896,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efb904a15f4236c4ab0135a1d791e896, type: 3}

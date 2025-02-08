@@ -17,6 +17,7 @@ public class FogWallInteractable : MonoBehaviour
         set{
             OnIsActiveChanged(_isActive, value);
             _isActive = value;
+            WorldObjectManager.instance.AddFogWallToList(this);
         }
     }
 

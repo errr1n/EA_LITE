@@ -6,6 +6,8 @@ public class AIBossCharacterManager : AICharacterManager
 {
     // GIVE THIS AI A UNIQUE ID
     public int bossID = 0;
+
+    [SerializeField] List<FogWallInteractable> fogWalls;
     // IF THE SAVE FILE DOES NOT CONTAIN A BOSS MONSTER OF THIS ID ADD IT
     // IF IT IS PRESENT, CHECK IF BOSS HAS BEEN DEFEATED
     // IF THE BOSS WAS DEFEATED, DIABLE THE GAMEOBJECT
