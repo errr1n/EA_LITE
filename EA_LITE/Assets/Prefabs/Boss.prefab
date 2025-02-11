@@ -3556,8 +3556,8 @@ GameObject:
   - component: {fileID: 6795136282901880547}
   - component: {fileID: 3208838979969061302}
   - component: {fileID: 8900045827045000893}
-  - component: {fileID: -4885677556943362705}
-  - component: {fileID: -3885768404262673660}
+  - component: {fileID: 4610653453915023169}
+  - component: {fileID: 5110257553887991747}
   - component: {fileID: 5634957200736973394}
   - component: {fileID: 7318790913633547046}
   - component: {fileID: 7948260766930337015}
@@ -3648,7 +3648,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &-4885677556943362705
+--- !u!114 &4610653453915023169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3657,7 +3657,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1795968958412888741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b7086cbc8d0d54cb6dc45c65deeaa3, type: 3}
+  m_Script: {fileID: 11500000, guid: 922ae5811e23f5145a99d723c32c1749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 0}
@@ -3679,12 +3679,16 @@ MonoBehaviour:
   aiCharacterCombatManager: {fileID: 0}
   aiCharacterLocomotionManager: {fileID: 0}
   navMeshAgent: {fileID: 0}
-  currentState: {fileID: 11400000, guid: 5d1517913256ca440828028e2452f262, type: 2}
+  currentState: {fileID: 0}
   idle: {fileID: 11400000, guid: 5d1517913256ca440828028e2452f262, type: 2}
   pursueTarget: {fileID: 11400000, guid: b0b247c41dc58704c9009284d0ee1419, type: 2}
   combatStance: {fileID: 11400000, guid: 9b90a59f32c377c499006c1938fed599, type: 2}
   attack: {fileID: 11400000, guid: 2d414f0df99808a4dbd46a65105b2cec, type: 2}
---- !u!114 &-3885768404262673660
+  bossID: 0
+  hasBeenDefeated: 0
+  hasBeenAwakened: 0
+  fogWalls: []
+--- !u!114 &5110257553887991747
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3693,7 +3697,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1795968958412888741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df23cfb11daf5674da3c269e0c9d9ab0, type: 3}
+  m_Script: {fileID: 11500000, guid: f034b78f9732c3e49ba06cdea24c60e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentTarget: {fileID: 0}

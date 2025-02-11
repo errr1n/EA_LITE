@@ -10706,7 +10706,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &934978927
 GameObject:
@@ -13515,6 +13515,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AI Spawner (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1304529055322309443, guid: 5d4c2e62a9f155f41b2fd8e583418c51,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1304529055322309455, guid: 5d4c2e62a9f155f41b2fd8e583418c51,
         type: 3}
@@ -20147,6 +20152,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AI Spawner (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1304529055322309443, guid: 5d4c2e62a9f155f41b2fd8e583418c51,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1304529055322309453, guid: 5d4c2e62a9f155f41b2fd8e583418c51,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -25508,10 +25518,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object Spawner (fogwall)
       objectReference: {fileID: 0}
+    - target: {fileID: 2887417051085929410, guid: 0859e9d1aa7b70e40835f3db20822526,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2887417051085929422, guid: 0859e9d1aa7b70e40835f3db20822526,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2887417051085929422, guid: 0859e9d1aa7b70e40835f3db20822526,
         type: 3}
@@ -26952,80 +26967,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 127098010867bc841ac86ae092886a94, type: 3}
---- !u!1001 &7146635691426761999
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1256438202204176351, guid: efb904a15f4236c4ab0135a1d791e896,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256438202204176351, guid: efb904a15f4236c4ab0135a1d791e896,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -10.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256438202204176351, guid: efb904a15f4236c4ab0135a1d791e896,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256438202204176351, guid: efb904a15f4236c4ab0135a1d791e896,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256438202204176351, guid: efb904a15f4236c4ab0135a1d791e896,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256438202204176351, guid: efb904a15f4236c4ab0135a1d791e896,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256438202204176351, guid: efb904a15f4236c4ab0135a1d791e896,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256438202204176351, guid: efb904a15f4236c4ab0135a1d791e896,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256438202204176351, guid: efb904a15f4236c4ab0135a1d791e896,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256438202204176351, guid: efb904a15f4236c4ab0135a1d791e896,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256438202204176351, guid: efb904a15f4236c4ab0135a1d791e896,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8298515232054759623, guid: efb904a15f4236c4ab0135a1d791e896,
-        type: 3}
-      propertyPath: m_Name
-      value: Fog Wall Interactable
-      objectReference: {fileID: 0}
-    - target: {fileID: 8298515232054759623, guid: efb904a15f4236c4ab0135a1d791e896,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: efb904a15f4236c4ab0135a1d791e896, type: 3}
 --- !u!1001 &7646358341199156317
 PrefabInstance:
   m_ObjectHideFlags: 0
