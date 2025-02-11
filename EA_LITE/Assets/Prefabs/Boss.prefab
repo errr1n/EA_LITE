@@ -3680,14 +3680,15 @@ MonoBehaviour:
   aiCharacterLocomotionManager: {fileID: 0}
   navMeshAgent: {fileID: 0}
   currentState: {fileID: 0}
-  idle: {fileID: 11400000, guid: 5d1517913256ca440828028e2452f262, type: 2}
-  pursueTarget: {fileID: 11400000, guid: b0b247c41dc58704c9009284d0ee1419, type: 2}
-  combatStance: {fileID: 11400000, guid: 9b90a59f32c377c499006c1938fed599, type: 2}
-  attack: {fileID: 11400000, guid: 2d414f0df99808a4dbd46a65105b2cec, type: 2}
+  idle: {fileID: 11400000, guid: 5518b6ec64365ff4ca78578873790ab5, type: 2}
+  pursueTarget: {fileID: 11400000, guid: 6c4db9f524e94ff4d8e7d1b6bab73581, type: 2}
+  combatStance: {fileID: 11400000, guid: 03f9814449d3e38499cfb221f97d259c, type: 2}
+  attack: {fileID: 11400000, guid: 94abe38edf5dd95438c7018eadd1d30d, type: 2}
   bossID: 0
   hasBeenDefeated: 0
   hasBeenAwakened: 0
   fogWalls: []
+  wakeBossUp: 0
 --- !u!114 &5110257553887991747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3711,6 +3712,10 @@ MonoBehaviour:
   minimumFOV: -35
   maximumFOV: 35
   attackRotationSpeed: 25
+  bossRightHandDamageCollider: {fileID: 8395435898745159667}
+  baseDamage: 25
+  attack01DamageModifier: 1
+  attack02DamageModifier: 1.4
 --- !u!114 &5634957200736973394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10704,7 +10709,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7400322775438792660}
-  m_Layer: 0
+  - component: {fileID: 2703763761259477919}
+  - component: {fileID: 8395435898745159667}
+  m_Layer: 10
   m_Name: DEF-f_index.01.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10727,6 +10734,35 @@ Transform:
   m_Father: {fileID: 4792338764117353187}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2703763761259477919
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657563276432358875}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  m_Radius: 0.72
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0.24, y: 0, z: 0.12}
+--- !u!114 &8395435898745159667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657563276432358875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18740cd91e11bc44a287e9071069ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageCollider: {fileID: 2703763761259477919}
+  physicalDamage: 0
+  bossCharacter: {fileID: 4610653453915023169}
 --- !u!1 &5675998406868107703
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,9 +14,9 @@ public class CombatStanceState : AIState
 
     [Header("Attacks")]
     public List<AICharacterAttackAction> aiCharacterAttacks;   // a list of all possible attack actions for this character
-    protected List<AICharacterAttackAction> potentialAttacks;  // a list that is created during this state. all attacks possible in this situation (based on angle, distance etc.)
-    private AICharacterAttackAction chosenAttack;
-    private AICharacterAttackAction previousAttack;
+    public List<AICharacterAttackAction> potentialAttacks;  // a list that is created during this state. all attacks possible in this situation (based on angle, distance etc.)
+    public AICharacterAttackAction chosenAttack;
+    public AICharacterAttackAction previousAttack;
     protected bool hasAttack = false;
 
     [Header("Combo")]
@@ -26,7 +26,7 @@ public class CombatStanceState : AIState
 
     [Header("Engagement Distance")]
     // WAS 5
-    [SerializeField] public float maximumEngagementDistance = 3; // the distance we have to be away from the target before we enter the pursue target state
+    [SerializeField] public float maximumEngagementDistance = 3.1f; // the distance we have to be away from the target before we enter the pursue target state
 
     public override AIState Tick(AICharacterManager aiCharacter)
     {

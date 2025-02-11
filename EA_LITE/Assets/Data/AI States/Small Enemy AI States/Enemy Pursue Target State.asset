@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf4666c07c205046a0c05b79723d826, type: 3}
-  m_Name: Idle State
+  m_Script: {fileID: 11500000, guid: 527961cc60f1b1840915db710d4819ac, type: 3}
+  m_Name: Enemy Pursue Target State
   m_EditorClassIdentifier: 

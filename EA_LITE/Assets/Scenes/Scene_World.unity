@@ -2280,6 +2280,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AI Spawner (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1304529055322309443, guid: 5d4c2e62a9f155f41b2fd8e583418c51,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1304529055322309455, guid: 5d4c2e62a9f155f41b2fd8e583418c51,
         type: 3}
       propertyPath: m_RootOrder
@@ -13519,7 +13524,7 @@ PrefabInstance:
     - target: {fileID: 1304529055322309443, guid: 5d4c2e62a9f155f41b2fd8e583418c51,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1304529055322309455, guid: 5d4c2e62a9f155f41b2fd8e583418c51,
         type: 3}

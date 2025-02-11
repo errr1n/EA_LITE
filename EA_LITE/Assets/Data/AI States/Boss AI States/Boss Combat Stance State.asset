@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bd9690099bc0fd4091ded1b08f4b9fb, type: 3}
-  m_Name: Combat Stance State
+  m_Name: Boss Combat Stance State
   m_EditorClassIdentifier: 
   aiCharacterAttacks:
   - {fileID: 11400000, guid: 112119736e79eee4da85404e8b676f9f, type: 2}
   - {fileID: 11400000, guid: 14d27ca0aaeebe2439f7e7d09104a86a, type: 2}
+  potentialAttacks: []
+  chosenAttack: {fileID: 0}
+  previousAttack: {fileID: 0}
   canPerformCombo: 0
   chanceToPerformCombo: 25
   maximumEngagementDistance: 5
