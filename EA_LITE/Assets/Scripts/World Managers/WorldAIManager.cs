@@ -29,46 +29,8 @@ public class WorldAIManager : MonoBehaviour
         }
     }
 
-    // private void Start()
-    // {
-    //     // StartCoroutine(WaitForSceneToLoadThenSpawnCharacters());
-    // }
-
-    // private void Update()
-    // {
-    //     if(respawnCharacters)
-    //     {
-    //         respawnCharacters = false;
-    //         SpawnAllCharacters();
-    //     }
-    //     if(despawnCharacters)
-    //     {
-    //         despawnCharacters = false;
-    //         DespawnAllCharacters();
-    //     }
-    // }
-
-    // private IEnumerator WaitForSceneToLoadThenSpawnCharacters()
-    // {
-    //     while(!SceneManager.GetActiveScene().isLoaded)
-    //     {
-    //         yield return null;
-    //     }
-
-    //     SpawnAllCharacters();
-    // }
-
     public void SpawnCharacter(AICharacterSpawner aiCharacterSpawner)
     {
-        // foreach(var character in aiCharacterSpawners)
-        // {
-        //     // GameObject instantiatedCharacter = Instantiate(character);
-        //     // spawnedInCharacters.Add(instantiatedCharacter);
-        //     // Debug.Log("SPAWN");
-
-        //     character.AttemptToSpawnCharacter();
-        // }
-
         aiCharacterSpawners.Add(aiCharacterSpawner);
         aiCharacterSpawner.AttemptToSpawnCharacter();
     }
