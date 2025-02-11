@@ -3713,6 +3713,7 @@ MonoBehaviour:
   maximumFOV: 35
   attackRotationSpeed: 25
   bossRightHandDamageCollider: {fileID: 8395435898745159667}
+  bossRightFootDamageCollider: {fileID: 4986260063598348452}
   baseDamage: 25
   attack01DamageModifier: 1
   attack02DamageModifier: 1.4
@@ -11341,7 +11342,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5218979728137567452}
-  m_Layer: 0
+  - component: {fileID: 6565021162696600043}
+  - component: {fileID: 4986260063598348452}
+  m_Layer: 10
   m_Name: DEF-toe.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11364,6 +11367,34 @@ Transform:
   m_Father: {fileID: 2972990233242601977}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6565021162696600043
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5751846507076744814}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.45, y: 1.88, z: 1}
+  m_Center: {x: 0, y: -0.26, z: 0.17}
+--- !u!114 &4986260063598348452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5751846507076744814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27575d68bca70314abd9a1aec3783527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageCollider: {fileID: 6565021162696600043}
+  physicalDamage: 0
+  bossCharacter: {fileID: 4610653453915023169}
 --- !u!1 &5796494858151276256
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ public class AIBossCombatManager : AICharacterCombatManager
 {
     [Header("Damage Colliders")]
     [SerializeField] BossHandDamageCollider bossRightHandDamageCollider;
+    // [SerializeField] BossHandDamageCollider bossLeftHandDamageCollider;
+    [SerializeField] BossFootDamageCollider bossRightFootDamageCollider;
     //left hand
 
     [Header("Damage")]
@@ -16,20 +18,24 @@ public class AIBossCombatManager : AICharacterCombatManager
 
     public void SetAttack01Damage()
     {
+        // RIGHT HAND SWAT
         bossRightHandDamageCollider.physicalDamage = baseDamage * attack01DamageModifier;
-        //left
+        // LEFT HAND SWAT
     }
 
     public void SetAttack02Damage()
     {
-        bossRightHandDamageCollider.physicalDamage = baseDamage * attack02DamageModifier;
-        //left
+        // RIGHT FOOT STOMP
+        bossRightFootDamageCollider.physicalDamage = baseDamage * attack02DamageModifier;
+        // LEFT FOOT STOMP
+
     }
 
+    // RIGHT HAND DAMAGE COLLIDER
     public void OpenBossRightHandDamageColider()
     {
         //play attack sound
-        aiCharacter.characterSoundFXManager.PlayAttackGrunt();
+        // aiCharacter.characterSoundFXManager.PlayAttackGrunt();
         //open the right hand colldier
         bossRightHandDamageCollider.EnableDamageCollider();
     }
@@ -37,5 +43,20 @@ public class AIBossCombatManager : AICharacterCombatManager
     public void CloseBossRightHandDamageColider()
     {
         bossRightHandDamageCollider.DisableDamageCollider();
+    }
+
+    // RIGHT FOOT DAMAGE COLLIDER
+    public void OpenBossRightFootDamageCollider()
+    {
+        //play attack sound
+        // aiCharacter.characterSoundFXManager.PlayAttackGrunt();
+        //open the right foot colldier
+        // Debug.Log("open");
+        bossRightFootDamageCollider.EnableDamageCollider();
+    }
+
+    public void CloseBossRightFootDamageCollider()
+    {
+        bossRightFootDamageCollider.DisableDamageCollider();
     }
 }

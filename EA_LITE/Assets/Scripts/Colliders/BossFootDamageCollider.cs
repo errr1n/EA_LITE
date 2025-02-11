@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossHandDamageCollider : DamageCollider
+public class BossFootDamageCollider : DamageCollider
 {
     [SerializeField] AIBossCharacterManager bossCharacter;
 
