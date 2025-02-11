@@ -97,7 +97,7 @@ public class AICharacterCombatManager : CharacterCombatManager
         {
             return;
         }
-        Debug.Log("PIVOT");
+        // Debug.Log("PIVOT");
 
         if(viewableAngle >= 20 && viewableAngle <= 60)
         {

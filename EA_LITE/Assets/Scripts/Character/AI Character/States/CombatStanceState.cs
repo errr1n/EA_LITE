@@ -138,7 +138,7 @@ public class CombatStanceState : AIState
         // 4. pick an attack from remaining list randomly, based on weight
         if(potentialAttacks.Count <= 0)
         {
-            Debug.Log("NO ATTACKS");
+            // Debug.Log("NO ATTACKS");
             return;
         }
 
