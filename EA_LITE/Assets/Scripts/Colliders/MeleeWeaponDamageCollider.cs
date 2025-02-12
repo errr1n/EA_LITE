@@ -40,6 +40,10 @@ public class MeleeWeaponDamageCollider : DamageCollider
             // CHECK IF WE CAN DAMAGE THIS TARGET (BLOCKING)
 
             // CHECK IF INVULNERABLE (DODGE)
+            // if(damageTarget.isInvulnerable)
+            // {
+            //     return;
+            // }
 
             //DAMAGE
             DamageTarget(damageTarget);

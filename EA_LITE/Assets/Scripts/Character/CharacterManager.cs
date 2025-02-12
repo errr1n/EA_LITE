@@ -26,6 +26,7 @@ public class CharacterManager : MonoBehaviour
     // public bool isGrounded = true;
     // public bool canRotate = true;
     // public bool canMove = true;
+    public bool isInvulnerable = false;
 
     [SerializeField] public bool _isLockedOn = false;
     public bool IsLockedOn{

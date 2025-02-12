@@ -6,6 +6,8 @@ public class CharacterCombatManager : MonoBehaviour
 {
     // public WeaponItem currentWeaponBeingUsed;
 
+    // private bool isInvulnerable = false;
+
     //may not need
     protected CharacterManager character;
 
@@ -38,5 +40,15 @@ public class CharacterCombatManager : MonoBehaviour
         {
             currentTarget = null;
         }
+    }
+
+    private void EnableIsInvulnerable()
+    {
+        character.isInvulnerable = true;
+    }
+
+    private void DisableIsInvulnerable()
+    {
+        character.isInvulnerable = false;
     }
 }

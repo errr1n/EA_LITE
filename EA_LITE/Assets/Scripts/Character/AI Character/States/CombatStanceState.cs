@@ -24,8 +24,8 @@ public class CombatStanceState : AIState
     [SerializeField] protected int chanceToPerformCombo = 25;  // the chance (%) of the character to perform a combo on the next attack
     protected bool hasRolledForComboChance = false;                 // if we have already rolled for the chance duriong this state
 
-    [Header("Pivot")]
-    [SerializeField] protected bool enablePivot;
+    // [Header("Pivot")]
+    // [SerializeField] protected bool enablePivot;
 
     [Header("Engagement Distance")]
     // WAS 5
@@ -49,7 +49,7 @@ public class CombatStanceState : AIState
         // Debug.Log("2");
 
         // if we want the ai character to face and turn towards its target when its outside its fov include this
-        if(enablePivot)
+        if(aiCharacter.aiCharacterCombatManager.enablePivot)
         {
             if(!aiCharacter.IsMoving)
             {
