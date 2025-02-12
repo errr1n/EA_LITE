@@ -8,12 +8,16 @@ public class AIBossCombatManager : AICharacterCombatManager
     [SerializeField] BossHandDamageCollider bossRightHandDamageCollider;
     // [SerializeField] BossHandDamageCollider bossLeftHandDamageCollider;
     [SerializeField] BossFootDamageCollider bossRightFootDamageCollider;
+    // [SerializeField] Transform bossRightStompFoot;
+    // [SerializeField] Transform bossLeftStompFoot;
+    // [SerializeField] float stompAttackAOERadius = 1.5f;
     //left hand
 
     [Header("Damage")]
     [SerializeField] int baseDamage = 25;
     [SerializeField] float attack01DamageModifier = 1.0f;
     [SerializeField] float attack02DamageModifier = 1.4f;
+    // [SerializeField] float stompDamage = 25;
     //add more attacks
 
     public void SetAttack01Damage()
@@ -45,13 +49,72 @@ public class AIBossCombatManager : AICharacterCombatManager
         bossRightHandDamageCollider.DisableDamageCollider();
     }
 
+    // RIGHT STOMP
+    // public void ActivateBossRightStomp()
+    // {
+    //     Collider[] colliders = Physics.OverlapSphere(bossRightStompFoot.position, stompAttackAOERadius, WorldUtilityManager.instance.GetCharacterLayers());
+    //     List<CharacterManager> charactersDamaged = new List<CharacterManager>();
+
+    //     foreach(var collider in colliders)
+    //     {
+    //         CharacterManager character = collider.GetComponentInParent<CharacterManager>();
+
+    //         if(character != null)
+    //         {
+    //             if(charactersDamaged.Contains(character))
+    //             {
+    //                 continue;
+    //             }  
+
+    //             charactersDamaged.Add(character);
+
+    //             //check for block
+    //             TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
+    //             damageEffect.physicalDamage = stompDamage;
+
+    //             // damageEffect.contactPoint = contactPoint;
+
+    //             character.characterEffectsManager.ProcessInstantEffect(damageEffect);
+    //         }
+    //     }
+    // }
+
+    // LEFT STOMP
+    // public void ActivateBossLefttStomp()
+    // {
+    //     Collider[] colliders = Physics.OverlapSphere(bossLeftStompFoot.position, stompAttackAOERadius, WorldUtilityManager.instance.GetCharacterLayers());
+    //     List<CharacterManager> charactersDamaged = new List<CharacterManager>();
+
+    //     foreach(var collider in colliders)
+    //     {
+    //         CharacterManager character = collider.GetComponentInParent<CharacterManager>();
+
+    //         if(character != null)
+    //         {
+    //             if(charactersDamaged.Contains(character))
+    //             {
+    //                 continue;
+    //             }  
+
+    //             charactersDamaged.Add(character);
+
+    //             //check for block
+    //             TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
+    //             damageEffect.physicalDamage = stompDamage;
+
+    //             // damageEffect.contactPoint = contactPoint;
+
+    //             character.characterEffectsManager.ProcessInstantEffect(damageEffect);
+    //         }
+    //     }
+    // }
+
     // RIGHT FOOT DAMAGE COLLIDER
     public void OpenBossRightFootDamageCollider()
     {
         //play attack sound
         // aiCharacter.characterSoundFXManager.PlayAttackGrunt();
         //open the right foot colldier
-        // Debug.Log("open");
         bossRightFootDamageCollider.EnableDamageCollider();
     }
 
