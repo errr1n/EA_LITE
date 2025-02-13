@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5871635191012651292}
   - component: {fileID: 1668058857893742189}
+  - component: {fileID: 4668840461598595157}
   m_Layer: 0
   m_Name: AP2_Rock4_L
   m_TagString: Untagged
@@ -223,3 +224,17 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4331288328407435584}
   m_Enabled: 1
+--- !u!64 &4668840461598595157
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500925945695546278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7295575493426455349, guid: 15666035b7832524b9e12b1582c3c578, type: 3}

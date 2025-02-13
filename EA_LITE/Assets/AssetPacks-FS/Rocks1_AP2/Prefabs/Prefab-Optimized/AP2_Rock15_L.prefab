@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5127806572813912670}
   - component: {fileID: 104637505385676079}
+  - component: {fileID: 5416175780578728543}
   m_Layer: 0
   m_Name: AP2_Rock15_L
   m_TagString: Untagged
@@ -140,6 +141,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5866983605242915538}
   m_Enabled: 1
+--- !u!136 &5416175780578728543
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5504085134037274852}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.67
+  m_Height: 12.85
+  m_Direction: 1
+  m_Center: {x: 0.12092042, y: 3.7517674, z: 0.1}
 --- !u!1 &9139724465228207565
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2531397120360066257}
   - component: {fileID: 1481279458056676212}
   - component: {fileID: 3704906238981429182}
+  - component: {fileID: 7722205410665669085}
   m_Layer: 0
   m_Name: Gem_6
   m_TagString: Untagged
@@ -84,6 +85,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7722205410665669085
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2912286243065853547}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.753853, y: 0.9927916, z: 0.7538531}
+  m_Center: {x: 0.025366873, y: 0.5013668, z: -0.008613944}
 --- !u!1 &6581808744014995994
 GameObject:
   m_ObjectHideFlags: 0
