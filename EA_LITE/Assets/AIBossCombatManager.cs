@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AIBossCombatManager : AICharacterCombatManager
 {
+    AITitanCharacterManager titanManager;
+
     [Header("Damage Colliders")]
     [SerializeField] BossHandDamageCollider bossRightHandDamageCollider;
     // [SerializeField] BossHandDamageCollider bossLeftHandDamageCollider;
@@ -17,11 +19,18 @@ public class AIBossCombatManager : AICharacterCombatManager
     [SerializeField] int baseDamage = 25;
     [SerializeField] float attack01DamageModifier = 1.0f;
     [SerializeField] float attack02DamageModifier = 1.4f;
-    // [SerializeField] float stompDamage = 25;
     //add more attacks
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        titanManager = GetComponent<AITitanCharacterManager>();
+    }
 
     public void SetAttack01Damage()
     {
+        aiCharacter.characterSoundFXManager.PlayAttackGrunt();
         // RIGHT HAND SWAT
         bossRightHandDamageCollider.physicalDamage = baseDamage * attack01DamageModifier;
         // LEFT HAND SWAT
@@ -29,6 +38,7 @@ public class AIBossCombatManager : AICharacterCombatManager
 
     public void SetAttack02Damage()
     {
+        aiCharacter.characterSoundFXManager.PlayAttackGrunt();
         // RIGHT FOOT STOMP
         bossRightFootDamageCollider.physicalDamage = baseDamage * attack02DamageModifier;
         // LEFT FOOT STOMP
@@ -42,6 +52,8 @@ public class AIBossCombatManager : AICharacterCombatManager
         // aiCharacter.characterSoundFXManager.PlayAttackGrunt();
         //open the right hand colldier
         bossRightHandDamageCollider.EnableDamageCollider();
+        //PLAY WHOOSH SOUND
+        titanManager.characterSoundFXManager.PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(titanManager.bossSoundFXManager.handWhooshes));
     }
 
     public void CloseBossRightHandDamageColider()
