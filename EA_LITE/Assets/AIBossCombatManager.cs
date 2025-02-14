@@ -21,6 +21,8 @@ public class AIBossCombatManager : AICharacterCombatManager
     [SerializeField] float attack02DamageModifier = 1.4f;
     //add more attacks
 
+    //VFX - 46
+
     protected override void Awake()
     {
         base.Awake();

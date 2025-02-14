@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossFootDamageCollider : DamageCollider
 {
+    //46
     [SerializeField] AIBossCharacterManager bossCharacter;
 
     protected override void Awake()

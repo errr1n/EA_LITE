@@ -3873,9 +3873,11 @@ MonoBehaviour:
   attackGrunts:
   - {fileID: 8300000, guid: a8ea84cfab0a6bd41903552a2e8e0933, type: 3}
   footSteps:
-  - {fileID: 8300000, guid: 1ac2be35c2391fb4db663b57419e06d0, type: 3}
+  - {fileID: 8300000, guid: bf28615b475f5704989d4d8dcc8deef4, type: 3}
   handWhooshes:
   - {fileID: 8300000, guid: 4e2b2f5996eae5241825bdae44c40be0, type: 3}
+  stompImpacts:
+  - {fileID: 8300000, guid: 40bc0b255d9acd540b7c3f65be9a6741, type: 3}
 --- !u!114 &5710445414407953941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9528,6 +9530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f071a326785a5f2479d4441065356d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToGround: 0.046
 --- !u!82 &201381601349361435
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10443,6 +10446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f071a326785a5f2479d4441065356d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToGround: 0.05
 --- !u!82 &7915240608514145537
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10933,6 +10937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f071a326785a5f2479d4441065356d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToGround: 0.05
 --- !u!82 &1693515219309136037
 AudioSource:
   m_ObjectHideFlags: 0

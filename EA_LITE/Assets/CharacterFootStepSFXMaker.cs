@@ -11,6 +11,7 @@ public class CharacterFootStepSFXMaker : MonoBehaviour
 
     private bool hasTouchedGround = false;
     private bool hasPlayedFootStepSFX = false;
+    [SerializeField] float distanceToGround = 0.05f;
 
     private void Awake()
     {
@@ -37,7 +38,7 @@ public class CharacterFootStepSFXMaker : MonoBehaviour
 
         RaycastHit hit;
 
-        if(Physics.Raycast(transform.position, character.transform.TransformDirection(Vector3.down), out hit, 0.05f, WorldUtilityManager.instance.GetEnviroLayers()))
+        if(Physics.Raycast(transform.position, character.transform.TransformDirection(Vector3.down), out hit, distanceToGround, WorldUtilityManager.instance.GetEnviroLayers()))
         {
             hasTouchedGround = true;
 
