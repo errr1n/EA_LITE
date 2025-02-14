@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 86467526164371880}
   - component: {fileID: 5145695076116917977}
+  - component: {fileID: 5804844355510058832}
   m_Layer: 0
   m_Name: AP2_Rock9_L
   m_TagString: Untagged
@@ -57,6 +58,20 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7473826823277388259}
   m_Enabled: 1
+--- !u!64 &5804844355510058832
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754600797447258898}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2059726672050993057, guid: 4dc6865c1441c70478a6a41037bba205, type: 3}
 --- !u!1 &2906921090302482290
 GameObject:
   m_ObjectHideFlags: 0
