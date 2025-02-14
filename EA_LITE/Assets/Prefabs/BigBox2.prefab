@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8513904161229472049}
   - component: {fileID: 6902828657889780789}
+  - component: {fileID: 4553537856533991436}
   m_Layer: 0
   m_Name: BigBox2
   m_TagString: Untagged
@@ -223,3 +224,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4169655853174145964}
   m_Enabled: 1
+--- !u!65 &4553537856533991436
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8513904161229472048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2344683, y: 1.1975412, z: 1.1999317}
+  m_Center: {x: -0.01229018, y: 0.584553, z: 0.00088715553}

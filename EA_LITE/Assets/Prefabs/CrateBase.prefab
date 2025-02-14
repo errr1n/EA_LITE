@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6959557421718846639}
   - component: {fileID: 4223867247130219945}
+  - component: {fileID: 4971545589464755427}
   m_Layer: 0
   m_Name: CrateBase
   m_TagString: Untagged
@@ -57,6 +58,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6655640981341688546}
   m_Enabled: 1
+--- !u!65 &4971545589464755427
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914286819736798524}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.04, y: 0.22428933, z: 1.44}
+  m_Center: {x: 0.0006186962, y: 0.115195766, z: 0.0119870305}
 --- !u!1 &1417532300149816066
 GameObject:
   m_ObjectHideFlags: 0

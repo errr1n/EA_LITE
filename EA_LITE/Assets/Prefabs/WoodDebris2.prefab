@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8050762555203722688}
   - component: {fileID: 6073258625196646201}
+  - component: {fileID: 4813220435949762925}
   m_Layer: 0
   m_Name: WoodDebris2
   m_TagString: Untagged
@@ -223,3 +224,17 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4962269990066945528}
   m_Enabled: 1
+--- !u!64 &4813220435949762925
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8050762555203722689}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2179583597955270634, guid: e1237dbad50767640844a0134074efad, type: 3}
