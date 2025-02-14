@@ -2280,6 +2280,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.99999994, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 717717010514756268}
   - {fileID: 5250183173322144483}
   - {fileID: 5052695058174635286}
   - {fileID: 1399098745590301275}
@@ -8426,7 +8427,6 @@ Transform:
   - {fileID: 7886038904756977782}
   - {fileID: 2397300371591593715}
   - {fileID: 1297576160535972692}
-  - {fileID: 717717010514756268}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8522,6 +8522,10 @@ MonoBehaviour:
   combatStance: {fileID: 11400000, guid: 9b90a59f32c377c499006c1938fed599, type: 2}
   attack: {fileID: 11400000, guid: 2d414f0df99808a4dbd46a65105b2cec, type: 2}
   bossID: 0
+  hasBeenDefeated: 0
+  hasBeenAwakened: 0
+  fogWalls: []
+  wakeBossUp: 0
 --- !u!114 &4916243601278222092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8545,6 +8549,11 @@ MonoBehaviour:
   minimumFOV: -35
   maximumFOV: 35
   attackRotationSpeed: 25
+  bossRightHandDamageCollider: {fileID: 0}
+  bossRightFootDamageCollider: {fileID: 0}
+  baseDamage: 25
+  attack01DamageModifier: 1
+  attack02DamageModifier: 1.4
 --- !u!114 &4916243601278222086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10291,7 +10300,7 @@ Transform:
   m_Children:
   - {fileID: 903834811358980918}
   m_Father: {fileID: 1191790261475106158}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6176065196895713095
 GameObject:
@@ -11432,7 +11441,7 @@ Transform:
   m_Children:
   - {fileID: 9137730446007053380}
   m_Father: {fileID: 1191790261475106158}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6713311795254463683
 GameObject:
@@ -11617,7 +11626,7 @@ Transform:
   m_Children:
   - {fileID: 4710827503582706031}
   m_Father: {fileID: 1191790261475106158}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6855792535138057631
 GameObject:
@@ -12473,13 +12482,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7139231659984398840}
-  m_LocalRotation: {x: -0, y: 0.8848834, z: -0, w: 0.46581268}
-  m_LocalPosition: {x: 0, y: 4.54, z: 0}
-  m_LocalScale: {x: 1.8219999, y: 1.8219999, z: 1.8219999}
+  m_LocalRotation: {x: -0.21788071, y: 0.78203094, z: -0.41948313, w: 0.4061891}
+  m_LocalPosition: {x: -0.0032868849, y: 0.707123, z: -1.6317887}
+  m_LocalScale: {x: 1.8220001, y: 1.8220001, z: 1.8219999}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4877601802925728423}
-  m_RootOrder: 90
+  m_Father: {fileID: 1191790261475106158}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &8807842645352644846
 Light:
@@ -12492,9 +12501,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.2509804, g: 0.6784314, b: 0.35686275, a: 1}
-  m_Intensity: 3
-  m_Range: 5
+  m_Color: {r: 0.45256317, g: 0.8490566, b: 0.61446625, a: 1}
+  m_Intensity: 20
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -12535,7 +12544,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 3
+  m_BounceIntensity: 20
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
