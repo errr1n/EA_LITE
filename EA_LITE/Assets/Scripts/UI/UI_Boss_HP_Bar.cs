@@ -26,7 +26,17 @@ public class UI_Boss_HP_Bar : UI_StatBar
         //
     }
 
-    private void OnBossHPChanged(int oldValue, int newValue)
+    // private void OnBossHPChanged(int oldValue, int newValue)
+    // {
+    //     SetStat(newValue);
+
+    //     if(newValue <= 0)
+    //     {
+    //         RemoveHPBar(2.5f);
+    //     }
+    // }
+
+    public void SetBossHP(float newValue)
     {
         SetStat(newValue);
 
