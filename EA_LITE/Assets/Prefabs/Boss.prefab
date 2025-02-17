@@ -2440,7 +2440,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4896715712818942804}
-  - component: {fileID: 1792685743111345800}
   - component: {fileID: 2407623826524357809}
   m_Layer: 7
   m_Name: DEF-spine.003
@@ -2468,18 +2467,6 @@ Transform:
   m_Father: {fileID: 6019527722878393800}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1792685743111345800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209252203435871969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9196937d95829dd4ab1f6015481fa424, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &2407623826524357809
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3847,6 +3834,7 @@ MonoBehaviour:
   pursueTarget: {fileID: 11400000, guid: 6c4db9f524e94ff4d8e7d1b6bab73581, type: 2}
   combatStance: {fileID: 11400000, guid: 03f9814449d3e38499cfb221f97d259c, type: 2}
   attack: {fileID: 11400000, guid: 94abe38edf5dd95438c7018eadd1d30d, type: 2}
+  bossHPBar: {fileID: 0}
   bossID: 0
   fogWalls: []
   sleepAnimation: Sleep_01
@@ -4693,7 +4681,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 765348267165855810}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2233694793547870998
 GameObject:
@@ -8129,6 +8117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6252731923376357180}
+  - component: {fileID: 7042911331237812668}
   m_Layer: 7
   m_Name: Lock On Target
   m_TagString: Untagged
@@ -8144,13 +8133,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4238070092957287978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.602, y: -0.622, z: 0.384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3760586208418753960}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7042911331237812668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4238070092957287978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9196937d95829dd4ab1f6015481fa424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4257607898671843940
 GameObject:
   m_ObjectHideFlags: 0
@@ -9401,7 +9402,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5725964283474107392}
-  - {fileID: 2649747854461642546}
   - {fileID: 1945891841452375493}
   m_Father: {fileID: 3949797743110114041}
   m_RootOrder: 0
@@ -12160,37 +12160,6 @@ Transform:
   - {fileID: 402956937785093700}
   m_Father: {fileID: 5214014339544007471}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5834806086465827100
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2649747854461642546}
-  m_Layer: 7
-  m_Name: Lock On Target
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2649747854461642546
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5834806086465827100}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1790373, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 765348267165855810}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5837261416715040000
 GameObject:
