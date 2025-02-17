@@ -50,6 +50,8 @@ public class CharacterStatsManager : MonoBehaviour
 
     protected virtual void Awake(){
         character = GetComponent<CharacterManager>();
+
+        // CurrentHealth = maxHealth;
     }
 
     protected virtual void Start()

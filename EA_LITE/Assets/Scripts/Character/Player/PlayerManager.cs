@@ -64,6 +64,7 @@ public class PlayerManager : CharacterManager
         // REGENERATE STAMINA
         characterStatsManager.RegenerateStamina();
 
+        // UPDATE UI HEALTH BAR ACCORDING TO CURRENT HEALTH STATS
         PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(characterStatsManager.CurrentHealth);
         // playerEquipmentManager.OnCurrentRightHandWeaponIDChange(playerEquipmentManager._currentRightHandWeaponID);
         // playerEquipmentManager.CurrentRightHandWeaponID = playerEquipmentManager._currentRightHandWeaponID;

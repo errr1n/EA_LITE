@@ -76,6 +76,7 @@ public class CharacterManager : MonoBehaviour
     {
         HandleStatUpdates();
 
+        // GET HP VALUES FROM CHARACTERS
         characterStatsManager.CheckHP();
     }
 

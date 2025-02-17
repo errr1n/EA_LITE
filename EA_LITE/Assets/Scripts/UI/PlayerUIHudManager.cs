@@ -7,10 +7,15 @@ public class PlayerUIHudManager : MonoBehaviour
 {
     CharacterStatsManager characterStatsManager;
 
+    [Header("Stat Bars")]
     [SerializeField] UI_StatBar healthBar;
     [SerializeField] UI_StatBar staminaBar;
 
     [SerializeField] private bool staminaBarUI = false;
+
+    [Header("Boss Health Bar")]
+    public Transform bossHealthBarParent;
+    public GameObject bossHealthBarObject;
 
     private void Awake()
     {

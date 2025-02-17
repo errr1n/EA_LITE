@@ -3722,6 +3722,7 @@ MonoBehaviour:
   _isMoving: 0
   isDead: 0
   isSprinting: 0
+  characterName: Rock Titan
   aiCharacterCombatManager: {fileID: 0}
   aiCharacterLocomotionManager: {fileID: 0}
   navMeshAgent: {fileID: 0}
@@ -3736,6 +3737,7 @@ MonoBehaviour:
   awakeAnimation: Awaken_01
   _hasBeenDefeated: 0
   _hasBeenAwakened: 0
+  _bossFightIsActive: 0
   sleepState: {fileID: 11400000, guid: 6c71154ad49ef6f4cac215fcbe3a586e, type: 2}
   bossSoundFXManager: {fileID: 0}
 --- !u!114 &5110257553887991747
