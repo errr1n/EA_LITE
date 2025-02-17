@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c3b4f28223e7ae4dbd0390c0c55fd9f, type: 3}
-  m_Name: Axe
+  m_Name: Dynamite
   m_EditorClassIdentifier: 
-  itemName: Axe
+  itemName: Dynamite
   itemID: 1
   weaponModel: {fileID: 4072232400017133653, guid: a5aa13ac958c023498fc52911faf90a2,
     type: 3}
   physicalDamage: 160
-  leftClick_Action: {fileID: 11400000, guid: 82a5736a16775d34abc6e0773fe83a44, type: 2}
+  leftClick_Action: {fileID: 11400000, guid: 1d6ab939b577b744e90d3e65a2536aa0, type: 2}
+  whooshes:
+  - {fileID: 8300000, guid: 7baab420e311ce64c9073d73cbe78cf7, type: 3}
