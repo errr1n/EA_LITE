@@ -9,10 +9,12 @@ public class UI_Boss_HP_Bar : UI_StatBar
 
     public void EnableBossHPBar(AIBossCharacterManager boss)
     {
+        Debug.Log("enable hp bar");
         bossCharacter = boss;
 
         // bossCharacter.characterStatsManager.CurrentHealth += OnBossHPChanged;
-        PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(boss.characterStatsManager.CurrentHealth);
+        // PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(boss.characterStatsManager.CurrentHealth);
+        // OnBossHPChanged(bossCharacter.characterStatsManager.CurrentHealth,)
 
         SetMaxStat(bossCharacter.characterStatsManager.maxHealth);
         SetStat(bossCharacter.characterStatsManager.CurrentHealth);

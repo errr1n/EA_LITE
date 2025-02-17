@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterStatsManager : MonoBehaviour
 {
     CharacterManager character;
+    // [HideInInspector] public PlayerUIHudManager playerUIHudManager;
 
     // [Header("STATUS")]
     // public bool isDead = false;

@@ -58,6 +58,11 @@ public class PlayerUIHudManager : MonoBehaviour
         staminaBar.SetMaxStat(maxStamina);
     }
 
+    // public void SetNewBossHealthValue(float newValue)
+    // {
+    //     healthBar.SetStat(newValue);
+    // }
+
 
 
     public void SetNewMaxHealthValue(int oldVitality, int newVitality)
