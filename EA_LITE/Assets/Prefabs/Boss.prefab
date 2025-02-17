@@ -11893,7 +11893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5218979728137567452}
   - component: {fileID: 7707826835357766957}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: DEF-toe.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
