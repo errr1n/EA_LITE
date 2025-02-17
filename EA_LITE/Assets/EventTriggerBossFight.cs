@@ -5,6 +5,7 @@ using UnityEngine;
 public class EventTriggerBossFight : MonoBehaviour
 {
     [SerializeField] int bossID;
+    [SerializeField] GameObject triggerBox;
 
 
     private void OnTriggerEnter(Collider other)
@@ -15,5 +16,7 @@ public class EventTriggerBossFight : MonoBehaviour
         {
             boss.WakeBoss();
         }
+
+        GameObject.Destroy(triggerBox);
     }
 }

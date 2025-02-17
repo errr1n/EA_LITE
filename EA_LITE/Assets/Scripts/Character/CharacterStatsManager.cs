@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterStatsManager : MonoBehaviour
 {
     CharacterManager character;
+    // [HideInInspector] public PlayerUIHudManager playerUIHudManager;
 
     // [Header("STATUS")]
     // public bool isDead = false;
@@ -50,6 +51,8 @@ public class CharacterStatsManager : MonoBehaviour
 
     protected virtual void Awake(){
         character = GetComponent<CharacterManager>();
+
+        // CurrentHealth = maxHealth;
     }
 
     protected virtual void Start()
