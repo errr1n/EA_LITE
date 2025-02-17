@@ -72,13 +72,13 @@ public class AIBossCharacterManager : AICharacterManager
         // StartCoroutine(GetFogWallsFromWorldObjectManager());
         fogWalls = new List<FogWallInteractable>();
 
-        // foreach(var fogWall in WorldObjectManager.instance.fogWalls)
-        // {
-        //     if(fogWall.fogWallID == bossID)
-        //     {
-        //         fogWalls.Add(fogWall);
-        //     }
-        // }
+        foreach(var fogWall in WorldObjectManager.instance.fogWalls)
+        {
+            if(fogWall.fogWallID == bossID)
+            {
+                fogWalls.Add(fogWall);
+            }
+        }
 
         if(HasBeenAwakened)
         {
