@@ -46,8 +46,8 @@ public class AIBossCharacterManager : AICharacterManager
     {
         base.Awake();
 
-        // sleepState = Instantiate(sleepState);
-        // currentState = sleepState;
+        sleepState = Instantiate(sleepState);
+        currentState = sleepState;
     }
 
     protected override void Update()
@@ -65,8 +65,8 @@ public class AIBossCharacterManager : AICharacterManager
 
     public void OnSpawn()
     {
-        sleepState = Instantiate(sleepState);
-        currentState = sleepState;
+        // sleepState = Instantiate(sleepState);
+        // currentState = sleepState;
         
         //LOCATE FOG WALL
         // StartCoroutine(GetFogWallsFromWorldObjectManager());
@@ -131,8 +131,8 @@ public class AIBossCharacterManager : AICharacterManager
         }
         
         HasBeenAwakened = true;
-        Debug.Log("wake boss True");
         currentState = idle;
+        Debug.Log("idle state");
 
         // for(int i = 0; i < fogWalls.Count; i++)
         // {
