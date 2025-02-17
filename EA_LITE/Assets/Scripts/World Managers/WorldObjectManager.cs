@@ -18,7 +18,8 @@ public class WorldObjectManager : MonoBehaviour
     // [SerializeField] GameObject instantiatedCharacter;
 
     [Header("Fog Walls")]
-    public List<FogWallInteractable> fogWalls;
+    // public List<FogWallInteractable> fogWalls;
+    public List<WallInteractable> walls;
 
     private void Awake()
     {
@@ -38,19 +39,19 @@ public class WorldObjectManager : MonoBehaviour
         objectSpawner.AttemptToSpawnObject();
     }
 
-    public void AddFogWallToList(FogWallInteractable fogWall)
+    public void AddWallToList(WallInteractable wall)
     {
-        if(!fogWalls.Contains(fogWall))
+        if(!walls.Contains(wall))
         {
-            fogWalls.Add(fogWall);
+            walls.Add(wall);
         }
     }
 
-    public void RemoveFogWallFromList(FogWallInteractable fogWall)
+    public void RemoveWallFromList(WallInteractable wall)
     {
-        if(fogWalls.Contains(fogWall))
+        if(walls.Contains(wall))
         {
-            fogWalls.Remove(fogWall);
+            walls.Remove(wall);
         }
     }
 }

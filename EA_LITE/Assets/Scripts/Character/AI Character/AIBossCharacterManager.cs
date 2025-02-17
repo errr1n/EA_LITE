@@ -13,7 +13,7 @@ public class AIBossCharacterManager : AICharacterManager
     [Header("Status")]
     // [SerializeField] bool hasBeenDefeated = false;
     // [SerializeField] bool hasBeenAwakened = false;
-    [SerializeField] List<FogWallInteractable> fogWalls;
+    [SerializeField] List<WallInteractable> walls;
     [SerializeField] string sleepAnimation;
     [SerializeField] string awakeAnimation;
     
@@ -92,29 +92,29 @@ public class AIBossCharacterManager : AICharacterManager
     {
         // BossFightIsActive = 
 
-        fogWalls = new List<FogWallInteractable>();
+        walls = new List<WallInteractable>();
 
-        foreach(var fogWall in WorldObjectManager.instance.fogWalls)
+        foreach(var wall in WorldObjectManager.instance.walls)
         {
-            if(fogWall.fogWallID == bossID)
+            if(wall.wallID == bossID)
             {
-                fogWalls.Add(fogWall);
+                walls.Add(wall);
             }
         }
 
         if(HasBeenAwakened)
         {
-            for(int i = 0; i < fogWalls.Count; i++)
+            for(int i = 0; i < walls.Count; i++)
             {
-                fogWalls[i].IsActive = true;
+                walls[i].IsActive = true;
             }
         }
 
         if(HasBeenDefeated)
         {
-            for(int i = 0; i < fogWalls.Count; i++)
+            for(int i = 0; i < walls.Count; i++)
             {
-                fogWalls[i].IsActive = false;
+                walls[i].IsActive = false;
             }
 
             Debug.Log("SET BOSS TO FALSE");
