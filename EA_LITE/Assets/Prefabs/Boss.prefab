@@ -3731,10 +3731,12 @@ MonoBehaviour:
   combatStance: {fileID: 11400000, guid: 03f9814449d3e38499cfb221f97d259c, type: 2}
   attack: {fileID: 11400000, guid: 94abe38edf5dd95438c7018eadd1d30d, type: 2}
   bossID: 0
-  hasBeenDefeated: 0
-  hasBeenAwakened: 0
   fogWalls: []
-  wakeBossUp: 0
+  sleepAnimation: Sleep_01
+  awakeAnimation: Awaken_01
+  _hasBeenDefeated: 0
+  _hasBeenAwakened: 0
+  sleepState: {fileID: 11400000, guid: 6c71154ad49ef6f4cac215fcbe3a586e, type: 2}
   bossSoundFXManager: {fileID: 0}
 --- !u!114 &5110257553887991747
 MonoBehaviour:
