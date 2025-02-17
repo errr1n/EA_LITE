@@ -3508,7 +3508,7 @@ PrefabInstance:
         type: 3}
       propertyPath: nGameObject
       value: 
-      objectReference: {fileID: 1186960652207259806, guid: 96b6cb6d4fadb2148a62e372a6ea311d,
+      objectReference: {fileID: 563520496485336890, guid: 96b6cb6d4fadb2148a62e372a6ea311d,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0859e9d1aa7b70e40835f3db20822526, type: 3}
