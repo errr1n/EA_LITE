@@ -12,6 +12,9 @@ public class CharacterSoundFXManager : MonoBehaviour
     [Header("Attack Grunts")]
     [SerializeField] protected AudioClip[] attackGrunts;
 
+    [Header("Footsteps")]
+    [SerializeField] protected AudioClip[] footSteps;
+
     protected virtual void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -48,7 +51,17 @@ public class CharacterSoundFXManager : MonoBehaviour
 
     public virtual void PlayAttackGrunt()
     {
-        // used by enemy
-        // PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(attackGrunts));
+        if(attackGrunts.Length > 0)
+        {
+            PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(attackGrunts));
+        }
+    }
+
+    public virtual void PlayFootstepSoundFX()
+    {
+        if(footSteps.Length > 0)
+        {
+            PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(footSteps));
+        }
     }
 }

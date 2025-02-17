@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class WorldAIManager : MonoBehaviour
 {
@@ -14,7 +14,10 @@ public class WorldAIManager : MonoBehaviour
     [Header("Characters")]
     [SerializeField] List<AICharacterSpawner> aiCharacterSpawners;
     // [SerializeField] public GameObject[] aiCharacters;
-    [SerializeField] List<GameObject> spawnedInCharacters;
+    [SerializeField] List<AICharacterManager> spawnedInCharacters;
+
+    [Header("Bosses")]
+    [SerializeField] List<AIBossCharacterManager> spawnedInBosses;
     // [SerializeField] GameObject instantiatedCharacter;
 
     private void Awake()
@@ -33,6 +36,34 @@ public class WorldAIManager : MonoBehaviour
     {
         aiCharacterSpawners.Add(aiCharacterSpawner);
         aiCharacterSpawner.AttemptToSpawnCharacter();
+    }
+
+    public void AddCharacterToSpawnedCharactersList(AICharacterManager character)
+    {
+        if(spawnedInCharacters.Contains(character))
+        {
+            return;
+        }
+
+        spawnedInCharacters.Add(character);
+
+        AIBossCharacterManager bossCharacter = character as AIBossCharacterManager;
+
+        if(bossCharacter != null)
+        {
+            if(spawnedInBosses.Contains(bossCharacter))
+            {
+                return;
+            }
+
+            spawnedInBosses.Add(bossCharacter);
+        }
+    }
+
+    public AIBossCharacterManager GetBossCharacterByID(int ID)
+    {
+        // check list of spawned in bosses, look for first one that matches ID, if exists, check that it matches given ID
+        return spawnedInBosses.FirstOrDefault(boss => boss.bossID == ID);
     }
 
     private void DespawnAllCharacters()

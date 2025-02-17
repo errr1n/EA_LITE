@@ -31,6 +31,12 @@ public class TakeDamageEffect : InstantCharacterEffect
 
     public override void ProcessEffect(CharacterManager character)
     {
+        // CHECK FOR INVULNERABILITY (DODGING)
+        if(character.isInvulnerable)
+        {
+            return;
+        }
+
         base.ProcessEffect(character);
 
         // IF CHARACTER IS DEAD DO NOT PROCESS EFFECTS
@@ -38,9 +44,6 @@ public class TakeDamageEffect : InstantCharacterEffect
         {
             return;
         }
-
-            // CHECK FOR INVULNERABILITY (DODGING)
-
             // CALCULATE DAMAGE
             CalculateDamage(character);
             // CHECK WHICH DIRECTION THE DAMAGE CAME FROM
