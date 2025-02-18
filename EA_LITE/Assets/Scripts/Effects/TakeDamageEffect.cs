@@ -10,7 +10,7 @@ public class TakeDamageEffect : InstantCharacterEffect
     public CharacterManager characterCausingDamage; // IF DAMAGE CAUSED BY ANOTHER CHARACTER
 
     [Header("Damage")]
-    public float physicalDamage = 0; // WILL BE BROKEN INTO SUBTYPES STANDARD, STRIKE, SLASH, PIERCE
+    public float physicalDamage = 0; // CAN BE BROKEN INTO SUBTYPES STANDARD, STRIKE, SLASH, PIERCE
     
     [Header("Final Damage")]
     private int finalDamageDealt = 0; // the damage the character takes after ALL calculations have been made
@@ -46,25 +46,23 @@ public class TakeDamageEffect : InstantCharacterEffect
         }
             // CALCULATE DAMAGE
             CalculateDamage(character);
+
             // CHECK WHICH DIRECTION THE DAMAGE CAME FROM
-            //PLAY A DAMAGE ANIMATION
+            // PLAY A DAMAGE ANIMATION
+
             // CHECK BUILD UPS?
+
             // PLAY DAMAGE SOUND FX
             PlayDamageSFX(character);
+
             // PLAY DAMAGE VFX? (BLOOD)
     }
 
     private void CalculateDamage(CharacterManager character)
     {
-        // if()
-        // {
-        //     //
-        // }
-
         if(characterCausingDamage != null)
         {
             // CHECK FOR DAMAGE MODIFIERS
-
         }
 
         // ADD ALL DAMAGE TYPES TOGETHER

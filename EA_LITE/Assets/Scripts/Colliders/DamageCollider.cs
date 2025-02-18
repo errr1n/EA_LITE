@@ -8,12 +8,13 @@ public class DamageCollider : MonoBehaviour
     [SerializeField] protected Collider damageCollider; // reference box collider on weapon
 
     [Header("Damage")]
-    public float physicalDamage = 0;
+    public float physicalDamage = 0; // damage dealt by collider
 
     [Header("Contact Point")]
-    protected Vector3 contactPoint;
+    protected Vector3 contactPoint; // point where collider meets another collider
 
     [Header("Characters Damaged")]
+    // list of characters damaged by collider
     protected List<CharacterManager> charactersDamaged = new List<CharacterManager>();
 
     protected virtual void Awake()
@@ -23,11 +24,13 @@ public class DamageCollider : MonoBehaviour
     
     protected virtual void OnTriggerEnter(Collider other)
     {
+        // gets component of the character being damaged
         CharacterManager damageTarget = other.GetComponentInParent<CharacterManager>();
 
 
         if(damageTarget != null)
         {
+            // point where colliders touched
             contactPoint = other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
 
             // CHECK IF WE CAN DAMAGE THIS TARGET (BLOCKING)
@@ -38,30 +41,42 @@ public class DamageCollider : MonoBehaviour
             //     return;
             // }
 
-            //DAMAGE
+            //DAMAGE the character
             DamageTarget(damageTarget);
+
             //PRINT WHAT COLLIDER IS HIT
             // Debug.Log(other);
         }
     }
 
+    //apply damage to the character that has been hit
     protected virtual void DamageTarget(CharacterManager damageTarget)
     {
         // WE DO NOT WANT TO DAMAGE THE SAME TARGET MORE THAN ONCE IN A SINGLE ATTACK (MULTIPLE LIMBS -> MULTIPLE COLLIDERS)
         // SO WE ADD TO A LIST THAT CHECKS BEFORE APPLYING DAMAGE
         if(charactersDamaged.Contains(damageTarget))
         {
+            // Debug.Log("0");
             return; // CAN ONLY BE HIT ONCE
         }
+        // Debug.Log("1");
 
+        // add the character who's collider has been hit to charactersDamaged list
         charactersDamaged.Add(damageTarget); 
+        // Debug.Log("2");
 
+        // instantiate damage effect scriptable object
         TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
         damageEffect.physicalDamage = physicalDamage;
+        // Debug.Log("3");
 
+        // track the collider contact point
         damageEffect.contactPoint = contactPoint;
+        // Debug.Log("4");
 
+        // apply physical damage effect
         damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);
+        // Debug.Log("5");
     }
 
     public virtual void EnableDamageCollider()
