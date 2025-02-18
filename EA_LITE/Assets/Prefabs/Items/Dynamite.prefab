@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageCollider: {fileID: 8984631772246542824}
-  physicalDamage: 5
+  physicalDamage: 25
   dynamiteDamage: 50
   setDamageTarget: {fileID: 0}
 --- !u!1 &6089022032791321991
