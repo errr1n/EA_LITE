@@ -7,8 +7,6 @@ using UnityEngine.AI;
 
 public class PursueTargetState : AIState
 {
-    // [SerializeField] protected bool enablePivot = true;
-
     public override AIState Tick(AICharacterManager aiCharacter)
     {
         // CHECK IF WE'RE PERFORMING AN ACTION (DO NOT MOVE)
