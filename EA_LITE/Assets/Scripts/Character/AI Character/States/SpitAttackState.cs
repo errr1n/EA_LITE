@@ -7,90 +7,6 @@ using UnityEngine.AI;
 
 public class SpitAttackState : AIState
 {
-    // [Header("Current Attack")]
-    // [HideInInspector] public AICharacterAttackAction currentAttack;
-    // [HideInInspector] public bool willPerformCombo = false;
-
-    // [Header("State Flags")]
-    // [SerializeField] protected bool hasPerformedAttack = false;
-    // protected bool hasPerformedCombo = false;
-
-    // [Header("Pivot After Attack")]
-    // [SerializeField] protected bool pivotAfterAttack = false;
-
-    // public override AIState Tick(AICharacterManager aiCharacter)
-    // {
-    //     // if target is null, return to idle
-    //     if(aiCharacter.aiCharacterCombatManager.currentTarget == null)
-    //     {
-    //         return SwitchState(aiCharacter, aiCharacter.idle);
-    //     }
-
-    //     // if target is dead, return to idle
-    //     if(aiCharacter.aiCharacterCombatManager.currentTarget.isDead)
-    //     {
-    //         return SwitchState(aiCharacter, aiCharacter.idle);
-    //     }
-
-    //     //rotate towards the target while attacking
-    //     aiCharacter.aiCharacterCombatManager.RotateTowardsTargetWhileAttacking(aiCharacter);
-
-    //     //set movement to 0
-    //     aiCharacter.characterAnimatorManager.UpdateAnimatorMovementParameters(0, 0);
-
-    //     // perform a combo
-    //     if(willPerformCombo && !hasPerformedCombo)
-    //     {
-    //         // if(currentAttack.comboAction != null)
-    //         // {
-    //         //     // if can combo
-    //         //     // hasPerformedAttack = true;
-    //         //     // currentAttack.comboAction.AttemptToPerformAction(aiCharacter);
-    //         // }
-    //     }
-
-    //     if(aiCharacter.isPerformingAction)
-    //     {
-    //         return this;
-    //     }
-
-    //     if(!hasPerformedAttack)
-    //     {
-    //         // if we are still recovering from an action, wait before performing another 
-    //         if(aiCharacter.aiCharacterCombatManager.actionRecoveryTimer > 0)
-    //         {
-    //             return this;
-    //         }
-
-    //         PerformAttack(aiCharacter);
-
-    //         // return to the top, so if we have a combo we process that when we are able
-    //         return this;
-    //     }
-
-    //     if(pivotAfterAttack)
-    //     {
-    //         aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
-    //     }
-
-    //     return SwitchState(aiCharacter, aiCharacter.pursueTarget);
-    // }
-
-    // protected void PerformAttack(AICharacterManager aiCharacter)
-    // {
-    //     hasPerformedAttack = true;
-    //     currentAttack.AttemptToPerformAction(aiCharacter);
-    //     aiCharacter.aiCharacterCombatManager.actionRecoveryTimer = currentAttack.actionRecoveryTime;
-    // }
-
-    // protected override void ResetStateFlags(AICharacterManager aiCharacter)
-    // {
-    //     base.ResetStateFlags(aiCharacter);
-
-    //     hasPerformedAttack = false;
-    //     hasPerformedCombo = false;
-    // }
-
     [Header("Attacks")]
     public List<AICharacterAttackAction> aiCharacterAttacks;   // a list of all possible attack actions for this character
     public List<AICharacterAttackAction> potentialAttacks;  // a list that is created during this state. all attacks possible in this situation (based on angle, distance etc.)
@@ -102,12 +18,7 @@ public class SpitAttackState : AIState
     [SerializeField] protected bool canPerformCombo = false;   // can character can perform combo attack, after the initial attack
     [SerializeField] protected int chanceToPerformCombo = 25;  // the chance (%) of the character to perform a combo on the next attack
     protected bool hasRolledForComboChance = false;                 // if we have already rolled for the chance duriong this state
-
-    // [SerializeField] private int chanceToPerformSpitAtttack = 50;
-
-    // [Header("Pivot")]
-    // [SerializeField] protected bool enablePivot;
-
+    
     [Header("Engagement Distance")]
     // WAS 5
     [SerializeField] public float maximumEngagementDistance = 3.1f; // the distance we have to be away from the target before we enter the pursue target state
@@ -238,7 +149,7 @@ public class SpitAttackState : AIState
         // 4. pick an attack from remaining list randomly, based on weight
         if(potentialAttacks.Count <= 0)
         {
-            Debug.Log("NO ATTACKS");
+            // Debug.Log("NO ATTACKS");
             return;
         }
 
