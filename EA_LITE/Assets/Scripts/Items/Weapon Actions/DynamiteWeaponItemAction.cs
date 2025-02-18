@@ -9,7 +9,7 @@ public class DynamiteWeaponItemAction : WeaponItemAction
     // ANIMATION STRING
     // [SerializeField] string Place_Dynamite = "Place_Dynamite";
     [SerializeField] GameObject dynamiteObject;
-    [SerializeField] GameObject instantiatedGameObject;
+    [SerializeField] public GameObject instantiatedGameObject;
 
     public override void AttemptToPerformAction(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
     {
@@ -26,6 +26,7 @@ public class DynamiteWeaponItemAction : WeaponItemAction
         // PerformLightAttack(playerPerformingAction, weaponPerformingAction);
     }
 
+    // MIGHT MOVE TO DYNAMITE SCRIPT -> ACCESS INSTANTIATED OBJECT POSTION
     private void PlaceDynamite(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
     {
         if(playerPerformingAction.isUsingRightHand)
