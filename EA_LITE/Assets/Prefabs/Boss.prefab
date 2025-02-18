@@ -3834,6 +3834,7 @@ MonoBehaviour:
   pursueTarget: {fileID: 11400000, guid: 6c4db9f524e94ff4d8e7d1b6bab73581, type: 2}
   combatStance: {fileID: 11400000, guid: 03f9814449d3e38499cfb221f97d259c, type: 2}
   attack: {fileID: 11400000, guid: 94abe38edf5dd95438c7018eadd1d30d, type: 2}
+  spitAttack: {fileID: 11400000, guid: 67fd19d0ce7981f408b330213250f036, type: 2}
   bossHPBar: {fileID: 0}
   bossID: 0
   fogWalls: []

@@ -22,6 +22,7 @@ public class AICharacterManager : CharacterManager
     [SerializeField] public PursueTargetState pursueTarget;
     public CombatStanceState combatStance;
     public AttackState attack;
+    public SpitAttackState spitAttack;
 
     protected override void Awake()
     {

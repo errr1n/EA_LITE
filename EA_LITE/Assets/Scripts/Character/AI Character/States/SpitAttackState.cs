@@ -3,14 +3,93 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[CreateAssetMenu(menuName = "A.I/States/Combat Stance")]
+[CreateAssetMenu(menuName = "A.I/States/Spit Attack")]
 
-public class CombatStanceState : AIState
+public class SpitAttackState : AIState
 {
-    // 1. select an attack from the attack states, depending on distance and angle of target in relation to character
-    // 2. process any combat logic here whilst waiting to attack (blocking, strafing, dodging)
-    // 3. if target moves out of combat range, switch to pursue target state
-    // 4. if target is no longer present, switch to idle state
+    // [Header("Current Attack")]
+    // [HideInInspector] public AICharacterAttackAction currentAttack;
+    // [HideInInspector] public bool willPerformCombo = false;
+
+    // [Header("State Flags")]
+    // [SerializeField] protected bool hasPerformedAttack = false;
+    // protected bool hasPerformedCombo = false;
+
+    // [Header("Pivot After Attack")]
+    // [SerializeField] protected bool pivotAfterAttack = false;
+
+    // public override AIState Tick(AICharacterManager aiCharacter)
+    // {
+    //     // if target is null, return to idle
+    //     if(aiCharacter.aiCharacterCombatManager.currentTarget == null)
+    //     {
+    //         return SwitchState(aiCharacter, aiCharacter.idle);
+    //     }
+
+    //     // if target is dead, return to idle
+    //     if(aiCharacter.aiCharacterCombatManager.currentTarget.isDead)
+    //     {
+    //         return SwitchState(aiCharacter, aiCharacter.idle);
+    //     }
+
+    //     //rotate towards the target while attacking
+    //     aiCharacter.aiCharacterCombatManager.RotateTowardsTargetWhileAttacking(aiCharacter);
+
+    //     //set movement to 0
+    //     aiCharacter.characterAnimatorManager.UpdateAnimatorMovementParameters(0, 0);
+
+    //     // perform a combo
+    //     if(willPerformCombo && !hasPerformedCombo)
+    //     {
+    //         // if(currentAttack.comboAction != null)
+    //         // {
+    //         //     // if can combo
+    //         //     // hasPerformedAttack = true;
+    //         //     // currentAttack.comboAction.AttemptToPerformAction(aiCharacter);
+    //         // }
+    //     }
+
+    //     if(aiCharacter.isPerformingAction)
+    //     {
+    //         return this;
+    //     }
+
+    //     if(!hasPerformedAttack)
+    //     {
+    //         // if we are still recovering from an action, wait before performing another 
+    //         if(aiCharacter.aiCharacterCombatManager.actionRecoveryTimer > 0)
+    //         {
+    //             return this;
+    //         }
+
+    //         PerformAttack(aiCharacter);
+
+    //         // return to the top, so if we have a combo we process that when we are able
+    //         return this;
+    //     }
+
+    //     if(pivotAfterAttack)
+    //     {
+    //         aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
+    //     }
+
+    //     return SwitchState(aiCharacter, aiCharacter.pursueTarget);
+    // }
+
+    // protected void PerformAttack(AICharacterManager aiCharacter)
+    // {
+    //     hasPerformedAttack = true;
+    //     currentAttack.AttemptToPerformAction(aiCharacter);
+    //     aiCharacter.aiCharacterCombatManager.actionRecoveryTimer = currentAttack.actionRecoveryTime;
+    // }
+
+    // protected override void ResetStateFlags(AICharacterManager aiCharacter)
+    // {
+    //     base.ResetStateFlags(aiCharacter);
+
+    //     hasPerformedAttack = false;
+    //     hasPerformedCombo = false;
+    // }
 
     [Header("Attacks")]
     public List<AICharacterAttackAction> aiCharacterAttacks;   // a list of all possible attack actions for this character
@@ -24,7 +103,7 @@ public class CombatStanceState : AIState
     [SerializeField] protected int chanceToPerformCombo = 25;  // the chance (%) of the character to perform a combo on the next attack
     protected bool hasRolledForComboChance = false;                 // if we have already rolled for the chance duriong this state
 
-    [SerializeField] private int chanceToPerformSpitAtttack = 50;
+    // [SerializeField] private int chanceToPerformSpitAtttack = 50;
 
     // [Header("Pivot")]
     // [SerializeField] protected bool enablePivot;
@@ -95,10 +174,11 @@ public class CombatStanceState : AIState
         // if we are outside the combat engagement distance, switch to pursue target state
         if(aiCharacter.aiCharacterCombatManager.distanceFromTarget > maximumEngagementDistance)
         {
-            if(RollForOutcomeChance(chanceToPerformSpitAtttack))
-            {
-                return SwitchState(aiCharacter, aiCharacter.spitAttack);
-            }
+            // Debug.Log("roll for 50/50");
+            // if(RollForOutcomeChance(chanceToPerformSpitAtttack))
+            // {
+            //     return SwitchState(aiCharacter, aiCharacter.spitAttack);
+            // }
 
             return SwitchState(aiCharacter, aiCharacter.pursueTarget);
         }
@@ -116,34 +196,41 @@ public class CombatStanceState : AIState
     {
         // 1. sort through all possible attacks
         potentialAttacks = new List<AICharacterAttackAction>();
+        // Debug.Log("0");
 
         // 2. remove attacks that can't be used in this situation (based on angle and distance)
         foreach(var potentialAttack in aiCharacterAttacks)
         {
+            // Debug.Log("1");
             // check if we are too close to perform attack
             if(potentialAttack.minimumAttackDistance > aiCharacter.aiCharacterCombatManager.distanceFromTarget)
             {
+                // Debug.Log("2");
                 continue;
             }
 
             // check if we are too far to perform attack
             if(potentialAttack.maximumAttackDistance < aiCharacter.aiCharacterCombatManager.distanceFromTarget)
             {
+                // Debug.Log("3");
                 continue;
             }
 
             // check if the target is outside of the minimum field of view
             if(potentialAttack.minimumAttackAngle > aiCharacter.aiCharacterCombatManager.viewableAngle)
             {
+                // Debug.Log("4");
                 continue;
             }
             
             // check if the target is outside of the maximum field of view
             if(potentialAttack.maximumAttackAngle < aiCharacter.aiCharacterCombatManager.viewableAngle)
             {
+                // Debug.Log("5");
                 continue;
             }
 
+            // Debug.Log("6");
             // 3. place remaining attacks into a list
             potentialAttacks.Add(potentialAttack);
         }
@@ -151,7 +238,7 @@ public class CombatStanceState : AIState
         // 4. pick an attack from remaining list randomly, based on weight
         if(potentialAttacks.Count <= 0)
         {
-            // Debug.Log("NO ATTACKS");
+            Debug.Log("NO ATTACKS");
             return;
         }
 
@@ -203,5 +290,4 @@ public class CombatStanceState : AIState
         hasAttack = false;
         hasRolledForComboChance = false;
     }
-
 }
