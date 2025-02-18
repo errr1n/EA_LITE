@@ -8,24 +8,17 @@ public class IdleState : AIState
 {
     public override AIState Tick(AICharacterManager aiCharacter)
     {
-        // return base.Tick(aiCharacter);
-
-        // Debug.Log(aiCharacter.characterCombatManager.currentTarget);
-
+        // if current target is not null
         if(aiCharacter.characterCombatManager.currentTarget != null)
         {
             // return the pursue target state
-            // Debug.Log("WE HAVE A TARGET");
             return SwitchState(aiCharacter, aiCharacter.pursueTarget);
         }
         else
         {
             //return this state, to continually search for a target
             aiCharacter.aiCharacterCombatManager.FindATargetViaLineOfSight(aiCharacter);
-            // Debug.Log("SEARCHING FOR TARGET");
             return this;
         }
-
-        // return this;
     }
 }
