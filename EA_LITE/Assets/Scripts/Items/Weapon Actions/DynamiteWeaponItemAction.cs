@@ -19,12 +19,12 @@ public class DynamiteWeaponItemAction : WeaponItemAction
         //if dodging
         if(!playerPerformingAction.isPerformingAction)
         {
-            PerformDynamiteAttack(playerPerformingAction, weaponPerformingAction);
+            PlaceDynamite(playerPerformingAction, weaponPerformingAction);
         }
         // PerformLightAttack(playerPerformingAction, weaponPerformingAction);
     }
 
-    private void PerformDynamiteAttack(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
+    private void PlaceDynamite(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
     {
         if(playerPerformingAction.isUsingRightHand)
         {
