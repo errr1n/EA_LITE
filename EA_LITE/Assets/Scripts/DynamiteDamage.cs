@@ -8,6 +8,9 @@ public class DynamiteDamage : DamageCollider
 
     public CharacterManager setDamageTarget;
 
+    [SerializeField] GameObject explosionParticle;
+    GameObject pParticle;
+
     // public DynamiteWeaponItemAction dynamiteItem;
 
     // [SerializeField] GameObject poisonParticle;
@@ -114,6 +117,8 @@ public class DynamiteDamage : DamageCollider
                     //DAMAGE the character
                     DamageTarget(damageTarget);
 
+                    // pParticle = Instantiate(explosionParticle, transform.position, Quaternion.Euler(0,0,0));
+
                     //PRINT WHAT COLLIDER IS HIT
                     // Debug.Log(damageTarget);
 
@@ -128,21 +133,22 @@ public class DynamiteDamage : DamageCollider
                 // Debug.Log("0");
             }
         }
+        pParticle = Instantiate(explosionParticle, transform.position, Quaternion.Euler(0,0,0));
         Destroy(gameObject);
     }
 
-    private IEnumerator Delay()
-    {
-        // Debug.Log("Delay");
-        // CheckIfDamageable(setDamageTarget);
-        yield return new WaitForSeconds(3f);
-        DamageTarget(setDamageTarget);
-        Debug.Log(setDamageTarget);
-    }
+    // private IEnumerator Delay()
+    // {
+    //     // Debug.Log("Delay");
+    //     // CheckIfDamageable(setDamageTarget);
+    //     yield return new WaitForSeconds(3f);
+    //     DamageTarget(setDamageTarget);
+    //     Debug.Log(setDamageTarget);
+    // }
 
-    private void DelayDestroy()
-    {
-        // Destroy(gameObject, 3f);
-    }
+    // private void DelayDestroy()
+    // {
+    //     // Destroy(gameObject, 3f);
+    // }
 }
 

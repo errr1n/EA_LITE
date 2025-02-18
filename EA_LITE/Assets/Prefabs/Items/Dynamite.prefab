@@ -180,6 +180,8 @@ MonoBehaviour:
   physicalDamage: 25
   dynamiteDamage: 50
   setDamageTarget: {fileID: 0}
+  explosionParticle: {fileID: 686479356626231586, guid: f1af013c7158ba041ab99a591438bec0,
+    type: 3}
 --- !u!1 &6089022032791321991
 GameObject:
   m_ObjectHideFlags: 0
