@@ -7,7 +7,9 @@ using UnityEngine;
 public class AttackState : AIState
 {
     [Header("Current Attack")]
+    // get current attack action (stomp, swat)
     [HideInInspector] public AICharacterAttackAction currentAttack;
+    // will perform combo false by default
     [HideInInspector] public bool willPerformCombo = false;
 
     [Header("State Flags")]
@@ -15,6 +17,7 @@ public class AttackState : AIState
     protected bool hasPerformedCombo = false;
 
     [Header("Pivot After Attack")]
+    // pivot, or just turn organically
     [SerializeField] protected bool pivotAfterAttack = false;
 
     public override AIState Tick(AICharacterManager aiCharacter)
@@ -48,6 +51,7 @@ public class AttackState : AIState
             }
         }
 
+        // if already performing action, return
         if(aiCharacter.isPerformingAction)
         {
             return this;
@@ -67,18 +71,22 @@ public class AttackState : AIState
             return this;
         }
 
+        //if character is allowed to pivot
         if(pivotAfterAttack)
         {
             aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
         }
 
+        //return to combat stance
         return SwitchState(aiCharacter, aiCharacter.combatStance);
     }
 
     protected void PerformAttack(AICharacterManager aiCharacter)
     {
         hasPerformedAttack = true;
+        // have this character attempt to perform an attack action
         currentAttack.AttemptToPerformAction(aiCharacter);
+        // set action recovery timer
         aiCharacter.aiCharacterCombatManager.actionRecoveryTimer = currentAttack.actionRecoveryTime;
     }
 

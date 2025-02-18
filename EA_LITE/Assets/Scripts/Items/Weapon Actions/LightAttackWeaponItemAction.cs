@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class LightAttackWeaponItemAction : WeaponItemAction
 {
+    // string for attack animation
     [SerializeField] string Light_Attack = "Light_Attack";
 
     public override void AttemptToPerformAction(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
@@ -16,15 +17,18 @@ public class LightAttackWeaponItemAction : WeaponItemAction
         // stamina
         //if jumping
         //if dodging
+
+        // if player is not already performing an action
         if(!playerPerformingAction.isPerformingAction)
         {
+            // perform attack
             PerformLightAttack(playerPerformingAction, weaponPerformingAction);
         }
-        // PerformLightAttack(playerPerformingAction, weaponPerformingAction);
     }
 
     private void PerformLightAttack(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
     {
+        // check which hand the player is using
         if(playerPerformingAction.isUsingRightHand)
         {
             // PLAY ANIMATION

@@ -7,17 +7,20 @@ public class Enums : MonoBehaviour
     // 
 }
 
+// enum for types of characters
 public enum CharacterGroup
 {
     Friendly,
     Enemy,
 }
 
+// enum for different hands
 public enum WeaponModelSlot
 {
     RightHand,
 }
 
+// enum for different attack types
 public enum AttackType
 {
     LightAttack,

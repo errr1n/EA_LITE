@@ -7,18 +7,22 @@ using UnityEngine;
 public class AICharacterAttackAction : ScriptableObject
 {
     [Header("Attack")]
+    //string to hold attack animation name
     [SerializeField] private string attackAnimation;
 
     [Header("Combo Action")]
     public AICharacterAttackAction comboAction; // the combo action of this attack action 
 
     [Header("Action Values")]
+    // enum
     [SerializeField] AttackType attackType;
     public int attackWeight = 50;
     // attack can be repeated
     public float actionRecoveryTime = 1.5f;     // the time before the character can perform another attack after performing this one
+    // viewing angle
     public float minimumAttackAngle = -35;
     public float maximumAttackAngle = 35;
+    // distance from character before attacking
     public float minimumAttackDistance = 0;
     public float maximumAttackDistance = 3;
 

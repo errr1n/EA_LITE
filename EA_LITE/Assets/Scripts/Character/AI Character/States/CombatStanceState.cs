@@ -24,54 +24,49 @@ public class CombatStanceState : AIState
     [SerializeField] protected int chanceToPerformCombo = 25;  // the chance (%) of the character to perform a combo on the next attack
     protected bool hasRolledForComboChance = false;                 // if we have already rolled for the chance duriong this state
 
+    // chance (%) of performing a spit attack
     [SerializeField] private int chanceToPerformSpitAtttack = 50;
 
     // [Header("Pivot")]
     // [SerializeField] protected bool enablePivot;
 
     [Header("Engagement Distance")]
-    // WAS 5
     [SerializeField] public float maximumEngagementDistance = 3.1f; // the distance we have to be away from the target before we enter the pursue target state
 
     public override AIState Tick(AICharacterManager aiCharacter)
     {
-        // Debug.Log("0");
+        // if player is already performing action, return
         if(aiCharacter.isPerformingAction)
         {
             return this;
         }
 
-        // Debug.Log("1");
-
+        // ensures nav mesh is enabled
         if(!aiCharacter.navMeshAgent.enabled)
         {
             aiCharacter.navMeshAgent.enabled = true;
         }
 
-        // Debug.Log("2");
-
-        // if we want the ai character to face and turn towards its target when its outside its fov include this
+        // if we want the ai character to face and turn towards its target when its outside its fov
         if(aiCharacter.aiCharacterCombatManager.enablePivot)
         {
             if(!aiCharacter.IsMoving)
             {
-                // Debug.Log("viewableAngle: "+ aiCharacter.aiCharacterCombatManager.viewableAngle);
+                // if character is outside of the viewing angle
                 if(aiCharacter.aiCharacterCombatManager.viewableAngle < -30 || aiCharacter.aiCharacterCombatManager.viewableAngle > 30)
                 {
+                    // pivot
                     aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
-                    // Debug.Log("3");
                 }
             }
         }
 
         // rotate to face our target
         aiCharacter.aiCharacterCombatManager.RotateTowardsAgent(aiCharacter);
-        // Debug.Log("4");
 
         // if our target is no longer present, switch back to idle state
         if(aiCharacter.aiCharacterCombatManager.currentTarget == null)
         {
-            // Debug.Log("5");
             return SwitchState(aiCharacter, aiCharacter.idle);
         }
 
@@ -79,35 +74,35 @@ public class CombatStanceState : AIState
         if(!hasAttack)
         {
             GetNewAttack(aiCharacter);
-            // Debug.Log("6");
         }
         else
         {
             // check recovery timer
             // pass attack to attack state
             aiCharacter.attack.currentAttack = chosenAttack;
-            // Debug.Log("7");
             // roll for a combo chance
-            return SwitchState(aiCharacter, aiCharacter.attack);
             // switch state
+            return SwitchState(aiCharacter, aiCharacter.attack);
         }
 
-        // if we are outside the combat engagement distance, switch to pursue target state
+        // if we are outside the combat engagement distance
         if(aiCharacter.aiCharacterCombatManager.distanceFromTarget > maximumEngagementDistance)
         {
+            // roll for chance to perform spit attack
             if(RollForOutcomeChance(chanceToPerformSpitAtttack))
             {
+                // perform spit attack
                 return SwitchState(aiCharacter, aiCharacter.spitAttack);
             }
 
+            // if spit attack is false, return to pursue state
             return SwitchState(aiCharacter, aiCharacter.pursueTarget);
         }
-        // Debug.Log("8");
 
+        // calculate path using nav mesh
         NavMeshPath path = new NavMeshPath();
         aiCharacter.navMeshAgent.CalculatePath(aiCharacter.aiCharacterCombatManager.currentTarget.transform.position, path);
         aiCharacter.navMeshAgent.SetPath(path);
-        // Debug.Log("9");
 
         return this;
     }
@@ -155,10 +150,12 @@ public class CombatStanceState : AIState
             return;
         }
 
+        // variable to hold attack action attack weight
         var totalWeight = 0;
 
         foreach(var attack in potentialAttacks)
         {
+            // set total weight to attack action attack weight
             totalWeight += attack.attackWeight;
         }
 
@@ -181,6 +178,7 @@ public class CombatStanceState : AIState
         }
     }
 
+    // roll based on given percentage
     protected virtual bool RollForOutcomeChance(int outcomeChance)
     {
         bool outcomeWillBePerformed = false;
@@ -200,6 +198,7 @@ public class CombatStanceState : AIState
     {
         base.ResetStateFlags(aiCharacter);
 
+        //reset these state flags
         hasAttack = false;
         hasRolledForComboChance = false;
     }
