@@ -24,6 +24,8 @@ public class CombatStanceState : AIState
     [SerializeField] protected int chanceToPerformCombo = 25;  // the chance (%) of the character to perform a combo on the next attack
     protected bool hasRolledForComboChance = false;                 // if we have already rolled for the chance duriong this state
 
+    [SerializeField] protected int chanceToPerformSpitAttack = 50;
+
     // [Header("Pivot")]
     // [SerializeField] protected bool enablePivot;
 
@@ -93,6 +95,15 @@ public class CombatStanceState : AIState
         // if we are outside the combat engagement distance, switch to pursue target state
         if(aiCharacter.aiCharacterCombatManager.distanceFromTarget > maximumEngagementDistance)
         {
+            // Debug.Log("RUN 50/50 CHECK");
+            // if(RollForOutcomeChance(chanceToPerformSpitAttack))
+            // {
+            //     return SwitchState(aiCharacter, aiCharacter.idle);
+            // }
+            // else
+            // {
+            //     return SwitchState(aiCharacter, aiCharacter.pursueTarget);
+            // }
             return SwitchState(aiCharacter, aiCharacter.pursueTarget);
         }
         // Debug.Log("8");
@@ -184,7 +195,7 @@ public class CombatStanceState : AIState
         {
             outcomeWillBePerformed = true;
         }
-
+        Debug.Log("outcomeWillBePerformed " + outcomeWillBePerformed);
         return outcomeWillBePerformed;
     }
 
