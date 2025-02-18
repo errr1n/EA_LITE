@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: Dynamite Weapon Item Action
   m_EditorClassIdentifier: 
   actionID: 2
+  dynamiteObject: {fileID: 3980431871283929087, guid: 8f6379efae077b548850879f581039c1,
+    type: 3}
+  instantiatedGameObject: {fileID: 0}

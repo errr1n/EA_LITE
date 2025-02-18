@@ -8,6 +8,8 @@ public class DynamiteWeaponItemAction : WeaponItemAction
 {
     // ANIMATION STRING
     // [SerializeField] string Place_Dynamite = "Place_Dynamite";
+    [SerializeField] GameObject dynamiteObject;
+    [SerializeField] GameObject instantiatedGameObject;
 
     public override void AttemptToPerformAction(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
     {
@@ -29,8 +31,12 @@ public class DynamiteWeaponItemAction : WeaponItemAction
         if(playerPerformingAction.isUsingRightHand)
         {
             // PLAY ANIMATION
-            // playerPerformingAction.playerAnimatorManager.PlayTargetAttackActionAnimation(AttackType.LightAttack, Light_Attack, true);
-            Debug.Log("PLACE DYNAMITE");
+            // playerPerformingAction.playerAnimatorManager.PlayTargetAttackActionAnimation(AttackType.LightAttack, Place_Dynamite, true);
+
+            //instantiate the dynamite game object
+            instantiatedGameObject = Instantiate(dynamiteObject);
+            // sets the transform of the dynamite
+            instantiatedGameObject.transform.position = playerPerformingAction.transform.position;
         }
     }
 }
