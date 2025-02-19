@@ -28,19 +28,17 @@ public class DynamiteDamage : DamageCollider
 
         foreach(Collider collider in colliders)
         {
-            //if their is an AOETarget script attached to object
-            if(collider.GetComponent<AOETarget>())
-            {
-                CharacterManager damageTarget = collider.GetComponent<CharacterManager>();
+            //check if colider is a character (has a character manager script)
+            CharacterManager damageTarget = collider.GetComponent<CharacterManager>();
 
-                // if there is a character to damage
-                if(damageTarget != null)
-                {
-                    // damage character
-                    DamageTarget(damageTarget);
-                }
+            // if there is a character to damage
+            if(damageTarget != null)
+            {
+                // damage character
+                DamageTarget(damageTarget);
             }
         }
+
         // instantiate explosion particles
         GameObject eParticle = Instantiate(explosionParticle, transform.position, Quaternion.Euler(0,0,0));
         // destroy particles after specified time has passed
