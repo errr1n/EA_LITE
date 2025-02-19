@@ -6,6 +6,8 @@ public class DynamiteDamageCollider : DamageCollider
 {
     // time before dynamite explodes
     [SerializeField] private float timeBeforeExplosion = 3f;
+    // explosion radius
+    [SerializeField] private float explosionRadius = 4f;
 
     // explosion particles assigned in inspector
     [SerializeField] GameObject explosionParticle;
@@ -15,7 +17,7 @@ public class DynamiteDamageCollider : DamageCollider
         StartCoroutine(CheckIfDamageable());
     }
 
-    //check if an AOETarget is within the sphere
+    // function which checks if a character is within the damage sphere radius
     public IEnumerator CheckIfDamageable()
     {
         // explosion countdown
@@ -23,12 +25,12 @@ public class DynamiteDamageCollider : DamageCollider
 
         // dynamitePosition = dynamiteItem.instantiatedGameObject.transform.position;
 
-        //creates a list of colliders and creates a 4m overlap sphere (sphere collider)
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 4f);
+        //creates a list of colliders and creates an overlap sphere (sphere collider) of the size defined by explosionRadius
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
 
         foreach(Collider collider in colliders)
         {
-            //check if colider is a character (has a character manager script)
+            //check if colider is attached to a character (has a character manager script)
             CharacterManager damageTarget = collider.GetComponent<CharacterManager>();
 
             // if there is a character to damage
