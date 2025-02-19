@@ -12,8 +12,7 @@ public class CharacterManager : MonoBehaviour
     [HideInInspector] public CharacterCombatManager characterCombatManager;
     [HideInInspector] public CharacterStatsManager characterStatsManager;
     [HideInInspector] public CharacterLocomotionManager characterLocomotionManager;
-
-    [HideInInspector] public MeleeWeaponDamageCollider damageCollider;
+    // [HideInInspector] public MeleeWeaponDamageCollider damageCollider;
 
     [Header("Character Group")]
     public CharacterGroup characterGroup;
@@ -21,11 +20,6 @@ public class CharacterManager : MonoBehaviour
     [Header("FLAGS")]
     public bool isPerformingAction = false;
     public bool isJumping = false;
-    // public bool isGrounded = true;
-    // public bool applyRootMotion = false;
-    // public bool isGrounded = true;
-    // public bool canRotate = true;
-    // public bool canMove = true;
     public bool isInvulnerable = false;
 
     [SerializeField] public bool _isLockedOn = false;
@@ -64,7 +58,7 @@ public class CharacterManager : MonoBehaviour
         characterCombatManager = GetComponent<CharacterCombatManager>();
         characterLocomotionManager = GetComponent<CharacterLocomotionManager>();
 
-        damageCollider = GetComponent<MeleeWeaponDamageCollider>();
+        // damageCollider = GetComponent<MeleeWeaponDamageCollider>();
     }
 
     protected virtual void Start()
