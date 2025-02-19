@@ -7,7 +7,7 @@ public class DynamiteDamageCollider : DamageCollider
     // time before dynamite explodes
     [SerializeField] private float timeBeforeExplosion = 3f;
     // explosion radius
-    [SerializeField] private float explosionRadius = 4f;
+    [SerializeField] private float damageRadius = 4f;
 
     // explosion particles assigned in inspector
     [SerializeField] GameObject explosionParticle;
@@ -25,8 +25,8 @@ public class DynamiteDamageCollider : DamageCollider
 
         // dynamitePosition = dynamiteItem.instantiatedGameObject.transform.position;
 
-        //creates a list of colliders and creates an overlap sphere (sphere collider) of the size defined by explosionRadius
-        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        //creates a list of colliders and creates an overlap sphere (sphere collider) of the size defined by damageRadius
+        Collider[] colliders = Physics.OverlapSphere(transform.position, damageRadius);
 
         foreach(Collider collider in colliders)
         {
