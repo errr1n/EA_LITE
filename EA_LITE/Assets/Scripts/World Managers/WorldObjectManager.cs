@@ -7,7 +7,7 @@ public class WorldObjectManager : MonoBehaviour
     // 1. create an object script that will hold the logic for the fog walls
     // 2. create general object spawner script and prefab
     // 3. when the fog walls are spawned, add them to the world fog wall list
-    // 4. grab the correct fogWall from the list on the boss manager when the boss is being initialized
+    // 4. grab the correct wall from the list on the boss manager when the boss is being initialized
 
     public static WorldObjectManager instance;
 
@@ -18,7 +18,7 @@ public class WorldObjectManager : MonoBehaviour
     // [SerializeField] GameObject instantiatedCharacter;
 
     [Header("Fog Walls")]
-    public List<FogWallInteractable> fogWalls;
+    public List<WallInteractable> walls;
 
     private void Awake()
     {
@@ -38,19 +38,19 @@ public class WorldObjectManager : MonoBehaviour
         objectSpawner.AttemptToSpawnObject();
     }
 
-    public void AddFogWallToList(FogWallInteractable fogWall)
+    public void AddWallToList(WallInteractable wall)
     {
-        if(!fogWalls.Contains(fogWall))
+        if(!walls.Contains(wall))
         {
-            fogWalls.Add(fogWall);
+            walls.Add(wall);
         }
     }
 
-    public void RemoveFogWallFromList(FogWallInteractable fogWall)
+    public void RemoveWallFromList(WallInteractable wall)
     {
-        if(fogWalls.Contains(fogWall))
+        if(walls.Contains(wall))
         {
-            fogWalls.Remove(fogWall);
+            walls.Remove(wall);
         }
     }
 }

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FogWallInteractable : MonoBehaviour
+public class WallInteractable : MonoBehaviour
 {
-    [Header("Fog")]
-    [SerializeField] GameObject[] fogGameObjects;
+    [Header("Wall")]
+    [SerializeField] GameObject[] wallGameObjects;
 
     [Header("I.D")]
-    public int fogWallID;
+    public int wallID;
 
     [Header("Active")]
     [SerializeField] bool _isActive = false;
@@ -17,7 +17,6 @@ public class FogWallInteractable : MonoBehaviour
         set{
             OnIsActiveChanged(_isActive, value);
             _isActive = value;
-            // WorldObjectManager.instance.AddFogWallToList(this);
         }
     }
 
@@ -28,7 +27,7 @@ public class FogWallInteractable : MonoBehaviour
 
     private void OnEnable()
     {
-        WorldObjectManager.instance.AddFogWallToList(this);
+        WorldObjectManager.instance.AddWallToList(this);
     }
 
     public void OnIsActiveChanged(bool oldStatus, bool newStatus)
@@ -41,16 +40,16 @@ public class FogWallInteractable : MonoBehaviour
     {
         if(IsActive)
         {
-            foreach(var fogObject in fogGameObjects)
+            foreach(var wallObject in wallGameObjects)
             {
-                fogObject.SetActive(true);
+                wallObject.SetActive(true);
             }
         }
         else
         {
-            foreach(var fogObject in fogGameObjects)
+            foreach(var wallObject in wallGameObjects)
             {
-                fogObject.SetActive(false);
+                wallObject.SetActive(false);
             }
         }
     }
