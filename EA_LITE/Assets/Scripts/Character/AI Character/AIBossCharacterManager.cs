@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class AIBossCharacterManager : AICharacterManager
 {
+    // access boss HP bar
     public UI_Boss_HP_Bar bossHPBar;
-
     // GIVE THIS AI A UNIQUE ID
     public int bossID = 0;
-    // [SerializeField] in wallID = 0;
-
-    [Header("Status")]
-    // [SerializeField] bool hasBeenDefeated = false;
-    // [SerializeField] bool hasBeenAwakened = false;
-    [SerializeField] List<WallInteractable> walls;
-    [SerializeField] string sleepAnimation;
-    [SerializeField] string awakeAnimation;
-    
+    // check if boss HP bar still needs to be spawned
     private bool attemptToSpawnHPBar = true;
+    //list of walls
+    [SerializeField] List<WallInteractable> walls;
 
     [SerializeField] bool _hasBeenDefeated = false;
     public bool HasBeenDefeated{
@@ -39,26 +33,28 @@ public class AIBossCharacterManager : AICharacterManager
     public bool BossFightIsActive{
         get{return _bossFightIsActive;}
         set{
-            // OnBossFightIsActiveChanged(_bossFightIsActive, value);
             _bossFightIsActive = value;
         }
     }
+
+    [Header("Status")]
+    // animation strings
+    [SerializeField] string sleepAnimation;
+    [SerializeField] string awakeAnimation;
 
     [Header("States")]
     [SerializeField] BossSleepState sleepState;
 
     // IF THE SAVE FILE DOES NOT CONTAIN A BOSS MONSTER OF THIS ID ADD IT
     // IF IT IS PRESENT, CHECK IF BOSS HAS BEEN DEFEATED
-    // IF THE BOSS WAS DEFEATED, DIABLE THE GAMEOBJECT
+    // IF THE BOSS WAS DEFEATED, DISABLE THE GAMEOBJECT
     // IF THE BOSS HAS NOT BEEN DEFEATED, ALLOW THIS OBJECT TO CONTINUE TO BE ACTIVE
-
-    // [Header("DEBUG")]
-    // [SerializeField] bool wakeBossUp = false;
 
     protected override void Awake()
     {
         base.Awake();
 
+        // set boss state to sleep 
         sleepState = Instantiate(sleepState);
         currentState = sleepState;
     }
@@ -67,75 +63,74 @@ public class AIBossCharacterManager : AICharacterManager
     {
         base.Update();
 
-        // if(wakeBossUp)
-        // {
-        //     wakeBossUp = false;
-        //     WakeBoss();
-        // }
-        
         OnSpawn();
 
-        // PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(characterStatsManager.CurrentHealth);
-        // ActivateHPBar();
-        // CheckIfHPBarIsActive();
-        // IsBossFightIsActive(BossFightIsActive);
+        // check if boss fight is active
         IsBossFightActive(BossFightIsActive);
-
-        // if(BossFightIsActive)
-        // {
-        //     bossHPBar.SetBossHP(characterStatsManager.CurrentHealth);
-        // }
-        // bossHPBar.SetBossHP(characterStatsManager.CurrentHealth);
     }
 
     public void OnSpawn()
     {
         // BossFightIsActive = 
 
+        // create a new list to hold walls matching bossIDs
         walls = new List<WallInteractable>();
 
         foreach(var wall in WorldObjectManager.instance.walls)
         {
+            // if the wallID matches the bossID
             if(wall.wallID == bossID)
             {
+                // add the wall to the list
                 walls.Add(wall);
             }
         }
 
+        // if boss has been awakened
         if(HasBeenAwakened)
         {
+            // check the new walls list and get the matching wall
             for(int i = 0; i < walls.Count; i++)
             {
+                // set the wall to active
                 walls[i].IsActive = true;
             }
         }
 
+        // if boss has been defeated
         if(HasBeenDefeated)
         {
+            // check the new walls list and get the matching wall
             for(int i = 0; i < walls.Count; i++)
             {
+                // despawn the wall
                 walls[i].IsActive = false;
             }
-
-            Debug.Log("SET BOSS TO FALSE");
         }
 
+        // if boss has not been awakened
         if(!HasBeenAwakened)
         {
+            // play sleep animation
             characterAnimatorManager.PlayTargetActionAnimation(sleepAnimation, true);
         }
     }
 
     public override IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
     {
+        // set boss health to 0
         characterStatsManager.CurrentHealth = 0;
+        // update the health bar to show 0
         bossHPBar.SetBossHP(characterStatsManager.CurrentHealth);
         
+        // change isDead flag to true
         isDead = true;
 
+        // change boos fight is active flag to false
         BossFightIsActive = false;
 
         // RESET ANY FLAGS THAT NEED TO BE RESET
+        // HasBeenDefeated = true;
 
         // IF WE ARE NOT GROUNDED, PLAY AERIAL DEATH ANIMATION
 
@@ -155,105 +150,47 @@ public class AIBossCharacterManager : AICharacterManager
     public void WakeBoss()
     {
         // where you would add boss to list
+
+        // if boss has not been awakened
         if(!HasBeenAwakened)
         {
+            // play an awake aniamtion
             characterAnimatorManager.PlayTargetActionAnimation(awakeAnimation, true);
         }
         
+        // set boss flags to true
         BossFightIsActive = true;
         HasBeenAwakened = true;
+        // change the bosses state to idle
         currentState = idle;
-        // Debug.Log("Idle");
     }
-
-    // private void OnBossFightIsActiveChanged(bool oldStatus, bool newStatus)
-    // {
-    //     if(BossFightIsActive)
-    //     {
-    //         // attemptToSpawnHPBar = false;
-    //         // Debug.Log("Here");
-
-    //         // CREATE A HEALTH BAR FOR THE BOSS THAT IS IN THE FIGHT (IF ACTIVE)
-    //         GameObject bossHealthBar = Instantiate(PlayerUIManager.instance.playerUIHudManager.bossHealthBarObject, PlayerUIManager.instance.playerUIHudManager.bossHealthBarParent);
-
-    //         UI_Boss_HP_Bar bossHPBar = bossHealthBar.GetComponentInChildren<UI_Boss_HP_Bar>();
-
-    //         // this meaning this AI Boss Character Manager
-    //         bossHPBar.EnableBossHPBar(this);
-
-
-    //         // DESTROY ANY HP BARS CURRENTLY ACTIVE (IF THE BOSS IS NO LONGER ACTIVE)
-    //     }
-    // }
 
     private void IsBossFightActive(bool newStatus)
     {
-        // Debug.Log("0");
+        //if the boss fight is active
         if(BossFightIsActive)
         {
-            // Debug.Log("1");
-            // attemptToSpawnHPBar = false;
-            // Debug.Log("Here");
-
             // CREATE A HEALTH BAR FOR THE BOSS THAT IS IN THE FIGHT (IF ACTIVE)
             GameObject bossHealthBar;
-
-            // UI_Boss_HP_Bar bossHPBar;
-
-            // this meaning this AI Boss Character Manager
-            // bossHPBar.EnableBossHPBar(this);
-
 
             // DESTROY ANY HP BARS CURRENTLY ACTIVE (IF THE BOSS IS NO LONGER ACTIVE)
             if(attemptToSpawnHPBar)
             {
+                // only spawn one HP bar
                 attemptToSpawnHPBar = false;
-                // Debug.Log("2");
+
+                // intantiate the HP bar object at the health bar parent transform
                 bossHealthBar = Instantiate(PlayerUIManager.instance.playerUIHudManager.bossHealthBarObject, PlayerUIManager.instance.playerUIHudManager.bossHealthBarParent);
 
+                // get the health bar slider from the parent boss health bar object
                 bossHPBar = bossHealthBar.GetComponentInChildren<UI_Boss_HP_Bar>();
 
-                // this meaning this AI Boss Character Manager
+                // enable this health bar, this meaning this AI Boss Character Manager
                 bossHPBar.EnableBossHPBar(this);
             }
 
-            // PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(characterStatsManager.CurrentHealth);
+            // set the health bar value to the bosses current health value
             bossHPBar.SetBossHP(characterStatsManager.CurrentHealth);
         }
     }
-
-    private void CheckIfHPBarIsActive()
-    {
-        if(BossFightIsActive)
-        {
-            if(attemptToSpawnHPBar)
-            {
-                attemptToSpawnHPBar = false;
-                BossFightIsActive = true;
-            }
-        }
-    }
-
-    // private void ActivateHPBar()
-    // {
-    //     if(attemptToSpawnHPBar)
-    //     {
-    //         // if(BossFightIsActive)
-    //         // {
-    //         //     attemptToSpawnHPBar = false;
-
-    //         //     // CREATE A HEALTH BAR FOR THE BOSS THAT IS IN THE FIGHT (IF ACTIVE)
-    //         //     GameObject bossHealthBar = Instantiate(PlayerUIManager.instance.playerUIHudManager.bossHealthBarObject, PlayerUIManager.instance.playerUIHudManager.bossHealthBarParent);
-
-    //         //     UI_Boss_HP_Bar bossHPBar = bossHealthBar.GetComponentInChildren<UI_Boss_HP_Bar>();
-
-    //         //     // this meaning this AI Boss Character Manager
-    //         //     bossHPBar.EnableBossHPBar(this);
-
-
-    //         //     // DESTROY ANY HP BARS CURRENTLY ACTIVE (IF THE BOSS IS NO LONGER ACTIVE)
-    //         // }
-    //     }
-    // }
-
 }

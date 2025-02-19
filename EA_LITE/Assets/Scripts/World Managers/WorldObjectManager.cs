@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class WorldObjectManager : MonoBehaviour
 {
-    // 1. create an object script that will hold the logic for the fog walls
+    // 1. create an object script that will hold the logic for the walls
     // 2. create general object spawner script and prefab
-    // 3. when the fog walls are spawned, add them to the world fog wall list
+    // 3. when the walls are spawned, add them to the world wall list
     // 4. grab the correct wall from the list on the boss manager when the boss is being initialized
 
     public static WorldObjectManager instance;
 
     [Header("Objects")]
+    // list of active objectSpawners in game
     [SerializeField] List<ObjectSpawner> objectSpawners;
-    // [SerializeField] public GameObject[] aiCharacters;
+    // list of active objects spawned in game
     [SerializeField] List<GameObject> spawnedInObjects;
-    // [SerializeField] GameObject instantiatedCharacter;
 
-    [Header("Fog Walls")]
+    [Header("Walls")]
+    // list of wall objects in game
     public List<WallInteractable> walls;
 
     private void Awake()
@@ -34,7 +35,9 @@ public class WorldObjectManager : MonoBehaviour
 
     public void SpawnObject(ObjectSpawner objectSpawner)
     {
+        // adds object spawner to the list objectSpawners
         objectSpawners.Add(objectSpawner);
+        // attempt to spawn object from specified object spawner
         objectSpawner.AttemptToSpawnObject();
     }
 
