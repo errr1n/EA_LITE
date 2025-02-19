@@ -12,11 +12,4 @@ public class AITitanCharacterManager : AIBossCharacterManager
 
         bossSoundFXManager = GetComponent<AIBossSoundFXManager>();
     }
-
-    // protected override void Update()
-    // {
-    //     base.Update();
-        
-    //     PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(characterStatsManager.CurrentHealth);
-    // }
 }

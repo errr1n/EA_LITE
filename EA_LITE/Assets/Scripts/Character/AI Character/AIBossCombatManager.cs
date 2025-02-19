@@ -8,18 +8,14 @@ public class AIBossCombatManager : AICharacterCombatManager
 
     [Header("Damage Colliders")]
     [SerializeField] BossHandDamageCollider bossRightHandDamageCollider;
-    // [SerializeField] BossHandDamageCollider bossLeftHandDamageCollider;
     [SerializeField] BossFootDamageCollider bossRightFootDamageCollider;
-    // [SerializeField] Transform bossRightStompFoot;
-    // [SerializeField] Transform bossLeftStompFoot;
-    // [SerializeField] float stompAttackAOERadius = 1.5f;
     //left hand
 
     [Header("Damage")]
     [SerializeField] int baseDamage = 25;
     [SerializeField] float attack01DamageModifier = 1.0f;
     [SerializeField] float attack02DamageModifier = 1.4f;
-    //add more attacks
+    //can add more attacks
 
     //VFX - 46
 
@@ -63,66 +59,6 @@ public class AIBossCombatManager : AICharacterCombatManager
         bossRightHandDamageCollider.DisableDamageCollider();
     }
 
-    // RIGHT STOMP
-    // public void ActivateBossRightStomp()
-    // {
-    //     Collider[] colliders = Physics.OverlapSphere(bossRightStompFoot.position, stompAttackAOERadius, WorldUtilityManager.instance.GetCharacterLayers());
-    //     List<CharacterManager> charactersDamaged = new List<CharacterManager>();
-
-    //     foreach(var collider in colliders)
-    //     {
-    //         CharacterManager character = collider.GetComponentInParent<CharacterManager>();
-
-    //         if(character != null)
-    //         {
-    //             if(charactersDamaged.Contains(character))
-    //             {
-    //                 continue;
-    //             }  
-
-    //             charactersDamaged.Add(character);
-
-    //             //check for block
-    //             TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
-    //             damageEffect.physicalDamage = stompDamage;
-
-    //             // damageEffect.contactPoint = contactPoint;
-
-    //             character.characterEffectsManager.ProcessInstantEffect(damageEffect);
-    //         }
-    //     }
-    // }
-
-    // LEFT STOMP
-    // public void ActivateBossLefttStomp()
-    // {
-    //     Collider[] colliders = Physics.OverlapSphere(bossLeftStompFoot.position, stompAttackAOERadius, WorldUtilityManager.instance.GetCharacterLayers());
-    //     List<CharacterManager> charactersDamaged = new List<CharacterManager>();
-
-    //     foreach(var collider in colliders)
-    //     {
-    //         CharacterManager character = collider.GetComponentInParent<CharacterManager>();
-
-    //         if(character != null)
-    //         {
-    //             if(charactersDamaged.Contains(character))
-    //             {
-    //                 continue;
-    //             }  
-
-    //             charactersDamaged.Add(character);
-
-    //             //check for block
-    //             TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
-    //             damageEffect.physicalDamage = stompDamage;
-
-    //             // damageEffect.contactPoint = contactPoint;
-
-    //             character.characterEffectsManager.ProcessInstantEffect(damageEffect);
-    //         }
-    //     }
-    // }
-
     // RIGHT FOOT DAMAGE COLLIDER
     public void OpenBossRightFootDamageCollider()
     {
@@ -134,32 +70,36 @@ public class AIBossCombatManager : AICharacterCombatManager
 
     public void CloseBossRightFootDamageCollider()
     {
+        //close the right foot colldier
         bossRightFootDamageCollider.DisableDamageCollider();
     }
 
+
     public override void PivotTowardsTarget(AICharacterManager aiCharacter)
     {
-        // PLAY A PIVOT ANIMATION DEPENDING ON VIEWABLE ANGLE OF CURRENT TARGET
+        //if character is not performing an action
         if(aiCharacter.isPerformingAction)
         {
             return;
         }
 
+        // PLAY A PIVOT ANIMATION DEPENDING ON VIEWABLE ANGLE OF CURRENT TARGET
+        // turn right 90
         if(viewableAngle >= 61 && viewableAngle <= 110)
         {
             aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_90", true);
         }
-
+        // turn left 90
         else if(viewableAngle <= -61 && viewableAngle >= -110)
         {
             aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_90", true);
         }
-
+        // turn right 180
         if(viewableAngle >= 146 && viewableAngle <= 180)
         {
             aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Right_180", true);
         }
-
+        // turn left 180
         else if(viewableAngle <= -146 && viewableAngle >= -180)
         {
             aiCharacter.characterAnimatorManager.PlayTargetActionAnimation("Turn_Left_180", true);
