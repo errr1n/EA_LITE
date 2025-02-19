@@ -56,27 +56,21 @@ public class DamageCollider : MonoBehaviour
         // SO WE ADD TO A LIST THAT CHECKS BEFORE APPLYING DAMAGE
         if(charactersDamaged.Contains(damageTarget))
         {
-            // Debug.Log("0");
             return; // CAN ONLY BE HIT ONCE
         }
-        // Debug.Log("1");
 
         // add the character who's collider has been hit to charactersDamaged list
         charactersDamaged.Add(damageTarget); 
-        // Debug.Log("2");
 
         // instantiate damage effect scriptable object
         TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
         damageEffect.physicalDamage = physicalDamage;
-        // Debug.Log("3");
 
         // track the collider contact point
         damageEffect.contactPoint = contactPoint;
-        // Debug.Log("4");
 
         // apply physical damage effect
         damageTarget.characterEffectsManager.ProcessInstantEffect(damageEffect);
-        // Debug.Log("5");
     }
 
     public virtual void EnableDamageCollider()
