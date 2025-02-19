@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DynamiteDamage : DamageCollider
+public class DynamiteDamageCollider : DamageCollider
 {
     // time before dynamite explodes
     [SerializeField] private float timeBeforeExplosion = 3f;
