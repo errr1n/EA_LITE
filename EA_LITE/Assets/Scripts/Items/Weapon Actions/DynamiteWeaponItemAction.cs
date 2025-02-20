@@ -7,7 +7,7 @@ using UnityEngine;
 public class DynamiteWeaponItemAction : WeaponItemAction
 {
     // ANIMATION STRING
-    // [SerializeField] string Place_Dynamite = "Place_Dynamite";
+    [SerializeField] string Place_Dynamite = "Place_Dynamite";
     [SerializeField] GameObject dynamiteObject;
     [SerializeField] public GameObject instantiatedGameObject;
 
@@ -32,7 +32,7 @@ public class DynamiteWeaponItemAction : WeaponItemAction
         if(playerPerformingAction.isUsingRightHand)
         {
             // PLAY ANIMATION
-            // playerPerformingAction.playerAnimatorManager.PlayTargetAttackActionAnimation(AttackType.LightAttack, Place_Dynamite, true);
+            playerPerformingAction.playerAnimatorManager.PlayTargetAttackActionAnimation(AttackType.LightAttack, Place_Dynamite, true);
 
             //instantiate the dynamite game object
             instantiatedGameObject = Instantiate(dynamiteObject);
