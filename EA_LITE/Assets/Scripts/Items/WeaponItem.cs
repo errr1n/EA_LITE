@@ -9,8 +9,6 @@ public class WeaponItem : Item
     [Header("Weapon Model")]
     public GameObject weaponModel;
 
-    // [Header("Weapon Model")]
-
     [Header("Weapon Base Damage")]
     public int physicalDamage = 0;
 
