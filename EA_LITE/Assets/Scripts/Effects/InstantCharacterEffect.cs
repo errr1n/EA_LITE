@@ -9,7 +9,7 @@ public class InstantCharacterEffect : ScriptableObject
 
     protected virtual void Awake()
     {
-        // characterStatsManager = GetComponent<CharacterStatsManager>();
+        //
     }
 
     public virtual void ProcessEffect(CharacterManager characterManager)
