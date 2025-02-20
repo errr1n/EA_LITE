@@ -167,6 +167,5 @@ public class SpitAttackState : AIState
         base.ResetStateFlags(aiCharacter);
 
         hasAttack = false;
-        // hasRolledForComboChance = false;
     }
 }

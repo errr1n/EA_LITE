@@ -15,6 +15,7 @@ public class AICharacterAnimatorManager : CharacterAnimatorManager
 
     private void OnAnimatorMove()
     {
+        // if not grounded, return
         if(!aiCharacter.characterLocomotionManager.isGrounded)
         {
             return;

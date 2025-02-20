@@ -28,6 +28,7 @@ public class AICharacterAttackAction : ScriptableObject
 
     public void AttemptToPerformAction(AICharacterManager aiCharacter)
     {
+        // play attack action animation
         aiCharacter.characterAnimatorManager.PlayTargetAttackActionAnimation(attackType, attackAnimation, true);
     }
 }

@@ -12,6 +12,7 @@ public class AIBossCharacterManager : AICharacterManager
     private bool attemptToSpawnHPBar = true;
     //list of walls
     [SerializeField] List<WallInteractable> walls;
+    // public SpitAttackState spitAttack;
 
     [SerializeField] bool _hasBeenDefeated = false;
     public bool HasBeenDefeated{
