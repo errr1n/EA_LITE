@@ -35,6 +35,7 @@ public class PlayerInputManager : MonoBehaviour
     // [SerializeField] bool jumpInput = false;
     // public bool isSprinting = false;
     [SerializeField] bool leftClickInput = false;
+    [SerializeField] bool weaponSwapInput = false;
     
 
     private void Awake()
@@ -114,6 +115,9 @@ public class PlayerInputManager : MonoBehaviour
             playerControls.PlayerActions.Sprint.performed += i => sprintInput = true;
             // RELEASING THE INPUT, SETS BOOL TO FALSE
             playerControls.PlayerActions.Sprint.canceled += i => sprintInput = false;
+
+            // check if tab is pushed (weapon swap)
+            playerControls.PlayerActions.WeaponSwap.performed += i => weaponSwapInput = true;
         }
 
         playerControls.Enable();
@@ -155,6 +159,7 @@ public class PlayerInputManager : MonoBehaviour
         HandleDodgeInput();
         HandleSprintInput();
         HandleLeftClickInput();
+        HandleTabPushInput();
     }
 
     private void HandleLockOnInput()
@@ -318,6 +323,17 @@ public class PlayerInputManager : MonoBehaviour
 
             player.playerCombatManager.PerformWeaponBasedAction(player.playerInventoryManager.currentRightHandWeapon.leftClick_Action, player.playerInventoryManager.currentRightHandWeapon);
 
+        }
+    }
+
+    private void HandleTabPushInput()
+    {
+        if(weaponSwapInput)
+        {
+            weaponSwapInput = false;
+
+            // CHANGE WEAPON IN HAND
+            player.playerEquipmentManager.SwitchRightWeapon();
         }
     }
 }

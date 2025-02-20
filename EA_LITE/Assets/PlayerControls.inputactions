@@ -225,6 +225,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "WeaponSwap",
+                    "type": "Button",
+                    "id": "fd6e6c51-e035-4220-bbf2-c617379cda1c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "f8d5e9e1-e1af-4f1c-b41b-a9f10ee95cb6",
@@ -369,6 +378,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Lock On",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9542980a-9e05-4761-8c13-e7c3166f499f",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponSwap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

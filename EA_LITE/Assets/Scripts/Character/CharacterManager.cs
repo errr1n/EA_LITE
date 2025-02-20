@@ -12,7 +12,6 @@ public class CharacterManager : MonoBehaviour
     [HideInInspector] public CharacterCombatManager characterCombatManager;
     [HideInInspector] public CharacterStatsManager characterStatsManager;
     [HideInInspector] public CharacterLocomotionManager characterLocomotionManager;
-    // [HideInInspector] public MeleeWeaponDamageCollider damageCollider;
 
     [Header("Character Group")]
     public CharacterGroup characterGroup;
@@ -57,8 +56,6 @@ public class CharacterManager : MonoBehaviour
         characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
         characterCombatManager = GetComponent<CharacterCombatManager>();
         characterLocomotionManager = GetComponent<CharacterLocomotionManager>();
-
-        // damageCollider = GetComponent<MeleeWeaponDamageCollider>();
     }
 
     protected virtual void Start()
@@ -171,11 +168,6 @@ public class CharacterManager : MonoBehaviour
         damagedCharacterID.characterEffectsManager.ProcessInstantEffect(damageEffect);
 
     }
-
-    // public void OnLockOnTargetIDChange(ulong oldID, ulong newID)
-    // {
-    //     // character.characterCombatManager.currentTarget = 
-    // }
 
     public void OnIsLockedOnChanged(bool oldValue, bool IsLockedOn)
     {
