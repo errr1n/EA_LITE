@@ -73,18 +73,15 @@ public class TakeDamageEffect : InstantCharacterEffect
             finalDamageDealt = 1;
         }
 
+        // deal total final damage
         character.characterStatsManager.CurrentHealth -= finalDamageDealt;
     }
 
     //play damage vfx
 
-    //player damage sfx
     private void PlayDamageSFX(CharacterManager character)
     {
-        // AudioClip physicalDamageSFX = WorldSoundFXManager.instance.ChooseRandomSFXFromArray(WorldSoundFXManager.instance.physicalDamageSFX);
-
-        // character.characterSoundFXManager.PlaySoundFX(physicalDamageSFX);
-
+        // play a damage grunt SFX
         character.characterSoundFXManager.PlayDamageGrunt();
     }
 

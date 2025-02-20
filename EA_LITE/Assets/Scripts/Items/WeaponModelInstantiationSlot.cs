@@ -18,9 +18,12 @@ public class WeaponModelInstantiationSlot : MonoBehaviour
 
     public void LoadWeapon(GameObject weaponModel)
     {
+        // sets the current weapon model to the weapon passed
         currentWeaponModel = weaponModel;
+        // parent the weapon model to the transform of object this script is on
         weaponModel.transform.parent = transform;
 
+        // set the weapon model transform properties to the local transform properties from the prefab
         weaponModel.transform.localPosition = Vector3.zero;
         weaponModel.transform.localRotation = Quaternion.identity;
         weaponModel.transform.localScale = Vector3.one;

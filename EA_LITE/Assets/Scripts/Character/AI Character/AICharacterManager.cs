@@ -87,10 +87,10 @@ public class AICharacterManager : CharacterManager
             Vector3 agentDestination = navMeshAgent.destination;
             float remainingDistance = Vector3.Distance(agentDestination, transform.position);
 
+            // change isMoviable bool based on whether agent is within stopping distance (distance assigned in inspector)
             if(remainingDistance > navMeshAgent.stoppingDistance)
             {
                 IsMoving = true;
-                // Debug.Log("HERE");
             }
             else
             {
