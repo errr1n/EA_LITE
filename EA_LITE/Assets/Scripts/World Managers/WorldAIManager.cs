@@ -34,6 +34,7 @@ public class WorldAIManager : MonoBehaviour
 
     public void SpawnCharacter(AICharacterSpawner aiCharacterSpawner)
     {
+        Debug.Log("SpawnCharacter");
         aiCharacterSpawners.Add(aiCharacterSpawner);
         aiCharacterSpawner.AttemptToSpawnCharacter();
     }

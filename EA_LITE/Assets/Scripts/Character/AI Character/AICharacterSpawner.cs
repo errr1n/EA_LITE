@@ -11,16 +11,20 @@ public class AICharacterSpawner : MonoBehaviour
     private void Awake()
     {
         // WorldAIManager.instance.aiCharacterSpawners.Add(this);
+        // WorldAIManager.instance.SpawnCharacter(this);
+        // gameObject.SetActive(false);
     }
 
     private void Start()
     {
+        Debug.Log("Start");
         WorldAIManager.instance.SpawnCharacter(this);
         gameObject.SetActive(false);
     }
 
     public void AttemptToSpawnCharacter()
     {
+        Debug.Log("AttemptToSpawnCharacter");
         if(characterGameObject != null)
         {
             instantiatedGameObject = Instantiate(characterGameObject);
