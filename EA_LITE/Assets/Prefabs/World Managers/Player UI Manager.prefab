@@ -526,6 +526,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 3787963671851076243}
   staminaBar: {fileID: 1383411657224090830}
+  pickaxeCW: {fileID: 4563217658562582144}
+  pickaxeSW: {fileID: 8192276142269103715}
+  dynamiteCW: {fileID: 9109905019580048141}
+  dynamiteSW: {fileID: 4748560122503117734}
   staminaBarUI: 0
   bossHealthBarParent: {fileID: 6090397485268901684}
   bossHealthBarObject: {fileID: 931570327093328781, guid: b70c734a8694af2498e62bb8587aa840,
@@ -984,6 +988,7 @@ GameObject:
   - component: {fileID: 4413823672480404674}
   - component: {fileID: 7000424199405899403}
   - component: {fileID: 558126518734198957}
+  - component: {fileID: 4748560122503117734}
   m_Layer: 0
   m_Name: SW_Dynamite
   m_TagString: Untagged
@@ -1049,6 +1054,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4748560122503117734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259587746109611219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e660abb10bc8cd64e9dc5009cb4a1eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2625981444608406633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,6 +1472,7 @@ GameObject:
   - component: {fileID: 531583963043908390}
   - component: {fileID: 1487797882290738346}
   - component: {fileID: 928185066646779431}
+  - component: {fileID: 9109905019580048141}
   m_Layer: 0
   m_Name: CW_Dynamite
   m_TagString: Untagged
@@ -1520,6 +1538,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9109905019580048141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3782075725282907360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e660abb10bc8cd64e9dc5009cb4a1eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3803534244839450774
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,6 +2054,7 @@ GameObject:
   - component: {fileID: 1606667868852043902}
   - component: {fileID: 8096123895965094180}
   - component: {fileID: 4181640669541625095}
+  - component: {fileID: 8192276142269103715}
   m_Layer: 0
   m_Name: SW_Pickaxe
   m_TagString: Untagged
@@ -2089,6 +2120,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8192276142269103715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5554882592381820982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e660abb10bc8cd64e9dc5009cb4a1eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5623469877940005140
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,7 +2261,7 @@ GameObject:
   - component: {fileID: 885655886578411473}
   - component: {fileID: 5081320641031899382}
   m_Layer: 0
-  m_Name: Cross ICon
+  m_Name: Cross Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2906,6 +2949,7 @@ GameObject:
   - component: {fileID: 8321046011363751831}
   - component: {fileID: 3642083291820708691}
   - component: {fileID: 3664428306116299554}
+  - component: {fileID: 4563217658562582144}
   m_Layer: 0
   m_Name: CW_Pickaxe
   m_TagString: Untagged
@@ -2971,3 +3015,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4563217658562582144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9101766234699846532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e660abb10bc8cd64e9dc5009cb4a1eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using UnityEngine.UI;
 
 public class WeaponItem : Item
 {
     // ANIMATOR CONTROLLER OVERRIDE (change attack animations based on weapon you are using)
+
+    // [SerializeField] public UI_Image itemUIObject;
+    // [SerializeField] UI_Image CurrentWeaponImage;
 
     [Header("Weapon Model")]
     public GameObject weaponModel;
