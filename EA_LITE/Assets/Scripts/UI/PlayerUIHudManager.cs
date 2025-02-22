@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// using UnityEngine.UI;
 
 public class PlayerUIHudManager : MonoBehaviour
 {
     CharacterStatsManager characterStatsManager;
-    // public PlayerManager player;
-    // public PlayerEquipmentManager playerEquipmentManager;
 
     [Header("Stat Bars")]
     [SerializeField] UI_StatBar healthBar;
@@ -21,29 +18,19 @@ public class PlayerUIHudManager : MonoBehaviour
 
     [SerializeField] private bool staminaBarUI = false;
 
-    private bool cwPickaxe = true;
-    
-
     [Header("Boss Health Bar")]
     public Transform bossHealthBarParent;
     public GameObject bossHealthBarObject;
 
-    // public int currentIndex = 0;
-
     private void Awake()
     {
         characterStatsManager = GetComponent<CharacterStatsManager>();
-        // playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
     }
 
     private void Update()
     {
         // TURNS OFF STAMINA BAR ON HUD
         staminaBar.gameObject.SetActive(staminaBarUI);
-
-        // dynamiteCW.gameObject.SetActive(true);
-        // pickaxeCW.gameObject.SetActive(false);
-        // SwapWeaponIcon();
     }
 
     // MAY NOT BE NECESSARY
@@ -76,13 +63,6 @@ public class PlayerUIHudManager : MonoBehaviour
         staminaBar.SetMaxStat(maxStamina);
     }
 
-    // public void SetNewBossHealthValue(float newValue)
-    // {
-    //     healthBar.SetStat(newValue);
-    // }
-
-
-
     public void SetNewMaxHealthValue(int oldVitality, int newVitality)
     {
         characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(newVitality);
@@ -97,11 +77,10 @@ public class PlayerUIHudManager : MonoBehaviour
         characterStatsManager.CurrentStamina = characterStatsManager.maxStamina;
     }
 
-    public void SwapWeaponIcon()
+    public void SwapWeaponIcon(int weaponID)
     {
-        if(cwPickaxe == true)
+        if(weaponID == 1)
         {
-            cwPickaxe = false;
             // set current weapon to dynamite
             dynamiteCW.gameObject.SetActive(true);
             pickaxeCW.gameObject.SetActive(false);
@@ -110,9 +89,8 @@ public class PlayerUIHudManager : MonoBehaviour
             pickaxeSW.gameObject.SetActive(true);
             dynamiteSW.gameObject.SetActive(false);
         }
-        else if(cwPickaxe == false)
+        else if(weaponID == 0)
         {
-            cwPickaxe = true;
             // set current weapon to pickaxe
             pickaxeCW.gameObject.SetActive(true);
             dynamiteCW.gameObject.SetActive(false);

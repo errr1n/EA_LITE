@@ -336,7 +336,7 @@ public class PlayerInputManager : MonoBehaviour
             player.playerEquipmentManager.SwitchRightWeapon();
 
             // player.playerUIHudManager.SwapWeaponIcon();
-            PlayerUIManager.instance.playerUIHudManager.SwapWeaponIcon();
+            // PlayerUIManager.instance.playerUIHudManager.SwapWeaponIcon();
         }
     }
 }

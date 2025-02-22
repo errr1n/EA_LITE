@@ -215,7 +215,9 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
         player.playerInventoryManager.currentRightHandWeapon = newWeapon;
         player.playerEquipmentManager.LoadRightWeapon();
 
-        // PlayerUIManager.instance.playerUIHudManager.SwapWeaponIcon();
+        // Debug.Log("newID: " + newID);
+
+        PlayerUIManager.instance.playerUIHudManager.SwapWeaponIcon(newID);
     }
 
     public void OnCurrentWeapongBeingUsedIDChange(int oldID, int newID)
