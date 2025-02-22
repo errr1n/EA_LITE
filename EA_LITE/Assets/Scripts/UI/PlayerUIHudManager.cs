@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// using UnityEngine.UI;
 
 public class PlayerUIHudManager : MonoBehaviour
 {
@@ -10,6 +9,12 @@ public class PlayerUIHudManager : MonoBehaviour
     [Header("Stat Bars")]
     [SerializeField] UI_StatBar healthBar;
     [SerializeField] UI_StatBar staminaBar;
+
+    [SerializeField] UI_Image pickaxeCW;
+    [SerializeField] UI_Image dynamiteCW;
+
+    [SerializeField] UI_Image pickaxeSW;
+    [SerializeField] UI_Image dynamiteSW;
 
     [SerializeField] private bool staminaBarUI = false;
 
@@ -58,13 +63,6 @@ public class PlayerUIHudManager : MonoBehaviour
         staminaBar.SetMaxStat(maxStamina);
     }
 
-    // public void SetNewBossHealthValue(float newValue)
-    // {
-    //     healthBar.SetStat(newValue);
-    // }
-
-
-
     public void SetNewMaxHealthValue(int oldVitality, int newVitality)
     {
         characterStatsManager.maxHealth = characterStatsManager.CalculateHealthBasedOnVitalityLevel(newVitality);
@@ -77,5 +75,29 @@ public class PlayerUIHudManager : MonoBehaviour
         characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(newEndurance);
         PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(characterStatsManager.maxStamina);
         characterStatsManager.CurrentStamina = characterStatsManager.maxStamina;
+    }
+
+    public void SwapWeaponIcon(int weaponID)
+    {
+        if(weaponID == 1)
+        {
+            // set current weapon to dynamite
+            dynamiteCW.gameObject.SetActive(true);
+            pickaxeCW.gameObject.SetActive(false);
+
+            //set stored weapon to pickaxe
+            pickaxeSW.gameObject.SetActive(true);
+            dynamiteSW.gameObject.SetActive(false);
+        }
+        else if(weaponID == 0)
+        {
+            // set current weapon to pickaxe
+            pickaxeCW.gameObject.SetActive(true);
+            dynamiteCW.gameObject.SetActive(false);
+
+            //set stored weapon to dynamite
+            dynamiteSW.gameObject.SetActive(true);
+            pickaxeSW.gameObject.SetActive(false);
+        }
     }
 }

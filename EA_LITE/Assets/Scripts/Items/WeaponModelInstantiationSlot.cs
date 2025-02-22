@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class WeaponModelInstantiationSlot : MonoBehaviour
 {
-    // WHAT SLOT IS THIS 
+    // WHAT SLOT IS THIS (enum)
     public WeaponModelSlot weaponSlot;
+    //game object to hold the current weapon model
     public GameObject currentWeaponModel;
 
     public void UnloadWeapon()
