@@ -527,13 +527,13 @@ MonoBehaviour:
   healthBar: {fileID: 3787963671851076243}
   staminaBar: {fileID: 1383411657224090830}
   pickaxeCW: {fileID: 4563217658562582144}
-  pickaxeSW: {fileID: 8192276142269103715}
   dynamiteCW: {fileID: 9109905019580048141}
+  pickaxeSW: {fileID: 8192276142269103715}
   dynamiteSW: {fileID: 4748560122503117734}
-  staminaBarUI: 0
   bossHealthBarParent: {fileID: 6090397485268901684}
   bossHealthBarObject: {fileID: 931570327093328781, guid: b70c734a8694af2498e62bb8587aa840,
     type: 3}
+  staminaBarUI: 0
 --- !u!1 &1271892167562546333
 GameObject:
   m_ObjectHideFlags: 0
