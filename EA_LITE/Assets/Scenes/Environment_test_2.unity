@@ -11027,6 +11027,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1785003593}
+    - target: {fileID: -2711238058462509012, guid: 438406aec55afee4bbcc0128ef74c316,
+        type: 3}
+      propertyPath: collideWithLayers.m_Bits
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 2621237699449417301, guid: 438406aec55afee4bbcc0128ef74c316,
         type: 3}
       propertyPath: m_Name

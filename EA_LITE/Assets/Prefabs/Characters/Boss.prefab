@@ -3789,13 +3789,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.8
-  m_Radius: 0.2
+  m_Height: 5
+  m_Radius: 0.83
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 2.5, z: 0}
 --- !u!114 &-5953610606603669106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3820,10 +3820,10 @@ MonoBehaviour:
   isPerformingAction: 0
   isJumping: 0
   isInvulnerable: 0
+  isSprinting: 0
   _isLockedOn: 0
   _isMoving: 0
   isDead: 0
-  isSprinting: 0
   characterName: Rock Titan
   aiCharacterCombatManager: {fileID: 0}
   aiCharacterLocomotionManager: {fileID: 0}
@@ -3837,11 +3837,11 @@ MonoBehaviour:
   bossHPBar: {fileID: 0}
   bossID: 0
   walls: []
-  sleepAnimation: Sleep_01
-  awakeAnimation: Awaken_01
   _hasBeenDefeated: 0
   _hasBeenAwakened: 0
   _bossFightIsActive: 0
+  sleepAnimation: Sleep_01
+  awakeAnimation: Awaken_01
   sleepState: {fileID: 11400000, guid: 6c71154ad49ef6f4cac215fcbe3a586e, type: 2}
   bossSoundFXManager: {fileID: 0}
 --- !u!114 &5110257553887991747
@@ -3907,14 +3907,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828f4ff8b99cf8d419267629fc612aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrounded: 1
+  canRotate: 1
+  canMove: 1
   groundCheckSphereRadius: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
   gravityForce: -5.55
-  isGrounded: 1
-  canRotate: 1
-  canMove: 1
   yVelocity: {x: 0, y: 0, z: 0}
   groundedYVelocity: -20
   fallStartYVelocity: -5
