@@ -6,7 +6,6 @@ public class PlayerManager : CharacterManager
 {
     [Header("DEBUG MENU")]
     [SerializeField] bool respawnCharacter = false;
-    [SerializeField] bool SwitchRightWeapon = false;
 
     [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
     [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
@@ -18,6 +17,7 @@ public class PlayerManager : CharacterManager
 
     public bool isUsingRightHand = false;
 
+    // ID of current weapon being used 
     public int _currentWeaponBeingUsed = 0;
     public int CurrentWeaponBeingUsed{
         get{return _currentWeaponBeingUsed;}
@@ -31,12 +31,10 @@ public class PlayerManager : CharacterManager
     {
         base.Awake();
 
-        playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
         playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
-        
+        playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
         playerUIHudManager = GetComponent<PlayerUIHudManager>();
         playerUIPopUpManager = GetComponent<PlayerUIPopUpManager>();
-
         playerInventoryManager = GetComponent<PlayerInventoryManager>();
         playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
         playerCombatManager = GetComponent<PlayerCombatManager>();
@@ -66,8 +64,6 @@ public class PlayerManager : CharacterManager
 
         // UPDATE UI HEALTH BAR ACCORDING TO CURRENT HEALTH STATS
         PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(characterStatsManager.CurrentHealth);
-        // playerEquipmentManager.OnCurrentRightHandWeaponIDChange(playerEquipmentManager._currentRightHandWeaponID);
-        // playerEquipmentManager.CurrentRightHandWeaponID = playerEquipmentManager._currentRightHandWeaponID;
 
         DebugMenu();
     }
@@ -133,14 +129,6 @@ public class PlayerManager : CharacterManager
             respawnCharacter = false;
 
             ReviveCharacter();
-            Debug.Log("REVIVE");
-        }
-
-        if(SwitchRightWeapon)
-        {
-            SwitchRightWeapon = false;
-
-            playerEquipmentManager.SwitchRightWeapon();
         }
     }
 

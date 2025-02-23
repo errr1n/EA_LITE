@@ -4,25 +4,22 @@ using UnityEngine;
 
 public class PlayerEquipmentManager : CharacterEquipmentManager
 {
-    // public WeaponItem currentWeapon;
     [HideInInspector] public PlayerManager player;
-    [HideInInspector] public PlayerUIHudManager playerUIHudManager;
     [HideInInspector] public PlayerCombatManager playerCombatManager;
-    [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
 
+    [Header("Right Hand")]
+    // access weapon instantiation slot
     public WeaponModelInstantiationSlot rightHandSlot;
-
+    // access weapon information
     [SerializeField] WeaponManager rightWeaponManager;
-    // public bool switchWeapon = false;
-    // public int currentIndex = 0;
-
+    // weapon model
     public GameObject rightHandWeaponModel;
 
+    // weapon ID
     public int _currentRightHandWeaponID = 0;
     public int CurrentRightHandWeaponID{
         get{return _currentRightHandWeaponID;}
         set{
-            // UPDATES HEALTH UI BAR WHEN HEALTH CHANGES 
             OnCurrentRightHandWeaponIDChange(_currentRightHandWeaponID, value);
             _currentRightHandWeaponID = value;
         }
@@ -34,7 +31,6 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
 
         player = GetComponent<PlayerManager>();
         playerCombatManager = GetComponent<PlayerCombatManager>();
-        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
 
         //GET OUR SLOTS
         InitializeWeaponSlots();
@@ -81,11 +77,7 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
 
         // add one to our weapon index to switch weapon
         player.playerInventoryManager.rightHandWeaponIndex += 1;
-        // player.playerUIHudManager.currentIndex = player.playerInventoryManager.rightHandWeaponIndex;
-        // player.playerUIHudManager.SwapWeaponIcon();
-        // Debug.Log(currentIndex);
-
-
+        
         // Make sure index never goes out of bounds
         if(player.playerInventoryManager.rightHandWeaponIndex < 0 || player.playerInventoryManager.rightHandWeaponIndex > 1)
         {
@@ -112,6 +104,7 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
                 }
             }
 
+            // unarmed
             if(weaponCount <= 1)
             {
                 // player.playerInventoryManager.rightHandWeaponIndex = -1;
@@ -119,13 +112,12 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
             }
             else
             {
-                // weaponCount is never less than 1, therefore 
+                // index is 0 (first weapon index)
                 player.playerInventoryManager.rightHandWeaponIndex = firstWeaponPosition;
                 // set the current right hand weapon ID to that chosen from weaponsInRightHandSlot list
                 CurrentRightHandWeaponID = firstWeapon.itemID;
-                // Debug.Log(CurrentRightHandWeaponID);
             }
-            // Debug.Log(CurrentRightHandWeaponID);
+
             return;
         }
 
@@ -134,68 +126,23 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
             // CHECK TO SEE IF THIS IS NOT THE UNARMED WEAPON
             selectedWeapon = player.playerInventoryManager.weaponsInRightHandSlot[player.playerInventoryManager.rightHandWeaponIndex];
             CurrentRightHandWeaponID = player.playerInventoryManager.weaponsInRightHandSlot[player.playerInventoryManager.rightHandWeaponIndex].itemID;
-            // Debug.Log(CurrentRightHandWeaponID);
             return;
         }
 
         if(selectedWeapon == null && player.playerInventoryManager.rightHandWeaponIndex <= 1)
         {
-            // Debug.Log("HERE");
             SwitchRightWeapon();
-            // switchWeapon = true;
-            // player.playerUIHudManager.SwapWeaponIcon();
-            // Debug.Log(player.playerInventoryManager.rightHandWeaponIndex);
         }
-        // Debug.Log(CurrentRightHandWeaponID);
-        // else
-        // {
-            // // we can check if there is more than one weapon
-            // float weaponCount = 0;
-            // WeaponItem firstWeapon = null;
-            // // Debug.Log("firstWeapon: " + firstWeapon);
-            // int firstWeaponPosition = 0;
-
-            // for(int i = 0; i < player.playerInventoryManager.weaponsInRightHandSlot.Length; i++)
-            // {
-            //     // if(player.playerInventoryManager.weaponsInRightHandSlot[i].itemID != WorldItemDatabase.instance.unarmed.itemID)
-            //     // {
-            //         weaponCount += 1;
-            //         // Debug.Log("weapon count: " + weaponCount);
-
-            //         if(firstWeapon == null)
-            //         {
-            //             firstWeapon = player.playerInventoryManager.weaponsInRightHandSlot[i];
-            //             firstWeaponPosition = i;
-            //             // Debug.Log("firstWeapon: " + firstWeapon);
-            //             // Debug.Log("firstWeaponPosition: " + firstWeaponPosition);
-            //         }
-            //     // }
-            // }
-
-            // if(weaponCount <= 1)
-            // {
-            //     // player.playerInventoryManager.rightHandWeaponIndex = -1;
-            //     // selectedWeapon = Instantiate
-            // }
-            // else
-            // {
-            //     player.playerInventoryManager.rightHandWeaponIndex = firstWeaponPosition;
-            //     CurrentRightHandWeaponID = firstWeapon.itemID;
-            // }
-
-            // player.playerInventoryManager.rightHandWeaponIndex = -1;
-            // _currentRightHandWeaponID = firstWeapon.itemID;
-        // }
     }
 
     public void LoadRightWeapon()
     {
         if(player.playerInventoryManager.currentRightHandWeapon != null)
         {
-            // remove the old weapon
+            // REMOVE THE OLD WEAPON
             rightHandSlot.UnloadWeapon();
 
-            //bring in new weapon
+            // BRING IN NEW WEAPON
             // spawns the weapon model from gameobject  
             rightHandWeaponModel = Instantiate(player.playerInventoryManager.currentRightHandWeapon.weaponModel);
             // load the corresponding weapon model to the right hand slot
@@ -209,30 +156,22 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
 
     //can load a left hand weapon
 
+    // weapon ID change on right hand
     public void OnCurrentRightHandWeaponIDChange(int oldID, int newID)
     {
         WeaponItem newWeapon = Instantiate(WorldItemDatabase.instance.GetWeaponByID(newID));
         player.playerInventoryManager.currentRightHandWeapon = newWeapon;
         player.playerEquipmentManager.LoadRightWeapon();
 
-        // Debug.Log("newID: " + newID);
-
         PlayerUIManager.instance.playerUIHudManager.SwapWeaponIcon(newID);
     }
 
+    // weapon being used ID change
     public void OnCurrentWeapongBeingUsedIDChange(int oldID, int newID)
     {
         WeaponItem newWeapon = Instantiate(WorldItemDatabase.instance.GetWeaponByID(newID));
         player.playerCombatManager.currentWeaponBeingUsed = newWeapon;
     }
-
-    // public void SetCharacterActionHand(bool rightHandedAction)
-    // {
-    //     if(rightHandedAction)
-    //     {
-    //         player.isUsingRightHand = true;
-    //     }
-    // }
 
     // DAMAGE COLLIDERS
 

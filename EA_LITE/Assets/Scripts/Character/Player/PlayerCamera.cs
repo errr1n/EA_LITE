@@ -61,7 +61,6 @@ public class PlayerCamera : MonoBehaviour
     {
         if(player != null)
         {
-            // Debug.Log("follow target");
             //  FOLLOW THE PLAYER
             HandleFollowTarget();
             // ROTATE AROUND PLAYER
@@ -171,7 +170,6 @@ public class PlayerCamera : MonoBehaviour
 
             if(lockOnTarget != null)
             {
-                // Debug.Log("NOT NULL");
                 //  check if they are within our field of view
                 Vector3 lockOnTargetsDirection = lockOnTarget.transform.position - player.transform.position;
                 float distanceFromTarget = Vector3.Distance(player.transform.position, lockOnTarget.transform.position);
@@ -213,7 +211,6 @@ public class PlayerCamera : MonoBehaviour
                     {
                         // OTHERWISE ADD THIS TARGET TO POTENTIAL TARGET LIST
                         availableTargets.Add(lockOnTarget);
-                        // Debug.Log("ADD AVAILABLE TARGET: " + availableTargets);
                     }
                 }
             }
@@ -226,13 +223,11 @@ public class PlayerCamera : MonoBehaviour
             if(availableTargets[k] != null)
             {
                 float distanceFromTarget = Vector3.Distance(player.transform.position, availableTargets[k].transform.position);
-                // Vector3 lockTargetDirection = availableTargets[k].transform.position - player.transform.position;
 
                 if(distanceFromTarget < shortDistance)
                 {
                     shortDistance = distanceFromTarget;
                     nearestLockOnTarget = availableTargets[k];
-                    // Debug.Log("nearestLockOnTarget: " + nearestLockOnTarget);
                 }
             }
             else
@@ -245,8 +240,9 @@ public class PlayerCamera : MonoBehaviour
 
     public void ClearLockOnTarget()
     {
+        // set targets to null
         nearestLockOnTarget = null;
+        // clear list of targets
         availableTargets.Clear();
-        // Debug.Log("cleared");
     }
 }
