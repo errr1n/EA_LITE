@@ -36,8 +36,12 @@ public class DynamiteDamageCollider : DamageCollider
             // if there is a character to damage
             if(damageTarget != null)
             {
-                // damage character
-                DamageTarget(damageTarget);
+                // if character is not invulnerable
+                if(damageTarget != damageTarget.isInvulnerable)
+                {
+                    // damage character
+                    DamageTarget(damageTarget);
+                }
             }
         }
 
