@@ -9,6 +9,7 @@ public class WeaponModelInstantiationSlot : MonoBehaviour
     //game object to hold the current weapon model
     public GameObject currentWeaponModel;
 
+    // remove weapon
     public void UnloadWeapon()
     {
         if(currentWeaponModel != null)
@@ -17,6 +18,7 @@ public class WeaponModelInstantiationSlot : MonoBehaviour
         }
     }
 
+    // load weapon
     public void LoadWeapon(GameObject weaponModel)
     {
         // sets the current weapon model to the weapon passed

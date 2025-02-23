@@ -8,12 +8,9 @@ public class PlayerInputManager : MonoBehaviour
 
     public static PlayerInputManager instance;
 
-    public PlayerManager player;
-
-    // 1. READ VALUES OF JOYSTICK AND WASD
-    // 2. MOVE CHARACTER BASED ON THOSE VALUES
-
     PlayerControls playerControls;
+
+    public PlayerManager player;
 
     [Header("CAMERA ROTATION INPUT")]
     [SerializeField] Vector2 cameraInput;
@@ -32,11 +29,8 @@ public class PlayerInputManager : MonoBehaviour
     [Header("PLAYER ACTION INPUT")]
     [SerializeField] bool dodgeInput = false;
     [SerializeField] bool sprintInput = false;
-    // [SerializeField] bool jumpInput = false;
-    // public bool isSprinting = false;
     [SerializeField] bool leftClickInput = false;
     [SerializeField] bool weaponSwapInput = false;
-    
 
     private void Awake()
     {
@@ -105,9 +99,11 @@ public class PlayerInputManager : MonoBehaviour
             playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
             // player actions dodge from player controls input system
             playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
-
+            
+            // Attack Input
             playerControls.PlayerActions.LeftClick.performed += i => leftClickInput = true;
 
+            // Lock On Input
             playerControls.PlayerActions.LockOn.performed += i => lockOnInput = true;
 
             // player actions sprint from player controls input system
@@ -116,7 +112,7 @@ public class PlayerInputManager : MonoBehaviour
             // RELEASING THE INPUT, SETS BOOL TO FALSE
             playerControls.PlayerActions.Sprint.canceled += i => sprintInput = false;
 
-            // check if tab is pushed (weapon swap)
+            // Weapon Swap Input
             playerControls.PlayerActions.WeaponSwap.performed += i => weaponSwapInput = true;
         }
 
@@ -167,9 +163,9 @@ public class PlayerInputManager : MonoBehaviour
         // check for dead target
         if(player.IsLockedOn)
         {
+            // if no current target
             if(player.playerCombatManager.currentTarget == null)
             {
-                // lockOnInput = false;
                 return;
             }
 
@@ -178,27 +174,24 @@ public class PlayerInputManager : MonoBehaviour
             {
                 player.IsLockedOn = false;
             }
-
-            //attempt to find new target
-            // lockOnInput = false;
         }
 
+        // ARE WE ALREADY LOCKED ON? (UNLOCK)
         if(lockOnInput && player.IsLockedOn)
         {
+            // set lock on input to false
             lockOnInput = false;
+            // reset the lock on target
             PlayerCamera.instance.ClearLockOnTarget();
-            // Debug.Log("CLEAR LOCK ON");
-            player.IsLockedOn = false;
-            //ARE WE ALREADY LOCKED ON? (UNLOCK)
-
-            //ATTEMPT TO LOCK ON
-
             //DISABLE LOCK ON
+            player.IsLockedOn = false;
             return;
         }
-
+        
+        // ENABLE LOCK ON
         if(lockOnInput && !player.IsLockedOn)
         {
+            // set lock on input to false
             lockOnInput = false;
 
             //IF WE ARE USING A RANGED WEAPON NO LOCK ON
@@ -210,28 +203,15 @@ public class PlayerInputManager : MonoBehaviour
             {
                 // SET THE TARGET AS OUR CURRENT TARGET
                 player.playerCombatManager.SetTarget(PlayerCamera.instance.nearestLockOnTarget);
+                // enable lock on
                 player.IsLockedOn = true;
-                // Debug.Log("is locked on: " + player.IsLockedOn);
             }
         }
-
-        // if(player.playerCombatManager.currentTarget != null)
-        // {
-        //     // lockOnInput = false;
-        //     return;
-        // }
-
-        // if(!lockOnInput && player.isLockedOn)
-        // {
-        //     lockOnInput = false;
-        // }
     }
 
     private void HandlePlayerMovementInput()
     {
-        // Debug.Log("HandlePlayerMovementInput()");
         verticalInput = movementInput.y;
-        // Debug.Log(movementInput.y);
         horizontalInput = movementInput.x;
 
         // ABS MAKES VALUE ALWAYS POSITIVE (ADDING TOGETHER TOTAL WITHOUT NEGATIVE SIGN)
@@ -252,15 +232,14 @@ public class PlayerInputManager : MonoBehaviour
             return;
         }
 
-        //idk if needed yet
         if(moveAmount != 0)
         {
             player.IsMoving = true;
-            // Debug.Log(player.IsMoving);
         }
         else
         {
             player.IsMoving = false;
+            // might need to adjust here for idle -> move animation issues
         }
 
         // WE PASS 0 ON HORIZONTAL BECAUSE NOT LOCKED ON (NON-STRAFING MOVEMENT)
@@ -295,7 +274,6 @@ public class PlayerInputManager : MonoBehaviour
         {
             // HANDLE SPRINTING
             player.playerLocomotionManager.SprintOn();
-            // Debug.Log("HERE");
         }
         else
         {
@@ -319,8 +297,10 @@ public class PlayerInputManager : MonoBehaviour
         {
             leftClickInput = false;
 
+            // set hand to right
             player.SetCharacterActionHand(true);
 
+            // perform weapon based action
             player.playerCombatManager.PerformWeaponBasedAction(player.playerInventoryManager.currentRightHandWeapon.leftClick_Action, player.playerInventoryManager.currentRightHandWeapon);
 
         }
@@ -334,9 +314,6 @@ public class PlayerInputManager : MonoBehaviour
 
             // CHANGE WEAPON IN HAND
             player.playerEquipmentManager.SwitchRightWeapon();
-
-            // player.playerUIHudManager.SwapWeaponIcon();
-            // PlayerUIManager.instance.playerUIHudManager.SwapWeaponIcon();
         }
     }
 }

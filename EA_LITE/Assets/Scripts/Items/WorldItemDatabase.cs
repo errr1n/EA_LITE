@@ -10,6 +10,7 @@ public class WorldItemDatabase : MonoBehaviour
     //unarmed?
 
     [Header("Weapons")]
+    // list to hold every weapon in the game
     [SerializeField] List<WeaponItem> weapons = new List<WeaponItem>();
 
     [Header("Items")]
