@@ -29,8 +29,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     // [SerializeField] float jumpStaminaCost = 25;
     // [SerializeField] float jumpHeight = 2;
     // [SerializeField] float jumpForwardSpeed = 5;
+    // private Vector3 jumpDirection;
     [SerializeField] float freeFallSpeed = 2;
-    private Vector3 jumpDirection;
 
     protected override void Awake()
     {
@@ -40,23 +40,17 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         characterStatsManager = GetComponent<CharacterStatsManager>();
     }
 
-    // protected override void Update()
-    // {
-    //     base.Update();
-    // }
-
-
     public void HandleAllMovement()
     {
         
 
         //GROUNDED MOVEMENT
         HandleGroundedMovement();
-        HandleRotation();
         // AERIAL MOVEMENT
-        // HandleJumpingMovement();
         // JUMPING MOVEMENT
+        // HandleJumpingMovement();
         // ROTATION
+        HandleRotation();
         // FALLING
         HandleFreeFallMovement();
     }
@@ -94,17 +88,14 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         {
             // SPRINT SPEED
             player.characterController.Move(moveDirection * sprintingSpeed * Time.deltaTime);
-            // Debug.Log("SPRINT");
         }
         else
         {
-            // isSprinting = false;
             // RUN VS WALK
             if(PlayerInputManager.instance.moveAmount > 0.5f)
             {
                 // MOVE AT RUNNING SPEED
                 player.characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
-                // Debug.Log("RUN");
             }
             else if(PlayerInputManager.instance.moveAmount <= 0.5f)
             {
@@ -112,18 +103,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
                 player.characterController.Move(moveDirection * walkingSpeed * Time.deltaTime);
             }
         }
-
-        // // RUN VS WALK
-        // if(PlayerInputManager.instance.moveAmount > 0.5f)
-        // {
-        //     // MOVE AT RUNNING SPEED
-        //     player.characterController.Move(moveDirection * runningSpeed * Time.deltaTime);
-        // }
-        // else if(PlayerInputManager.instance.moveAmount <= 0.5f)
-        // {
-        //     // MOVE AT WALKING SPEED
-        //     player.characterController.Move(moveDirection * walkingSpeed * Time.deltaTime);
-        // }
     }
 
     // private void HandleJumpingMovement()
@@ -139,7 +118,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     {
         if(!isGrounded)
         {
-            // Debug.Log("FREE FALL MOVEMENT");
             Vector3 freeFallDirection;
 
             freeFallDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.verticalInput;
@@ -228,8 +206,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         // CAN ONLY ROLL WHEN ALREADY MOVING, NOT WHEN STATIONARY
         if(PlayerInputManager.instance.moveAmount > 0)
         {
-            // player.isPerformingAction = true;
-
             rollDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.verticalInput;
             rollDirection += PlayerCamera.instance.cameraObject.transform.right * PlayerInputManager.instance.horizontalInput;
             rollDirection.y = 0; // DON'T ROLL ON VERTICAL AXIS
@@ -239,23 +215,18 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             player.transform.rotation = playerRotation;
 
             // PERFORM ROLL ANIMATION
-            // MAY NEED TO CHANGE NAME <-------------------
-            // ADJUSTED, MAY WANT TO DISABLE "CAN MOVE" FLAG (ResetActionFlag Script in animator) ---------> player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, true); <-------------
-            // player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, true, false, true);
-            // player.characterController.Move(rollDirection * runningSpeed * Time.deltaTime);
-            // player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, false);
-            // Debug.Log(rollDirection * (runningSpeed * 5) * Time.deltaTime);
-            player.playerAnimatorManager.PlayTargetActionAnimation("RollForward_2", true, true);
+            player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, true);
         }
         else
         {
-            // player.isPerformingAction = true;
             // DO WE WANT A STATIONARY DODGE? AKA BACKSTEP
             player.playerAnimatorManager.PlayTargetActionAnimation("BackStep", true, true);
         }
 
         // characterStatsManager.CurrentStamina -= dodgeStaminaCost;
     }
+
+    // JUMPING - NOT USED
 
     // public void AttemptToPerformJump()
     // {

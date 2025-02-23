@@ -10,8 +10,6 @@ public class WeaponItemAction : ScriptableObject
 
     public virtual void AttemptToPerformAction(PlayerManager playerPerformingAction, WeaponItem weaponPerformingAction)
     {
-        // playerPerformingAction.playerCombatManager.currentWeaponBeingUsed = weaponPerformingAction;
         playerPerformingAction.CurrentWeaponBeingUsed = weaponPerformingAction.itemID;
-        // Debug.Log("TEST ACTION FIRED. Weapon ID: " + weaponPerformingAction.itemID);
     }
 }
