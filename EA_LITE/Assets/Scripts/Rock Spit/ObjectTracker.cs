@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ObjectTracker : MonoBehaviour
 {
-    public GameObject goTrackingObject;
+    [HideInInspector] public CharacterCombatManager combatManager;
+    [HideInInspector] public CharacterManager character;
+
+    // public GameObject goTrackingObject;
     public GameObject goIndicator;
     public Vector3 v3AverageVelocity;
     public Vector3 v3AverageAcceleration;
@@ -15,39 +18,56 @@ public class ObjectTracker : MonoBehaviour
 
     private void Start()
     {
-        
+        combatManager = GetComponent<CharacterCombatManager>();
+        character = GetComponent<CharacterManager>();
+        // goTrackingObject = combatManager.currentTarget;
     }
 
     private void LateUpdate()
     {
-        StartCoroutine(Check());
+        if(combatManager.currentTarget != null)
+        {
+            // Debug.Log(combatManager.currentTarget);
+            StartCoroutine(Check());
+        }
     }
 
     IEnumerator Check()
     {
         yield return new WaitForEndOfFrame();
 
-        Vector3 v3Velocity = (goTrackingObject.transform.position - v3PrevPos) / Time.deltaTime;
+        Vector3 v3Velocity = (combatManager.currentTarget.transform.position - v3PrevPos) / Time.deltaTime;
         Vector3 v3Accel = v3Velocity - v3PrevVel;
 
         v3AverageVelocity = v3Velocity;
+        v3AverageVelocity.y = 0;
         v3AverageAcceleration = v3Accel;
+        v3AverageAcceleration.y = 0;
 
         GetProjectedPosition(1);
 
-        v3PrevPos = goTrackingObject.transform.position;
+        v3PrevPos = combatManager.currentTarget.transform.position;
         v3PrevVel = v3Velocity;
         v3PrevAccel = v3Accel;
-
-
     }
 
     public Vector3 GetProjectedPosition(float fTime)
     {
         Vector3 v3Ret = new Vector3();
 
-        //X0 + v0 * t + 1/2 a t^2
-        v3Ret = goTrackingObject.transform.position + (v3AverageVelocity * Time.deltaTime * (fTime / Time.deltaTime)) + (0.5f * v3AverageAcceleration * Time.deltaTime * Mathf.Pow(fTime / Time.deltaTime, 2));
+        if(combatManager.currentTarget.isPerformingAction)
+        {
+            Debug.Log("HERE");
+            v3Ret.x = combatManager.currentTarget.transform.position.x;
+            v3Ret.y = 0;
+            v3Ret.z = combatManager.currentTarget.transform.position.z;
+        }
+        else
+        {
+            //X0 + v0 * t + 1/2 a t^2
+            v3Ret = combatManager.currentTarget.transform.position + (v3AverageVelocity * Time.deltaTime * (fTime / Time.deltaTime)) + (0.5f * v3AverageAcceleration * Time.deltaTime * Mathf.Pow(fTime / Time.deltaTime, 2));
+        }
+
         goIndicator.transform.position = v3Ret;
 
         return v3Ret;

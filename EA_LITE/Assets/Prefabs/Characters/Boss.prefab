@@ -3714,6 +3714,7 @@ GameObject:
   - component: {fileID: 7071844827372954508}
   - component: {fileID: 5710445414407953941}
   - component: {fileID: 3477023689653640151}
+  - component: {fileID: 462834056877030920}
   m_Layer: 6
   m_Name: Boss
   m_TagString: Untagged
@@ -4094,6 +4095,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &462834056877030920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795968958412888741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6622b05bfef671f409336fa2db26ad53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatManager: {fileID: 0}
+  character: {fileID: 0}
+  goIndicator: {fileID: 7588984671497170221, guid: 5c987177f06313c42aaeecd5675c6af5,
+    type: 3}
+  v3AverageVelocity: {x: 0, y: 0, z: 0}
+  v3AverageAcceleration: {x: 0, y: 0, z: 0}
 --- !u!1 &1877750096351413600
 GameObject:
   m_ObjectHideFlags: 0
