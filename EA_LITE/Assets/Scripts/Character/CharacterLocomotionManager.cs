@@ -5,15 +5,16 @@ using UnityEngine;
 public class CharacterLocomotionManager : MonoBehaviour
 {
     CharacterManager character;
+
+    [Header("FLAGS")]
+    public bool isGrounded = true;
+    public bool canRotate = true;
+    public bool canMove = true;
     
     [Header("GROUND CHECK & JUMPING")]
     [SerializeField] float groundCheckSphereRadius = 1;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float gravityForce = -5.55f;
-    public bool isGrounded = true;
-    
-    public bool canRotate = true;
-    public bool canMove = true;
 
     [SerializeField] protected Vector3 yVelocity; // THIS IS THE FORCE AT WHICH OUR CHARACTER IS PULLED UP OR DOWN (JUMPING OR FALLING)
     [SerializeField] protected float groundedYVelocity = -20; // THE FORCE AT WHICH THE CHARACTER IS STICKING TO THE GROUND WHILE THEY ARE GROUNDED
@@ -53,7 +54,6 @@ public class CharacterLocomotionManager : MonoBehaviour
             // ANIMATION 
 
             yVelocity.y += gravityForce * Time.deltaTime;
-            // character.characterController.Move(yVelocity * Time.deltaTime);
         }
 
         // THERE SHOULD ALWAYS BE A DOWNWARD FORCE APPLIED (GRAVITY)
