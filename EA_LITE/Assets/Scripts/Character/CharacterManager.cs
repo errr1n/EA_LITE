@@ -20,6 +20,7 @@ public class CharacterManager : MonoBehaviour
     public bool isPerformingAction = false;
     public bool isJumping = false;
     public bool isInvulnerable = false;
+    public bool isSprinting = false;
 
     [SerializeField] public bool _isLockedOn = false;
     public bool IsLockedOn{
@@ -42,19 +43,15 @@ public class CharacterManager : MonoBehaviour
     [Header("STATUS")]
     public bool isDead = false;
 
-    [Header("MORE FLAGS")]
-    [SerializeField] public bool isSprinting = false;
-
     protected virtual void Awake()
     {
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-
+        characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
         characterEffectsManager = GetComponent<CharacterEffectsManager>();
         characterSoundFXManager = GetComponent<CharacterSoundFXManager>();
-        characterStatsManager = GetComponent<CharacterStatsManager>();
-        characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
         characterCombatManager = GetComponent<CharacterCombatManager>();
+        characterStatsManager = GetComponent<CharacterStatsManager>();
         characterLocomotionManager = GetComponent<CharacterLocomotionManager>();
     }
 
@@ -156,14 +153,18 @@ public class CharacterManager : MonoBehaviour
         float contactPointY,
         float contactPointZ)
     {
+        // call the call damage effect
         TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
 
+        // get physical damage amount
         damageEffect.physicalDamage = physicalDamage;
+        // get angle hit from
         damageEffect.angleHitFrom = angleHitFrom;
+        // get hit contact point
         damageEffect.contactPoint = new Vector3(contactPointX, contactPointY, contactPointZ);
-        Debug.Log("DAMAGED CHARACTER: " + damagedCharacterID + " ATTACKER: " + characterCausingDamageID);
+
+        // Debug.Log("DAMAGED CHARACTER: " + damagedCharacterID + " ATTACKER: " + characterCausingDamageID);
         // Debug.Log("contact point:   X: " + contactPointX + "  Y: " + contactPointY + "  Z: " + contactPointZ);
-        //
 
         damagedCharacterID.characterEffectsManager.ProcessInstantEffect(damageEffect);
 
