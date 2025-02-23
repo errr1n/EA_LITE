@@ -29,7 +29,7 @@ public class PlayerInputManager : MonoBehaviour
     [Header("PLAYER ACTION INPUT")]
     [SerializeField] bool dodgeInput = false;
     [SerializeField] bool sprintInput = false;
-    [SerializeField] bool leftClickInput = false;
+    [SerializeField] bool attackInput = false;
     [SerializeField] bool weaponSwapInput = false;
 
     private void Awake()
@@ -101,7 +101,7 @@ public class PlayerInputManager : MonoBehaviour
             playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
             
             // Attack Input
-            playerControls.PlayerActions.LeftClick.performed += i => leftClickInput = true;
+            playerControls.PlayerActions.Attack.performed += i => attackInput = true;
 
             // Lock On Input
             playerControls.PlayerActions.LockOn.performed += i => lockOnInput = true;
@@ -293,9 +293,9 @@ public class PlayerInputManager : MonoBehaviour
 
     private void HandleLeftClickInput()
     {
-        if(leftClickInput)
+        if(attackInput)
         {
-            leftClickInput = false;
+            attackInput = false;
 
             // set hand to right
             player.SetCharacterActionHand(true);

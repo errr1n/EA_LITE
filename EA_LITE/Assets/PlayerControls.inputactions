@@ -243,7 +243,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LeftClick",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "ac601fcd-246f-4c8f-9ec4-a6be54d48da5",
                     "expectedControlType": "Button",
@@ -344,7 +344,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LeftClick",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -355,7 +355,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LeftClick",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
