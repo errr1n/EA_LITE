@@ -7,7 +7,6 @@ public class PlayerCombatManager : CharacterCombatManager
     PlayerManager player;
 
     public WeaponItem currentWeaponBeingUsed;
-    // public AttackType currentAttackType;
 
     protected override void Awake()
     {
@@ -21,8 +20,6 @@ public class PlayerCombatManager : CharacterCombatManager
     {
         // perform the action
         weaponAction.AttemptToPerformAction(player, weaponPerformingAction);
-
-        // weaponAction.AttemptToPerformAction(weaponAction.actionID, weaponPerformingAction.itemID);
     }
 
     // drain stamina?

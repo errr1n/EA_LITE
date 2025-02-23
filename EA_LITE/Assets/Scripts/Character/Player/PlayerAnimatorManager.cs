@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerAnimatorManager : CharacterAnimatorManager
 {
-    // CharacterManager character;
     PlayerManager player;
 
     protected override void Awake()
