@@ -2,24 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "A.I/States/Attack")]
+[CreateAssetMenu(menuName = "A.I/States/Ranged Attack")]
 
-public class AttackState : AIState
+public class RangedAttackState : AttackState
 {
-    [Header("Current Attack")]
-    // get current attack action (stomp, swat)
-    [HideInInspector] public AICharacterAttackAction currentAttack;
-    // will perform combo false by default
-    [HideInInspector] public bool willPerformCombo = false;
-
-    [Header("State Flags")]
-    [SerializeField] protected bool hasPerformedAttack = false;
-    protected bool hasPerformedCombo = false;
-
-    [Header("Pivot After Attack")]
-    // pivot, or just turn organically
-    [SerializeField] protected bool pivotAfterAttack = false;
-
     public override AIState Tick(AICharacterManager aiCharacter)
     {
         // if target is null, return to idle
@@ -66,6 +52,7 @@ public class AttackState : AIState
             }
 
             PerformAttack(aiCharacter);
+            // Shoot();
 
             // return to the top, so if we have a combo we process that when we are able
             return this;
@@ -77,24 +64,25 @@ public class AttackState : AIState
             aiCharacter.aiCharacterCombatManager.PivotTowardsTarget(aiCharacter);
         }
 
-        //return to combat stance
-        return SwitchState(aiCharacter, aiCharacter.combatStance);
+        //return to pursue target
+        return SwitchState(aiCharacter, aiCharacter.pursueTarget);
     }
 
-    protected virtual void PerformAttack(AICharacterManager aiCharacter)
+    protected override void PerformAttack(AICharacterManager aiCharacter)
     {
         hasPerformedAttack = true;
         // have this character attempt to perform an attack action
         currentAttack.AttemptToPerformAction(aiCharacter);
+        // Shoot();
+        aiCharacter.StartCoroutine(aiCharacter.Shoot());
         // set action recovery timer
         aiCharacter.aiCharacterCombatManager.actionRecoveryTimer = currentAttack.actionRecoveryTime;
     }
 
-    protected override void ResetStateFlags(AICharacterManager aiCharacter)
-    {
-        base.ResetStateFlags(aiCharacter);
-
-        hasPerformedAttack = false;
-        hasPerformedCombo = false;
-    }
+    // private IEnumerator Shoot()
+    // {
+    //     Debug.Log("SHOOT");
+    //     yield return new WaitForSeconds(3);
+    //     Debug.Log("SHOOT OFF");
+    // }
 }

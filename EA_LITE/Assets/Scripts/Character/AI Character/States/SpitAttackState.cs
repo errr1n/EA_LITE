@@ -59,10 +59,10 @@ public class SpitAttackState : AIState
         {
             // check recovery timer
             // pass attack to attack state
-            aiCharacter.attack.currentAttack = chosenAttack;
+            aiCharacter.rangedAttack.currentAttack = chosenAttack;
             // roll for a combo chance
             // switch state
-            return SwitchState(aiCharacter, aiCharacter.attack);
+            return SwitchState(aiCharacter, aiCharacter.rangedAttack);
         }
 
         // if we are outside the combat engagement distance, switch to pursue target state

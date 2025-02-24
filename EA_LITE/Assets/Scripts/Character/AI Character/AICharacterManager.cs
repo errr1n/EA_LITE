@@ -23,6 +23,9 @@ public class AICharacterManager : CharacterManager
     public CombatStanceState combatStance;
     public AttackState attack;
     public SpitAttackState spitAttack;
+    public RangedAttackState rangedAttack;
+
+    public bool isShooting = false;
 
     protected override void Awake()
     {
@@ -100,6 +103,30 @@ public class AICharacterManager : CharacterManager
         else
         {
             IsMoving = false;
+        }
+    }
+
+    public IEnumerator Shoot()
+    {
+        isShooting = true;
+
+        if(isShooting == true)
+        {
+            StartCoroutine(ShootBurst());
+        }
+        yield return new WaitForSeconds(3);
+        isShooting = false;
+    }
+
+    private IEnumerator ShootBurst()
+    {
+        if(isShooting == true)
+        {
+            while(isShooting == true)
+            {
+                Debug.Log("SHOOT");
+                yield return new WaitForSeconds(0.2f);
+            }
         }
     }
 }

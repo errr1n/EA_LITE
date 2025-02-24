@@ -3835,6 +3835,7 @@ MonoBehaviour:
   combatStance: {fileID: 11400000, guid: 03f9814449d3e38499cfb221f97d259c, type: 2}
   attack: {fileID: 11400000, guid: 94abe38edf5dd95438c7018eadd1d30d, type: 2}
   spitAttack: {fileID: 11400000, guid: 67fd19d0ce7981f408b330213250f036, type: 2}
+  rangedAttack: {fileID: 11400000, guid: 2becb8b920cbdec4b9f232ad8a246c67, type: 2}
   bossHPBar: {fileID: 0}
   bossID: 0
   walls: []
