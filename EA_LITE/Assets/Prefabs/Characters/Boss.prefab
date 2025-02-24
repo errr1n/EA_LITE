@@ -3836,6 +3836,15 @@ MonoBehaviour:
   attack: {fileID: 11400000, guid: 94abe38edf5dd95438c7018eadd1d30d, type: 2}
   spitAttack: {fileID: 11400000, guid: 67fd19d0ce7981f408b330213250f036, type: 2}
   rangedAttack: {fileID: 11400000, guid: 2becb8b920cbdec4b9f232ad8a246c67, type: 2}
+  shootPoint: {fileID: 4348434660537481348}
+  isShooting: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  bulletTrail: {fileID: 6514562373629652596, guid: 45f705baf7a9987488130963825eee4b,
+    type: 3}
+  rockBullet: {fileID: 1157749583158653886, guid: 06b38993da7a93543ba6354b7dabb7ad,
+    type: 3}
   bossHPBar: {fileID: 0}
   bossID: 0
   walls: []
@@ -15485,6 +15494,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6239415480715620219}
+  - {fileID: 4348434660537481348}
   m_Father: {fileID: 7214097818594221914}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19416,6 +19426,37 @@ SkinnedMeshRenderer:
     m_Center: {x: -2.0884278, y: 0.06848021, z: 0.97218347}
     m_Extent: {x: 0.08741522, y: 0.07740347, z: 0.096075535}
   m_DirtyAABB: 0
+--- !u!1 &8863463729823765346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4348434660537481348}
+  m_Layer: 0
+  m_Name: Shoot Point Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4348434660537481348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8863463729823765346}
+  m_LocalRotation: {x: -0.13801983, y: 0.0000004650792, z: 0.00000006731716, w: 0.9904295}
+  m_LocalPosition: {x: 0, y: 0.90240383, z: -0.21713874}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3453833114101932035}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8942221613721577734
 GameObject:
   m_ObjectHideFlags: 0

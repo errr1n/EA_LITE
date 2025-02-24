@@ -74,7 +74,7 @@ public class RangedAttackState : AttackState
         // have this character attempt to perform an attack action
         currentAttack.AttemptToPerformAction(aiCharacter);
         // Shoot();
-        aiCharacter.StartCoroutine(aiCharacter.Shoot());
+        aiCharacter.StartCoroutine(aiCharacter.IsShootingTimer());
         // set action recovery timer
         aiCharacter.aiCharacterCombatManager.actionRecoveryTimer = currentAttack.actionRecoveryTime;
     }

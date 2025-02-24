@@ -25,7 +25,12 @@ public class AICharacterManager : CharacterManager
     public SpitAttackState spitAttack;
     public RangedAttackState rangedAttack;
 
+    [Header("Shooting")]
+    public Transform shootPoint;
     public bool isShooting = false;
+    public LayerMask layerMask;
+    public TrailRenderer bulletTrail;
+    public GameObject rockBullet;
 
     protected override void Awake()
     {
@@ -106,14 +111,16 @@ public class AICharacterManager : CharacterManager
         }
     }
 
-    public IEnumerator Shoot()
+    public IEnumerator IsShootingTimer()
     {
         isShooting = true;
 
         if(isShooting == true)
         {
+            // Shoot();
             StartCoroutine(ShootBurst());
         }
+
         yield return new WaitForSeconds(3);
         isShooting = false;
     }
@@ -122,11 +129,77 @@ public class AICharacterManager : CharacterManager
     {
         if(isShooting == true)
         {
+            yield return new WaitForSeconds(0.7f);
             while(isShooting == true)
             {
-                Debug.Log("SHOOT");
+                // Debug.Log("SHOOT AT PLAYER: " + aiCharacterCombatManager.currentTarget);
+                Shoot();
                 yield return new WaitForSeconds(0.2f);
             }
         }
+    }
+
+    public void Shoot()
+    {
+        // Vector3 direction = GetDirection();
+        if(Physics.Raycast(shootPoint.position, aiCharacterCombatManager.currentTarget.transform.position, out RaycastHit hit, float.MaxValue, layerMask))
+        {
+            Debug.DrawLine(shootPoint.position, aiCharacterCombatManager.currentTarget.transform.position, Color.red, 1f);
+        }
+
+        TrailRenderer trail = Instantiate(bulletTrail, shootPoint.position, Quaternion.identity);
+        GameObject rock = Instantiate(rockBullet, shootPoint.position, Quaternion.identity);
+
+        // StartCoroutine(SpawnTrail(trail, hit));
+        StartCoroutine(SpawnRock(rock, trail, hit));
+    }
+
+    // private Vector3 GetDirection()
+    // {
+    //     Vector3 direction = transform.forward;
+    //     direction.Normalize();
+    //     // Debug.Log(direction);
+    //     return direction;
+    // }
+
+    // private IEnumerator SpawnTrail(TrailRenderer trail, RaycastHit hit)
+    // {
+    //     float time = 0f;
+    //     Vector3 startPosition = trail.transform.position;
+
+    //     while(time < 1f)
+    //     {
+    //         trail.transform.position = Vector3.Lerp(startPosition, aiCharacterCombatManager.currentTarget.transform.position, time);
+    //         time += Time.deltaTime / trail.time;
+
+    //         yield return null;
+    //     }
+
+    //     trail.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
+
+    //     Destroy(trail.gameObject, trail.time);
+
+    // }
+
+    private IEnumerator SpawnRock(GameObject rock, TrailRenderer trail, RaycastHit hit)
+    {
+        float time = 0f;
+        Vector3 rStartPosition = rock.transform.position;
+        Vector3 tStartPosition = trail.transform.position;
+
+        while(time < 1f)
+        {
+            rock.transform.position = Vector3.Lerp(rStartPosition, aiCharacterCombatManager.currentTarget.transform.position, time);
+            trail.transform.position = Vector3.Lerp(tStartPosition, aiCharacterCombatManager.currentTarget.transform.position, time);
+            time += Time.deltaTime / 0.2f;
+
+            yield return null;
+        }
+
+        trail.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
+        rock.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
+
+        Destroy(rock.gameObject, 1);
+        Destroy(trail.gameObject, 1);
     }
 }

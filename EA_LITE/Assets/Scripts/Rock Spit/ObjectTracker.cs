@@ -57,7 +57,7 @@ public class ObjectTracker : MonoBehaviour
 
         if(combatManager.currentTarget.isPerformingAction)
         {
-            Debug.Log("HERE");
+            // Debug.Log("HERE");
             v3Ret.x = combatManager.currentTarget.transform.position.x;
             v3Ret.y = 0;
             v3Ret.z = combatManager.currentTarget.transform.position.z;
