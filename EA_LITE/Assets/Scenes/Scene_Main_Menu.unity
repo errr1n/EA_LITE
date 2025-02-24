@@ -183,8 +183,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: QUARRIOR
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 397ac5d464fe2aa45af7f60dc5520c59, type: 2}
+  m_sharedMaterial: {fileID: 3196972541995669522, guid: 397ac5d464fe2aa45af7f60dc5520c59,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -764,8 +765,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: NEW GAME
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e7f4e6a3b10ae414b86e4bde6b2ac156, type: 2}
+  m_sharedMaterial: {fileID: -5395683525460822162, guid: e7f4e6a3b10ae414b86e4bde6b2ac156,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
