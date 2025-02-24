@@ -31,6 +31,7 @@ public class AICharacterManager : CharacterManager
     public LayerMask layerMask;
     public TrailRenderer bulletTrail;
     public GameObject rockBullet;
+    public Vector3 spread = new Vector3(0.06f, 0.06f, 0.06f);
 
     protected override void Awake()
     {
@@ -141,10 +142,10 @@ public class AICharacterManager : CharacterManager
 
     public void Shoot()
     {
-        // Vector3 direction = GetDirection();
-        if(Physics.Raycast(shootPoint.position, aiCharacterCombatManager.currentTarget.transform.position, out RaycastHit hit, float.MaxValue, layerMask))
+        Vector3 direction = GetDirection();
+        if(Physics.Raycast(shootPoint.position, direction, out RaycastHit hit, float.MaxValue, layerMask))
         {
-            Debug.DrawLine(shootPoint.position, aiCharacterCombatManager.currentTarget.transform.position, Color.red, 1f);
+            Debug.DrawLine(shootPoint.position, direction, Color.red, 1f);
         }
 
         TrailRenderer trail = Instantiate(bulletTrail, shootPoint.position, Quaternion.identity);
@@ -154,13 +155,14 @@ public class AICharacterManager : CharacterManager
         StartCoroutine(SpawnRock(rock, trail, hit));
     }
 
-    // private Vector3 GetDirection()
-    // {
-    //     Vector3 direction = transform.forward;
-    //     direction.Normalize();
-    //     // Debug.Log(direction);
-    //     return direction;
-    // }
+    private Vector3 GetDirection()
+    {
+        Vector3 direction = aiCharacterCombatManager.currentTarget.transform.position;
+        direction += new Vector3(Random.Range(-spread.x, spread.x), Random.Range(-spread.y, spread.y), Random.Range(-spread.z, spread.z));
+        // direction.Normalize();
+        // Debug.Log(direction);
+        return direction;
+    }
 
     // private IEnumerator SpawnTrail(TrailRenderer trail, RaycastHit hit)
     // {
@@ -183,21 +185,22 @@ public class AICharacterManager : CharacterManager
 
     private IEnumerator SpawnRock(GameObject rock, TrailRenderer trail, RaycastHit hit)
     {
+        Vector3 direction = GetDirection();
         float time = 0f;
         Vector3 rStartPosition = rock.transform.position;
         Vector3 tStartPosition = trail.transform.position;
 
         while(time < 1f)
         {
-            rock.transform.position = Vector3.Lerp(rStartPosition, aiCharacterCombatManager.currentTarget.transform.position, time);
-            trail.transform.position = Vector3.Lerp(tStartPosition, aiCharacterCombatManager.currentTarget.transform.position, time);
+            rock.transform.position = Vector3.Lerp(rStartPosition, direction, time);
+            trail.transform.position = Vector3.Lerp(tStartPosition, direction, time);
             time += Time.deltaTime / 0.2f;
 
             yield return null;
         }
 
-        trail.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
-        rock.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
+        trail.transform.position = direction;
+        rock.transform.position = direction;
 
         Destroy(rock.gameObject, 1);
         Destroy(trail.gameObject, 1);

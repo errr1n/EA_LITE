@@ -3845,6 +3845,7 @@ MonoBehaviour:
     type: 3}
   rockBullet: {fileID: 1157749583158653886, guid: 06b38993da7a93543ba6354b7dabb7ad,
     type: 3}
+  spread: {x: 0.06, y: 0.06, z: 0.06}
   bossHPBar: {fileID: 0}
   bossID: 0
   walls: []
@@ -19450,7 +19451,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8863463729823765346}
   m_LocalRotation: {x: -0.13801983, y: 0.0000004650792, z: 0.00000006731716, w: 0.9904295}
-  m_LocalPosition: {x: 0, y: 0.90240383, z: -0.21713874}
+  m_LocalPosition: {x: -0, y: 1.095, z: -0.166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
