@@ -7,8 +7,23 @@ using UnityEngine.AI;
 
 public class PursueTargetState : AIState
 {
+    private float spitTimer = 5;
+    // private bool canUseSpitAttack = false;
+
+
     public override AIState Tick(AICharacterManager aiCharacter)
     {
+        if(spitTimer > 0)
+        {
+            spitTimer -= Time.deltaTime;
+        }
+        else
+        {
+            spitTimer = 0;
+        }
+
+        // Debug.Log(spitTimer);
+
         // CHECK IF WE'RE PERFORMING AN ACTION (DO NOT MOVE)
         if(aiCharacter.isPerformingAction)
         {
@@ -45,6 +60,14 @@ public class PursueTargetState : AIState
         }
 
         // IF THE TARGET IS NOT REACHABLE AND FAR AWAY, RETURN HOME
+
+        // if we are in this state for longer than timer length
+        if(spitTimer == 0)
+        {
+            spitTimer = 5;
+            // switch to spit
+            return SwitchState(aiCharacter, aiCharacter.spitAttack);
+        }
 
         // PURSUE THE TARGET
         NavMeshPath path = new NavMeshPath();

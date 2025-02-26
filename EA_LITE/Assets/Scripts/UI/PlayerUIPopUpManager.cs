@@ -23,7 +23,7 @@ public class PlayerUIPopUpManager : MonoBehaviour
     [SerializeField] CanvasGroup attackPopUpCanvasGroup; // allows us to set the alpha to fade over time
 
     [Header("INPUT FLAGS")]
-    private bool sendNextStep = true;
+    // private bool sendNextStep = true;
     private bool checkForWASD = true;
     private bool checkForDodge = true;
     private bool checkForWeaponSwap = true;

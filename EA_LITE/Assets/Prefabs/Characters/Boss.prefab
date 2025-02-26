@@ -4889,12 +4889,12 @@ GameObject:
   - component: {fileID: 1443985096816632560}
   - component: {fileID: 2482879574689460959}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Shoot Point Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7095565887647602904
 Transform:
   m_ObjectHideFlags: 0

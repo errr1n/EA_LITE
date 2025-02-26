@@ -203,4 +203,9 @@ public class CombatStanceState : AIState
         hasRolledForComboChance = false;
     }
 
+    // private IENumerator SpitAttack()
+    // {
+    //     //
+    // }
+
 }
