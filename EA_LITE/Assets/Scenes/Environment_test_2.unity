@@ -6825,7 +6825,7 @@ PrefabInstance:
     - target: {fileID: 5212566584215073219, guid: 41a2da03f0d929b4189f6d0716e15a58,
         type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41a2da03f0d929b4189f6d0716e15a58, type: 3}
@@ -9399,7 +9399,7 @@ PrefabInstance:
     - target: {fileID: 5212566584215073219, guid: 41a2da03f0d929b4189f6d0716e15a58,
         type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41a2da03f0d929b4189f6d0716e15a58, type: 3}
@@ -9955,7 +9955,7 @@ GameObject:
   - component: {fileID: 1983906049}
   - component: {fileID: 1983906051}
   - component: {fileID: 1983906052}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Blockade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
