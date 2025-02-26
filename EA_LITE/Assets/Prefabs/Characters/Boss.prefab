@@ -3843,6 +3843,7 @@ MonoBehaviour:
   rockBullet: {fileID: 1157749583158653886, guid: 06b38993da7a93543ba6354b7dabb7ad,
     type: 3}
   spread: {x: 0.06, y: 0.06, z: 0.06}
+  bulletTravelTime: 0.2
   bossHPBar: {fileID: 0}
   bossID: 0
   walls: []
@@ -3901,7 +3902,7 @@ MonoBehaviour:
   maxStamina: 0
   _currentStamina: 0
   currentVitality: 1
-  newVitality: 50
+  newVitality: 30
   maxHealth: 0
   _currentHealth: 0
 --- !u!114 &7318790913633547046

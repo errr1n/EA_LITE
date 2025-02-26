@@ -84,7 +84,7 @@ public class PlayerManager : CharacterManager
         yield return base.ProcessDeathEvent(manuallySelectDamageAnimation);
 
         // RESPAWN PLAYER?
-        ReviveCharacter();
+        // ReviveCharacter();
     }
 
     public override void ReviveCharacter()

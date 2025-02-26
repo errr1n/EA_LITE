@@ -9,6 +9,7 @@ public class WorldSaveGameManager : MonoBehaviour
     public static WorldSaveGameManager instance;
 
     [SerializeField] int worldSceneIndex = 1;
+    [SerializeField] int mainMenuSceneIndex = 0;
 
     private void Awake()
     {
@@ -33,6 +34,14 @@ public class WorldSaveGameManager : MonoBehaviour
     {
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(worldSceneIndex);
         Cursor.visible = false;
+
+        yield return null;
+    }
+
+    public IEnumerator MainMenu()
+    {
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(mainMenuSceneIndex);
+        Cursor.visible = true;
 
         yield return null;
     }
