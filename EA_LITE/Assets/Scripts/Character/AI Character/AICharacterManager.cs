@@ -29,9 +29,9 @@ public class AICharacterManager : CharacterManager
     public Transform shootPoint;
     public bool isShooting = false;
     public LayerMask layerMask;
-    // public TrailRenderer bulletTrail;
     public GameObject rockBullet;
     public Vector3 spread = new Vector3(0.06f, 0.06f, 0.06f);
+    public float bulletTravelTime = 0.2f;
 
     protected override void Awake()
     {
@@ -148,10 +148,8 @@ public class AICharacterManager : CharacterManager
             Debug.DrawLine(shootPoint.position, aiCharacterCombatManager.currentTarget.transform.position, Color.red, 1f);
         }
 
-        // TrailRenderer trail = Instantiate(bulletTrail, shootPoint.position, Quaternion.identity);
         GameObject rock = Instantiate(rockBullet, shootPoint.position, Quaternion.identity);
 
-        // StartCoroutine(SpawnTrail(trail, hit));
         StartCoroutine(SpawnRock(rock, hit));
     }
 
@@ -193,18 +191,15 @@ public class AICharacterManager : CharacterManager
         while(time < 1f && rock != null)
         {
             rock.transform.position = Vector3.Lerp(rStartPosition, aiCharacterCombatManager.currentTarget.transform.position, time);
-            // trail.transform.position = Vector3.Lerp(tStartPosition, aiCharacterCombatManager.currentTarget.transform.position, time);
-            time += Time.deltaTime / 0.2f;
+            time += Time.deltaTime / bulletTravelTime;
 
             yield return null;
         }
 
         if(rock != null)
         {
-            // trail.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
             rock.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
-            // Debug.Log("Destroy");
-            Destroy(rock.gameObject);
+            Destroy(rock.gameObject, bulletTravelTime);
         }
     }
 }
