@@ -29,59 +29,15 @@ public class PlayerUIPopUpManager : MonoBehaviour
     private bool checkForWeaponSwap = true;
     private bool checkForAttack = true;
 
-
     void Update()
     {
-        if(sendNextStep == true)
+        if(stepsOfTutorial > 0)
         {
             SendTutorialPopUp();
-            sendNextStep = false;
-        }
-
-        if(checkForWASD == true)
-        {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
-            {
-                checkForWASD = false;
-                // WAIT, THEN FADE OUT THE POP UP 
-                StartCoroutine(WaitThenFadeOutPopUpOverTime(wasdPopUpCanvasGroup, 2, 0));
-                StartCoroutine(TimeBeforeNextStep());
-            }
-        }
-
-        if(checkForDodge == true)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                checkForDodge = false;
-                // WAIT, THEN FADE OUT THE POP UP 
-                StartCoroutine(WaitThenFadeOutPopUpOverTime(dodgePopUpCanvasGroup, 2, 0));
-                StartCoroutine(TimeBeforeNextStep());
-            }
-        }
-
-        if(checkForWeaponSwap == true)
-        {
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                checkForWeaponSwap = false;
-                // WAIT, THEN FADE OUT THE POP UP 
-                StartCoroutine(WaitThenFadeOutPopUpOverTime(weaponSwapPopUpCanvasGroup, 2, 0));
-                StartCoroutine(TimeBeforeNextStep());
-            }
-        }
-
-        if(checkForAttack == true)
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                checkForAttack = false;
-                // WAIT, THEN FADE OUT THE POP UP 
-                StartCoroutine(WaitThenFadeOutPopUpOverTime(attackPopUpCanvasGroup, 2, 0));
-                StartCoroutine(TimeBeforeNextStep());
-            }
         }
     }
+
+    // ------------------------ TUTORIAL POP UPS ------------------------------------
 
     void SendTutorialPopUp()
     {
@@ -89,25 +45,63 @@ public class PlayerUIPopUpManager : MonoBehaviour
         {
         case 4:
             wasdPopUpGameObject.SetActive(true);
-            stepsOfTutorial -= 1;
-            Debug.Log(stepsOfTutorial);
+            if(checkForWASD == true)
+            {
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+                {
+                    checkForWASD = false;
+                    // WAIT, THEN FADE OUT THE POP UP 
+                    StartCoroutine(WaitThenFadeOutPopUpOverTime(wasdPopUpCanvasGroup, 2, 0));
+                    StartCoroutine(TimeBeforeNextStep());
+                }
+            }
             break;
         case 3:
             dodgePopUpGameObject.SetActive(true);
-            stepsOfTutorial -= 1;
-            Debug.Log(stepsOfTutorial);
+            if(checkForDodge == true)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    checkForDodge = false;
+                    // WAIT, THEN FADE OUT THE POP UP 
+                    StartCoroutine(WaitThenFadeOutPopUpOverTime(dodgePopUpCanvasGroup, 2, 0));
+                    StartCoroutine(TimeBeforeNextStep());
+                }
+            }
             break;
         case 2:
             weaponSwapPopUpGameObject.SetActive(true);
-            stepsOfTutorial -= 1;
-            Debug.Log(stepsOfTutorial);
+            if(checkForWeaponSwap == true)
+            {
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    checkForWeaponSwap = false;
+                    // WAIT, THEN FADE OUT THE POP UP 
+                    StartCoroutine(WaitThenFadeOutPopUpOverTime(weaponSwapPopUpCanvasGroup, 2, 0));
+                    StartCoroutine(TimeBeforeNextStep());
+                }
+            }
             break;
         case 1:
             attackPopUpGameObject.SetActive(true);
-            stepsOfTutorial -= 1;
-            Debug.Log(stepsOfTutorial);
+            if(checkForAttack == true)
+            {
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    checkForAttack = false;
+                    // WAIT, THEN FADE OUT THE POP UP 
+                    StartCoroutine(WaitThenFadeOutPopUpOverTime(attackPopUpCanvasGroup, 2, 0));
+                    StartCoroutine(TimeBeforeNextStep());
+                }
+            }
             break;
         }
+    }
+
+    public IEnumerator TimeBeforeNextStep()
+    {
+        yield return new WaitForSeconds(2f);
+        stepsOfTutorial -= 1;
     }
 
 
@@ -194,14 +188,5 @@ public class PlayerUIPopUpManager : MonoBehaviour
         canvas.alpha = 0;
 
         yield return null;
-    }
-
-
-    // ------------------------ TUTORIAL POP UPS ------------------------------------
-
-    public IEnumerator TimeBeforeNextStep()
-    {
-        yield return new WaitForSeconds(2f);
-        sendNextStep = true;
     }
 }
