@@ -147,6 +147,10 @@ public class AIBossCharacterManager : AICharacterManager
         yield return new WaitForSeconds(5);
 
         // DISABLE CHARACTER
+
+        yield return new WaitForSeconds(3);
+        //return to main menu
+        StartCoroutine(WorldSaveGameManager.instance.MainMenu());
     }
 
     public void WakeBoss()

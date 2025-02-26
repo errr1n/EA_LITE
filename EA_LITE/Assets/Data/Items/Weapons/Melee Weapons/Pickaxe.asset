@@ -16,7 +16,7 @@ MonoBehaviour:
   itemID: 0
   weaponModel: {fileID: 4072232400017133653, guid: 81bcdbb27d2d07a479ee90be965b971a,
     type: 3}
-  physicalDamage: 50
+  physicalDamage: 25
   leftClick_Action: {fileID: 11400000, guid: cd2c51ec72f23084a8f2add6e3b9086d, type: 2}
   whooshes:
   - {fileID: 8300000, guid: 4e2b2f5996eae5241825bdae44c40be0, type: 3}

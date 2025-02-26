@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageCollider: {fileID: 8984631772246542824}
-  physicalDamage: 75
+  physicalDamage: 50
   timeBeforeExplosion: 3
   damageRadius: 4
   explosionParticle: {fileID: 686479356626231586, guid: f1af013c7158ba041ab99a591438bec0,
