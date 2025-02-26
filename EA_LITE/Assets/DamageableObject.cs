@@ -36,7 +36,7 @@ public class DamageableObject : MonoBehaviour
         // get physical damage amount
         damageEffect.physicalDamage = physicalDamage;
 
-        Debug.Log("damage wall for: " + physicalDamage);
+        // Debug.Log("damage wall for: " + physicalDamage);
         wallHealth.ReceiveDamage(physicalDamage);
     }
 
