@@ -12,6 +12,9 @@ public class DynamiteDamageCollider : DamageCollider
     // explosion particles assigned in inspector
     [SerializeField] GameObject explosionParticle;
 
+    public DamageableObject setDamageTargetObject;
+    public DamageableObject damageTargetObject;
+
     void Update()
     {
         StartCoroutine(CheckIfDamageable());
@@ -30,6 +33,12 @@ public class DynamiteDamageCollider : DamageCollider
 
         foreach(Collider collider in colliders)
         {
+            if(collider.GetComponent<DamageableObject>())
+            {
+                damageTargetObject = collider.GetComponent<DamageableObject>();
+                DamageTargetObject(damageTargetObject);
+            }
+
             //check if colider is attached to a character (has a character manager script)
             CharacterManager damageTarget = collider.GetComponent<CharacterManager>();
 
@@ -51,6 +60,14 @@ public class DynamiteDamageCollider : DamageCollider
         Destroy(eParticle, 2.5f);
         // destroy the dynamite game object
         Destroy(gameObject);
+    }
+
+    private void DamageTargetObject(DamageableObject damageTarget)
+    {
+        TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
+        damageEffect.physicalDamage = physicalDamage;
+
+        damageTarget.ProcessDamage(damageTarget, damageEffect.physicalDamage);
     }
 }
 

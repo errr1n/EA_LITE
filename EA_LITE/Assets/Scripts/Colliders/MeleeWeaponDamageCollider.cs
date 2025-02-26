@@ -10,6 +10,7 @@ public class MeleeWeaponDamageCollider : DamageCollider
     // [Header("WEAPON ATTACK MODIFIERS")]
 
     public CharacterManager setDamageTarget;
+    public DamageableObject setDamageTargetObject;
 
     protected override void Awake()
     {
@@ -24,30 +25,54 @@ public class MeleeWeaponDamageCollider : DamageCollider
 
     protected override void OnTriggerEnter(Collider other)
     {
-        CharacterManager damageTarget = other.GetComponentInParent<CharacterManager>();
-        setDamageTarget = damageTarget;
-
-        if(damageTarget != null)
+        if(other.GetComponentInParent<CharacterManager>())
         {
-            // we do not want to damage ourselves
-            if(damageTarget == characterCausingDamage)
+            // Debug.Log("DAMAGE CHARACTER");
+            CharacterManager damageTarget = other.GetComponentInParent<CharacterManager>();
+            setDamageTarget = damageTarget;
+
+            if(damageTarget != null)
             {
-                return;
+                // we do not want to damage ourselves
+                if(damageTarget == characterCausingDamage)
+                {
+                    return;
+                }
+
+                contactPoint = other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+
+                // CHECK IF WE CAN DAMAGE THIS TARGET (BLOCKING)
+
+                // CHECK IF INVULNERABLE (DODGE)
+                // if(damageTarget.isInvulnerable)
+                // {
+                //     return;
+                // }
+
+                //DAMAGE
+                DamageTarget(damageTarget);
+                // Debug.Log("HERE");
             }
+        }
 
-            contactPoint = other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+        if(other.GetComponentInParent<DamageableObject>())
+        {
+            DamageableObject damageTarget = other.GetComponentInParent<DamageableObject>();
+            setDamageTargetObject = damageTarget;
 
-            // CHECK IF WE CAN DAMAGE THIS TARGET (BLOCKING)
+            if(damageTarget != null)
+            {
+                // we do not want to damage ourselves
+                if(damageTarget == characterCausingDamage)
+                {
+                    return;
+                }
 
-            // CHECK IF INVULNERABLE (DODGE)
-            // if(damageTarget.isInvulnerable)
-            // {
-            //     return;
-            // }
+                contactPoint = other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
 
-            //DAMAGE
-            DamageTarget(damageTarget);
-            // Debug.Log("HERE");
+                //DAMAGE
+                DamageTargetObject(damageTarget);
+            }
         }
     }
 
@@ -79,6 +104,14 @@ public class MeleeWeaponDamageCollider : DamageCollider
             damageEffect.contactPoint.x,
             damageEffect.contactPoint.y,
             damageEffect.contactPoint.z);
+    }
+
+    private void DamageTargetObject(DamageableObject damageTarget)
+    {
+        TakeDamageEffect damageEffect = Instantiate(WorldCharacterEffectsManager.instance.takeDamageEffect);
+        damageEffect.physicalDamage = physicalDamage;
+
+        damageTarget.ProcessDamage(damageTarget, damageEffect.physicalDamage);
     }
 
     // apply damage modifiers

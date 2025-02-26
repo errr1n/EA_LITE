@@ -6822,6 +6822,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AP4_A1_StoneWall1
       objectReference: {fileID: 0}
+    - target: {fileID: 5212566584215073219, guid: 41a2da03f0d929b4189f6d0716e15a58,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41a2da03f0d929b4189f6d0716e15a58, type: 3}
 --- !u!4 &1433088318 stripped
@@ -9391,6 +9396,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AP4_A1_StoneWall1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5212566584215073219, guid: 41a2da03f0d929b4189f6d0716e15a58,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41a2da03f0d929b4189f6d0716e15a58, type: 3}
 --- !u!1001 &1876826544
@@ -9943,7 +9953,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1983906050}
   - component: {fileID: 1983906049}
-  m_Layer: 0
+  - component: {fileID: 1983906051}
+  - component: {fileID: 1983906052}
+  m_Layer: 7
   m_Name: Blockade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9980,6 +9992,35 @@ Transform:
   m_Father: {fileID: 162023500}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1983906051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983906048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dada3f09b3005ac478d29f34b704c73a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallHealth: {fileID: 1983906052}
+  wall: {fileID: 1983906048}
+  hasHealth: 1
+--- !u!114 &1983906052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983906048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7518412342926af4d8aa31f249e99eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 500
+  curHealth: 0
 --- !u!1001 &1988573290
 PrefabInstance:
   m_ObjectHideFlags: 0
