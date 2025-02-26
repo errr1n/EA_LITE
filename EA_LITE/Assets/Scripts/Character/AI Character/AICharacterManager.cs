@@ -29,7 +29,7 @@ public class AICharacterManager : CharacterManager
     public Transform shootPoint;
     public bool isShooting = false;
     public LayerMask layerMask;
-    public TrailRenderer bulletTrail;
+    // public TrailRenderer bulletTrail;
     public GameObject rockBullet;
     public Vector3 spread = new Vector3(0.06f, 0.06f, 0.06f);
 
@@ -148,11 +148,11 @@ public class AICharacterManager : CharacterManager
             Debug.DrawLine(shootPoint.position, aiCharacterCombatManager.currentTarget.transform.position, Color.red, 1f);
         }
 
-        TrailRenderer trail = Instantiate(bulletTrail, shootPoint.position, Quaternion.identity);
+        // TrailRenderer trail = Instantiate(bulletTrail, shootPoint.position, Quaternion.identity);
         GameObject rock = Instantiate(rockBullet, shootPoint.position, Quaternion.identity);
 
         // StartCoroutine(SpawnTrail(trail, hit));
-        StartCoroutine(SpawnRock(rock, trail, hit));
+        StartCoroutine(SpawnRock(rock, hit));
     }
 
     private Vector3 GetDirection()
@@ -183,26 +183,28 @@ public class AICharacterManager : CharacterManager
 
     // }
 
-    private IEnumerator SpawnRock(GameObject rock, TrailRenderer trail, RaycastHit hit)
+    private IEnumerator SpawnRock(GameObject rock, RaycastHit hit)
     {
         Vector3 direction = GetDirection();
         float time = 0f;
         Vector3 rStartPosition = rock.transform.position;
-        Vector3 tStartPosition = trail.transform.position;
+        // Vector3 tStartPosition = trail.transform.position;
 
-        while(time < 1f)
+        while(time < 1f && rock != null)
         {
             rock.transform.position = Vector3.Lerp(rStartPosition, aiCharacterCombatManager.currentTarget.transform.position, time);
-            trail.transform.position = Vector3.Lerp(tStartPosition, aiCharacterCombatManager.currentTarget.transform.position, time);
+            // trail.transform.position = Vector3.Lerp(tStartPosition, aiCharacterCombatManager.currentTarget.transform.position, time);
             time += Time.deltaTime / 0.2f;
 
             yield return null;
         }
 
-        trail.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
-        rock.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
-
-        Destroy(rock.gameObject);
-        Destroy(trail.gameObject);
+        if(rock != null)
+        {
+            // trail.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
+            // rock.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
+            // Debug.Log("Destroy");
+            Destroy(rock.gameObject);
+        }
     }
 }
