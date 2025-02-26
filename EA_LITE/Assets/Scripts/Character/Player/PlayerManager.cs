@@ -50,6 +50,8 @@ public class PlayerManager : CharacterManager
         characterStatsManager.maxStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
         characterStatsManager.CurrentStamina = characterStatsManager.CalculateStaminaBasedOnEnduranceLevel(characterStatsManager.currentEndurance);
         PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(characterStatsManager.maxStamina);
+
+        // StartCoroutine(PlayerUIManager.instance.playerUIPopUpManager.WASDTutorialPopUp(PlayerUIManager.instance.playerUIPopUpManager.WASDPopUpGameObject));
     }
 
     protected override void Update()
@@ -79,9 +81,10 @@ public class PlayerManager : CharacterManager
     {
         PlayerUIManager.instance.playerUIPopUpManager.SendYouDiedPopUp();
 
-        return base.ProcessDeathEvent(manuallySelectDamageAnimation);
+        yield return base.ProcessDeathEvent(manuallySelectDamageAnimation);
 
         // RESPAWN PLAYER?
+        // ReviveCharacter();
     }
 
     public override void ReviveCharacter()
@@ -94,6 +97,10 @@ public class PlayerManager : CharacterManager
 
         // PLAY REBIRTH ANIMATION
         characterAnimatorManager.PlayTargetActionAnimation("Empty", true);
+
+        // move character
+        transform.position = new Vector3(0, 0, -23);
+        // Debug.Log(transform.position);
     }
 
     protected override void HandleStatUpdates()
