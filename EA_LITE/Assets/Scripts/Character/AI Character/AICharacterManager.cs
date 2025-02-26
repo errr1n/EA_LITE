@@ -202,7 +202,7 @@ public class AICharacterManager : CharacterManager
         if(rock != null)
         {
             // trail.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
-            // rock.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
+            rock.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
             // Debug.Log("Destroy");
             Destroy(rock.gameObject);
         }

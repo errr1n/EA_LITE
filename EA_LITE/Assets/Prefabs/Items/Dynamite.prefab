@@ -177,11 +177,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageCollider: {fileID: 8984631772246542824}
-  physicalDamage: 25
-  dynamiteDamage: 50
-  setDamageTarget: {fileID: 0}
+  physicalDamage: 75
+  timeBeforeExplosion: 3
+  damageRadius: 4
   explosionParticle: {fileID: 686479356626231586, guid: f1af013c7158ba041ab99a591438bec0,
     type: 3}
+  setDamageTargetObject: {fileID: 0}
+  damageTargetObject: {fileID: 0}
 --- !u!1 &6089022032791321991
 GameObject:
   m_ObjectHideFlags: 0

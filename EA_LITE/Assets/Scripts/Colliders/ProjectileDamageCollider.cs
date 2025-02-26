@@ -32,6 +32,6 @@ public class ProjectileDamageCollider : DamageCollider
             // Debug.Log(other);
         }
 
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
 }
