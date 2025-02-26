@@ -143,9 +143,9 @@ public class AICharacterManager : CharacterManager
     public void Shoot()
     {
         Vector3 direction = GetDirection();
-        if(Physics.Raycast(shootPoint.position, direction, out RaycastHit hit, float.MaxValue, layerMask))
+        if(Physics.Raycast(shootPoint.position, aiCharacterCombatManager.currentTarget.transform.position, out RaycastHit hit, float.MaxValue, layerMask))
         {
-            Debug.DrawLine(shootPoint.position, direction, Color.red, 1f);
+            Debug.DrawLine(shootPoint.position, aiCharacterCombatManager.currentTarget.transform.position, Color.red, 1f);
         }
 
         TrailRenderer trail = Instantiate(bulletTrail, shootPoint.position, Quaternion.identity);
@@ -192,17 +192,17 @@ public class AICharacterManager : CharacterManager
 
         while(time < 1f)
         {
-            rock.transform.position = Vector3.Lerp(rStartPosition, direction, time);
-            trail.transform.position = Vector3.Lerp(tStartPosition, direction, time);
+            rock.transform.position = Vector3.Lerp(rStartPosition, aiCharacterCombatManager.currentTarget.transform.position, time);
+            trail.transform.position = Vector3.Lerp(tStartPosition, aiCharacterCombatManager.currentTarget.transform.position, time);
             time += Time.deltaTime / 0.2f;
 
             yield return null;
         }
 
-        trail.transform.position = direction;
-        rock.transform.position = direction;
+        trail.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
+        rock.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
 
-        Destroy(rock.gameObject, 1);
-        Destroy(trail.gameObject, 1);
+        Destroy(rock.gameObject);
+        Destroy(trail.gameObject);
     }
 }
