@@ -84,7 +84,7 @@ public class PlayerManager : CharacterManager
         yield return base.ProcessDeathEvent(manuallySelectDamageAnimation);
 
         // RESPAWN PLAYER?
-        // ReviveCharacter();
+        ReviveCharacter();
     }
 
     public override void ReviveCharacter()
@@ -99,8 +99,8 @@ public class PlayerManager : CharacterManager
         characterAnimatorManager.PlayTargetActionAnimation("Empty", true);
 
         // move character
-        transform.position = new Vector3(0, 0, -23);
-        // Debug.Log(transform.position);
+        this.transform.position = new Vector3(0, 0, -23);
+        // Debug.Log(this);
     }
 
     protected override void HandleStatUpdates()
