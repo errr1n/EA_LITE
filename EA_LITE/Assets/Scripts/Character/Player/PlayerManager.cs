@@ -6,6 +6,7 @@ public class PlayerManager : CharacterManager
 {
     [Header("DEBUG MENU")]
     [SerializeField] bool respawnCharacter = false;
+    [SerializeField] public GameObject respawnPoint;
 
     [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
     [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
@@ -67,7 +68,18 @@ public class PlayerManager : CharacterManager
         // UPDATE UI HEALTH BAR ACCORDING TO CURRENT HEALTH STATS
         PlayerUIManager.instance.playerUIHudManager.SetNewHealthValue(characterStatsManager.CurrentHealth);
 
+        // Debug.Log(respawnCharacter);
+
         DebugMenu();
+
+        if(isDead)
+        {
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("respawn");
+                respawnCharacter = true;
+            }
+        }
     }
 
     protected override void LateUpdate()
@@ -85,6 +97,7 @@ public class PlayerManager : CharacterManager
 
         // RESPAWN PLAYER?
         // ReviveCharacter();
+        // respawnCharacter = true;
     }
 
     public override void ReviveCharacter()
@@ -99,8 +112,10 @@ public class PlayerManager : CharacterManager
         characterAnimatorManager.PlayTargetActionAnimation("Empty", true);
 
         // move character
-        this.transform.position = new Vector3(0, 0, -23);
+        this.transform.position = respawnPoint.transform.position;
         // Debug.Log(this);
+        // Debug.Log(this.transform.position);
+        // Debug.Log(respawnPoint.transform.position);
     }
 
     protected override void HandleStatUpdates()

@@ -3803,16 +3803,17 @@ MonoBehaviour:
   characterCombatManager: {fileID: 0}
   characterStatsManager: {fileID: 0}
   characterLocomotionManager: {fileID: 0}
-  damageCollider: {fileID: 0}
   characterGroup: 0
   isPerformingAction: 0
   isJumping: 0
+  isInvulnerable: 0
+  isSprinting: 0
   _isLockedOn: 0
   _isMoving: 0
   isDead: 0
-  isSprinting: 0
   respawnCharacter: 0
-  SwitchRightWeapon: 0
+  respawnPoint: {fileID: 3204209672874786129, guid: cb2b96150e9511f4d83aa277168775a4,
+    type: 3}
   playerAnimatorManager: {fileID: 0}
   playerLocomotionManager: {fileID: 0}
   playerUIHudManager: {fileID: 0}
@@ -3872,14 +3873,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b63d61df7dccd647b38d64467a6936a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrounded: 1
+  canRotate: 1
+  canMove: 1
   groundCheckSphereRadius: 0.3
   groundLayer:
     serializedVersion: 2
     m_Bits: 1
   gravityForce: -40
-  isGrounded: 1
-  canRotate: 1
-  canMove: 1
   yVelocity: {x: 0, y: 0, z: 0}
   groundedYVelocity: -20
   fallStartYVelocity: -5
@@ -3905,10 +3906,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRightHandWeapon: {fileID: 11400000, guid: f84344387f9baf74086acb38e98f52ec,
     type: 2}
+  rightHandWeaponIndex: 0
   weaponsInRightHandSlot:
   - {fileID: 11400000, guid: f84344387f9baf74086acb38e98f52ec, type: 2}
   - {fileID: 11400000, guid: 1c1942af69a5adc44ae4346d5ef2c167, type: 2}
-  rightHandWeaponIndex: 0
 --- !u!114 &-9053360611909725202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3923,7 +3924,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   playerCombatManager: {fileID: 0}
-  playerAnimatorManager: {fileID: 0}
   rightHandSlot: {fileID: 0}
   rightWeaponManager: {fileID: 0}
   rightHandWeaponModel: {fileID: 0}
@@ -3964,6 +3964,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e6d00863ac16c79449af403dc76c5ec0, type: 3}
   - {fileID: 8300000, guid: 34664e92047cf384c92bf68b7b9dd321, type: 3}
   attackGrunts: []
+  footSteps: []
 --- !u!114 &-5222805389497027767
 MonoBehaviour:
   m_ObjectHideFlags: 0
