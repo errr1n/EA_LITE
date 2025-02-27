@@ -3982,14 +3982,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageGrunts:
-  - {fileID: 8300000, guid: 36104c8b981b4a349a1948b61c9e8a20, type: 3}
-  - {fileID: 8300000, guid: 14a883f5f8241cc4ca1f35fe54fef1d2, type: 3}
-  - {fileID: 8300000, guid: 62c41c4c89235bd42bf85b0e4c855d1a, type: 3}
-  - {fileID: 8300000, guid: c39ba448713aff147bdc2b9b4126b1d8, type: 3}
-  - {fileID: 8300000, guid: f549a9145c031244a89a2d36d5f18757, type: 3}
-  - {fileID: 8300000, guid: 9ef3f6cb1b48c67419812b50793d9da6, type: 3}
+  - {fileID: 8300000, guid: 0bc4aa08f429f644f99a027c0ce05908, type: 3}
+  - {fileID: 8300000, guid: 364c9370e411a56428f512b7bed105b3, type: 3}
+  - {fileID: 8300000, guid: d21f1cc8b416a924bb2908a58ca4d4ad, type: 3}
+  - {fileID: 8300000, guid: d6fad59528167cf4ca2358367db31340, type: 3}
+  - {fileID: 8300000, guid: 4b5aab1d42deba04f992674366d9afcb, type: 3}
+  - {fileID: 8300000, guid: 6b77f03bba9af29458f65c3e8fa4fec6, type: 3}
   attackGrunts:
-  - {fileID: 8300000, guid: a8ea84cfab0a6bd41903552a2e8e0933, type: 3}
+  - {fileID: 8300000, guid: e519c73330da9e64188881ac3e729682, type: 3}
   footSteps:
   - {fileID: 8300000, guid: bf28615b475f5704989d4d8dcc8deef4, type: 3}
   handWhooshes:
