@@ -37,7 +37,7 @@ public class PlayerUIPopUpManager : MonoBehaviour
 
     void Update()
     {
-        if(stepsOfTutorial > 0)
+        if(stepsOfTutorial > -1)
         {
             SendTutorialPopUp();
         }
@@ -101,6 +101,15 @@ public class PlayerUIPopUpManager : MonoBehaviour
                 }
             }
             break;
+        case 0:
+            wasdPopUpGameObject.SetActive(false);
+            dodgePopUpGameObject.SetActive(false);
+            weaponSwapPopUpGameObject.SetActive(false);
+            attackPopUpGameObject.SetActive(false);
+            stepsOfTutorial -= 1;
+            break;
+        case -1:
+            break;
         }
     }
 
@@ -108,6 +117,14 @@ public class PlayerUIPopUpManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         stepsOfTutorial -= 1;
+    }
+
+    public void StopTutorialPopUps()
+    {
+        if(stepsOfTutorial != 0)
+        {
+            stepsOfTutorial = 0;
+        }
     }
 
 

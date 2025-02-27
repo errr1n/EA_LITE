@@ -169,6 +169,9 @@ public class AIBossCharacterManager : AICharacterManager
         HasBeenAwakened = true;
         // change the bosses state to idle
         currentState = idle;
+
+        // stop playing tutorial pop ups
+        PlayerUIManager.instance.playerUIPopUpManager.StopTutorialPopUps();
     }
 
     private void IsBossFightActive(bool newStatus)
