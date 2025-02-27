@@ -3958,11 +3958,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageGrunts:
-  - {fileID: 8300000, guid: 6be650ac213d26a4cb6814c21422b3d7, type: 3}
-  - {fileID: 8300000, guid: d2e36b4491903474c941144214329504, type: 3}
-  - {fileID: 8300000, guid: 7eeba320cd019144aa01e929a42338c9, type: 3}
-  - {fileID: 8300000, guid: e6d00863ac16c79449af403dc76c5ec0, type: 3}
-  - {fileID: 8300000, guid: 34664e92047cf384c92bf68b7b9dd321, type: 3}
+  - {fileID: 8300000, guid: f6440d6faf45a0f4f88d2286f50ef379, type: 3}
+  - {fileID: 8300000, guid: ca27dea384c03b643be50064880e95b9, type: 3}
+  - {fileID: 8300000, guid: 308aa189e2a76934d9cf9b3ae61f4112, type: 3}
+  - {fileID: 8300000, guid: 21a238c5f026fc348a403e14ed01e7bc, type: 3}
+  - {fileID: 8300000, guid: cec5aa46472622f46a8fd13e162601f7, type: 3}
   attackGrunts: []
   footSteps: []
 --- !u!114 &-5222805389497027767

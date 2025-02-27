@@ -3990,6 +3990,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6b77f03bba9af29458f65c3e8fa4fec6, type: 3}
   attackGrunts:
   - {fileID: 8300000, guid: e519c73330da9e64188881ac3e729682, type: 3}
+  - {fileID: 8300000, guid: da3fde1ff432ec0478eb4edf28bdd972, type: 3}
+  - {fileID: 8300000, guid: 74ca8ca94f7ec9645811b8ff9cb89d1b, type: 3}
   footSteps:
   - {fileID: 8300000, guid: bf28615b475f5704989d4d8dcc8deef4, type: 3}
   handWhooshes:

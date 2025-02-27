@@ -7496,6 +7496,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7930261621639003001, guid: c6eb0161d363f784eaa3e09c4e305108,
+        type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8270080608049525016, guid: c6eb0161d363f784eaa3e09c4e305108,
         type: 3}
       propertyPath: m_Mass
@@ -11751,12 +11756,12 @@ PrefabInstance:
         type: 3}
       propertyPath: rollSFX
       value: 
-      objectReference: {fileID: 8300000, guid: 4b5ad3b8df6f9d34e92fdc1fbac7a6ff, type: 3}
+      objectReference: {fileID: 8300000, guid: 9ee1e4bda093a2e44a29229deffc512b, type: 3}
     - target: {fileID: 8596840803621335650, guid: 08891cf23ac414a4da7e64b0cd85a674,
         type: 3}
       propertyPath: backStepSFX
       value: 
-      objectReference: {fileID: 8300000, guid: 260868aeb773dbe41a8fa5f66d0d57c2, type: 3}
+      objectReference: {fileID: 8300000, guid: 7d3456a1bca05f4458b8ccc1e7f3af07, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08891cf23ac414a4da7e64b0cd85a674, type: 3}
 --- !u!1001 &2561858873045684775
