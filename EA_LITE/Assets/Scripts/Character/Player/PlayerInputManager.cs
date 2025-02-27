@@ -49,7 +49,7 @@ public class PlayerInputManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
 
         // WHEN THE SCENE CHANGES, THIS FUNCTION IS RUNNING
         SceneManager.activeSceneChanged += OnSceneChange;
