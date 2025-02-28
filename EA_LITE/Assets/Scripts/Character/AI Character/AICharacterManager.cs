@@ -130,6 +130,7 @@ public class AICharacterManager : CharacterManager
     {
         if(isShooting == true)
         {
+            // IsMoving = false;
             yield return new WaitForSeconds(0.7f);
             while(isShooting == true)
             {
