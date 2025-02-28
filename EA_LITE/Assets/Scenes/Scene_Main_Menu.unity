@@ -1073,6 +1073,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447238394}
   m_CullTransparentMesh: 1
+--- !u!1001 &560609139
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3597097813933710320, guid: 25b220dcb1230814fb7ed30a945403f9,
+        type: 3}
+      propertyPath: choiceIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597097813933710321, guid: 25b220dcb1230814fb7ed30a945403f9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597097813933710321, guid: 25b220dcb1230814fb7ed30a945403f9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597097813933710321, guid: 25b220dcb1230814fb7ed30a945403f9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597097813933710321, guid: 25b220dcb1230814fb7ed30a945403f9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597097813933710321, guid: 25b220dcb1230814fb7ed30a945403f9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597097813933710321, guid: 25b220dcb1230814fb7ed30a945403f9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597097813933710321, guid: 25b220dcb1230814fb7ed30a945403f9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597097813933710321, guid: 25b220dcb1230814fb7ed30a945403f9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597097813933710321, guid: 25b220dcb1230814fb7ed30a945403f9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597097813933710321, guid: 25b220dcb1230814fb7ed30a945403f9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597097813933710321, guid: 25b220dcb1230814fb7ed30a945403f9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597097813933710322, guid: 25b220dcb1230814fb7ed30a945403f9,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.335
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597097813933710323, guid: 25b220dcb1230814fb7ed30a945403f9,
+        type: 3}
+      propertyPath: m_Name
+      value: World Music Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 25b220dcb1230814fb7ed30a945403f9, type: 3}
 --- !u!1001 &628006236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2429,6 +2508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldSceneIndex: 1
+  mainMenuSceneIndex: 0
 --- !u!4 &1157699595
 Transform:
   m_ObjectHideFlags: 0
