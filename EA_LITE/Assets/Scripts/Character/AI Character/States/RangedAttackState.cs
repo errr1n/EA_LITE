@@ -25,6 +25,7 @@ public class RangedAttackState : AttackState
 
         //set movement to 0
         aiCharacter.characterAnimatorManager.UpdateAnimatorMovementParameters(0, 0);
+        aiCharacter.IsMoving = false;
 
         // perform a combo
         if(willPerformCombo && !hasPerformedCombo)
