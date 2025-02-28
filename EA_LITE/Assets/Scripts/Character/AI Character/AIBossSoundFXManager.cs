@@ -10,6 +10,9 @@ public class AIBossSoundFXManager : CharacterSoundFXManager
     [Header("Stomp Impacts")]
     public AudioClip[] stompImpacts;
 
+    // [Header("Footsteps")]
+    // public AudioClip[] footSteps;
+
     public virtual void PlayStompImpactSoundFX()
     {
         // if there is a sound in the stomp impact array 
@@ -19,5 +22,15 @@ public class AIBossSoundFXManager : CharacterSoundFXManager
             PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(stompImpacts));
         }
     }
+
+    // public virtual void PlayFootstepSoundFX()
+    // {
+    //     // if there is a sound in the stomp impact array 
+    //     if(footSteps.Length > 0)
+    //     {
+    //         // play the stomp impact sound
+    //         PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(footSteps));
+    //     }
+    // }
     
 }
