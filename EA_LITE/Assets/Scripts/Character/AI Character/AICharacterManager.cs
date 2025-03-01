@@ -34,7 +34,7 @@ public class AICharacterManager : CharacterManager
     public Vector3 spread = new Vector3(0.06f, 0.06f, 0.06f);
     public float bulletTravelTime = 0.2f;
 
-    public GameObject shootPointPlayer;
+    private GameObject shootPointPlayer;
 
     protected override void Awake()
     {
@@ -115,6 +115,7 @@ public class AICharacterManager : CharacterManager
         }
     }
 
+    // length of time the boss is shooting for
     public IEnumerator IsShootingTimer()
     {
         isShooting = true;
@@ -122,22 +123,23 @@ public class AICharacterManager : CharacterManager
         if(isShooting == true)
         {
             // Shoot();
-            StartCoroutine(ShootBurst());
+            StartCoroutine(ShootingDelay());
         }
 
         yield return new WaitForSeconds(3);
         isShooting = false;
     }
 
-    private IEnumerator ShootBurst()
+    // time between each of the shots
+    private IEnumerator ShootingDelay()
     {
         if(isShooting == true)
         {
-            // IsMoving = false;
+            // wait for animation to open it's mouth
             yield return new WaitForSeconds(0.7f);
             while(isShooting == true)
             {
-                // Debug.Log("SHOOT AT PLAYER: " + aiCharacterCombatManager.currentTarget);
+                // Shoot with a 0.2s pause between each projectile spawned
                 Shoot();
                 yield return new WaitForSeconds(0.2f);
             }
@@ -159,10 +161,10 @@ public class AICharacterManager : CharacterManager
 
         GameObject rock = Instantiate(rockBullet, shootPoint.position, Quaternion.identity);
 
-        StartCoroutine(SpawnRock(rock, hit));
+        StartCoroutine(MoveProjectile(rock, hit));
     }
 
-    private IEnumerator SpawnRock(GameObject rock, RaycastHit hit)
+    private IEnumerator MoveProjectile(GameObject rock, RaycastHit hit)
     {
         float time = 0f;
         Vector3 rStartPosition = rock.transform.position;
@@ -173,8 +175,8 @@ public class AICharacterManager : CharacterManager
         if(hit.collider.GetComponentInParent<PlayerManager>())
         {
 
-            // bulletLocation = shootPointPlayer.transform.position;
-            bulletLocation = aiCharacterCombatManager.currentTarget.transform.position;
+            bulletLocation = shootPointPlayer.transform.position;
+            // bulletLocation = aiCharacterCombatManager.currentTarget.transform.position;
         }
 
         while(time < 1f)
