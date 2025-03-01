@@ -27,11 +27,14 @@ public class AICharacterManager : CharacterManager
 
     [Header("Shooting")]
     public Transform shootPoint;
+    public Transform raycastStartPosition;
     public bool isShooting = false;
     public LayerMask layerMask;
     public GameObject rockBullet;
     public Vector3 spread = new Vector3(0.06f, 0.06f, 0.06f);
     public float bulletTravelTime = 0.2f;
+
+    public GameObject shootPointPlayer;
 
     protected override void Awake()
     {
@@ -143,64 +146,47 @@ public class AICharacterManager : CharacterManager
 
     public void Shoot()
     {
-        Vector3 direction = GetDirection();
-        if(Physics.Raycast(shootPoint.position, aiCharacterCombatManager.currentTarget.transform.position, out RaycastHit hit, float.MaxValue, layerMask))
+        shootPointPlayer = GameObject.Find("/Player/PlayerTargetPoint");
+        
+        if(Physics.Raycast(raycastStartPosition.position, transform.forward, out RaycastHit hit, layerMask))
         {
-            Debug.DrawLine(shootPoint.position, aiCharacterCombatManager.currentTarget.transform.position, Color.red, 1f);
+            Debug.DrawLine(raycastStartPosition.position, hit.point, Color.red, 1f);
         }
+
+        // Debug.Log("shootPointPlayer: " + shootPointPlayer.transform.position);
+        // Debug.Log("hitPoint: " + hit.point);
+        // Debug.Log("hitPoint name: " + hit.collider.gameObject.name);
 
         GameObject rock = Instantiate(rockBullet, shootPoint.position, Quaternion.identity);
 
         StartCoroutine(SpawnRock(rock, hit));
     }
 
-    private Vector3 GetDirection()
-    {
-        Vector3 direction = aiCharacterCombatManager.currentTarget.transform.position;
-        direction += new Vector3(Random.Range(-spread.x, spread.x), Random.Range(-spread.y, spread.y), Random.Range(-spread.z, spread.z));
-        // direction.Normalize();
-        // Debug.Log(direction);
-        return direction;
-    }
-
-    // private IEnumerator SpawnTrail(TrailRenderer trail, RaycastHit hit)
-    // {
-    //     float time = 0f;
-    //     Vector3 startPosition = trail.transform.position;
-
-    //     while(time < 1f)
-    //     {
-    //         trail.transform.position = Vector3.Lerp(startPosition, aiCharacterCombatManager.currentTarget.transform.position, time);
-    //         time += Time.deltaTime / trail.time;
-
-    //         yield return null;
-    //     }
-
-    //     trail.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
-
-    //     Destroy(trail.gameObject, trail.time);
-
-    // }
-
     private IEnumerator SpawnRock(GameObject rock, RaycastHit hit)
     {
-        Vector3 direction = GetDirection();
         float time = 0f;
         Vector3 rStartPosition = rock.transform.position;
-        // Vector3 tStartPosition = trail.transform.position;
+        
+        Vector3 bulletLocation = hit.point;
 
-        while(time < 1f && rock != null)
+        // Debug.Log(hit.collider.GetComponentInParent<PlayerManager>());
+        if(hit.collider.GetComponentInParent<PlayerManager>())
         {
-            rock.transform.position = Vector3.Lerp(rStartPosition, aiCharacterCombatManager.currentTarget.transform.position, time);
+
+            // bulletLocation = shootPointPlayer.transform.position;
+            bulletLocation = aiCharacterCombatManager.currentTarget.transform.position;
+        }
+
+        while(time < 1f)
+        {
+            // NEED THIS TO BE THE PLAYER POSITION, BUT NEED TO CHECK FIRST THAT THE HIT.POINT COLLIDES WITH THE PLAYER
+            rock.transform.position = Vector3.Lerp(rStartPosition, bulletLocation, time);
             time += Time.deltaTime / bulletTravelTime;
 
             yield return null;
         }
 
-        if(rock != null)
-        {
-            rock.transform.position = aiCharacterCombatManager.currentTarget.transform.position;
-            Destroy(rock.gameObject, bulletTravelTime);
-        }
+        rock.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        Destroy(rock.gameObject, bulletTravelTime);
     }
 }
