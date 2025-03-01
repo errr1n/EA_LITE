@@ -14,7 +14,7 @@ TagManager:
   - Character
   - Damageable Character
   - Damageable Object
-  - 
+  - Projectile Collider
   - Damage Collider
   - Event Trigger
   - 
