@@ -17,6 +17,10 @@ public class PlayerUIPopUpManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI bossDefeatedPopUpText;
     [SerializeField] CanvasGroup bossDefeatedPopUpCanvasGroup; // allows us to set the alpha to fade over time
 
+    [Header("FADE OUT POP UP")]
+    [SerializeField] GameObject fadeOutPopUpGameObject;
+    [SerializeField] CanvasGroup fadeOutPopUpCanvasGroup; // allows us to set the alpha to fade over time
+
     [Header("TUTORIAL POP UPS")]
     public int stepsOfTutorial = 4;
     [SerializeField] public GameObject wasdPopUpGameObject;
@@ -146,6 +150,16 @@ public class PlayerUIPopUpManager : MonoBehaviour
     }
 
 
+    // ------------------------ FADE OUT POP UP ------------------------------------
+
+    public void SendFadeOutPopUp()
+    {
+        fadeOutPopUpGameObject.SetActive(true);
+        // FADE IN THE POP UP
+        StartCoroutine(FadeInPopUpOverTime(fadeOutPopUpCanvasGroup, 2, 5));
+    }
+
+
     // ------------------------ BOSS DEFEATED POP UP ------------------------------------
 
     public void SendBossDefeatedPopUp(string bossDefeatedMessage)
@@ -182,10 +196,16 @@ public class PlayerUIPopUpManager : MonoBehaviour
         }
     }
 
-    private IEnumerator FadeInPopUpOverTime(CanvasGroup canvas, float duration)
+    private IEnumerator FadeInPopUpOverTime(CanvasGroup canvas, float duration, float delay = 0f)
     {
         if(duration > 0)
         {
+            while(delay > 0)
+            {
+                delay = delay - Time.deltaTime;
+                yield return null;
+            }
+
             canvas.alpha = 0;
             float timer = 0;
 

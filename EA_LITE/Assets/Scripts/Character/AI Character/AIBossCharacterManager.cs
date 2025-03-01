@@ -120,6 +120,7 @@ public class AIBossCharacterManager : AICharacterManager
     public override IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
     {
         PlayerUIManager.instance.playerUIPopUpManager.SendBossDefeatedPopUp("ROCK TITAN DEFEATED");
+        PlayerUIManager.instance.playerUIPopUpManager.SendFadeOutPopUp();
         // set boss health to 0
         characterStatsManager.CurrentHealth = 0;
         // update the health bar to show 0
