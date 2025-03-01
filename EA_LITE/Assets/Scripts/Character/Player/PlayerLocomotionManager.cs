@@ -69,6 +69,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     {
         if(!player.playerLocomotionManager.canMove)
         {
+            // player.IsMoving = false;
             return;
         }
 
@@ -206,6 +207,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         // CAN ONLY ROLL WHEN ALREADY MOVING, NOT WHEN STATIONARY
         if(PlayerInputManager.instance.moveAmount > 0)
         {
+            // player.IsMoving = false;
+            // PlayerInputManager.instance.moveAmount = 0;
             rollDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.verticalInput;
             rollDirection += PlayerCamera.instance.cameraObject.transform.right * PlayerInputManager.instance.horizontalInput;
             rollDirection.y = 0; // DON'T ROLL ON VERTICAL AXIS
@@ -213,6 +216,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
 
             Quaternion playerRotation = Quaternion.LookRotation(rollDirection);
             player.transform.rotation = playerRotation;
+
+            // player.IsMoving = false;
 
             // PERFORM ROLL ANIMATION
             player.playerAnimatorManager.PlayTargetActionAnimation("RollForward", true, true);

@@ -21,6 +21,7 @@ public class PlayerAnimatorManager : CharacterAnimatorManager
             Vector3 velocity = player.animator.deltaPosition;
             player.characterController.Move(velocity);
             player.transform.rotation *= player.animator.deltaRotation;
+            player.IsMoving = false; // for sound reasons
         }
     }
 }

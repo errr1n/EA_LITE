@@ -3958,6 +3958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c11559944e2414eaf17cf844681ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   damageGrunts:
   - {fileID: 8300000, guid: f6440d6faf45a0f4f88d2286f50ef379, type: 3}
   - {fileID: 8300000, guid: ca27dea384c03b643be50064880e95b9, type: 3}
@@ -3965,7 +3966,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 21a238c5f026fc348a403e14ed01e7bc, type: 3}
   - {fileID: 8300000, guid: cec5aa46472622f46a8fd13e162601f7, type: 3}
   attackGrunts: []
-  footSteps: []
+  footSteps:
+  - {fileID: 8300000, guid: 3177828cad256cc4599a87adbead84db, type: 3}
+  rollSFX: {fileID: 8300000, guid: 9ee1e4bda093a2e44a29229deffc512b, type: 3}
+  backStepSFX: {fileID: 8300000, guid: 7d3456a1bca05f4458b8ccc1e7f3af07, type: 3}
 --- !u!114 &-5222805389497027767
 MonoBehaviour:
   m_ObjectHideFlags: 0

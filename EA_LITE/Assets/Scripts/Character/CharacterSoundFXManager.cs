@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterSoundFXManager : MonoBehaviour
 {
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     [Header("Damage Grunts")]
     [SerializeField] protected AudioClip[] damageGrunts;
@@ -20,7 +20,6 @@ public class CharacterSoundFXManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    //not used yet
     public void PlaySoundFX(AudioClip soundFX, float volume = 1, bool randomizePitch = true, float pitchRandom = 0.1f)
     {
         audioSource.PlayOneShot(soundFX, volume);
@@ -32,16 +31,6 @@ public class CharacterSoundFXManager : MonoBehaviour
             audioSource.pitch += Random.Range(-pitchRandom, pitchRandom);
         }
 
-    }
-
-    public void PlayRollSoundFX()
-    {
-        audioSource.PlayOneShot(WorldSoundFXManager.instance.rollSFX);
-    }
-
-    public void PlayBackStepSoundFX()
-    {
-        audioSource.PlayOneShot(WorldSoundFXManager.instance.backStepSFX);
     }
 
     public virtual void PlayDamageGrunt()

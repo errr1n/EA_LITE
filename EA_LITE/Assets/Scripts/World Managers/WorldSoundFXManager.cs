@@ -6,12 +6,6 @@ public class WorldSoundFXManager : MonoBehaviour
 {
     public static WorldSoundFXManager instance;
 
-    // [Header("DAMAGE SFX")]
-
-    [Header("ACTION SFX")]
-    public AudioClip rollSFX;
-    public AudioClip backStepSFX;
-
     private void Awake()
     {
         if(instance == null)
