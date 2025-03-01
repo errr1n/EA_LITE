@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6753436634678359271}
   - component: {fileID: 7965187922073535808}
   - component: {fileID: 2964966739734405505}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RockBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,6 +180,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TrailRenderer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3634335705825389014, guid: 45f705baf7a9987488130963825eee4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45f705baf7a9987488130963825eee4b, type: 3}
