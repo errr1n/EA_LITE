@@ -3859,7 +3859,7 @@ MonoBehaviour:
   maxStamina: 0
   _currentStamina: 0
   currentVitality: 0
-  newVitality: 10
+  newVitality: 12
   maxHealth: 0
   _currentHealth: 0
 --- !u!114 &-2587354512006405087

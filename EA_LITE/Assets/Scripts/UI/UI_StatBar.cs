@@ -35,14 +35,14 @@ public class UI_StatBar : MonoBehaviour
         slider.maxValue = maxValue;
         slider.value = maxValue;
 
-        if(scaledBarLengthWidthStats)
-        {
-            // SCALE THE TRANSFORM OF THIS OBJECT
-            // ONLY CHANGE THE WIDTH OF STATS BAR
-            rectTransform.sizeDelta = new Vector2(maxValue * widthScaleMultiplier, rectTransform.sizeDelta.y);
+        // if(scaledBarLengthWidthStats)
+        // {
+        //     // SCALE THE TRANSFORM OF THIS OBJECT
+        //     // ONLY CHANGE THE WIDTH OF STATS BAR
+        //     rectTransform.sizeDelta = new Vector2(maxValue * widthScaleMultiplier, rectTransform.sizeDelta.y);
 
-            // RESETS THE POSITION OF THE BARS BASED ON THEIR LAYOUT GROUP SETTINGS
-            PlayerUIManager.instance.playerUIHudManager.RefreshHUD();
-        }
+        //     // RESETS THE POSITION OF THE BARS BASED ON THEIR LAYOUT GROUP SETTINGS
+        //     PlayerUIManager.instance.playerUIHudManager.RefreshHUD();
+        // }
     }
 }
