@@ -32,6 +32,8 @@ public class PlayerManager : CharacterManager
 
     protected override void Awake()
     {
+        Application.targetFrameRate = 60;
+
         base.Awake();
 
         playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
