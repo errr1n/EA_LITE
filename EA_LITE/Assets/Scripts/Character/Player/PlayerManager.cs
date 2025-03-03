@@ -30,6 +30,7 @@ public class PlayerManager : CharacterManager
 
     protected override void Awake()
     {
+        Application.targetFrameRate = 100;
         base.Awake();
 
         playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
@@ -57,9 +58,9 @@ public class PlayerManager : CharacterManager
 
     protected override void Update()
     {
-        Debug.Log("1/8 player manager before base update + " + transform.position + " + " + isDead);
+        // Debug.Log("1/8 player manager before base update + " + transform.position + " + " + isDead);
         base.Update();
-        Debug.Log("3 player manager after base update + " + isDead); // CALLED BEFORE "END OF WAIT"
+        // Debug.Log("3 player manager after base update + " + isDead); // CALLED BEFORE "END OF WAIT"
 
         // HANDLE ALL MOVEMENT 
         playerLocomotionManager.HandleAllMovement();
@@ -92,7 +93,7 @@ public class PlayerManager : CharacterManager
 
     public override IEnumerator ProcessDeathEvent(bool manuallySelectDamageAnimation = false)
     {
-        Debug.Log("ProcessDeathEvent playermanager");
+        // Debug.Log("ProcessDeathEvent playermanager");
         PlayerUIManager.instance.playerUIPopUpManager.SendYouDiedPopUp();
 
         yield return base.ProcessDeathEvent(manuallySelectDamageAnimation);
@@ -104,7 +105,7 @@ public class PlayerManager : CharacterManager
 
     public override void ReviveCharacter()
     {
-        Debug.Log("6 ReviveCharacter called from playermanager");
+        // Debug.Log("6 ReviveCharacter called from playermanager");
         base.ReviveCharacter();
 
         isDead = false;
@@ -122,7 +123,7 @@ public class PlayerManager : CharacterManager
         // playerLocomotionManager.canMove = false;
         // IsMoving = false;
         transform.position = respawnPoint.transform.position;
-        Debug.Log("7 ReviveCharacter HERE: " + transform.position);
+        // Debug.Log("7 ReviveCharacter HERE: " + transform.position);
         // Debug.Log(this);
         // Debug.Log(gameObject.transform.position);
         // Debug.Log(respawnPoint.transform.position);

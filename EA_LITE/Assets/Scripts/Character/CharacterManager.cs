@@ -62,7 +62,7 @@ public class CharacterManager : MonoBehaviour
 
     protected virtual void Update()
     {
-        Debug.Log("2/4 Character manager update"); // CALLED AGAIN AFTER PLAYER MANAGER BASE UPDATE AND BEFORE "END OF WAIT"
+        // Debug.Log("2/4 Character manager update"); // CALLED AGAIN AFTER PLAYER MANAGER BASE UPDATE AND BEFORE "END OF WAIT"
         HandleStatUpdates();
 
         // GET HP VALUES FROM CHARACTERS
@@ -95,7 +95,7 @@ public class CharacterManager : MonoBehaviour
 
     public virtual IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
     {
-        Debug.Log("ProcessDeathEvent charactermanager");
+        // Debug.Log("ProcessDeathEvent charactermanager");
         characterStatsManager.CurrentHealth = 0;
         isDead = true;
 
@@ -112,7 +112,7 @@ public class CharacterManager : MonoBehaviour
         // PLAY SOME DEATH SFX
 
         yield return new WaitForSeconds(5);
-        Debug.Log("5 END OF WAIT");
+        // Debug.Log("5 END OF WAIT");
 
         // DISABLE CHARACTER
     }
