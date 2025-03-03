@@ -58,6 +58,7 @@ public class PlayerManager : CharacterManager
 
     protected override void Update()
     {
+        Application.targetFrameRate = 100;
         // Debug.Log("1/8 player manager before base update + " + transform.position + " + " + isDead);
         base.Update();
         // Debug.Log("3 player manager after base update + " + isDead); // CALLED BEFORE "END OF WAIT"
@@ -75,13 +76,13 @@ public class PlayerManager : CharacterManager
 
         DebugMenu();
 
-        if(isDead)
-        {
-            if(Input.GetKeyDown(KeyCode.E))
-            {
-                respawnCharacter = true;
-            }
-        }
+        // if(isDead)
+        // {
+        //     if(Input.GetKeyDown(KeyCode.E))
+        //     {
+        //         respawnCharacter = true;
+        //     }
+        // }
     }
 
     protected override void LateUpdate()
