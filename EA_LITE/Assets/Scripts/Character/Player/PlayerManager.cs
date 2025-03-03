@@ -7,6 +7,7 @@ public class PlayerManager : CharacterManager
     [Header("DEBUG MENU")]
     [SerializeField] bool respawnCharacter = false;
     [SerializeField] public GameObject respawnPoint;
+    [SerializeField] public float respawnTimerLength = 8f; 
 
     [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
     [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
@@ -17,6 +18,7 @@ public class PlayerManager : CharacterManager
     [HideInInspector] public PlayerCombatManager playerCombatManager;
 
     public bool isUsingRightHand = false;
+    private bool timerActive = false;
 
     // ID of current weapon being used 
     public int _currentWeaponBeingUsed = 0;
@@ -74,11 +76,11 @@ public class PlayerManager : CharacterManager
 
         if(isDead)
         {
-            if(Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("respawn");
-                respawnCharacter = true;
+            if(timerActive == false){
+                FunctionTimer.Create(ReviveCharacter, respawnTimerLength, "RevivalTimer");
+                timerActive = true;
             }
+            
         }
     }
 
@@ -113,6 +115,7 @@ public class PlayerManager : CharacterManager
 
         // move character
         this.transform.position = respawnPoint.transform.position;
+        timerActive = false; 
         // Debug.Log(this);
         // Debug.Log(this.transform.position);
         // Debug.Log(respawnPoint.transform.position);

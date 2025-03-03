@@ -7436,6 +7436,11 @@ PrefabInstance:
       propertyPath: SwitchRightWeapon
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2042582355953384460, guid: c6eb0161d363f784eaa3e09c4e305108,
+        type: 3}
+      propertyPath: backStepSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: a9ee7d44435da4e4e9ec08d4b14613d1, type: 3}
     - target: {fileID: 5089555979206195723, guid: c6eb0161d363f784eaa3e09c4e305108,
         type: 3}
       propertyPath: m_Name
