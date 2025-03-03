@@ -69,7 +69,6 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     {
         if(!player.playerLocomotionManager.canMove)
         {
-            // player.IsMoving = false;
             return;
         }
 

@@ -6,7 +6,7 @@ public class PlayerManager : CharacterManager
 {
     [Header("DEBUG MENU")]
     [SerializeField] bool respawnCharacter = false;
-    [SerializeField] public GameObject respawnPoint;
+    [SerializeField] public Transform respawnPoint;
 
     [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
     [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
@@ -57,7 +57,9 @@ public class PlayerManager : CharacterManager
 
     protected override void Update()
     {
+        Debug.Log("1/8 player manager before base update + " + transform.position + " + " + isDead);
         base.Update();
+        Debug.Log("3 player manager after base update + " + isDead); // CALLED BEFORE "END OF WAIT"
 
         // HANDLE ALL MOVEMENT 
         playerLocomotionManager.HandleAllMovement();
@@ -76,7 +78,6 @@ public class PlayerManager : CharacterManager
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("respawn");
                 respawnCharacter = true;
             }
         }
@@ -91,30 +92,39 @@ public class PlayerManager : CharacterManager
 
     public override IEnumerator ProcessDeathEvent(bool manuallySelectDamageAnimation = false)
     {
+        Debug.Log("ProcessDeathEvent playermanager");
         PlayerUIManager.instance.playerUIPopUpManager.SendYouDiedPopUp();
 
         yield return base.ProcessDeathEvent(manuallySelectDamageAnimation);
 
         // RESPAWN PLAYER?
-        // ReviveCharacter();
+        ReviveCharacter();
         // respawnCharacter = true;
     }
 
     public override void ReviveCharacter()
     {
+        Debug.Log("6 ReviveCharacter called from playermanager");
         base.ReviveCharacter();
 
         isDead = false;
+        // isPerformingAction = false;
         characterStatsManager.CurrentHealth = characterStatsManager.maxHealth;
         characterStatsManager.CurrentStamina = characterStatsManager.maxStamina;
-
+        
         // PLAY REBIRTH ANIMATION
         characterAnimatorManager.PlayTargetActionAnimation("Empty", true);
+        // isPerformingAction = false;
 
         // move character
-        this.transform.position = respawnPoint.transform.position;
+        // Debug.Log(gameObject.transform.position);
+        // IsMoving = true;
+        // playerLocomotionManager.canMove = false;
+        // IsMoving = false;
+        transform.position = respawnPoint.transform.position;
+        Debug.Log("7 ReviveCharacter HERE: " + transform.position);
         // Debug.Log(this);
-        // Debug.Log(this.transform.position);
+        // Debug.Log(gameObject.transform.position);
         // Debug.Log(respawnPoint.transform.position);
     }
 
