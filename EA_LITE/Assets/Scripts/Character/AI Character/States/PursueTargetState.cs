@@ -7,9 +7,8 @@ using UnityEngine.AI;
 
 public class PursueTargetState : AIState
 {
-    private float spitTimer = 5;
+    // private float spitTimer = 5;
     // private bool canUseSpitAttack = false;
-
 
     public override AIState Tick(AICharacterManager aiCharacter)
     {
@@ -33,6 +32,7 @@ public class PursueTargetState : AIState
         // CHECK IF TARGET IS NULL, IF WE DO NOT HAVE A TARGET RETURN TO IDLE
         if(aiCharacter.aiCharacterCombatManager.currentTarget == null)
         {
+            spitTimer = 5;
             return SwitchState(aiCharacter, aiCharacter.idle);
         }
 
@@ -56,6 +56,7 @@ public class PursueTargetState : AIState
         // IF WITHIN COMBAT RANGE, SWITCH TO COMBAT STATE
         if(aiCharacter.aiCharacterCombatManager.distanceFromTarget <= aiCharacter.navMeshAgent.stoppingDistance)
         {
+            spitTimer = 5;
             return SwitchState(aiCharacter, aiCharacter.combatStance);
         }
 

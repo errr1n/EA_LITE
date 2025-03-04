@@ -11,6 +11,13 @@ public class IdleState : AIState
         // if current target is not null
         if(aiCharacter.characterCombatManager.currentTarget != null)
         {
+            if(aiCharacter.characterCombatManager.currentTarget.isDead)
+            {
+                // return this state
+                spitTimer = 5;
+                return this;
+            }
+
             // return the pursue target state
             return SwitchState(aiCharacter, aiCharacter.pursueTarget);
         }
