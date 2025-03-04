@@ -37,6 +37,7 @@ public class AICharacterCombatManager : CharacterCombatManager
 
     public void FindATargetViaLineOfSight(AICharacterManager aiCharacter)
     {
+        // if the enemy has a target
         if(currentTarget != null)
         {
             return;
