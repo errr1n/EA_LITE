@@ -27,8 +27,6 @@ public class CharacterCombatManager : MonoBehaviour
 
     public virtual void SetTarget(CharacterManager newTarget)
     {
-        // if(character)
-
         if(newTarget != null)
         {
             currentTarget = newTarget;

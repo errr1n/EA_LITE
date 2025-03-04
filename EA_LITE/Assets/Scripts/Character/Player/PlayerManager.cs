@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerManager : CharacterManager
 {
     [Header("DEBUG MENU")]
-    [SerializeField] bool respawnCharacter = false;
+    // [SerializeField] bool respawnCharacter = false;
     [SerializeField] public Transform respawnPoint;
 
     [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
@@ -58,7 +58,7 @@ public class PlayerManager : CharacterManager
 
     protected override void Update()
     {
-        Application.targetFrameRate = 100;
+        // Application.targetFrameRate = 100;
         // Debug.Log("1/8 player manager before base update + " + transform.position + " + " + isDead);
         base.Update();
         // Debug.Log("3 player manager after base update + " + isDead); // CALLED BEFORE "END OF WAIT"
@@ -74,7 +74,7 @@ public class PlayerManager : CharacterManager
 
         // Debug.Log(respawnCharacter);
 
-        DebugMenu();
+        // DebugMenu();
 
         // if(isDead)
         // {
@@ -156,15 +156,15 @@ public class PlayerManager : CharacterManager
     }
 
     // DELETE LATER
-    private void DebugMenu()
-    {
-        if(respawnCharacter)
-        {
-            respawnCharacter = false;
+    // private void DebugMenu()
+    // {
+    //     if(respawnCharacter)
+    //     {
+    //         respawnCharacter = false;
 
-            ReviveCharacter();
-        }
-    }
+    //         ReviveCharacter();
+    //     }
+    // }
 
     public void SetCharacterActionHand(bool rightHandedAction)
     {

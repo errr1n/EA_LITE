@@ -199,8 +199,31 @@ public class AIBossCharacterManager : AICharacterManager
                 bossHPBar.EnableBossHPBar(this);
             }
 
+            if(characterCombatManager.currentTarget != null)
+            {
+                if(characterCombatManager.currentTarget.isDead)
+                {
+                    StartCoroutine(ResetBoss());
+                }
+            }
+
             // set the health bar value to the bosses current health value
             bossHPBar.SetBossHP(characterStatsManager.CurrentHealth);
         }
+    }
+
+    // sets boss health to correct value if player dies 
+    private IEnumerator ResetBoss()
+    {
+        yield return new WaitForSeconds(5);
+        if(characterStatsManager.CurrentHealth <= characterStatsManager.maxHealth / 2)
+        {
+            characterStatsManager.CurrentHealth = characterStatsManager.maxHealth / 2;
+        }
+        else
+        {
+            characterStatsManager.CurrentHealth = characterStatsManager.maxHealth;
+        }
+
     }
 }
