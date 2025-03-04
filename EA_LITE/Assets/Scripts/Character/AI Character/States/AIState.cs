@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AIState : ScriptableObject
 {
+    public float spitTimer;
+
     public virtual AIState Tick(AICharacterManager aiCharacter)
     {
         //DO SOME LOGIC TO FIND THE PLAYER

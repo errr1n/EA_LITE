@@ -14,6 +14,7 @@ public class IdleState : AIState
             if(aiCharacter.characterCombatManager.currentTarget.isDead)
             {
                 // return this state
+                spitTimer = 5;
                 return this;
             }
 
