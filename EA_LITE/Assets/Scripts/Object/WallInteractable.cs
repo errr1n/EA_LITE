@@ -6,6 +6,8 @@ public class WallInteractable : MonoBehaviour
 {
     [Header("Wall")]
     [SerializeField] GameObject[] wallGameObjects;
+    public AudioClip impactSound;
+
 
     [Header("I.D")]
     public int wallID;
@@ -19,6 +21,8 @@ public class WallInteractable : MonoBehaviour
             _isActive = value;
         }
     }
+    private AudioSource audioSource;
+    private bool soundPlayed = false;
 
     private void Update()
     {
@@ -28,6 +32,7 @@ public class WallInteractable : MonoBehaviour
     private void OnEnable()
     {
         WorldObjectManager.instance.AddWallToList(this);
+
     }
 
     public void OnIsActiveChanged(bool oldStatus, bool newStatus)
@@ -43,6 +48,10 @@ public class WallInteractable : MonoBehaviour
             foreach(var wallObject in wallGameObjects)
             {
                 wallObject.SetActive(true);
+                if(soundPlayed == false){
+                    PlayImpactSound(); 
+                    soundPlayed = true; 
+                }
             }
         }
         else
@@ -52,5 +61,16 @@ public class WallInteractable : MonoBehaviour
                 wallObject.SetActive(false);
             }
         }
+    }
+
+    public void PlayImpactSound()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if(audioSource != null){
+            audioSource.clip = impactSound;
+            audioSource.Play(0);
+
+        }
+    
     }
 }
