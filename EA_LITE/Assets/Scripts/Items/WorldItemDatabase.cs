@@ -7,8 +7,6 @@ public class WorldItemDatabase : MonoBehaviour
 {
     public static WorldItemDatabase instance;
 
-    //unarmed?
-
     [Header("Weapons")]
     // list to hold every weapon in the game
     [SerializeField] List<WeaponItem> weapons = new List<WeaponItem>();

@@ -14,7 +14,7 @@ public enum CharacterGroup
     Enemy,
 }
 
-// enum for different hands
+// enum for different hands or other slots (belt, back, etc.)
 public enum WeaponModelSlot
 {
     RightHand,

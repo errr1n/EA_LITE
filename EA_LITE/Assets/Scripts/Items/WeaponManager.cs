@@ -18,7 +18,5 @@ public class WeaponManager : MonoBehaviour
         meleeDamageCollider.characterCausingDamage = characterWieldingWeapon;
         // set the physical damage of the wepaon to the damage collider
         meleeDamageCollider.physicalDamage = weapon.physicalDamage;
-
-        // attack modifiers
     }
 }
