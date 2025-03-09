@@ -190,7 +190,7 @@ public class CombatStanceState : AIState
             outcomeWillBePerformed = true;
         }
 
-        Debug.Log("outcomeWillBePerformed: " + outcomeWillBePerformed);
+        // Debug.Log("outcomeWillBePerformed: " + outcomeWillBePerformed);
         return outcomeWillBePerformed;
     }
 
