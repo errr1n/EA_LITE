@@ -166,8 +166,8 @@ MonoBehaviour:
   player: {fileID: 0}
   cameraObject: {fileID: 1345181181369581776}
   cameraPivotTransform: {fileID: 4164791814338864546}
-  leftAndRightRotationSpeed: 120
-  upAndDownRotationSpeed: 120
+  leftAndRightRotationSpeed: 60
+  upAndDownRotationSpeed: 60
   minimumPivot: -30
   maximumPivot: 60
   cameraCollisionRadius: 0.2
@@ -176,6 +176,11 @@ MonoBehaviour:
     m_Bits: 1
   leftAndRightLookAngle: 0
   upAndDownLookAngle: 0
+  lockOnRadius: 20
+  minimumViewableAngle: -50
+  maximumViewableAngle: 50
+  nearestLockOnTarget: {fileID: 0}
+  lockOnTargetFollowSpeed: 0.2
 --- !u!1 &4970216946343254937
 GameObject:
   m_ObjectHideFlags: 0
