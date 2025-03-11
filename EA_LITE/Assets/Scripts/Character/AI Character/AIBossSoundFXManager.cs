@@ -10,6 +10,13 @@ public class AIBossSoundFXManager : CharacterSoundFXManager
     [Header("Stomp Impacts")]
     public AudioClip[] stompImpacts;
 
+    [Header("Spit Sounds")]
+    public AudioClip[] spitSounds;
+    
+    [Header("Death Sounds")]
+    public AudioClip[] deathSounds;
+
+
     // [Header("Footsteps")]
     // public AudioClip[] footSteps;
 
