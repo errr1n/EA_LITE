@@ -141,9 +141,15 @@ public class AIBossCharacterManager : AICharacterManager
         {
             // ANIMATION
             characterAnimatorManager.PlayTargetActionAnimation("Death", true);
+            // PLAY SOME DEATH SFX
+            AIBossSoundFXManager sfxManager = GetComponent<AIBossSoundFXManager>();
+            if(sfxManager != null){
+                sfxManager.PlayDeathSoundFX();
+            }
+
         }
 
-        // PLAY SOME DEATH SFX
+        
 
         yield return new WaitForSeconds(5);
 

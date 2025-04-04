@@ -4014,6 +4014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46102263eec607246ac0a0ef125faa5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   damageGrunts:
   - {fileID: 8300000, guid: 0bc4aa08f429f644f99a027c0ce05908, type: 3}
   - {fileID: 8300000, guid: 364c9370e411a56428f512b7bed105b3, type: 3}
@@ -4031,6 +4032,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4e2b2f5996eae5241825bdae44c40be0, type: 3}
   stompImpacts:
   - {fileID: 8300000, guid: 40bc0b255d9acd540b7c3f65be9a6741, type: 3}
+  spitSounds:
+  - {fileID: 8300000, guid: e820c51eb7dd93d4fa16b793d1c5f059, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: 9a8b5f064ee751047a4556e7d51462f3, type: 3}
 --- !u!114 &5710445414407953941
 MonoBehaviour:
   m_ObjectHideFlags: 0

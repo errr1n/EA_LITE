@@ -12,4 +12,6 @@ public class AITitanCharacterManager : AIBossCharacterManager
 
         bossSoundFXManager = GetComponent<AIBossSoundFXManager>();
     }
+
+    
 }
