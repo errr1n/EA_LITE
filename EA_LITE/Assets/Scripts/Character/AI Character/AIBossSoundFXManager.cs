@@ -30,6 +30,16 @@ public class AIBossSoundFXManager : CharacterSoundFXManager
         }
     }
 
+    public virtual void PlaySpitSoundFX()
+    {
+        // if there is a sound in the stomp impact array 
+        if(spitSounds.Length > 0)
+        {
+            // play the stomp impact sound
+            PlaySoundFX(WorldSoundFXManager.instance.ChooseRandomSFXFromArray(spitSounds));
+        }
+    }
+
     public virtual void PlayDeathSoundFX()
     {
         // if there is a sound in the stomp impact array 
